@@ -1,0 +1,306 @@
+[2026-02-03 18:32:40.297 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 18:32:40.444 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/02/2026 13:29:57', Current time (UTC): '04/02/2026 0:32:40'.
+[2026-02-03 18:32:40.465 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 18:32:40.652 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/02/2026 13:29:57', Current time (UTC): '04/02/2026 0:32:40'.
+[2026-02-03 18:32:49.311 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 18:32:50.750 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 18:38:23.506 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 18:38:23.506 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 18:38:23.538 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 18:38:23.822 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 18:38:23.977 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 18:38:23.980 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 19:12:54.721 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 19:12:54.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:12:54.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:12:54.872 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 19:12:54.872 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 19:12:54.968 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 19:12:55.399 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 19:12:58.297 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:12:58.302 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:12:58.303 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 19:13:03.304 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:13:03.305 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:13:03.313 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 19:13:43.415 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:13:43.416 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:13:43.416 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 19:13:43.421 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:15:36.619 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 19:15:36.703 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:18:15.215 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 21:18:15.619 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 21:18:18.242 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 21:18:19.807 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 21:19:00.592 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:00.592 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:00.592 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:00.633 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 21:19:00.772 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:01.003 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:01.130 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 21:19:01.135 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:43:17.080 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 22:43:17.224 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:17.224 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:17.224 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:17.254 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:43:17.254 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:43:17.254 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:43:17.376 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:43:17.828 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 22:43:18.387 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:43:18.456 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:18.456 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:18.456 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:18.457 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:43:18.500 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:43:33.631 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:33.704 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:36.981 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 22:43:40.967 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:40.967 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:40.968 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:40.972 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:43:40.980 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:43:40.992 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:40.996 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:40.998 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:43:41.004 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:43:41.005 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:46:11.192 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 22:46:11.595 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:11.665 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:46:12.209 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:16.891 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 22:46:18.461 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 22:46:23.430 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:23.435 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:23.443 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:23.488 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:46:23.718 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:24.232 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:46:24.375 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:24.378 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:46:24.381 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:46:24.647 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:48:13.270 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 22:48:13.722 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:13.803 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:48:14.442 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:17.801 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 22:48:19.321 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 22:48:25.643 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:25.647 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:25.647 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:25.678 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:48:26.323 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:48:26.448 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:26.487 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:26.509 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:48:26.512 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:48:26.910 -06:00 [WARNI] Business exception occurred: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+LaundryManagement.Domain.Exceptions.ValidationException: Tipo de descuento inválido: Porcentaje. Valores válidos: NONE, PERCENTAGE, FIXED
+   at LaundryManagement.Domain.ValueObjects.DiscountType.From(String typeString) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\DiscountType.cs:line 46
+   at LaundryManagement.Infrastructure.Mappers.DiscountMapper.ToDomain(Descuento entity) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Mappers\DiscountMapper.cs:line 18
+   at System.Linq.Enumerable.SelectListIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at LaundryManagement.Infrastructure.Repositories.DiscountRepositoryPure.GetAllAsync(CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\DiscountRepositoryPure.cs:line 42
+   at LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler.Handle(GetAllDiscountsQuery query, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Queries\Discounts\GetAllDiscountsQueryHandler.cs:line 23
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 30
+   at LaundryManagement.API.Controllers.DescuentosController.GetAll(String search, String tipo, Nullable`1 activo, String ordenarPor, String orden) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\DescuentosController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-03 22:51:01.983 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-03 22:51:02.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:02.529 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-03 22:51:03.230 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:08.082 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-03 22:51:09.684 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-03 22:51:14.980 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:14.980 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:14.983 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:15.017 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:51:15.244 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:15.309 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:15.349 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:15.352 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:51:53.581 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:53.951 -06:00 [INFOR] Folio generado: ORD-20260203-0001 para cliente 5
+[2026-02-03 22:51:53.989 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 5 con folio ORD-20260203-0001
+[2026-02-03 22:51:54.340 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-03 22:51:54.432 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=46, Folio=ORD-20260203-0001
+[2026-02-03 22:51:54.452 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=46, PagoID=null
+[2026-02-03 22:51:54.461 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=46, Folio=ORD-20260203-0001, PagoID=null
+[2026-02-03 22:51:57.591 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.595 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.611 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.632 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:51:57.670 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.689 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.689 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:51:57.689 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-03 22:57:14.678 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:57:14.702 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-03 22:57:14.834 -06:00 [INFOR] Found 9 service prices
+[2026-02-03 22:57:21.170 -06:00 [INFOR] Token validated for user: admin
+[2026-02-03 22:57:21.172 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-03 22:57:21.222 -06:00 [INFOR] Found 9 service prices

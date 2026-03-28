@@ -1,0 +1,177 @@
+[2026-02-27 08:28:05.987 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 08:28:06.497 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/02/2026 6:43:02', Current time (UTC): '27/02/2026 14:28:06'.
+[2026-02-27 08:28:06.587 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 08:28:07.319 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/02/2026 6:43:02', Current time (UTC): '27/02/2026 14:28:07'.
+[2026-02-27 08:28:11.198 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 08:28:12.813 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-27 08:28:42.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.730 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.739 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.740 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.739 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.740 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 08:28:42.739 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:04:54.032 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 10:04:54.172 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:04:54.190 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 10:04:54.373 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:05:00.615 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 10:05:02.223 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-27 10:08:16.710 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.710 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.713 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.714 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.714 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.718 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.719 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.720 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.720 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:16.720 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:19.793 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:19.793 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:19.797 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:19.797 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:19.798 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:20.013 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:50.525 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:50.616 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-27 10:08:51.538 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.538 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.539 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.544 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.544 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.591 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:08:51.735 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.434 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.434 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.438 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.438 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.438 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.439 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.439 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.442 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.442 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:36.443 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.047 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.047 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.049 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.049 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.050 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.050 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.050 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.053 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.053 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:14:45.053 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.236 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 10:57:39.603 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.603 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.603 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:39.678 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 10:57:40.328 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:40.328 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:40.334 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:40.334 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:41.959 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 10:57:42.271 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:42.343 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 10:57:44.481 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:00.665 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 11:13:01.194 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:01.196 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:01.195 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:01.229 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:01.322 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 11:13:01.322 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 11:13:01.776 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:13:03.884 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 11:13:06.889 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:06.893 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:06.895 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:13:16.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.729 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.738 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.739 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:13:16.779 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.779 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:13:16.781 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:21:17.865 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 11:21:18.239 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:18.239 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:18.239 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:18.340 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 11:21:18.341 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 11:21:18.341 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 11:21:18.922 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:21:20.928 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 11:21:23.530 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:23.530 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:23.530 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:23.534 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:21:35.621 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.621 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.622 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.623 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.628 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.628 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.628 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.629 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 11:21:35.658 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.678 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 11:21:35.679 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:25:15.683 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 21:25:16.091 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '28/02/2026 0:05:05', Current time (UTC): '28/02/2026 3:25:16'.
+[2026-02-27 21:25:16.146 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 21:25:16.729 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '28/02/2026 0:05:05', Current time (UTC): '28/02/2026 3:25:16'.
+[2026-02-27 21:25:45.775 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 21:25:47.367 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-27 21:26:29.603 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.604 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.604 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.634 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:26:29.813 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.906 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.949 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:26:29.951 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:43:29.673 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:29.701 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.831 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.831 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.831 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.836 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:43:33.856 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.884 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.900 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:33.901 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:43:43.166 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.166 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.166 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.167 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:43:43.192 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.199 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.204 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:43:43.205 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 21:47:52.932 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:47:52.932 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:47:52.933 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 21:47:52.935 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-27 22:21:58.850 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 22:21:58.959 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 22:24:45.816 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 22:24:46.358 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 22:24:46.478 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 22:24:46.983 -06:00 [INFOR] Getting service prices: ServiceId=6, ServiceGarmentId=null, IsActive=null
+[2026-02-27 22:24:49.178 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 22:25:13.123 -06:00 [INFOR] Found 9 service prices
+[2026-02-27 22:25:49.375 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-27 22:25:49.800 -06:00 [INFOR] Token validated for user: admin
+[2026-02-27 22:25:49.901 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-27 22:25:50.229 -06:00 [INFOR] Getting service prices: ServiceId=6, ServiceGarmentId=null, IsActive=null
+[2026-02-27 22:25:52.291 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-27 22:25:55.282 -06:00 [INFOR] Found 9 service prices

@@ -1,0 +1,195 @@
+[2026-02-16 11:32:26.765 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 11:32:27.025 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 11:32:29.301 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 11:32:30.418 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 11:35:58.441 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.441 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.441 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.483 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 11:35:58.823 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.871 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.954 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 11:35:58.957 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 12:02:49.755 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 12:02:49.855 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 12:02:49.873 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 12:02:49.950 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-16 12:02:50.348 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 12:02:51.047 -06:00 [INFOR] Found 9 service prices
+[2026-02-16 13:45:01.319 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 13:45:01.814 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:01.886 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 13:45:02.641 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:07.085 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 13:45:08.835 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 13:45:21.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:21.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:21.624 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:21.662 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:45:21.873 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:21.888 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:22.004 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:22.007 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:45:26.387 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:26.409 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-16 13:45:26.529 -06:00 [INFOR] Found 9 service prices
+[2026-02-16 13:45:54.570 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:45:54.859 -06:00 [INFOR] Folio generado: ORD-20260216-0001 para cliente 14
+[2026-02-16 13:45:54.910 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 14 con folio ORD-20260216-0001
+[2026-02-16 13:45:55.769 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-16 13:45:55.893 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=58, Folio=ORD-20260216-0001
+[2026-02-16 13:45:56.048 -06:00 [INFOR] Pago registrado exitosamente: PagoID=23, OrdenID=58, Monto=720
+[2026-02-16 13:45:56.064 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=58, PagoID=23
+[2026-02-16 13:45:56.073 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=58, Folio=ORD-20260216-0001, PagoID=23
+[2026-02-16 13:46:00.395 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:00.397 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:00.407 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:46:00.412 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:00.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:00.446 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:46:00.445 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:00.452 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:35.378 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:35.398 -06:00 [INFOR] Folio generado: ORD-20260216-0002 para cliente 10
+[2026-02-16 13:46:35.403 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 10 con folio ORD-20260216-0002
+[2026-02-16 13:46:35.413 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-16 13:46:35.470 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=59, Folio=ORD-20260216-0002
+[2026-02-16 13:46:35.513 -06:00 [INFOR] Pago registrado exitosamente: PagoID=24, OrdenID=59, Monto=300
+[2026-02-16 13:46:35.515 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=59, PagoID=24
+[2026-02-16 13:46:35.515 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=59, Folio=ORD-20260216-0002, PagoID=24
+[2026-02-16 13:46:37.715 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:37.715 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:37.715 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:37.722 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:46:37.765 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:37.772 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:46:37.772 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:46:37.780 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:02.352 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:02.405 -06:00 [INFOR] Folio generado: ORD-20260216-0003 para cliente 15
+[2026-02-16 13:47:02.406 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 15 con folio ORD-20260216-0003
+[2026-02-16 13:47:02.409 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-16 13:47:02.430 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=60, Folio=ORD-20260216-0003
+[2026-02-16 13:47:02.560 -06:00 [INFOR] Pago registrado exitosamente: PagoID=25, OrdenID=60, Monto=100
+[2026-02-16 13:47:02.578 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=60, PagoID=25
+[2026-02-16 13:47:02.578 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=60, Folio=ORD-20260216-0003, PagoID=25
+[2026-02-16 13:47:04.029 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.029 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.029 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.066 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:47:04.103 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.111 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.117 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:47:04.121 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 13:47:08.825 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:53:02.929 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:53:02.972 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 13:53:03.017 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-16 13:53:08.654 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-16T06:00:00.0000000Z" al "2026-02-16T19:53:02.9660000Z" via EF Core
+[2026-02-16 13:53:09.061 -06:00 [INFOR] Corte de caja guardado exitosamente con ID: 1
+[2026-02-16 13:53:09.063 -06:00 [INFOR] Corte de caja creado completamente: ID=1, Folio=CORTE-20260216-0001, TotalEsperado=1120, TotalDeclarado=1310
+[2026-02-16 13:53:09.064 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 1, Folio: CORTE-20260216-0001
+[2026-02-16 14:21:39.010 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 14:21:39.122 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:39.136 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 14:21:39.297 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:41.341 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 14:21:42.306 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 14:21:47.410 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.410 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.411 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.438 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 14:21:47.604 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.655 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.745 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:21:47.747 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 14:21:50.960 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:23:28.133 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:33:56.301 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:33:56.314 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.349 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.349 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.349 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.352 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 14:34:00.362 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.377 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.383 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:34:00.384 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 14:34:03.866 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:35:34.114 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:35:34.148 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:35:34.272 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-16 14:35:34.291 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-16T06:00:00.0000000Z" al "2026-02-16T20:35:34.1400000Z" via EF Core
+[2026-02-16 14:35:35.032 -06:00 [INFOR] Corte de caja guardado exitosamente con ID: 2
+[2026-02-16 14:35:35.033 -06:00 [INFOR] Corte de caja creado completamente: ID=2, Folio=CORTE-20260216-0002, TotalEsperado=1120, TotalDeclarado=1200
+[2026-02-16 14:35:35.035 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 2, Folio: CORTE-20260216-0002
+[2026-02-16 14:35:51.530 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 14:49:50.814 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:57:56.222 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 15:57:56.330 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:57:56.344 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 15:57:56.480 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:57:59.978 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 15:58:01.316 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 15:59:12.100 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.100 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.100 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.137 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 15:59:12.372 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.382 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.477 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 15:59:12.480 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 16:51:42.546 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 16:51:42.652 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:51:42.652 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:51:42.652 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:51:42.674 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 16:51:42.674 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 16:51:42.674 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 16:51:42.759 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 16:51:43.196 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 16:58:36.370 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:36.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:38.478 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 16:58:42.172 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:42.172 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:42.172 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:42.175 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 16:58:42.187 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:42.206 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:58:42.210 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 16:58:42.210 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:59:08.738 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:59:09.141 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 16:59:16.389 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 17:18:53.442 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 17:55:36.124 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 17:55:36.229 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 18:22:54.228 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 18:22:54.326 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 18:22:54.344 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 18:22:54.809 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 18:23:00.455 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 18:23:46.257 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 18:58:06.727 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 18:58:06.967 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 18:58:07.001 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 18:58:07.310 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:18:56.807 -06:00 [WARNI] As of ""2026-02-17T04:18:56.7137079+00:00"", the heartbeat has been running for ""02:07:28.7980975"" which is longer than ""00:00:01"". This could be caused by thread pool starvation.
+[2026-02-16 22:20:22.053 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 22:20:22.566 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 22:20:35.763 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:35.766 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:35.767 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:35.803 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 22:20:35.984 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:36.021 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:36.154 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 22:20:36.157 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-16 23:57:56.888 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-16 23:57:57.378 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 23:57:57.491 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-16 23:58:00.074 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-16 23:58:01.639 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-16 23:58:58.010 -06:00 [INFOR] Token validated for user: admin
+[2026-02-16 23:58:58.130 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.

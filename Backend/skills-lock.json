@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "api-design-principles": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "1ee396a9c4714df95f1a9f8d156395848e8bd0fac1d70920a0487e8526ec0e55"
+    },
+    "dotnet-backend-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "98495b77cf63cbd36e7f152c61d8eddff20d050f2cbc803b45cc6b5b9526cbf1"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "72e9ab72627e4fd8ed26a582e82309a98ecdc4f6e1c99418430ac05682c9e91d"
+    },
+    "unit-test-bean-validation": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "computedHash": "be4aa73118072042be974d6e72d7c3527a8ed9284cd8cd18f003ca4d02b5b3f8"
+    }
+  }
+}

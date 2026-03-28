@@ -1,0 +1,423 @@
+[2026-02-10 13:08:54.495 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 13:08:54.853 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 13:08:56.900 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 13:08:58.048 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-10 13:09:04.195 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.195 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.195 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.223 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 13:09:04.362 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.417 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.469 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:04.470 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 13:09:08.931 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:08.949 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-10 13:09:09.049 -06:00 [INFOR] Found 9 service prices
+[2026-02-10 13:09:47.439 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:47.670 -06:00 [INFOR] Folio generado: ORD-20260210-0001 para cliente 4
+[2026-02-10 13:09:47.717 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 4 con folio ORD-20260210-0001
+[2026-02-10 13:09:48.021 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-10 13:09:48.130 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=50, Folio=ORD-20260210-0001
+[2026-02-10 13:09:48.274 -06:00 [INFOR] Pago registrado exitosamente: PagoID=15, OrdenID=50, Monto=300
+[2026-02-10 13:09:48.292 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=50, PagoID=15
+[2026-02-10 13:09:48.298 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=50, Folio=ORD-20260210-0001, PagoID=15
+[2026-02-10 13:09:50.784 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.784 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.784 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.788 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 13:09:50.839 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.840 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.856 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:09:50.861 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 13:09:53.539 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:10:34.460 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:10:34.516 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:10:34.558 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 13:10:34.709 -06:00 [WARNI] Business exception occurred: El folio del corte de caja debe tener el formato CORTE-YYYYMMDD-HHMMSS. Valor recibido: CC-00000000-0000
+LaundryManagement.Domain.Exceptions.ValidationException: El folio del corte de caja debe tener el formato CORTE-YYYYMMDD-HHMMSS. Valor recibido: CC-00000000-0000
+   at LaundryManagement.Domain.ValueObjects.CashClosingFolio..ctor(String value) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\CashClosingFolio.cs:line 30
+   at LaundryManagement.Domain.ValueObjects.CashClosingFolio.FromString(String value) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\CashClosingFolio.cs:line 49
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure..ctor() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 176
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 214
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 13:10:54.110 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:10:54.165 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:10:54.168 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 13:10:54.299 -06:00 [WARNI] Business exception occurred: El folio del corte de caja debe tener el formato CORTE-YYYYMMDD-HHMMSS. Valor recibido: CC-00000000-0000
+LaundryManagement.Domain.Exceptions.ValidationException: El folio del corte de caja debe tener el formato CORTE-YYYYMMDD-HHMMSS. Valor recibido: CC-00000000-0000
+   at LaundryManagement.Domain.ValueObjects.CashClosingFolio..ctor(String value) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\CashClosingFolio.cs:line 30
+   at LaundryManagement.Domain.ValueObjects.CashClosingFolio.FromString(String value) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\CashClosingFolio.cs:line 49
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure..ctor() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 176
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 214
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 13:33:47.457 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 13:33:47.916 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:33:48.018 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 13:33:50.148 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 13:33:52.229 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:33:52.423 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 13:33:59.005 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-10T19:33:52.1970000Z" via SP
+[2026-02-10 13:35:52.233 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 13:35:52.595 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:35:52.647 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 13:35:54.906 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 13:35:56.545 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:35:56.766 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 13:35:56.786 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-10T19:35:56.4950000Z" via SP
+[2026-02-10 13:36:39.716 -06:00 [ERROR] Error al crear corte de caja para cajero 1
+Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_CortesCajaDetalle_Metodo". The conflict occurred in database "LavanderiaDB", table "dbo.MetodosPago", column 'MetodoPagoID'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at LaundryManagement.Infrastructure.Repositories.CashClosingRepositoryPure.AddAsync(CashClosingPure cashClosing, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\CashClosingRepositoryPure.cs:line 185
+ClientConnectionId:21694e03-806e-41e8-935d-4311620bde12
+Error Number:50000,State:1,Class:16
+[2026-02-10 13:36:40.068 -06:00 [WARNI] Business exception occurred: Error al crear corte de caja: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_CortesCajaDetalle_Metodo". The conflict occurred in database "LavanderiaDB", table "dbo.MetodosPago", column 'MetodoPagoID'.
+LaundryManagement.Domain.Exceptions.DatabaseException: Error al crear corte de caja: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_CortesCajaDetalle_Metodo". The conflict occurred in database "LavanderiaDB", table "dbo.MetodosPago", column 'MetodoPagoID'.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_CortesCajaDetalle_Metodo". The conflict occurred in database "LavanderiaDB", table "dbo.MetodosPago", column 'MetodoPagoID'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at LaundryManagement.Infrastructure.Repositories.CashClosingRepositoryPure.AddAsync(CashClosingPure cashClosing, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\CashClosingRepositoryPure.cs:line 185
+ClientConnectionId:21694e03-806e-41e8-935d-4311620bde12
+Error Number:50000,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at LaundryManagement.Infrastructure.Repositories.CashClosingRepositoryPure.AddAsync(CashClosingPure cashClosing, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\CashClosingRepositoryPure.cs:line 229
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 50
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 13:45:24.298 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:45:24.566 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 13:45:24.573 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 13:45:24.574 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-10T19:45:24.5520000Z" via SP
+[2026-02-10 13:45:25.393 -06:00 [INFOR] Corte de caja creado exitosamente: ID=6, Folio=CORTE-20260210-134524, TotalEsperado=300.00, TotalDeclarado=300.00, DiferenciaFinal=0.00
+[2026-02-10 13:45:25.406 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 6, Folio: CORTE-20260210-134524
+[2026-02-10 13:47:42.848 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 15:25:15.325 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 15:25:15.489 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 15:25:15.511 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 15:25:16.048 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 18:00:57.977 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 18:00:58.129 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:00:58.152 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 18:00:58.677 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 18:02:23.622 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:24.737 -06:00 [INFOR] Folio generado: ORD-20260210-0002 para cliente 12
+[2026-02-10 18:02:24.791 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 12 con folio ORD-20260210-0002
+[2026-02-10 18:02:25.110 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-10 18:02:25.232 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=51, Folio=ORD-20260210-0002
+[2026-02-10 18:02:25.362 -06:00 [INFOR] Pago registrado exitosamente: PagoID=16, OrdenID=51, Monto=315
+[2026-02-10 18:02:25.376 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=51, PagoID=16
+[2026-02-10 18:02:25.384 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=51, Folio=ORD-20260210-0002, PagoID=16
+[2026-02-10 18:02:27.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.444 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.469 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:02:27.708 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.769 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.877 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:02:27.878 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:11:37.186 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:37.231 -06:00 [INFOR] Folio generado: ORD-20260210-0003 para cliente 5
+[2026-02-10 18:11:37.235 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 5 con folio ORD-20260210-0003
+[2026-02-10 18:11:37.247 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-10 18:11:37.381 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=52, Folio=ORD-20260210-0003
+[2026-02-10 18:11:37.415 -06:00 [INFOR] Pago registrado exitosamente: PagoID=17, OrdenID=52, Monto=380
+[2026-02-10 18:11:37.417 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=52, PagoID=17
+[2026-02-10 18:11:37.417 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=52, Folio=ORD-20260210-0003, PagoID=17
+[2026-02-10 18:11:40.638 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.638 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.639 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.643 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:11:40.660 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.672 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.684 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:11:40.685 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:11:49.753 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:10.126 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:10.149 -06:00 [INFOR] Folio generado: ORD-20260210-0004 para cliente 1
+[2026-02-10 18:13:10.150 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 1 con folio ORD-20260210-0004
+[2026-02-10 18:13:10.153 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-10 18:13:10.192 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=53, Folio=ORD-20260210-0004
+[2026-02-10 18:13:10.241 -06:00 [INFOR] Pago registrado exitosamente: PagoID=18, OrdenID=53, Monto=262.5
+[2026-02-10 18:13:10.244 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=53, PagoID=18
+[2026-02-10 18:13:10.245 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=53, Folio=ORD-20260210-0004, PagoID=18
+[2026-02-10 18:13:12.900 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.901 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:13:12.904 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.904 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.917 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.919 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.922 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:13:12.923 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-10 18:13:21.273 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:14:27.866 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:14:27.902 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:14:27.948 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:14:27.958 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-11T00:14:27.8920000Z" via SP
+[2026-02-10 18:14:28.144 -06:00 [INFOR] Corte de caja creado exitosamente: ID=7, Folio=CORTE-20260210-181428, TotalEsperado=1257.50, TotalDeclarado=1257.50, DiferenciaFinal=0.00
+[2026-02-10 18:14:28.154 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 7, Folio: CORTE-20260210-181428
+[2026-02-10 18:38:15.445 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 18:38:15.548 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:38:15.566 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 18:38:16.038 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 18:39:03.173 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:39:03.261 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:39:03.479 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:39:03.499 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:45:28.145 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:45:28.360 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:45:28.370 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:45:28.509 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:45:36.818 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:45:36.846 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:45:36.851 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:45:36.929 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:46:30.560 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:46:30.591 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:46:33.964 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:46:34.036 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:46:56.209 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:46:56.235 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:47:01.668 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:47:31.599 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:48:25.976 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:49:14.691 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:49:14.713 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:49:17.463 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:50:24.950 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 18:52:19.404 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:52:19.434 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 18:52:21.388 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 18:52:28.402 -06:00 [WARNI] Business exception occurred: El monto no puede ser negativo
+LaundryManagement.Domain.Exceptions.ValidationException: El monto no puede ser negativo
+   at LaundryManagement.Domain.ValueObjects.Money..ctor(Decimal amount, String currency) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 28
+   at LaundryManagement.Domain.ValueObjects.Money.Multiply(Decimal multiplier) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\ValueObjects\Money.cs:line 76
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateDifference(Money declared, Money expected) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 353
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.CalculateTotalsAndDifferences() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 334
+   at LaundryManagement.Domain.Aggregates.CashClosings.CashClosingPure.Create(Int32 cashierId, DateTime startDate, DateTime endDate, Money expectedCash, Money expectedCard, Money expectedTransfer, Money expectedOther, Money declaredCash, Money declaredCard, Money declaredTransfer, Money declaredOther, Money adjustmentAmount, String adjustmentReason, String shiftDescription, String notes) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Domain\Aggregates\CashClosings\CashClosingPure.cs:line 239
+   at LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler.Handle(CreateCashClosingCommand cmd, CancellationToken ct) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\CashClosings\CreateCashClosingCommandHandler.cs:line 31
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(CreateCashClosingCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\CortesCajaController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-10 19:03:11.067 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-10 19:03:11.502 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 19:03:11.585 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-10 19:03:13.659 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-10 19:03:15.632 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 19:03:16.628 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 19:03:17.697 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-11T01:03:15.5930000Z" via SP
+[2026-02-10 19:03:36.158 -06:00 [INFOR] Corte de caja creado exitosamente: ID=8, Folio=CORTE-20260210-190335, TotalEsperado=1257.50, TotalDeclarado=1195.00, DiferenciaFinal=-62.50
+[2026-02-10 19:03:36.169 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 8, Folio: CORTE-20260210-190335
+[2026-02-10 19:04:54.771 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 19:04:54.952 -06:00 [INFOR] Token validated for user: admin
+[2026-02-10 19:04:54.959 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-10 19:04:56.645 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-10T06:00:00.0000000Z" al "2026-02-11T01:04:54.9380000Z" via SP
+[2026-02-10 19:05:01.569 -06:00 [INFOR] Corte de caja creado exitosamente: ID=9, Folio=CORTE-20260210-190458, TotalEsperado=1257.50, TotalDeclarado=1195.00, DiferenciaFinal=-62.50
+[2026-02-10 19:05:01.570 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 9, Folio: CORTE-20260210-190458

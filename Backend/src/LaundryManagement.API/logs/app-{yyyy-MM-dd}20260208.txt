@@ -1,0 +1,8 @@
+[2026-02-08 15:55:11.468 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.468 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.507 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.590 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-08 15:55:11.676 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.766 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.785 -06:00 [INFOR] Token validated for user: admin
+[2026-02-08 15:55:11.787 -06:00 [INFOR] Obteniendo servicios con filtros

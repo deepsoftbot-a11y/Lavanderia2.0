@@ -1,0 +1,37 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.log
+*.nupkg
+packages/
+TestResults/
+*.coverage
+*.coveragexml
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+
+# Entity Framework
+Migrations/*.Designer.cs
+
+# Node / React
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+*.swp
+*.swo

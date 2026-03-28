@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+  --radius: 0.75rem;
+
+  /* Laundry-inspired color system */
+  /* Clean water blues and fresh whites with warm cotton accents */
+  --color-background: hsl(210 40% 98%);
+  --color-foreground: hsl(215 25% 20%);
+
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(215 25% 20%);
+
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(215 25% 20%);
+
+  /* Fresh water blue - professional and clean */
+  --color-primary: hsl(205 85% 48%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  /* Soft steam gray - subtle and refined */
+  --color-secondary: hsl(210 30% 96%);
+  --color-secondary-foreground: hsl(215 25% 20%);
+
+  --color-muted: hsl(210 25% 95%);
+  --color-muted-foreground: hsl(215 15% 50%);
+
+  /* Cotton natural - warm accent */
+  --color-accent: hsl(30 25% 92%);
+  --color-accent-foreground: hsl(215 25% 20%);
+
+  --color-destructive: hsl(0 72% 51%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  /* Whisper-quiet borders */
+  --color-border: hsl(210 20% 90%);
+  --color-input: hsl(210 20% 90%);
+  --color-ring: hsl(205 85% 48%);
+
+  /* Custom laundry tokens */
+  --color-fresh: hsl(195 65% 55%);
+  --color-steam: hsl(210 15% 85%);
+  --color-cotton: hsl(35 30% 90%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+}

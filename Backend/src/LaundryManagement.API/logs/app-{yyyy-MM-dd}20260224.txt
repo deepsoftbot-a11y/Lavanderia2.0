@@ -1,0 +1,48 @@
+[2026-02-24 14:05:29.928 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-24 14:05:30.360 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '24/02/2026 7:01:16', Current time (UTC): '24/02/2026 20:05:30'.
+[2026-02-24 14:05:30.421 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-24 14:05:31.026 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '24/02/2026 7:01:16', Current time (UTC): '24/02/2026 20:05:31'.
+[2026-02-24 14:05:39.470 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-24 14:05:41.186 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-24 14:05:55.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.851 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.850 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.860 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:55.877 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-24 14:05:55.876 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-24 14:05:55.878 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-24 14:05:55.992 -06:00 [INFOR] Found 14 service garments
+[2026-02-24 14:05:56.008 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:56.011 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-24 14:05:56.085 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:56.165 -06:00 [INFOR] Found 14 service garments
+[2026-02-24 14:05:56.247 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:56.250 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-24 14:05:56.280 -06:00 [INFOR] Found 9 service prices
+[2026-02-24 14:05:56.288 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:05:56.290 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-24 14:05:56.316 -06:00 [INFOR] Found 9 service prices
+[2026-02-24 14:23:03.408 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 14:23:03.411 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 15:08:09.089 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-24 15:08:09.216 -06:00 [INFOR] Token validated for user: admin
+[2026-02-24 15:08:09.237 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-24 15:08:09.349 -06:00 [WARNI] Business exception occurred: Uno o más errores de validación ocurrieron
+LaundryManagement.Domain.Exceptions.ValidationException: Uno o más errores de validación ocurrieron
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 55
+   at LaundryManagement.API.Controllers.ServiciosController.CreateService(CreateServiceCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\ServiciosController.cs:line 91
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29

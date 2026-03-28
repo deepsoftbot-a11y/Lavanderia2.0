@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet ef dbcontext scaffold:*)",
+      "Bash(dotnet run:*)",
+      "Bash(curl:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet remove:*)",
+      "Bash(del \"c:\\\\Users\\\\mauricio.perez\\\\Documents\\\\Mauricio DS\\\\Desarrollo\\\\LavanderíaTintoreria\\\\API\\\\src\\\\LaundryManagement.Domain\\\\Entities\\\\UbicacionesAlmacen.cs\")",
+      "Bash(dotnet ef migrations add:*)",
+      "Bash(dotnet ef database update:*)",
+      "Bash(dotnet ef migrations script:*)",
+      "Bash(cat:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(for file in *.cs)",
+      "Bash(do cp \"$file\" \"../../LaundryManagement.Infrastructure/Persistence/Entities/$file\")",
+      "Bash(done)",
+      "Bash(do sed -i 's/namespace LaundryManagement\\\\.Domain\\\\.Entities;/namespace LaundryManagement.Infrastructure.Persistence.Entities;/g' \"$file\")",
+      "Bash(tree:*)",
+      "Bash(dotnet --version:*)",
+      "Bash(timeout:*)",
+      "Bash(sqlcmd:*)",
+      "Bash(taskkill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

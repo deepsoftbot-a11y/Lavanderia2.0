@@ -1,0 +1,50 @@
+[2026-02-26 16:42:21.696 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-26 16:42:22.087 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '25/02/2026 4:05:44', Current time (UTC): '26/02/2026 22:42:22'.
+[2026-02-26 16:42:22.151 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-26 16:42:22.801 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '25/02/2026 4:05:44', Current time (UTC): '26/02/2026 22:42:22'.
+[2026-02-26 16:42:57.308 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-26 16:42:58.858 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-26 16:45:04.107 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.107 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.107 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.107 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.139 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:04.140 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-26 16:45:04.140 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-26 16:45:04.278 -06:00 [INFOR] Found 14 service garments
+[2026-02-26 16:45:04.294 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.298 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-26 16:45:04.347 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.439 -06:00 [INFOR] Found 14 service garments
+[2026-02-26 16:45:04.494 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.496 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:04.526 -06:00 [INFOR] Found 9 service prices
+[2026-02-26 16:45:04.537 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:04.540 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-26 16:45:04.582 -06:00 [INFOR] Found 9 service prices
+[2026-02-26 16:45:05.502 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:05.502 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:05.502 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:05.516 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:05.527 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:05.528 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:05.529 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:05.652 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.152 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.152 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.153 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.152 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.154 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:10.156 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-26 16:45:10.157 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-26 16:45:10.162 -06:00 [INFOR] Found 14 service garments
+[2026-02-26 16:45:10.165 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.169 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.169 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.170 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-26 16:45:10.170 -06:00 [INFOR] Getting service garments: Search=null, IsActive=null
+[2026-02-26 16:45:10.174 -06:00 [INFOR] Found 14 service garments
+[2026-02-26 16:45:10.186 -06:00 [INFOR] Found 9 service prices
+[2026-02-26 16:45:10.191 -06:00 [INFOR] Token validated for user: admin
+[2026-02-26 16:45:10.191 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-26 16:45:10.212 -06:00 [INFOR] Found 9 service prices

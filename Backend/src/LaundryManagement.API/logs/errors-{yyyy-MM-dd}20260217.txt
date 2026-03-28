@@ -1,0 +1,330 @@
+[2026-02-17 09:01:13.859 -06:00 [ERROR] An exception occurred in the database while saving changes for context type 'LaundryManagement.Infrastructure.Persistence.LaundryDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[2026-02-17 09:01:13.894 -06:00 [ERROR] Error al crear orden con pago para cliente 10: An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 308
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 364
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 365
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.CreateOrderWithPaymentAsync(OrderPure order, String preGeneratedFolio, InitialPaymentData paymentData, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 293
+[2026-02-17 09:01:13.927 -06:00 [ERROR] Error al crear orden y pago. Cliente: 10
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 308
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 364
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 365
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.CreateOrderWithPaymentAsync(OrderPure order, String preGeneratedFolio, InitialPaymentData paymentData, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 293
+   at LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler.Handle(CreateOrderCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\CreateOrderCommandHandler.cs:line 86
+[2026-02-17 12:55:05.246 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:56:15.004 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:58:18.076 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:58:30.052 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:59:24.266 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 13:01:58.116 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29

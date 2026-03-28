@@ -1,0 +1,928 @@
+[2026-02-17 00:02:24.893 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:15.072 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 00:30:15.707 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:15.827 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 00:30:18.697 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 00:30:20.533 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 00:30:34.198 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:37.437 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:38.769 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:40.978 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:45.937 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:46.374 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:50.856 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 00:30:50.960 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 07:57:42.860 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 07:57:42.993 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17/02/2026 12:20:23', Current time (UTC): '17/02/2026 13:57:42'.
+[2026-02-17 07:57:43.014 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 07:57:43.197 -06:00 [WARNI] Authentication failed: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '17/02/2026 12:20:23', Current time (UTC): '17/02/2026 13:57:43'.
+[2026-02-17 07:57:48.507 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 07:57:50.121 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 07:57:58.356 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.356 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.357 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.392 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 07:57:58.570 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.608 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.721 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:57:58.724 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 07:58:03.922 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:58:04.024 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 07:58:04.347 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 07:58:04.812 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 08:09:12.742 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 08:09:12.800 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 09:01:07.093 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 09:01:07.504 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:07.565 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 09:01:10.279 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 09:01:12.011 -06:00 [INFOR] Folio generado: ORD-20260217-0001 para cliente 10
+[2026-02-17 09:01:12.114 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 10 con folio ORD-20260217-0001
+[2026-02-17 09:01:12.288 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:12.309 -06:00 [INFOR] Folio generado: ORD-20260217-0001 para cliente 10
+[2026-02-17 09:01:12.309 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 10 con folio ORD-20260217-0001
+[2026-02-17 09:01:13.304 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-17 09:01:13.305 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-17 09:01:13.487 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=61, Folio=ORD-20260217-0001
+[2026-02-17 09:01:13.689 -06:00 [INFOR] Pago registrado exitosamente: PagoID=26, OrdenID=61, Monto=350
+[2026-02-17 09:01:13.708 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=61, PagoID=26
+[2026-02-17 09:01:13.717 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=61, Folio=ORD-20260217-0001, PagoID=26
+[2026-02-17 09:01:13.859 -06:00 [ERROR] An exception occurred in the database while saving changes for context type 'LaundryManagement.Infrastructure.Persistence.LaundryDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[2026-02-17 09:01:13.894 -06:00 [ERROR] Error al crear orden con pago para cliente 10: An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 308
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 364
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 365
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.CreateOrderWithPaymentAsync(OrderPure order, String preGeneratedFolio, InitialPaymentData paymentData, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 293
+[2026-02-17 09:01:13.927 -06:00 [ERROR] Error al crear orden y pago. Cliente: 10
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 308
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 364
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 365
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.CreateOrderWithPaymentAsync(OrderPure order, String preGeneratedFolio, InitialPaymentData paymentData, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 293
+   at LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler.Handle(CreateOrderCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\CreateOrderCommandHandler.cs:line 86
+[2026-02-17 09:01:13.964 -06:00 [WARNI] Business exception occurred: Error al crear la orden y el pago.
+LaundryManagement.Domain.Exceptions.DatabaseException: Error al crear la orden y el pago.
+ ---> Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of UNIQUE KEY constraint 'UK_Ordenes_FolioOrden'. Cannot insert duplicate key in object 'dbo.Ordenes'. The duplicate key value is (ORD-20260217-0001).
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f6ce9c63-45e5-4c4d-b796-b83114f34ff6
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 308
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 364
+--- End of stack trace from previous location ---
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.<>c__DisplayClass12_0.<<CreateOrderWithPaymentAsync>b__0>d.MoveNext() in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 365
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass30_0`2.<<ExecuteAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.CreateOrderWithPaymentAsync(OrderPure order, String preGeneratedFolio, InitialPaymentData paymentData, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 293
+   at LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler.Handle(CreateOrderCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\CreateOrderCommandHandler.cs:line 86
+   --- End of inner exception stack trace ---
+   at LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler.Handle(CreateOrderCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\CreateOrderCommandHandler.cs:line 139
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdenesController.CreateOrder(CreateOrderCommand command) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdenesController.cs:line 82
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 09:01:15.939 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:15.939 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:15.940 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:15.973 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 09:01:16.258 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:16.291 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:16.449 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:16.452 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 09:01:22.732 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:22.835 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 09:01:23.566 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:30.100 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:30.171 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 09:01:30.225 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:43.318 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:43.955 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:46.933 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:49.386 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:49.896 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:01:55.623 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:07:58.647 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:07:59.367 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:08:05.841 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:08:30.220 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:08:50.280 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:12:39.804 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:12:40.482 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:12:42.428 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:16:19.477 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 09:16:59.408 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:03:42.621 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 11:03:43.114 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:03:43.113 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:03:43.225 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 11:03:43.226 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 11:03:45.657 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 11:03:47.044 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:03:49.082 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:03:51.481 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:03:51.566 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:03:58.143 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:29:12.327 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 11:29:12.933 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:29:15.102 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:29:15.131 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 11:29:17.481 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 11:29:19.018 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:29:34.662 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:29:34.852 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:29:35.385 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:29:44.534 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:40:28.310 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 11:40:28.743 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:40:28.832 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 11:40:29.509 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:40:33.142 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 11:40:34.638 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:55:40.891 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:40.953 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:40.991 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:41.009 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 11:55:41.247 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:41.280 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:41.370 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:41.373 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 11:55:50.620 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:50.723 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:55:53.692 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:53.751 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 11:55:59.567 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:55:59.826 -06:00 [INFOR] Pago 28 registrado para orden 50 por $40
+[2026-02-17 11:55:59.900 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:56:06.513 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:56:09.062 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:56:44.264 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 11:57:27.104 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:01:41.803 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:14:20.456 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:14:27.709 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:10.754 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:10.817 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:15.962 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.118 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 12:18:16.332 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.794 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.794 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.795 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.822 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:18:16.847 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.860 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.868 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:16.869 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:18:24.197 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:28.768 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:42.246 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:18:53.087 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:19:42.111 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:19:57.841 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:20:59.646 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:21:18.258 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:21:29.874 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:21:35.195 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:21:38.275 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:23:53.509 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:23:55.780 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:24:01.240 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:28:57.842 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:29:46.489 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:29:46.518 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:29:46.545 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:29:46.547 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:36:27.425 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:36:30.841 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:49:22.992 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 12:49:23.433 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:49:23.505 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 12:49:24.145 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:21.388 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 12:54:22.747 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 12:54:27.830 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:27.830 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:27.831 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:27.859 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:54:28.028 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:28.065 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:28.182 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:28.185 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:54:37.460 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:37.534 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 12:54:39.892 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:54:39.952 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 12:55:05.049 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:55:05.147 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 12:55:05.246 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:56:14.956 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:56:15.004 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:58:18.018 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:18.076 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:58:29.992 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:30.052 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 12:58:39.701 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:39.709 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:43.427 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:43.428 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:43.429 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:43.429 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:58:43.445 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:50.803 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:53.637 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:58:53.795 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:59:02.024 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 12:59:16.607 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:59:18.569 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:59:24.232 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 12:59:24.266 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 13:01:40.012 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 13:01:40.481 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:01:40.584 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 13:01:49.410 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 13:01:50.822 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:01:57.701 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:01:58.116 -06:00 [ERROR] Unhandled exception occurred
+System.InvalidOperationException: The association between entities 'Ordene' and 'OrdenesDetalle' with the key value '{OrdenId: 50}' has been severed, but the relationship is either marked as required or is implicitly required because the foreign key is not nullable. If the dependent/child entity should be deleted when a required relationship is severed, configure the relationship to use cascade deletes.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleConceptualNulls(Boolean sensitiveLoggingEnabled, Boolean force, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.HandleNullForeignKey(IProperty property, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.set_Item(IPropertyBase propertyBase, Object value)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at LaundryManagement.Infrastructure.Repositories.OrderRepositoryPure.UpdateAsync(OrderPure order, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Infrastructure\Repositories\OrderRepositoryPure.cs:line 174
+   at LaundryManagement.Application.Commands.Orders.UpdateOrderStatusCommandHandler.Handle(UpdateOrderStatusCommand command, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Commands\Orders\UpdateOrderStatusCommandHandler.cs:line 35
+   at LaundryManagement.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.Application\Behaviors\ValidationBehavior.cs:line 59
+   at LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(Int32 id, UpdateOrderStatusRequest request) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Controllers\OrdersController.cs:line 132
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at LaundryManagement.API.Middleware.GlobalExceptionHandlerMiddleware.InvokeAsync(HttpContext context) in C:\Users\mauricio.perez\Documents\Mauricio DS\Desarrollo\LavanderíaTintoreria\API\src\LaundryManagement.API\Middleware\GlobalExceptionHandlerMiddleware.cs:line 29
+[2026-02-17 13:14:20.860 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 13:14:21.381 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:21.486 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 13:14:27.115 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 13:14:28.512 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:14:30.422 -06:00 [INFOR] Estado de orden 50 cambiado a 2
+[2026-02-17 13:14:51.634 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:51.913 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:14:55.025 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:56.132 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:56.827 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:57.973 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:14:58.887 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:15:00.689 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:17:01.129 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 13:17:01.236 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:17:01.254 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 13:17:01.784 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 13:17:02.102 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:17:02.598 -06:00 [INFOR] Estado de orden 50 cambiado a 3
+[2026-02-17 13:27:05.034 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:27:05.162 -06:00 [INFOR] Estado de orden 50 cambiado a 1
+[2026-02-17 13:28:57.963 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:28:58.308 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:28:59.877 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:29:04.547 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:29:04.628 -06:00 [INFOR] Estado de orden 50 cambiado a 2
+[2026-02-17 13:31:29.148 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:31:32.024 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:31:34.789 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:31:34.816 -06:00 [INFOR] Estado de orden 50 cambiado a 3
+[2026-02-17 13:31:40.191 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:31:43.224 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:33:33.477 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:33:34.349 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:33:36.550 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:33:36.587 -06:00 [INFOR] Estado de orden 50 cambiado a 1
+[2026-02-17 13:33:42.710 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:33:42.721 -06:00 [INFOR] Estado de orden 50 cambiado a 2
+[2026-02-17 13:35:28.893 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:35:28.938 -06:00 [INFOR] Estado de orden 50 cambiado a 1
+[2026-02-17 13:35:35.825 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:35:35.845 -06:00 [INFOR] Estado de orden 50 cambiado a 2
+[2026-02-17 13:37:59.971 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:38:01.079 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:38:03.258 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:38:03.274 -06:00 [INFOR] Estado de orden 50 cambiado a 3
+[2026-02-17 13:38:10.700 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:38:10.756 -06:00 [INFOR] Estado de orden 50 cambiado a 4
+[2026-02-17 13:38:17.491 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:38:19.237 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:43.860 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:45.400 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:55.179 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:56.107 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:56.630 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:57.479 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:39:59.022 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:01.229 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:09.854 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:11.383 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:20.472 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:20.752 -06:00 [INFOR] Pago 29 registrado para orden 47 por $300
+[2026-02-17 13:40:20.823 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:26.320 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:41.522 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:40:43.626 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:51.448 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:51.517 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:52.624 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 13:42:55.607 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.608 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.609 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.625 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 13:42:55.685 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.726 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.846 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:42:55.848 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 13:47:19.493 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:47:19.493 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:47:19.494 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:47:19.495 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 13:48:11.248 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:48:11.248 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:48:11.248 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 13:48:11.249 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 14:07:55.295 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:07:55.319 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 14:07:55.472 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 14:13:22.334 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 14:13:22.436 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:13:22.455 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 14:13:22.532 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 14:13:22.950 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 14:13:23.644 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 14:13:41.994 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:25:56.916 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:26:04.819 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:26:04.944 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 14:26:07.497 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 14:26:07.580 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 15:01:38.561 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 15:01:38.663 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:38.679 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 15:01:38.818 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:40.702 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 15:01:41.043 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 15:01:45.233 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.233 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.235 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.270 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 15:01:45.408 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.448 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.493 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:01:45.496 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 15:24:12.059 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 15:24:12.160 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:24:12.178 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 15:24:12.666 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 15:24:12.994 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 15:24:14.947 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:24:15.066 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 15:29:09.332 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:29:11.679 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:16.817 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:17.200 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:19.905 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:23.228 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:48.712 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:31:49.030 -06:00 [INFOR] Pago 30 registrado para orden 60 por $1.25
+[2026-02-17 15:31:49.125 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:35:07.167 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:35:07.167 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:35:07.167 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 15:35:07.182 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:23.530 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 16:08:23.644 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:23.644 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:23.644 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:23.664 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 16:08:23.664 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 16:08:23.664 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 16:08:23.748 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:23.968 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:24.146 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 16:08:24.395 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 16:08:24.718 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:24.718 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:24.719 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:24.721 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:24.784 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.207 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.207 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.208 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.214 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:32.242 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.264 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.273 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:32.274 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:35.470 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.470 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.470 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.473 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:35.484 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.486 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.489 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:35.490 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:43.845 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:43.924 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.387 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.387 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.387 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.388 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 16:08:44.396 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.396 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.397 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 16:08:44.398 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 18:29:01.669 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 18:29:01.880 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:01.911 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 18:29:02.187 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:19.217 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 18:29:20.993 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 18:29:27.528 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.529 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.530 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.567 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 18:29:27.759 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.818 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.909 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:29:27.912 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 18:33:04.599 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:33:04.623 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 18:33:04.772 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 18:34:40.569 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:40.938 -06:00 [INFOR] Folio generado: ORD-20260217-0002 para cliente 4
+[2026-02-17 18:34:40.991 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 4 con folio ORD-20260217-0002
+[2026-02-17 18:34:41.192 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-17 18:34:41.329 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=63, Folio=ORD-20260217-0002
+[2026-02-17 18:34:41.482 -06:00 [INFOR] Pago registrado exitosamente: PagoID=31, OrdenID=63, Monto=300
+[2026-02-17 18:34:41.495 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=63, PagoID=31
+[2026-02-17 18:34:41.500 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=63, Folio=ORD-20260217-0002, PagoID=31
+[2026-02-17 18:34:46.457 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.458 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.464 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.465 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 18:34:46.481 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.483 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.491 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:34:46.492 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 18:34:51.116 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:35:49.816 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:35:49.873 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:35:49.930 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-17 18:35:49.937 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-17T06:00:00.0000000Z" al "2026-02-18T00:35:49.8470000Z" via EF Core
+[2026-02-17 18:35:50.284 -06:00 [INFOR] Corte de caja guardado exitosamente con ID: 3
+[2026-02-17 18:35:50.286 -06:00 [INFOR] Corte de caja creado completamente: ID=3, Folio=CORTE-20260217-0001, TotalEsperado=1036.25, TotalDeclarado=1101.25
+[2026-02-17 18:35:50.286 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 3, Folio: CORTE-20260217-0001
+[2026-02-17 18:36:11.716 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:11.820 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 18:36:12.312 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:12.727 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:22.692 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:23.071 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:23.509 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:28.752 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:29.303 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:29.788 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:33.689 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:36:33.746 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 18:37:16.131 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:37:16.242 -06:00 [INFOR] Pago 32 registrado para orden 63 por $43
+[2026-02-17 18:37:16.289 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:37:29.862 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 18:37:29.979 -06:00 [INFOR] Estado de orden 63 cambiado a 3
+[2026-02-17 19:34:43.266 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 19:34:43.448 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:43.471 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 19:34:43.671 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:47.862 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 19:34:49.493 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 19:34:56.320 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.320 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.320 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.361 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 19:34:56.551 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.583 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.713 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:34:56.716 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 19:37:29.690 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:37:29.711 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 19:37:29.862 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 19:55:06.045 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:06.059 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.780 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.781 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.781 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.785 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 19:55:23.805 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.810 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.833 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:23.835 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 19:55:27.014 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 19:55:27.016 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 19:55:27.049 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 20:00:39.507 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:39.851 -06:00 [INFOR] Folio generado: ORD-20260217-0003 para cliente 13
+[2026-02-17 20:00:39.889 -06:00 [INFOR] Iniciando creación atómica de orden y pago para cliente 13 con folio ORD-20260217-0003
+[2026-02-17 20:00:40.120 -06:00 [WARNI] Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+[2026-02-17 20:00:40.223 -06:00 [INFOR] Orden guardada exitosamente: OrdenID=64, Folio=ORD-20260217-0003
+[2026-02-17 20:00:40.457 -06:00 [INFOR] Pago registrado exitosamente: PagoID=33, OrdenID=64, Monto=400
+[2026-02-17 20:00:40.472 -06:00 [INFOR] Orden y pago creados exitosamente en transacción atómica: OrdenID=64, PagoID=33
+[2026-02-17 20:00:40.477 -06:00 [INFOR] Orden y pago creados exitosamente: OrdenID=64, Folio=ORD-20260217-0003, PagoID=33
+[2026-02-17 20:00:45.497 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:45.498 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:45.499 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 20:00:45.500 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:45.526 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:45.526 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:00:45.527 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 20:00:45.537 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:01:20.222 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:01:20.314 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 20:01:58.193 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:01:58.246 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 20:04:05.256 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:04:05.475 -06:00 [INFOR] Pago 34 registrado para orden 64 por $77.5
+[2026-02-17 20:04:05.531 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:04:21.701 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:04:21.769 -06:00 [INFOR] Estado de orden 64 cambiado a 3
+[2026-02-17 20:06:15.788 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:10:24.779 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:10:24.828 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:10:24.884 -06:00 [INFOR] Creando corte de caja para cajero 1
+[2026-02-17 20:10:24.902 -06:00 [INFOR] Iniciando creación de corte de caja para cajero 1 del "2026-02-17T06:00:00.0000000Z" al "2026-02-18T02:10:24.8170000Z" via EF Core
+[2026-02-17 20:10:25.274 -06:00 [INFOR] Corte de caja guardado exitosamente con ID: 4
+[2026-02-17 20:10:25.275 -06:00 [INFOR] Corte de caja creado completamente: ID=4, Folio=CORTE-20260217-0002, TotalEsperado=1556.75, TotalDeclarado=2021.75
+[2026-02-17 20:10:25.275 -06:00 [INFOR] Corte de caja creado exitosamente. ID: 4, Folio: CORTE-20260217-0002
+[2026-02-17 20:17:27.964 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.302 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.303 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 20:17:59.304 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.304 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.322 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.327 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.343 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:17:59.344 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 20:18:10.863 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:18:12.853 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:18:16.357 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:20:11.951 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 20:20:11.956 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 20:20:12.033 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 23:30:05.087 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-17 23:30:05.186 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:30:05.202 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-17 23:30:05.334 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:23.957 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-17 23:36:25.485 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-17 23:36:41.264 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.264 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.265 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.293 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 23:36:41.474 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.489 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.627 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:36:41.630 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-17 23:48:35.395 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:48:35.413 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 23:48:35.543 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 23:48:57.856 -06:00 [INFOR] Token validated for user: admin
+[2026-02-17 23:48:57.859 -06:00 [INFOR] Getting service prices: ServiceId=null, ServiceGarmentId=null, IsActive=null
+[2026-02-17 23:48:57.929 -06:00 [INFOR] Found 9 service prices
+[2026-02-17 23:50:51.026 -06:00 [INFOR] Token validated for user: admin

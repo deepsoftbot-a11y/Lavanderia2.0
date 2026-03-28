@@ -1,0 +1,27 @@
+[2026-02-18 00:28:06.825 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-18 00:28:07.076 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 00:28:07.112 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-18 09:00:15.366 -06:00 [WARNI] Failed to determine the https port for redirect.
+[2026-02-18 09:00:15.454 -06:00 [WARNI] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-02-18 09:00:16.069 -06:00 [WARNI] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[2026-02-18 09:00:16.429 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-18 09:00:28.326 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.327 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.326 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.376 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-18 09:00:28.578 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.669 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.752 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:00:28.755 -06:00 [INFOR] Obteniendo servicios con filtros
+[2026-02-18 09:12:02.749 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:31.287 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:31.397 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-18 09:15:32.662 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:34.447 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:34.500 -06:00 [WARNI] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-02-18 09:15:42.563 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:49.946 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:15:50.923 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:16:03.220 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:16:04.515 -06:00 [INFOR] Token validated for user: admin
+[2026-02-18 09:16:07.333 -06:00 [INFOR] Token validated for user: admin

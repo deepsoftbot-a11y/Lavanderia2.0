@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(node_modules.bintailwindcss init -p)",
+      "Bash(node node_modules/tailwindcss/lib/cli.js:*)",
+      "Bash(tree:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(ls:*)",
+      "Bash(for file in alert-dialog.tsx badge.tsx button.tsx card.tsx checkbox.tsx form.tsx input.tsx label.tsx select.tsx sheet.tsx table.tsx)",
+      "Bash(do sed -i 's|@/utils/cn|@/lib/utils|g' \"$file\")",
+      "Bash(done)",
+      "Bash(pkill:*)",
+      "Bash(findstr:*)"
+    ]
+  }
+}
