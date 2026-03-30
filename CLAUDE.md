@@ -14,6 +14,7 @@ Each sub-project has its own detailed `CLAUDE.md`. Read the relevant one before 
 
 ### Backend (from `Backend/`)
 ```bash
+docker compose up -d          # Levantar PostgreSQL 16
 dotnet restore
 dotnet build LaundryManagement.sln
 cd src/LaundryManagement.API && dotnet run
@@ -44,7 +45,7 @@ dotnet ef database update --startup-project ../LaundryManagement.API
 |-------|---------|----------------|
 | Domain | `LaundryManagement.Domain` | Pure business logic — Aggregates, Value Objects, Domain Events. Zero external dependencies. |
 | Application | `LaundryManagement.Application` | CQRS (Commands/Queries via MediatR), FluentValidation, AutoMapper DTOs |
-| Infrastructure | `LaundryManagement.Infrastructure` | EF Core (writes), Dapper (reads via stored procedures), repository implementations |
+| Infrastructure | `LaundryManagement.Infrastructure` | EF Core (writes), Dapper (reads con SQL directo), repository implementations |
 | API | `LaundryManagement.API` | REST controllers, JWT auth middleware, global exception handler, Serilog |
 
 **Key patterns**:
@@ -66,9 +67,11 @@ Features are self-contained in `src/features/<name>/` — each owns its own comp
 
 ## Database
 
-SQL Server — database name `LavanderiaDB`. Connection via Windows auth (Trusted_Connection).
-EF Core migrations in `Backend/src/LaundryManagement.Infrastructure/Migrations/`.
-Stored procedures called via Dapper for orders, payments, cash closings, and reports.
+**PostgreSQL 16** via Docker — database name `LavanderiaDB`.
+Levantar con `docker compose up -d` desde `Backend/`.
+Connection string en `appsettings.Development.json`: `Host=localhost;Port=5432;Database=LavanderiaDB;Username=lavanderia_user;Password=lavanderia_pass_dev`
+EF Core migrations en `Backend/src/LaundryManagement.Infrastructure/Migrations/`.
+Los stored procedures fueron eliminados — reemplazados por EF Core (writes) y Dapper SQL directo (reads).
 
 ## Key Business Domains
 

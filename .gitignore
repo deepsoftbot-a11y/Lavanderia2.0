@@ -35,3 +35,9 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+# Logs de Serilog (archivos .txt generados en runtime)
+Backend/src/**/logs/
+
+# Claude Code
+.claude/

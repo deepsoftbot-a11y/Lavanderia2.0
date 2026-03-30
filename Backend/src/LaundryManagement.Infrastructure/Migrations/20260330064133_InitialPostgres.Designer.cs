@@ -3,75 +3,70 @@ using System;
 using LaundryManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace LaundryManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(LaundryDbContext))]
-    [Migration("20251229211925_EliminaUbicacionesAgregaCampoTexto")]
-    partial class EliminaUbicacionesAgregaCampoTexto
+    [Migration("20260330064133_InitialPostgres")]
+    partial class InitialPostgres
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.22")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "8.0.25")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.AuditoriaGeneral", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.AuditoriaGeneral", b =>
                 {
                     b.Property<long>("AuditoriaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasColumnName("AuditoriaID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("AuditoriaId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("AuditoriaId"));
 
                     b.Property<string>("DireccionIp")
                         .HasMaxLength(45)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(45)")
+                        .HasColumnType("character varying(45)")
                         .HasColumnName("DireccionIP");
 
                     b.Property<DateTime>("FechaOperacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Operacion")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("character varying(10)");
 
                     b.Property<int>("RegistroId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("RegistroID");
 
                     b.Property<string>("Tabla")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("UsuarioID");
 
                     b.Property<string>("ValoresAnteriores")
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ValoresNuevos")
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("AuditoriaId");
 
@@ -83,30 +78,28 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("AuditoriaGeneral", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Categoria", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Categoria", b =>
                 {
                     b.Property<int>("CategoriaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CategoriaID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoriaId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CategoriaId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("NombreCategoria")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("CategoriaId");
 
@@ -116,34 +109,32 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Cliente", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Cliente", b =>
                 {
                     b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ClienteID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ClienteId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("Direccion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("FechaRegistro")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<decimal>("LimiteCredito")
                         .HasColumnType("decimal(10, 2)");
@@ -151,22 +142,19 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Property<string>("NombreCompleto")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("NumeroCliente")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<int>("RegistradoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Rfc")
                         .HasMaxLength(13)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(13)")
+                        .HasColumnType("character varying(13)")
                         .HasColumnName("RFC");
 
                     b.Property<decimal>("SaldoActual")
@@ -175,8 +163,7 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("ClienteId");
 
@@ -185,34 +172,26 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.HasIndex(new[] { "NumeroCliente" }, "UK_Clientes_NumeroCliente")
                         .IsUnique();
 
-                    b.ToTable("Clientes", t =>
-                        {
-                            t.HasTrigger("TRG_Clientes_GenerarNumeroCliente");
-
-                            t.HasTrigger("TRG_Clientes_ValidarLimiteCredito");
-                        });
-
-                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
+                    b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Combo", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Combo", b =>
                 {
                     b.Property<int>("ComboId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ComboID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComboId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ComboId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<DateOnly?>("FechaFin")
                         .HasColumnType("date");
@@ -223,8 +202,7 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Property<string>("NombreCombo")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<decimal>("PorcentajeDescuento")
                         .HasColumnType("decimal(5, 2)");
@@ -234,24 +212,24 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Combos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CombosDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CombosDetalle", b =>
                 {
                     b.Property<int>("ComboDetalleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ComboDetalleID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComboDetalleId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ComboDetalleId"));
 
                     b.Property<int>("CantidadMinima")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("ComboId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ComboID");
 
                     b.Property<int>("ServicioPrendaId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioPrendaID");
 
                     b.HasKey("ComboDetalleId");
@@ -263,142 +241,123 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("CombosDetalle", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.ConfiguracionReporte", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.ConfiguracionReporte", b =>
                 {
                     b.Property<int>("ConfigReporteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ConfigReporteID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConfigReporteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ConfigReporteId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("DestinatariosEmail")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("FormatoExportacion")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Frecuencia")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("HoraEnvio")
                         .HasMaxLength(5)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(5)");
+                        .HasColumnType("character varying(5)");
 
                     b.Property<string>("NombreReporte")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("ParametrosJson")
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("ParametrosJSON");
 
                     b.Property<string>("TipoReporte")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("ConfigReporteId");
 
                     b.ToTable("ConfiguracionReportes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CortesCaja", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CortesCaja", b =>
                 {
                     b.Property<int>("CorteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CorteID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CorteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CorteId"));
 
                     b.Property<int>("CajeroId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CajeroID");
 
                     b.Property<decimal?>("DiferenciaFinal")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(12, 2)")
-                        .HasComputedColumnSql("(([TotalDeclarado]-[TotalEsperado])+[MontoAjuste])", true);
+                        .HasColumnType("decimal(12, 2)");
 
                     b.Property<decimal?>("DiferenciaInicial")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclarado]-[TotalEsperado])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<decimal?>("DiferenciaInicialEfectivo")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclaradoEfectivo]-[TotalEsperadoEfectivo])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<decimal?>("DiferenciaInicialOtros")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclaradoOtros]-[TotalEsperadoOtros])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<decimal?>("DiferenciaInicialTarjeta")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclaradoTarjeta]-[TotalEsperadoTarjeta])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<decimal?>("DiferenciaInicialTransferencia")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclaradoTransferencia]-[TotalEsperadoTransferencia])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<DateTime?>("FechaAjuste")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("FechaCorte")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<DateTime>("FechaFin")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("FechaInicio")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FolioCorte")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("character varying(30)");
+
+                    b.Property<decimal?>("FondoInicial")
+                        .HasColumnType("decimal(10, 2)");
 
                     b.Property<decimal>("MontoAjuste")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<string>("MotivoAjuste")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int>("NumeroTransacciones")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Observaciones")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<decimal>("TotalDeclarado")
                         .HasColumnType("decimal(10, 2)");
@@ -432,8 +391,7 @@ namespace LaundryManagement.Infrastructure.Migrations
 
                     b.Property<string>("TurnoDescripcion")
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("CorteId");
 
@@ -449,30 +407,28 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("CortesCaja", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CortesCajaDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CortesCajaDetalle", b =>
                 {
                     b.Property<int>("CorteDetalleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CorteDetalleID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CorteDetalleId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CorteDetalleId"));
 
                     b.Property<int>("CorteId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CorteID");
 
                     b.Property<decimal?>("Diferencia")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(11, 2)")
-                        .HasComputedColumnSql("([TotalDeclarado]-[TotalEsperado])", true);
+                        .HasColumnType("decimal(11, 2)");
 
                     b.Property<int>("MetodoPagoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("MetodoPagoID");
 
                     b.Property<int>("NumeroTransacciones")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("TotalDeclarado")
                         .HasColumnType("decimal(10, 2)");
@@ -489,18 +445,18 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("CortesCajaDetalle", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Descuento", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Descuento", b =>
                 {
                     b.Property<int>("DescuentoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("DescuentoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DescuentoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DescuentoId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<DateOnly?>("FechaFin")
@@ -512,14 +468,12 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Property<string>("NombreDescuento")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("TipoDescuento")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<decimal>("Valor")
                         .HasColumnType("decimal(10, 2)");
@@ -529,28 +483,26 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Descuentos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.EstadosOrden", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.EstadosOrden", b =>
                 {
                     b.Property<int>("EstadoOrdenId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("EstadoOrdenID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstadoOrdenId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EstadoOrdenId"));
 
                     b.Property<string>("ColorEstado")
                         .HasMaxLength(7)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(7)");
+                        .HasColumnType("character varying(7)");
 
                     b.Property<string>("NombreEstado")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("OrdenProceso")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("EstadoOrdenId");
 
@@ -560,34 +512,33 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("EstadosOrden", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.HistorialEstadosOrden", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.HistorialEstadosOrden", b =>
                 {
                     b.Property<int>("HistorialEstadoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("HistorialEstadoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HistorialEstadoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HistorialEstadoId"));
 
                     b.Property<int>("CambiadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Comentarios")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int>("EstadoOrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("EstadoOrdenID");
 
                     b.Property<DateTime>("FechaCambio")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("OrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenID");
 
                     b.HasKey("HistorialEstadoId");
@@ -601,41 +552,38 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("HistorialEstadosOrden", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.HistorialReporte", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.HistorialReporte", b =>
                 {
                     b.Property<int>("HistorialReporteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("HistorialReporteID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HistorialReporteId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HistorialReporteId"));
 
                     b.Property<int>("ConfigReporteId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ConfigReporteID");
 
                     b.Property<string>("Estado")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<DateTime?>("FechaEnvio")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("FechaGeneracion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("MensajeError")
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("RutaArchivo")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.HasKey("HistorialReporteId");
 
@@ -644,28 +592,27 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("HistorialReportes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.MetodosPago", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.MetodosPago", b =>
                 {
                     b.Property<int>("MetodoPagoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("MetodoPagoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MetodoPagoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MetodoPagoId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("NombreMetodo")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<bool>("RequiereReferencia")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.HasKey("MetodoPagoId");
 
@@ -675,53 +622,51 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("MetodosPago", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Ordene", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", b =>
                 {
                     b.Property<int>("OrdenId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrdenId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("OrdenId"));
 
                     b.Property<int>("ClienteId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ClienteID");
 
                     b.Property<decimal>("Descuento")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int?>("EntregadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("EstadoOrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("EstadoOrdenID");
 
                     b.Property<DateTime?>("FechaEntrega")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("FechaPrometida")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("FechaRecepcion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("FolioOrden")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("character varying(30)");
 
                     b.Property<string>("Observaciones")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int>("RecibidoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(10, 2)");
@@ -731,8 +676,7 @@ namespace LaundryManagement.Infrastructure.Migrations
 
                     b.Property<string>("Ubicaciones")
                         .HasMaxLength(500)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.HasKey("OrdenId");
 
@@ -753,36 +697,35 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Ordenes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.OrdenesDescuento", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.OrdenesDescuento", b =>
                 {
                     b.Property<int>("OrdenDescuentoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenDescuentoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrdenDescuentoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("OrdenDescuentoId"));
 
                     b.Property<int>("AplicadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("ComboId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ComboID");
 
                     b.Property<int?>("DescuentoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("DescuentoID");
 
                     b.Property<string>("Justificacion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<decimal>("MontoDescuento")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("OrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenID");
 
                     b.HasKey("OrdenDescuentoId");
@@ -798,31 +741,30 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("OrdenesDescuentos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.OrdenesDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.OrdenesDetalle", b =>
                 {
                     b.Property<int>("OrdenDetalleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenDetalleID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrdenDetalleId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("OrdenDetalleId"));
 
                     b.Property<int?>("Cantidad")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("DescuentoLinea")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("NumeroLinea")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Observaciones")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int>("OrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenID");
 
                     b.Property<decimal?>("PesoKilos")
@@ -832,11 +774,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("ServicioId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioID");
 
                     b.Property<int?>("ServicioPrendaId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioPrendaID");
 
                     b.Property<decimal>("Subtotal")
@@ -856,40 +798,44 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("OrdenesDetalle", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Pago", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Pago", b =>
                 {
                     b.Property<int>("PagoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PagoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PagoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PagoId"));
+
+                    b.Property<DateTime?>("CanceladoEn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("CanceladoPor")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("FechaPago")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("FolioPago")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("character varying(30)");
 
                     b.Property<decimal>("MontoPago")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<string>("Observaciones")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int>("OrdenId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("OrdenID");
 
                     b.Property<int>("RecibioPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("PagoId");
 
@@ -903,30 +849,29 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Pagos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.PagosDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.PagosDetalle", b =>
                 {
                     b.Property<int>("PagoDetalleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PagoDetalleID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PagoDetalleId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PagoDetalleId"));
 
                     b.Property<int>("MetodoPagoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("MetodoPagoID");
 
                     b.Property<decimal>("MontoPagado")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("PagoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PagoID");
 
                     b.Property<string>("Referencia")
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("PagoDetalleId");
 
@@ -937,31 +882,28 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("PagosDetalle", (string)null);
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Permiso", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Permiso", b =>
                 {
                     b.Property<int>("PermisoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PermisoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PermisoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PermisoId"));
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("Modulo")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("NombrePermiso")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("PermisoId");
 
@@ -973,30 +915,28 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Permisos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Role", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Role", b =>
                 {
                     b.Property<int>("RolId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("RolID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RolId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RolId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("NombreRol")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("RolId");
 
@@ -1008,21 +948,21 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.RolesPermiso", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.RolesPermiso", b =>
                 {
                     b.Property<int>("RolPermisoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("RolPermisoID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RolPermisoId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RolPermisoId"));
 
                     b.Property<int>("PermisoId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("PermisoID");
 
                     b.Property<int>("RolId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("RolID");
 
                     b.HasKey("RolPermisoId");
@@ -1037,45 +977,42 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("RolesPermisos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Servicio", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Servicio", b =>
                 {
                     b.Property<int>("ServicioId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicioId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ServicioId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<int>("CategoriaId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CategoriaID");
 
                     b.Property<string>("CodigoServicio")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("character varying(500)");
 
                     b.Property<DateTime>("FechaCreacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("NombreServicio")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<decimal?>("PesoMaximo")
                         .HasColumnType("decimal(6, 2)");
@@ -1087,13 +1024,12 @@ namespace LaundryManagement.Infrastructure.Migrations
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int?>("TiempoEstimado")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("TipoCobroServicio")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("ServicioId");
 
@@ -1109,34 +1045,34 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Servicios");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.ServiciosPrenda", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.ServiciosPrenda", b =>
                 {
                     b.Property<int>("ServicioPrendaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioPrendaID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicioPrendaId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ServicioPrendaId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("FechaActualizacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<decimal>("PrecioUnitario")
                         .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("ServicioId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ServicioID");
 
                     b.Property<int>("TipoPrendaId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("TipoPrendaID");
 
                     b.HasKey("ServicioPrendaId");
@@ -1148,38 +1084,31 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.HasIndex(new[] { "ServicioId", "TipoPrendaId" }, "UK_ServiciosPrendas_Servicio_Prenda")
                         .IsUnique();
 
-                    b.ToTable("ServiciosPrendas", t =>
-                        {
-                            t.HasTrigger("TRG_ServiciosPrendas_ValidarTipoServicio");
-                        });
-
-                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
+                    b.ToTable("ServiciosPrendas");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.TiposPrendum", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.TiposPrendum", b =>
                 {
                     b.Property<int>("TipoPrendaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("TipoPrendaID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoPrendaId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("TipoPrendaId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<string>("Descripcion")
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<string>("NombrePrenda")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("TipoPrendaId");
 
@@ -1189,61 +1118,57 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("TiposPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Usuario", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", b =>
                 {
                     b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("UsuarioID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UsuarioId"));
 
                     b.Property<bool>("Activo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasDefaultValue(true);
 
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("FechaCreacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("NombreCompleto")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("character varying(255)");
 
                     b.Property<DateTime?>("UltimoAcceso")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UsuarioId");
 
                     b.HasIndex(new[] { "Activo" }, "IX_Usuarios_Activo");
 
                     b.HasIndex(new[] { "CreadoPor" }, "IX_Usuarios_CreadoPor")
-                        .HasFilter("([CreadoPor] IS NOT NULL)");
+                        .HasFilter("\"CreadoPor\" IS NOT NULL");
 
                     b.HasIndex(new[] { "Email" }, "UK_Usuarios_Email")
                         .IsUnique();
@@ -1254,26 +1179,26 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.UsuariosRole", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.UsuariosRole", b =>
                 {
                     b.Property<int>("UsuarioRolId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("UsuarioRolID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioRolId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UsuarioRolId"));
 
                     b.Property<DateTime>("FechaAsignacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<int>("RolId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("RolID");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("UsuarioID");
 
                     b.HasKey("UsuarioRolId");
@@ -1288,9 +1213,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.ToTable("UsuariosRoles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.AuditoriaGeneral", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.AuditoriaGeneral", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "Usuario")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "Usuario")
                         .WithMany("AuditoriaGenerals")
                         .HasForeignKey("UsuarioId")
                         .IsRequired()
@@ -1299,9 +1224,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Cliente", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Cliente", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "RegistradoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "RegistradoPorNavigation")
                         .WithMany("Clientes")
                         .HasForeignKey("RegistradoPor")
                         .IsRequired()
@@ -1310,15 +1235,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("RegistradoPorNavigation");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CombosDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CombosDetalle", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Combo", "Combo")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Combo", "Combo")
                         .WithMany("CombosDetalles")
                         .HasForeignKey("ComboId")
                         .IsRequired()
                         .HasConstraintName("FK_CombosDetalle_ComboID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.ServiciosPrenda", "ServicioPrenda")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.ServiciosPrenda", "ServicioPrenda")
                         .WithMany("CombosDetalles")
                         .HasForeignKey("ServicioPrendaId")
                         .IsRequired()
@@ -1329,9 +1254,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("ServicioPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CortesCaja", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CortesCaja", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "Cajero")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "Cajero")
                         .WithMany("CortesCajas")
                         .HasForeignKey("CajeroId")
                         .IsRequired()
@@ -1340,16 +1265,16 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Cajero");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CortesCajaDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CortesCajaDetalle", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.CortesCaja", "Corte")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.CortesCaja", "Corte")
                         .WithMany("CortesCajaDetalles")
                         .HasForeignKey("CorteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_CortesCajaDetalle_Corte");
 
-                    b.HasOne("LaundryManagement.Infrastructure.MetodosPago", "MetodoPago")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.MetodosPago", "MetodoPago")
                         .WithMany("CortesCajaDetalles")
                         .HasForeignKey("MetodoPagoId")
                         .IsRequired()
@@ -1360,21 +1285,21 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("MetodoPago");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.HistorialEstadosOrden", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.HistorialEstadosOrden", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "CambiadoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "CambiadoPorNavigation")
                         .WithMany("HistorialEstadosOrdens")
                         .HasForeignKey("CambiadoPor")
                         .IsRequired()
                         .HasConstraintName("FK_HistorialEstadosOrden_CambiadoPor");
 
-                    b.HasOne("LaundryManagement.Infrastructure.EstadosOrden", "EstadoOrden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.EstadosOrden", "EstadoOrden")
                         .WithMany("HistorialEstadosOrdens")
                         .HasForeignKey("EstadoOrdenId")
                         .IsRequired()
                         .HasConstraintName("FK_HistorialEstadosOrden_EstadoOrdenID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Ordene", "Orden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", "Orden")
                         .WithMany("HistorialEstadosOrdens")
                         .HasForeignKey("OrdenId")
                         .IsRequired()
@@ -1387,9 +1312,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Orden");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.HistorialReporte", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.HistorialReporte", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.ConfiguracionReporte", "ConfigReporte")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.ConfiguracionReporte", "ConfigReporte")
                         .WithMany("HistorialReportes")
                         .HasForeignKey("ConfigReporteId")
                         .IsRequired()
@@ -1398,26 +1323,26 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("ConfigReporte");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Ordene", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Cliente", "Cliente")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Cliente", "Cliente")
                         .WithMany("Ordenes")
                         .HasForeignKey("ClienteId")
                         .IsRequired()
                         .HasConstraintName("FK_Ordenes_ClienteID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "EntregadoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "EntregadoPorNavigation")
                         .WithMany("OrdeneEntregadoPorNavigations")
                         .HasForeignKey("EntregadoPor")
                         .HasConstraintName("FK_Ordenes_EntregadoPor");
 
-                    b.HasOne("LaundryManagement.Infrastructure.EstadosOrden", "EstadoOrden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.EstadosOrden", "EstadoOrden")
                         .WithMany("Ordenes")
                         .HasForeignKey("EstadoOrdenId")
                         .IsRequired()
                         .HasConstraintName("FK_Ordenes_EstadoOrdenID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "RecibidoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "RecibidoPorNavigation")
                         .WithMany("OrdeneRecibidoPorNavigations")
                         .HasForeignKey("RecibidoPor")
                         .IsRequired()
@@ -1432,25 +1357,25 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("RecibidoPorNavigation");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.OrdenesDescuento", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.OrdenesDescuento", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "AplicadoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "AplicadoPorNavigation")
                         .WithMany("OrdenesDescuentos")
                         .HasForeignKey("AplicadoPor")
                         .IsRequired()
                         .HasConstraintName("FK_OrdenesDescuentos_AplicadoPor");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Combo", "Combo")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Combo", "Combo")
                         .WithMany("OrdenesDescuentos")
                         .HasForeignKey("ComboId")
                         .HasConstraintName("FK_OrdenesDescuentos_ComboID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Descuento", "Descuento")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Descuento", "Descuento")
                         .WithMany("OrdenesDescuentos")
                         .HasForeignKey("DescuentoId")
                         .HasConstraintName("FK_OrdenesDescuentos_DescuentoID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Ordene", "Orden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", "Orden")
                         .WithMany("OrdenesDescuentos")
                         .HasForeignKey("OrdenId")
                         .IsRequired()
@@ -1465,21 +1390,21 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Orden");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.OrdenesDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.OrdenesDetalle", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Ordene", "Orden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", "Orden")
                         .WithMany("OrdenesDetalles")
                         .HasForeignKey("OrdenId")
                         .IsRequired()
                         .HasConstraintName("FK_OrdenesDetalle_OrdenID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Servicio", "Servicio")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Servicio", "Servicio")
                         .WithMany("OrdenesDetalles")
                         .HasForeignKey("ServicioId")
                         .IsRequired()
                         .HasConstraintName("FK_OrdenesDetalle_ServicioID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.ServiciosPrenda", "ServicioPrenda")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.ServiciosPrenda", "ServicioPrenda")
                         .WithMany("OrdenesDetalles")
                         .HasForeignKey("ServicioPrendaId")
                         .HasConstraintName("FK_OrdenesDetalle_ServicioPrendaID");
@@ -1491,15 +1416,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("ServicioPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Pago", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Pago", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Ordene", "Orden")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", "Orden")
                         .WithMany("Pagos")
                         .HasForeignKey("OrdenId")
                         .IsRequired()
                         .HasConstraintName("FK_Pagos_OrdenID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "RecibioPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "RecibioPorNavigation")
                         .WithMany("Pagos")
                         .HasForeignKey("RecibioPor")
                         .IsRequired()
@@ -1510,15 +1435,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("RecibioPorNavigation");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.PagosDetalle", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.PagosDetalle", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.MetodosPago", "MetodoPago")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.MetodosPago", "MetodoPago")
                         .WithMany("PagosDetalles")
                         .HasForeignKey("MetodoPagoId")
                         .IsRequired()
                         .HasConstraintName("FK_PagosDetalle_MetodoPagoID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Pago", "Pago")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Pago", "Pago")
                         .WithMany("PagosDetalles")
                         .HasForeignKey("PagoId")
                         .IsRequired()
@@ -1529,15 +1454,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Pago");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.RolesPermiso", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.RolesPermiso", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Permiso", "Permiso")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Permiso", "Permiso")
                         .WithMany("RolesPermisos")
                         .HasForeignKey("PermisoId")
                         .IsRequired()
                         .HasConstraintName("FK_RolesPermisos_PermisoID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Role", "Rol")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Role", "Rol")
                         .WithMany("RolesPermisos")
                         .HasForeignKey("RolId")
                         .IsRequired()
@@ -1548,9 +1473,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Rol");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Servicio", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Servicio", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Categoria", "Categoria")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Categoria", "Categoria")
                         .WithMany("Servicios")
                         .HasForeignKey("CategoriaId")
                         .IsRequired()
@@ -1559,15 +1484,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.ServiciosPrenda", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.ServiciosPrenda", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Servicio", "Servicio")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Servicio", "Servicio")
                         .WithMany("ServiciosPrenda")
                         .HasForeignKey("ServicioId")
                         .IsRequired()
                         .HasConstraintName("FK_ServiciosPrendas_ServicioID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.TiposPrendum", "TipoPrenda")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.TiposPrendum", "TipoPrenda")
                         .WithMany("ServiciosPrenda")
                         .HasForeignKey("TipoPrendaId")
                         .IsRequired()
@@ -1578,9 +1503,9 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("TipoPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Usuario", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "CreadoPorNavigation")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "CreadoPorNavigation")
                         .WithMany("InverseCreadoPorNavigation")
                         .HasForeignKey("CreadoPor")
                         .HasConstraintName("FK_Usuarios_CreadoPor");
@@ -1588,15 +1513,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("CreadoPorNavigation");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.UsuariosRole", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.UsuariosRole", b =>
                 {
-                    b.HasOne("LaundryManagement.Infrastructure.Role", "Rol")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Role", "Rol")
                         .WithMany("UsuariosRoles")
                         .HasForeignKey("RolId")
                         .IsRequired()
                         .HasConstraintName("FK_UsuariosRoles_RolID");
 
-                    b.HasOne("LaundryManagement.Infrastructure.Usuario", "Usuario")
+                    b.HasOne("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", "Usuario")
                         .WithMany("UsuariosRoles")
                         .HasForeignKey("UsuarioId")
                         .IsRequired()
@@ -1607,53 +1532,53 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Categoria", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Categoria", b =>
                 {
                     b.Navigation("Servicios");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Cliente", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Cliente", b =>
                 {
                     b.Navigation("Ordenes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Combo", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Combo", b =>
                 {
                     b.Navigation("CombosDetalles");
 
                     b.Navigation("OrdenesDescuentos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.ConfiguracionReporte", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.ConfiguracionReporte", b =>
                 {
                     b.Navigation("HistorialReportes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.CortesCaja", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.CortesCaja", b =>
                 {
                     b.Navigation("CortesCajaDetalles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Descuento", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Descuento", b =>
                 {
                     b.Navigation("OrdenesDescuentos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.EstadosOrden", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.EstadosOrden", b =>
                 {
                     b.Navigation("HistorialEstadosOrdens");
 
                     b.Navigation("Ordenes");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.MetodosPago", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.MetodosPago", b =>
                 {
                     b.Navigation("CortesCajaDetalles");
 
                     b.Navigation("PagosDetalles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Ordene", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Ordene", b =>
                 {
                     b.Navigation("HistorialEstadosOrdens");
 
@@ -1664,43 +1589,43 @@ namespace LaundryManagement.Infrastructure.Migrations
                     b.Navigation("Pagos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Pago", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Pago", b =>
                 {
                     b.Navigation("PagosDetalles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Permiso", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Permiso", b =>
                 {
                     b.Navigation("RolesPermisos");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Role", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Role", b =>
                 {
                     b.Navigation("RolesPermisos");
 
                     b.Navigation("UsuariosRoles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Servicio", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Servicio", b =>
                 {
                     b.Navigation("OrdenesDetalles");
 
                     b.Navigation("ServiciosPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.ServiciosPrenda", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.ServiciosPrenda", b =>
                 {
                     b.Navigation("CombosDetalles");
 
                     b.Navigation("OrdenesDetalles");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.TiposPrendum", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.TiposPrendum", b =>
                 {
                     b.Navigation("ServiciosPrenda");
                 });
 
-            modelBuilder.Entity("LaundryManagement.Infrastructure.Usuario", b =>
+            modelBuilder.Entity("LaundryManagement.Infrastructure.Persistence.Entities.Usuario", b =>
                 {
                     b.Navigation("AuditoriaGenerals");
 

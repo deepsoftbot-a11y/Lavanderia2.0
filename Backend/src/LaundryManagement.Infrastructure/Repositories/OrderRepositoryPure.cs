@@ -1,13 +1,13 @@
-using System.Data;
 using System.Data.Common;
+using System.Text.Json;
 using Dapper;
 using LaundryManagement.Domain.Aggregates.Orders;
 using LaundryManagement.Domain.Repositories;
 using LaundryManagement.Domain.ValueObjects;
 using LaundryManagement.Infrastructure.Mappers;
 using LaundryManagement.Infrastructure.Persistence;
+using LaundryManagement.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
 
 namespace LaundryManagement.Infrastructure.Repositories;
@@ -335,29 +335,42 @@ public class OrderRepositoryPure : IOrderRepository
                     int? paymentId = null;
                     if (paymentData != null)
                     {
-                        // Obtener conexión y transacción del DbContext
-                        var connection = _context.Database.GetDbConnection();
-                        var dbTransaction = (transaction as IInfrastructure<DbTransaction>)?.Instance;
+                        _logger.LogDebug("Registrando pago inicial para OrdenID={OrdenId}", ordenEntity.OrdenId);
 
-                        _logger.LogDebug("Ejecutando stored procedure SP_RegistrarPago dentro de la transacción");
+                        // Generar folio del pago
+                        var paymentFolio = await GeneratePaymentFolioAsync(cancellationToken);
 
-                        // Ejecutar stored procedure dentro de la misma transacción
-                        var parameters = new DynamicParameters();
-                        parameters.Add("@OrdenID", ordenEntity.OrdenId);
-                        parameters.Add("@MontoPago", paymentData.Amount);
-                        parameters.Add("@RecibioPor", paymentData.ReceivedBy);
-                        parameters.Add("@MetodosPagoJSON", paymentData.PaymentMethodsJson);
-                        parameters.Add("@Observaciones", paymentData.Notes);
-                        parameters.Add("@PagoID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        // Insertar Pago
+                        var pagoEntity = new Pago
+                        {
+                            FolioPago    = paymentFolio,
+                            OrdenId      = ordenEntity.OrdenId,
+                            MontoPago    = paymentData.Amount,
+                            RecibioPor   = paymentData.ReceivedBy,
+                            Observaciones = paymentData.Notes
+                        };
+                        _context.Pagos.Add(pagoEntity);
+                        await _context.SaveChangesAsync(cancellationToken);
 
-                        await connection.ExecuteAsync(
-                            "SP_RegistrarPago",
-                            parameters,
-                            transaction: dbTransaction,
-                            commandType: CommandType.StoredProcedure
-                        );
+                        // Parsear métodos de pago e insertar PagosDetalle
+                        var metodos = JsonSerializer.Deserialize<List<MetodoPagoJson>>(
+                            paymentData.PaymentMethodsJson,
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                            ?? new List<MetodoPagoJson>();
 
-                        paymentId = parameters.Get<int>("@PagoID");
+                        foreach (var m in metodos)
+                        {
+                            _context.PagosDetalles.Add(new PagosDetalle
+                            {
+                                PagoId       = pagoEntity.PagoId,
+                                MetodoPagoId = m.MetodoPagoID,
+                                MontoPagado  = m.MontoPagado,
+                                Referencia   = m.Referencia ?? string.Empty
+                            });
+                        }
+                        await _context.SaveChangesAsync(cancellationToken);
+
+                        paymentId = pagoEntity.PagoId;
 
                         _logger.LogInformation(
                             "Pago registrado exitosamente: PagoID={PaymentId}, OrdenID={OrderId}, Monto={Amount}",
@@ -391,5 +404,30 @@ public class OrderRepositoryPure : IOrderRepository
             );
             throw;
         }
+    }
+
+    private async Task<string> GeneratePaymentFolioAsync(CancellationToken ct)
+    {
+        var datePrefix = DateTime.Today.ToString("yyyyMMdd");
+        var pattern    = $"PAG-{datePrefix}-%";
+
+        var lastFolio = await _context.Pagos
+            .Where(p => EF.Functions.Like(p.FolioPago, pattern))
+            .OrderByDescending(p => p.FolioPago)
+            .Select(p => p.FolioPago)
+            .FirstOrDefaultAsync(ct);
+
+        int nextNumber = 1;
+        if (lastFolio != null && lastFolio.Length >= 4 && int.TryParse(lastFolio[^4..], out int n))
+            nextNumber = n + 1;
+
+        return $"PAG-{datePrefix}-{nextNumber:D4}";
+    }
+
+    private sealed class MetodoPagoJson
+    {
+        public int     MetodoPagoID { get; set; }
+        public decimal MontoPagado  { get; set; }
+        public string? Referencia   { get; set; }
     }
 }

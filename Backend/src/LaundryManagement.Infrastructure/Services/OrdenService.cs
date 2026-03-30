@@ -1,48 +1,81 @@
-using System.Data;
-using Dapper;
+using System.Data.Common;
+using System.Text.Json;
 using LaundryManagement.Application.DTOs.Ordenes;
 using LaundryManagement.Application.Interfaces;
 using LaundryManagement.Domain.Exceptions;
-using Microsoft.Data.SqlClient;
+using LaundryManagement.Infrastructure.Persistence;
+using LaundryManagement.Infrastructure.Persistence.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaundryManagement.Infrastructure.Services;
 
 public class OrdenService : IOrdenService
 {
-    private readonly IDbConnectionFactory _connectionFactory;
+    private readonly LaundryDbContext _context;
 
-    public OrdenService(IDbConnectionFactory connectionFactory)
+    public OrdenService(LaundryDbContext context)
     {
-        _connectionFactory = connectionFactory;
+        _context = context;
     }
 
     public async Task<CrearOrdenResponse> CrearOrdenAsync(CrearOrdenRequest request)
     {
         try
         {
-            using var connection = _connectionFactory.CreateConnection();
+            var detalles = JsonSerializer.Deserialize<List<OrdenDetalleJson>>(
+                request.DetalleJSON,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                ?? throw new Domain.Exceptions.ValidationException("El detalle de la orden no puede estar vacío");
 
-            var parameters = new DynamicParameters();
-            parameters.Add("@ClienteID", request.ClienteID);
-            parameters.Add("@FechaPrometida", request.FechaPrometida);
-            parameters.Add("@RecibidoPor", request.RecibidoPor);
-            parameters.Add("@DetalleJSON", request.DetalleJSON);
-            parameters.Add("@Observaciones", request.Observaciones);
-            parameters.Add("@Ubicaciones", request.Ubicaciones);
-            parameters.Add("@OrdenID", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            var folio = await GenerateNextFolioAsync();
+            var subtotal = detalles.Sum(d => d.PrecioUnitario * (d.Cantidad ?? 1));
 
-            await connection.ExecuteAsync(
-                "SP_CrearOrden",
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
+            await using var transaction = await _context.Database.BeginTransactionAsync();
 
-            return new CrearOrdenResponse
+            var orden = new Ordene
             {
-                OrdenID = parameters.Get<int>("@OrdenID")
+                FolioOrden      = folio,
+                ClienteId       = request.ClienteID,
+                FechaPrometida  = request.FechaPrometida,
+                RecibidoPor     = request.RecibidoPor,
+                EstadoOrdenId   = 1,
+                Subtotal        = subtotal,
+                Descuento       = 0,
+                Total           = subtotal,
+                Observaciones   = request.Observaciones,
+                Ubicaciones     = request.Ubicaciones
             };
+
+            _context.Ordenes.Add(orden);
+            await _context.SaveChangesAsync();
+
+            for (int i = 0; i < detalles.Count; i++)
+            {
+                var d = detalles[i];
+                var lineTotal = d.PrecioUnitario * (d.Cantidad ?? 1);
+                _context.OrdenesDetalles.Add(new OrdenesDetalle
+                {
+                    OrdenId        = orden.OrdenId,
+                    NumeroLinea    = i + 1,
+                    ServicioId     = d.ServicioID,
+                    ServicioPrendaId = d.ServicioPrendaID,
+                    Cantidad       = d.Cantidad,
+                    PrecioUnitario = d.PrecioUnitario,
+                    PesoKilos      = d.PesoKilos,
+                    Subtotal       = lineTotal,
+                    DescuentoLinea = 0,
+                    TotalLinea     = lineTotal,
+                    Observaciones  = d.Observaciones
+                });
+            }
+
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+
+            return new CrearOrdenResponse { OrdenID = orden.OrdenId };
         }
-        catch (SqlException ex)
+        catch (Domain.Exceptions.ValidationException) { throw; }
+        catch (DbException ex)
         {
             throw new DatabaseException("Error al crear la orden en la base de datos", ex);
         }
@@ -56,21 +89,24 @@ public class OrdenService : IOrdenService
     {
         try
         {
-            using var connection = _connectionFactory.CreateConnection();
+            var orden = await _context.Ordenes.FindAsync(request.OrdenID)
+                ?? throw new NotFoundException($"Orden {request.OrdenID} no encontrada");
 
-            var parameters = new DynamicParameters();
-            parameters.Add("@OrdenID", request.OrdenID);
-            parameters.Add("@NuevoEstadoID", request.NuevoEstadoID);
-            parameters.Add("@CambiadoPor", request.CambiadoPor);
-            parameters.Add("@Comentarios", request.Comentarios);
+            orden.EstadoOrdenId = request.NuevoEstadoID;
 
-            await connection.ExecuteAsync(
-                "SP_CambiarEstadoOrden",
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
+            _context.HistorialEstadosOrdens.Add(new HistorialEstadosOrden
+            {
+                OrdenId       = request.OrdenID,
+                EstadoOrdenId = request.NuevoEstadoID,
+                FechaCambio   = DateTime.UtcNow,
+                CambiadoPor   = request.CambiadoPor,
+                Comentarios   = request.Comentarios
+            });
+
+            await _context.SaveChangesAsync();
         }
-        catch (SqlException ex)
+        catch (NotFoundException) { throw; }
+        catch (DbException ex)
         {
             throw new DatabaseException("Error al cambiar el estado de la orden en la base de datos", ex);
         }
@@ -78,5 +114,36 @@ public class OrdenService : IOrdenService
         {
             throw new DatabaseException("Error inesperado al cambiar el estado de la orden", ex);
         }
+    }
+
+    private async Task<string> GenerateNextFolioAsync()
+    {
+        var datePrefix = DateTime.Today.ToString("yyyyMMdd");
+        var pattern    = $"ORD-{datePrefix}-%";
+
+        var lastOrder = await _context.Ordenes
+            .Where(o => EF.Functions.Like(o.FolioOrden, pattern))
+            .OrderByDescending(o => o.FolioOrden)
+            .FirstOrDefaultAsync();
+
+        int nextNumber = 1;
+        if (lastOrder != null)
+        {
+            var lastFolio = lastOrder.FolioOrden;
+            if (lastFolio.Length >= 4 && int.TryParse(lastFolio[^4..], out int n))
+                nextNumber = n + 1;
+        }
+
+        return $"ORD-{datePrefix}-{nextNumber:D4}";
+    }
+
+    private sealed class OrdenDetalleJson
+    {
+        public int ServicioID { get; set; }
+        public int? ServicioPrendaID { get; set; }
+        public int? Cantidad { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public decimal? PesoKilos { get; set; }
+        public string? Observaciones { get; set; }
     }
 }

@@ -110,15 +110,22 @@ public class CashClosingRepositoryPure : ICashClosingRepository
                 await connection.OpenAsync(cancellationToken);
             }
 
-            var parameters = new DynamicParameters();
-            parameters.Add("@Fecha", fecha.Date);
-            parameters.Add("@CajeroID", cashierId);
-
-            // DTO temporal para mapear el resultado del SP
             var result = await connection.QueryFirstOrDefaultAsync<DayPaymentTotalsDto>(
-                "SP_ObtenerTotalesDia",
-                parameters,
-                commandType: System.Data.CommandType.StoredProcedure
+                """
+                SELECT
+                    COALESCE(SUM(CASE WHEN mp."NombreMetodo" = 'Efectivo'       THEN pd."MontoPagado" ELSE 0 END), 0) AS TotalEfectivo,
+                    COALESCE(SUM(CASE WHEN mp."NombreMetodo" = 'Tarjeta'        THEN pd."MontoPagado" ELSE 0 END), 0) AS TotalTarjeta,
+                    COALESCE(SUM(CASE WHEN mp."NombreMetodo" = 'Transferencia'  THEN pd."MontoPagado" ELSE 0 END), 0) AS TotalTransferencia,
+                    COALESCE(SUM(CASE WHEN mp."NombreMetodo" NOT IN ('Efectivo','Tarjeta','Transferencia') THEN pd."MontoPagado" ELSE 0 END), 0) AS TotalOtros,
+                    COALESCE(SUM(pd."MontoPagado"), 0) AS TotalPagado
+                FROM "Pagos" p
+                INNER JOIN "PagosDetalle" pd ON pd."PagoID" = p."PagoID"
+                INNER JOIN "MetodosPago" mp ON mp."MetodoPagoID" = pd."MetodoPagoID"
+                WHERE p."FechaPago"::date = @Fecha
+                  AND p."RecibioPor" = @CajeroID
+                  AND p."CanceladoEn" IS NULL
+                """,
+                new { Fecha = fecha.Date, CajeroID = cashierId }
             );
 
             if (result == null)

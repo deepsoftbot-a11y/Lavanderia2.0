@@ -18,16 +18,16 @@ public static class DependencyInjection
         // Register DbContext for EF Core (Writes)
         services.AddDbContext<LaundryDbContext>(options =>
         {
-            options.UseSqlServer(
+            options.UseNpgsql(
                 configuration.GetConnectionString("DefaultConnection"),
-                sqlOptions =>
+                npgsqlOptions =>
                 {
-                    sqlOptions.EnableRetryOnFailure(
+                    npgsqlOptions.EnableRetryOnFailure(
                         maxRetryCount: 3,
                         maxRetryDelay: TimeSpan.FromSeconds(10),
-                        errorNumbersToAdd: null
+                        errorCodesToAdd: null
                     );
-                    sqlOptions.CommandTimeout(30);
+                    npgsqlOptions.CommandTimeout(30);
                 }
             );
 

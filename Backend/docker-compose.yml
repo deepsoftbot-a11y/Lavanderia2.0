@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: lavanderia_postgres
+    environment:
+      POSTGRES_DB: LavanderiaDB
+      POSTGRES_USER: lavanderia_user
+      POSTGRES_PASSWORD: lavanderia_pass_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - lavanderia_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lavanderia_user -d LavanderiaDB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  lavanderia_pgdata:

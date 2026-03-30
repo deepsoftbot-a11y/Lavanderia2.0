@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using LaundryManagement.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -89,21 +89,17 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.AuditoriaId).HasColumnName("AuditoriaID");
             entity.Property(e => e.DireccionIp)
                 .HasMaxLength(45)
-                .IsUnicode(false)
                 .HasColumnName("DireccionIP");
             entity.Property(e => e.FechaOperacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.Operacion)
-                .HasMaxLength(10)
-                .IsUnicode(false);
+                .HasMaxLength(10);
             entity.Property(e => e.RegistroId).HasColumnName("RegistroID");
             entity.Property(e => e.Tabla)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.UsuarioId).HasColumnName("UsuarioID");
-            entity.Property(e => e.ValoresAnteriores).IsUnicode(false);
-            entity.Property(e => e.ValoresNuevos).IsUnicode(false);
+            entity.Property(e => e.ValoresAnteriores);
+            entity.Property(e => e.ValoresNuevos);
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.AuditoriaGenerals)
                 .HasForeignKey(d => d.UsuarioId)
@@ -118,49 +114,34 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.CategoriaId).HasColumnName("CategoriaID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.NombreCategoria)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.ToTable(tb =>
-                {
-                    tb.HasTrigger("TRG_Clientes_GenerarNumeroCliente");
-                    tb.HasTrigger("TRG_Clientes_ValidarLimiteCredito");
-                });
-
             entity.HasIndex(e => e.NumeroCliente, "UK_Clientes_NumeroCliente").IsUnique();
 
             entity.Property(e => e.ClienteId).HasColumnName("ClienteID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Direccion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.FechaRegistro)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.LimiteCredito).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.NombreCompleto)
-                .HasMaxLength(150)
-                .IsUnicode(false);
+                .HasMaxLength(150);
             entity.Property(e => e.NumeroCliente)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
             entity.Property(e => e.Rfc)
                 .HasMaxLength(13)
-                .IsUnicode(false)
                 .HasColumnName("RFC");
             entity.Property(e => e.SaldoActual).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Telefono)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
 
             entity.HasOne(d => d.RegistradoPorNavigation).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.RegistradoPor)
@@ -173,11 +154,9 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.ComboId).HasColumnName("ComboID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.NombreCombo)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.PorcentajeDescuento).HasColumnType("decimal(5, 2)");
         });
 
@@ -209,26 +188,19 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.ConfigReporteId).HasColumnName("ConfigReporteID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.DestinatariosEmail)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.FormatoExportacion)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
             entity.Property(e => e.Frecuencia)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
             entity.Property(e => e.HoraEnvio)
-                .HasMaxLength(5)
-                .IsUnicode(false);
+                .HasMaxLength(5);
             entity.Property(e => e.NombreReporte)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.ParametrosJson)
-                .IsUnicode(false)
                 .HasColumnName("ParametrosJSON");
             entity.Property(e => e.TipoReporte)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<CortesCaja>(entity =>
@@ -247,41 +219,25 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.CorteId).HasColumnName("CorteID");
             entity.Property(e => e.CajeroId).HasColumnName("CajeroID");
-            entity.Property(e => e.DiferenciaFinal)
-                .HasComputedColumnSql("(([TotalDeclarado]-[TotalEsperado])+[MontoAjuste])", true)
-                .HasColumnType("decimal(12, 2)");
-            entity.Property(e => e.DiferenciaInicial)
-                .HasComputedColumnSql("([TotalDeclarado]-[TotalEsperado])", true)
-                .HasColumnType("decimal(11, 2)");
-            entity.Property(e => e.DiferenciaInicialEfectivo)
-                .HasComputedColumnSql("([TotalDeclaradoEfectivo]-[TotalEsperadoEfectivo])", true)
-                .HasColumnType("decimal(11, 2)");
-            entity.Property(e => e.DiferenciaInicialOtros)
-                .HasComputedColumnSql("([TotalDeclaradoOtros]-[TotalEsperadoOtros])", true)
-                .HasColumnType("decimal(11, 2)");
-            entity.Property(e => e.DiferenciaInicialTarjeta)
-                .HasComputedColumnSql("([TotalDeclaradoTarjeta]-[TotalEsperadoTarjeta])", true)
-                .HasColumnType("decimal(11, 2)");
-            entity.Property(e => e.DiferenciaInicialTransferencia)
-                .HasComputedColumnSql("([TotalDeclaradoTransferencia]-[TotalEsperadoTransferencia])", true)
-                .HasColumnType("decimal(11, 2)");
-            entity.Property(e => e.FechaAjuste).HasColumnType("datetime");
+            entity.Property(e => e.DiferenciaFinal).HasColumnType("decimal(12, 2)");
+            entity.Property(e => e.DiferenciaInicial).HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.DiferenciaInicialEfectivo).HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.DiferenciaInicialOtros).HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.DiferenciaInicialTarjeta).HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.DiferenciaInicialTransferencia).HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.FechaAjuste);
             entity.Property(e => e.FechaCorte)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.FechaFin).HasColumnType("datetime");
-            entity.Property(e => e.FechaInicio).HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
+            entity.Property(e => e.FechaFin);
+            entity.Property(e => e.FechaInicio);
             entity.Property(e => e.FondoInicial).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.FolioCorte)
-                .HasMaxLength(30)
-                .IsUnicode(false);
+                .HasMaxLength(30);
             entity.Property(e => e.MontoAjuste).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.MotivoAjuste)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.Observaciones)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.TotalDeclarado).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TotalDeclaradoEfectivo).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TotalDeclaradoOtros).HasColumnType("decimal(10, 2)");
@@ -293,8 +249,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.TotalEsperadoTarjeta).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TotalEsperadoTransferencia).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TurnoDescripcion)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
 
             entity.HasOne(d => d.Cajero).WithMany(p => p.CortesCajas)
                 .HasForeignKey(d => d.CajeroId)
@@ -310,9 +265,7 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.CorteDetalleId).HasColumnName("CorteDetalleID");
             entity.Property(e => e.CorteId).HasColumnName("CorteID");
-            entity.Property(e => e.Diferencia)
-                .HasComputedColumnSql("([TotalDeclarado]-[TotalEsperado])", true)
-                .HasColumnType("decimal(11, 2)");
+            entity.Property(e => e.Diferencia).HasColumnType("decimal(11, 2)");
             entity.Property(e => e.MetodoPagoId).HasColumnName("MetodoPagoID");
             entity.Property(e => e.TotalDeclarado).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TotalEsperado).HasColumnType("decimal(10, 2)");
@@ -332,11 +285,9 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.DescuentoId).HasColumnName("DescuentoID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.NombreDescuento)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.TipoDescuento)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
             entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
         });
 
@@ -350,11 +301,9 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.EstadoOrdenId).HasColumnName("EstadoOrdenID");
             entity.Property(e => e.ColorEstado)
-                .HasMaxLength(7)
-                .IsUnicode(false);
+                .HasMaxLength(7);
             entity.Property(e => e.NombreEstado)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<HistorialEstadosOrden>(entity =>
@@ -365,12 +314,10 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.HistorialEstadoId).HasColumnName("HistorialEstadoID");
             entity.Property(e => e.Comentarios)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.EstadoOrdenId).HasColumnName("EstadoOrdenID");
             entity.Property(e => e.FechaCambio)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.OrdenId).HasColumnName("OrdenID");
 
             entity.HasOne(d => d.CambiadoPorNavigation).WithMany(p => p.HistorialEstadosOrdens)
@@ -394,16 +341,13 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.HistorialReporteId).HasColumnName("HistorialReporteID");
             entity.Property(e => e.ConfigReporteId).HasColumnName("ConfigReporteID");
             entity.Property(e => e.Estado)
-                .HasMaxLength(20)
-                .IsUnicode(false);
-            entity.Property(e => e.FechaEnvio).HasColumnType("datetime");
+                .HasMaxLength(20);
+            entity.Property(e => e.FechaEnvio);
             entity.Property(e => e.FechaGeneracion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.MensajeError).IsUnicode(false);
+                .HasDefaultValueSql("NOW()");
+            entity.Property(e => e.MensajeError);
             entity.Property(e => e.RutaArchivo)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
 
             entity.HasOne(d => d.ConfigReporte).WithMany(p => p.HistorialReportes)
                 .HasForeignKey(d => d.ConfigReporteId)
@@ -422,8 +366,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.MetodoPagoId).HasColumnName("MetodoPagoID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.NombreMetodo)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<Ordene>(entity =>
@@ -442,22 +385,18 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.ClienteId).HasColumnName("ClienteID");
             entity.Property(e => e.Descuento).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.EstadoOrdenId).HasColumnName("EstadoOrdenID");
-            entity.Property(e => e.FechaEntrega).HasColumnType("datetime");
-            entity.Property(e => e.FechaPrometida).HasColumnType("datetime");
+            entity.Property(e => e.FechaEntrega);
+            entity.Property(e => e.FechaPrometida);
             entity.Property(e => e.FechaRecepcion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.FolioOrden)
-                .HasMaxLength(30)
-                .IsUnicode(false);
+                .HasMaxLength(30);
             entity.Property(e => e.Observaciones)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Ubicaciones)
-                .HasMaxLength(500)
-                .IsUnicode(true);
+                .HasMaxLength(500);
 
             entity.HasOne(d => d.Cliente).WithMany(p => p.Ordenes)
                 .HasForeignKey(d => d.ClienteId)
@@ -487,8 +426,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.ComboId).HasColumnName("ComboID");
             entity.Property(e => e.DescuentoId).HasColumnName("DescuentoID");
             entity.Property(e => e.Justificacion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.MontoDescuento).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.OrdenId).HasColumnName("OrdenID");
 
@@ -524,8 +462,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.OrdenDetalleId).HasColumnName("OrdenDetalleID");
             entity.Property(e => e.DescuentoLinea).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Observaciones)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.OrdenId).HasColumnName("OrdenID");
             entity.Property(e => e.PesoKilos).HasColumnType("decimal(6, 2)");
             entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(10, 2)");
@@ -557,17 +494,14 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.PagoId).HasColumnName("PagoID");
             entity.Property(e => e.FechaPago)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.FolioPago)
-                .HasMaxLength(30)
-                .IsUnicode(false);
+                .HasMaxLength(30);
             entity.Property(e => e.MontoPago).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Observaciones)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.OrdenId).HasColumnName("OrdenID");
-            entity.Property(e => e.CanceladoEn).HasColumnType("datetime");
+            entity.Property(e => e.CanceladoEn);
             entity.Property(e => e.CanceladoPor).IsRequired(false);
 
             entity.HasOne(d => d.Orden).WithMany(p => p.Pagos)
@@ -592,8 +526,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.MontoPagado).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.PagoId).HasColumnName("PagoID");
             entity.Property(e => e.Referencia)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
 
             entity.HasOne(d => d.MetodoPago).WithMany(p => p.PagosDetalles)
                 .HasForeignKey(d => d.MetodoPagoId)
@@ -614,14 +547,11 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.PermisoId).HasColumnName("PermisoID");
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.Modulo)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
             entity.Property(e => e.NombrePermiso)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -635,11 +565,9 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.RolId).HasColumnName("RolID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.NombreRol)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<RolesPermiso>(entity =>
@@ -681,23 +609,18 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.CategoriaId).HasColumnName("CategoriaID");
             entity.Property(e => e.CodigoServicio)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(500)
-                .IsUnicode(false);
+                .HasMaxLength(500);
             entity.Property(e => e.FechaCreacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.NombreServicio)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.PesoMaximo).HasColumnType("decimal(6, 2)");
             entity.Property(e => e.PesoMinimo).HasColumnType("decimal(6, 2)");
             entity.Property(e => e.PrecioPorKilo).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.TipoCobroServicio)
-                .HasMaxLength(20)
-                .IsUnicode(false);
+                .HasMaxLength(20);
 
             entity.HasOne(d => d.Categoria).WithMany(p => p.Servicios)
                 .HasForeignKey(d => d.CategoriaId)
@@ -709,8 +632,6 @@ public partial class LaundryDbContext : DbContext
         {
             entity.HasKey(e => e.ServicioPrendaId);
 
-            entity.ToTable(tb => tb.HasTrigger("TRG_ServiciosPrendas_ValidarTipoServicio"));
-
             entity.HasIndex(e => e.ServicioId, "IX_ServiciosPrendas_ServicioID");
 
             entity.HasIndex(e => e.TipoPrendaId, "IX_ServiciosPrendas_TipoPrendaID");
@@ -720,8 +641,7 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.ServicioPrendaId).HasColumnName("ServicioPrendaID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.FechaActualizacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.PrecioUnitario).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ServicioId).HasColumnName("ServicioID");
             entity.Property(e => e.TipoPrendaId).HasColumnName("TipoPrendaID");
@@ -746,18 +666,16 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.TipoPrendaId).HasColumnName("TipoPrendaID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Descripcion)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+                .HasMaxLength(255);
             entity.Property(e => e.NombrePrenda)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
             entity.HasIndex(e => e.Activo, "IX_Usuarios_Activo");
 
-            entity.HasIndex(e => e.CreadoPor, "IX_Usuarios_CreadoPor").HasFilter("([CreadoPor] IS NOT NULL)");
+            entity.HasIndex(e => e.CreadoPor, "IX_Usuarios_CreadoPor").HasFilter("\"CreadoPor\" IS NOT NULL");
 
             entity.HasIndex(e => e.Email, "UK_Usuarios_Email").IsUnique();
 
@@ -766,21 +684,16 @@ public partial class LaundryDbContext : DbContext
             entity.Property(e => e.UsuarioId).HasColumnName("UsuarioID");
             entity.Property(e => e.Activo).HasDefaultValue(true);
             entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.FechaCreacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.NombreCompleto)
-                .HasMaxLength(150)
-                .IsUnicode(false);
+                .HasMaxLength(150);
             entity.Property(e => e.NombreUsuario)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+                .HasMaxLength(50);
             entity.Property(e => e.PasswordHash)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.UltimoAcceso).HasColumnType("datetime");
+                .HasMaxLength(255);
+            entity.Property(e => e.UltimoAcceso);
 
             entity.HasOne(d => d.CreadoPorNavigation).WithMany(p => p.InverseCreadoPorNavigation)
                 .HasForeignKey(d => d.CreadoPor)
@@ -799,8 +712,7 @@ public partial class LaundryDbContext : DbContext
 
             entity.Property(e => e.UsuarioRolId).HasColumnName("UsuarioRolID");
             entity.Property(e => e.FechaAsignacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasDefaultValueSql("NOW()");
             entity.Property(e => e.RolId).HasColumnName("RolID");
             entity.Property(e => e.UsuarioId).HasColumnName("UsuarioID");
 

@@ -2,7 +2,7 @@ using System.Net;
 using System.Text.Json;
 using LaundryManagement.API.Models;
 using LaundryManagement.Domain.Exceptions;
-using Microsoft.Data.SqlClient;
+using Npgsql;
 
 namespace LaundryManagement.API.Middleware;
 
@@ -58,11 +58,11 @@ public class GlobalExceptionHandlerMiddleware
                 _logger.LogWarning(exception, "Business exception occurred: {Message}", exception.Message);
                 break;
 
-            case SqlException sqlException:
+            case NpgsqlException npgsqlException:
                 statusCode = HttpStatusCode.InternalServerError;
                 errorResponse.Code = "SQL_ERROR";
-                errorResponse.Message = GetSqlErrorMessage(sqlException);
-                _logger.LogError(exception, "SQL error occurred: {Message}", sqlException.Message);
+                errorResponse.Message = GetPostgresErrorMessage(npgsqlException);
+                _logger.LogError(exception, "PostgreSQL error occurred: {Message}", npgsqlException.Message);
                 break;
 
             case UnauthorizedAccessException:
@@ -97,18 +97,23 @@ public class GlobalExceptionHandlerMiddleware
         await context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse, options));
     }
 
-    private string GetSqlErrorMessage(SqlException sqlException)
+    private string GetPostgresErrorMessage(NpgsqlException npgsqlException)
     {
-        return sqlException.Number switch
+        // PostgreSQL SQLSTATE codes: https://www.postgresql.org/docs/current/errcodes-appendix.html
+        return npgsqlException.SqlState switch
         {
-            -1 => "Error de conexión con la base de datos. Verifique que el servidor esté disponible.",
-            -2 => "Timeout al conectar con la base de datos.",
-            2627 => "Ya existe un registro con los datos proporcionados.",
-            547 => "No se puede eliminar el registro porque tiene datos relacionados.",
-            2601 => "Violación de índice único.",
-            515 => "No se puede insertar valor nulo en una columna requerida.",
+            "08000" or "08006" or "08001" or "08004" =>
+                "Error de conexión con la base de datos. Verifique que el servidor esté disponible.",
+            "57014" =>
+                "Timeout al procesar la operación en la base de datos.",
+            "23505" =>
+                "Ya existe un registro con los datos proporcionados.",
+            "23503" =>
+                "No se puede eliminar el registro porque tiene datos relacionados.",
+            "23502" =>
+                "No se puede insertar valor nulo en una columna requerida.",
             _ => _environment.IsDevelopment()
-                ? $"Error SQL ({sqlException.Number}): {sqlException.Message}"
+                ? $"Error PostgreSQL ({npgsqlException.SqlState}): {npgsqlException.Message}"
                 : "Error al procesar la operación en la base de datos"
         };
     }

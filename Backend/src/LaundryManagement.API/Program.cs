@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
+// Compatibilidad de fechas con Npgsql: permite DateTime con Kind=Local/Unspecified
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 // Configurar Serilog antes de crear el builder
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()

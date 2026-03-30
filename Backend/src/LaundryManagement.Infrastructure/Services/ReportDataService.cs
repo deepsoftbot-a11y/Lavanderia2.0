@@ -1,9 +1,9 @@
 using System.Data;
+using System.Data.Common;
 using Dapper;
 using LaundryManagement.Application.DTOs.Reports;
 using LaundryManagement.Application.Interfaces;
 using LaundryManagement.Domain.Exceptions;
-using Microsoft.Data.SqlClient;
 
 namespace LaundryManagement.Infrastructure.Services;
 
@@ -59,7 +59,7 @@ public class ReportDataService : IReportDataService
             );
         }
         catch (NotFoundException) { throw; }
-        catch (SqlException ex)
+        catch (DbException ex)
         {
             throw new DatabaseException("Error al obtener datos del reporte de corte de caja", ex);
         }
@@ -73,23 +73,23 @@ public class ReportDataService : IReportDataService
     {
         const string sql = """
             SELECT
-                cc.CorteID,
-                cc.TurnoDescripcion,
-                cc.FechaInicio,
-                cc.FechaFin,
-                cc.FechaCorte,
-                cc.FondoInicial,
-                cc.TotalEsperadoEfectivo,
-                cc.TotalEsperadoTarjeta,
-                cc.TotalEsperadoTransferencia,
-                cc.TotalEsperadoOtros,
-                cc.TotalEsperado,
-                cc.TotalDeclaradoEfectivo,
-                cc.MontoAjuste,
-                ISNULL(u.NombreCompleto, u.NombreUsuario) AS CajeroNombre
-            FROM CortesCaja cc
-            INNER JOIN Usuarios u ON u.UsuarioID = cc.CajeroID
-            WHERE cc.CorteID = @CorteId
+                cc."CorteID"                    AS CorteId,
+                cc."TurnoDescripcion"           AS TurnoDescripcion,
+                cc."FechaInicio"                AS FechaInicio,
+                cc."FechaFin"                   AS FechaFin,
+                cc."FechaCorte"                 AS FechaCorte,
+                cc."FondoInicial"               AS FondoInicial,
+                cc."TotalEsperadoEfectivo"      AS TotalEsperadoEfectivo,
+                cc."TotalEsperadoTarjeta"       AS TotalEsperadoTarjeta,
+                cc."TotalEsperadoTransferencia" AS TotalEsperadoTransferencia,
+                cc."TotalEsperadoOtros"         AS TotalEsperadoOtros,
+                cc."TotalEsperado"              AS TotalEsperado,
+                cc."TotalDeclaradoEfectivo"     AS TotalDeclaradoEfectivo,
+                cc."MontoAjuste"                AS MontoAjuste,
+                COALESCE(u."NombreCompleto", u."NombreUsuario") AS CajeroNombre
+            FROM "CortesCaja" cc
+            INNER JOIN "Usuarios" u ON u."UsuarioID" = cc."CajeroID"
+            WHERE cc."CorteID" = @CorteId
             """;
 
         return await connection.QueryFirstOrDefaultAsync<CorteRaw>(sql, new { CorteId = corteId });
@@ -100,19 +100,19 @@ public class ReportDataService : IReportDataService
     {
         const string sql = """
             SELECT
-                SUM(CASE WHEN CAST(o.FechaRecepcion AS DATE) = @FechaHoy
-                         THEN o.Total - ISNULL(pagado.TotalPagado, 0) ELSE 0 END) AS PendienteHoy,
-                SUM(CASE WHEN CAST(o.FechaRecepcion AS DATE) < @FechaHoy
-                         THEN o.Total - ISNULL(pagado.TotalPagado, 0) ELSE 0 END) AS AcumuladoAyer
-            FROM Ordenes o
+                SUM(CASE WHEN o."FechaRecepcion"::date = @FechaHoy
+                         THEN o."Total" - COALESCE(pagado."TotalPagado", 0) ELSE 0 END) AS PendienteHoy,
+                SUM(CASE WHEN o."FechaRecepcion"::date < @FechaHoy
+                         THEN o."Total" - COALESCE(pagado."TotalPagado", 0) ELSE 0 END) AS AcumuladoAyer
+            FROM "Ordenes" o
             LEFT JOIN (
-                SELECT p.OrdenID, SUM(p.MontoPago) AS TotalPagado
-                FROM Pagos p
-                WHERE p.CanceladoEn IS NULL
-                GROUP BY p.OrdenID
-            ) pagado ON pagado.OrdenID = o.OrdenID
-            WHERE o.EstadoOrdenID != 5
-              AND o.Total - ISNULL(pagado.TotalPagado, 0) > 0
+                SELECT p."OrdenID", SUM(p."MontoPago") AS "TotalPagado"
+                FROM "Pagos" p
+                WHERE p."CanceladoEn" IS NULL
+                GROUP BY p."OrdenID"
+            ) pagado ON pagado."OrdenID" = o."OrdenID"
+            WHERE o."EstadoOrdenID" != 5
+              AND o."Total" - COALESCE(pagado."TotalPagado", 0) > 0
             """;
 
         var result = await connection.QueryFirstOrDefaultAsync(sql, new { FechaHoy = fechaHoy });

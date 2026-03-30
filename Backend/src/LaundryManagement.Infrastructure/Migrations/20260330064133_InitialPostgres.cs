@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace LaundryManagement.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class EliminaUbicacionesAgregaCampoTexto : Migration
+    public partial class InitialPostgres : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,11 +16,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Categorias",
                 columns: table => new
                 {
-                    CategoriaID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreCategoria = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    CategoriaID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreCategoria = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Descripcion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -30,14 +31,14 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Combos",
                 columns: table => new
                 {
-                    ComboID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreCombo = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    PorcentajeDescuento = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    ComboID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreCombo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Descripcion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    PorcentajeDescuento = table.Column<decimal>(type: "numeric(5,2)", nullable: false),
                     FechaInicio = table.Column<DateOnly>(type: "date", nullable: false),
                     FechaFin = table.Column<DateOnly>(type: "date", nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -48,16 +49,16 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "ConfiguracionReportes",
                 columns: table => new
                 {
-                    ConfigReporteID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreReporte = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    TipoReporte = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Frecuencia = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    FormatoExportacion = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    DestinatariosEmail = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    HoraEnvio = table.Column<string>(type: "varchar(5)", unicode: false, maxLength: 5, nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    ParametrosJSON = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true)
+                    ConfigReporteID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreReporte = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    TipoReporte = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Frecuencia = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    FormatoExportacion = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    DestinatariosEmail = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    HoraEnvio = table.Column<string>(type: "character varying(5)", maxLength: 5, nullable: true),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    ParametrosJSON = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,14 +69,14 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Descuentos",
                 columns: table => new
                 {
-                    DescuentoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreDescuento = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    TipoDescuento = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    Valor = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    DescuentoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreDescuento = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    TipoDescuento = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Valor = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
                     FechaInicio = table.Column<DateOnly>(type: "date", nullable: false),
                     FechaFin = table.Column<DateOnly>(type: "date", nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -86,11 +87,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "EstadosOrden",
                 columns: table => new
                 {
-                    EstadoOrdenID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreEstado = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    ColorEstado = table.Column<string>(type: "varchar(7)", unicode: false, maxLength: 7, nullable: true),
-                    OrdenProceso = table.Column<int>(type: "int", nullable: false)
+                    EstadoOrdenID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreEstado = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    ColorEstado = table.Column<string>(type: "character varying(7)", maxLength: 7, nullable: true),
+                    OrdenProceso = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,11 +102,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "MetodosPago",
                 columns: table => new
                 {
-                    MetodoPagoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreMetodo = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    RequiereReferencia = table.Column<bool>(type: "bit", nullable: false),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    MetodoPagoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreMetodo = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    RequiereReferencia = table.Column<bool>(type: "boolean", nullable: false),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -116,11 +117,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Permisos",
                 columns: table => new
                 {
-                    PermisoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombrePermiso = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    Modulo = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true)
+                    PermisoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombrePermiso = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Modulo = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Descripcion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -131,11 +132,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    RolID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreRol = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    RolID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreRol = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Descripcion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -146,11 +147,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "TiposPrenda",
                 columns: table => new
                 {
-                    TipoPrendaID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombrePrenda = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    TipoPrendaID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombrePrenda = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Descripcion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -161,16 +162,16 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    UsuarioID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreUsuario = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    PasswordHash = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: false),
-                    NombreCompleto = table.Column<string>(type: "varchar(150)", unicode: false, maxLength: 150, nullable: false),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    UltimoAcceso = table.Column<DateTime>(type: "datetime", nullable: true),
-                    CreadoPor = table.Column<int>(type: "int", nullable: true)
+                    UsuarioID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NombreUsuario = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    PasswordHash = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    NombreCompleto = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    FechaCreacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UltimoAcceso = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreadoPor = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,19 +187,19 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Servicios",
                 columns: table => new
                 {
-                    ServicioID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoriaID = table.Column<int>(type: "int", nullable: false),
-                    CodigoServicio = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    NombreServicio = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    TipoCobroServicio = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    PrecioPorKilo = table.Column<decimal>(type: "decimal(10,2)", nullable: true),
-                    PesoMinimo = table.Column<decimal>(type: "decimal(6,2)", nullable: true),
-                    PesoMaximo = table.Column<decimal>(type: "decimal(6,2)", nullable: true),
-                    Descripcion = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    TiempoEstimado = table.Column<int>(type: "int", nullable: true),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
+                    ServicioID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CategoriaID = table.Column<int>(type: "integer", nullable: false),
+                    CodigoServicio = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    NombreServicio = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    TipoCobroServicio = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    PrecioPorKilo = table.Column<decimal>(type: "numeric(10,2)", nullable: true),
+                    PesoMinimo = table.Column<decimal>(type: "numeric(6,2)", nullable: true),
+                    PesoMaximo = table.Column<decimal>(type: "numeric(6,2)", nullable: true),
+                    Descripcion = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    TiempoEstimado = table.Column<int>(type: "integer", nullable: true),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    FechaCreacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -214,14 +215,14 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "HistorialReportes",
                 columns: table => new
                 {
-                    HistorialReporteID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ConfigReporteID = table.Column<int>(type: "int", nullable: false),
-                    FechaGeneracion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    FechaEnvio = table.Column<DateTime>(type: "datetime", nullable: true),
-                    Estado = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    RutaArchivo = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    MensajeError = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true)
+                    HistorialReporteID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ConfigReporteID = table.Column<int>(type: "integer", nullable: false),
+                    FechaGeneracion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    FechaEnvio = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Estado = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    RutaArchivo = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    MensajeError = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -237,10 +238,10 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "RolesPermisos",
                 columns: table => new
                 {
-                    RolPermisoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RolID = table.Column<int>(type: "int", nullable: false),
-                    PermisoID = table.Column<int>(type: "int", nullable: false)
+                    RolPermisoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RolID = table.Column<int>(type: "integer", nullable: false),
+                    PermisoID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -262,15 +263,15 @@ namespace LaundryManagement.Infrastructure.Migrations
                 columns: table => new
                 {
                     AuditoriaID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Tabla = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
-                    Operacion = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: false),
-                    RegistroID = table.Column<int>(type: "int", nullable: false),
-                    ValoresAnteriores = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true),
-                    ValoresNuevos = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true),
-                    UsuarioID = table.Column<int>(type: "int", nullable: false),
-                    FechaOperacion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    DireccionIP = table.Column<string>(type: "varchar(45)", unicode: false, maxLength: 45, nullable: true)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Tabla = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Operacion = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    RegistroID = table.Column<int>(type: "integer", nullable: false),
+                    ValoresAnteriores = table.Column<string>(type: "text", nullable: true),
+                    ValoresNuevos = table.Column<string>(type: "text", nullable: true),
+                    UsuarioID = table.Column<int>(type: "integer", nullable: false),
+                    FechaOperacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    DireccionIP = table.Column<string>(type: "character varying(45)", maxLength: 45, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -286,19 +287,19 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Clientes",
                 columns: table => new
                 {
-                    ClienteID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NumeroCliente = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    NombreCompleto = table.Column<string>(type: "varchar(150)", unicode: false, maxLength: 150, nullable: false),
-                    Telefono = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
-                    Direccion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    RFC = table.Column<string>(type: "varchar(13)", unicode: false, maxLength: 13, nullable: true),
-                    LimiteCredito = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    SaldoActual = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    FechaRegistro = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    RegistradoPor = table.Column<int>(type: "int", nullable: false)
+                    ClienteID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NumeroCliente = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    NombreCompleto = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
+                    Telefono = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Direccion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    RFC = table.Column<string>(type: "character varying(13)", maxLength: 13, nullable: true),
+                    LimiteCredito = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    SaldoActual = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    FechaRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    RegistradoPor = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -314,35 +315,36 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "CortesCaja",
                 columns: table => new
                 {
-                    CorteID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FolioCorte = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
-                    CajeroID = table.Column<int>(type: "int", nullable: false),
-                    TurnoDescripcion = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true),
-                    FechaInicio = table.Column<DateTime>(type: "datetime", nullable: false),
-                    FechaFin = table.Column<DateTime>(type: "datetime", nullable: false),
-                    FechaCorte = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    TotalEsperadoEfectivo = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalEsperadoTarjeta = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalEsperadoTransferencia = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalEsperadoOtros = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalEsperado = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclaradoEfectivo = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclaradoTarjeta = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclaradoTransferencia = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclaradoOtros = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclarado = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    DiferenciaInicialEfectivo = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclaradoEfectivo]-[TotalEsperadoEfectivo])", stored: true),
-                    DiferenciaInicialTarjeta = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclaradoTarjeta]-[TotalEsperadoTarjeta])", stored: true),
-                    DiferenciaInicialTransferencia = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclaradoTransferencia]-[TotalEsperadoTransferencia])", stored: true),
-                    DiferenciaInicialOtros = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclaradoOtros]-[TotalEsperadoOtros])", stored: true),
-                    DiferenciaInicial = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclarado]-[TotalEsperado])", stored: true),
-                    MontoAjuste = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    MotivoAjuste = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    FechaAjuste = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DiferenciaFinal = table.Column<decimal>(type: "decimal(12,2)", nullable: true, computedColumnSql: "(([TotalDeclarado]-[TotalEsperado])+[MontoAjuste])", stored: true),
-                    NumeroTransacciones = table.Column<int>(type: "int", nullable: false),
-                    Observaciones = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true)
+                    CorteID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FolioCorte = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    CajeroID = table.Column<int>(type: "integer", nullable: false),
+                    TurnoDescripcion = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    FechaInicio = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FechaFin = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FechaCorte = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    FondoInicial = table.Column<decimal>(type: "numeric(10,2)", nullable: true),
+                    TotalEsperadoEfectivo = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalEsperadoTarjeta = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalEsperadoTransferencia = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalEsperadoOtros = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalEsperado = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclaradoEfectivo = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclaradoTarjeta = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclaradoTransferencia = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclaradoOtros = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclarado = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    DiferenciaInicialEfectivo = table.Column<decimal>(type: "numeric(11,2)", nullable: true),
+                    DiferenciaInicialTarjeta = table.Column<decimal>(type: "numeric(11,2)", nullable: true),
+                    DiferenciaInicialTransferencia = table.Column<decimal>(type: "numeric(11,2)", nullable: true),
+                    DiferenciaInicialOtros = table.Column<decimal>(type: "numeric(11,2)", nullable: true),
+                    DiferenciaInicial = table.Column<decimal>(type: "numeric(11,2)", nullable: true),
+                    MontoAjuste = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    MotivoAjuste = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    FechaAjuste = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DiferenciaFinal = table.Column<decimal>(type: "numeric(12,2)", nullable: true),
+                    NumeroTransacciones = table.Column<int>(type: "integer", nullable: false),
+                    Observaciones = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -358,11 +360,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "UsuariosRoles",
                 columns: table => new
                 {
-                    UsuarioRolID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UsuarioID = table.Column<int>(type: "int", nullable: false),
-                    RolID = table.Column<int>(type: "int", nullable: false),
-                    FechaAsignacion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
+                    UsuarioRolID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UsuarioID = table.Column<int>(type: "integer", nullable: false),
+                    RolID = table.Column<int>(type: "integer", nullable: false),
+                    FechaAsignacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -383,13 +385,13 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "ServiciosPrendas",
                 columns: table => new
                 {
-                    ServicioPrendaID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ServicioID = table.Column<int>(type: "int", nullable: false),
-                    TipoPrendaID = table.Column<int>(type: "int", nullable: false),
-                    PrecioUnitario = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Activo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    FechaActualizacion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())")
+                    ServicioPrendaID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ServicioID = table.Column<int>(type: "integer", nullable: false),
+                    TipoPrendaID = table.Column<int>(type: "integer", nullable: false),
+                    PrecioUnitario = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Activo = table.Column<bool>(type: "boolean", nullable: false, defaultValue: true),
+                    FechaActualizacion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
                 },
                 constraints: table =>
                 {
@@ -410,21 +412,21 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Ordenes",
                 columns: table => new
                 {
-                    OrdenID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FolioOrden = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
-                    ClienteID = table.Column<int>(type: "int", nullable: false),
-                    FechaRecepcion = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    FechaPrometida = table.Column<DateTime>(type: "datetime", nullable: false),
-                    FechaEntrega = table.Column<DateTime>(type: "datetime", nullable: true),
-                    EstadoOrdenID = table.Column<int>(type: "int", nullable: false),
-                    Subtotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Descuento = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Total = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Observaciones = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
-                    Ubicaciones = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    RecibidoPor = table.Column<int>(type: "int", nullable: false),
-                    EntregadoPor = table.Column<int>(type: "int", nullable: true)
+                    OrdenID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FolioOrden = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    ClienteID = table.Column<int>(type: "integer", nullable: false),
+                    FechaRecepcion = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    FechaPrometida = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FechaEntrega = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    EstadoOrdenID = table.Column<int>(type: "integer", nullable: false),
+                    Subtotal = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Descuento = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Total = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Observaciones = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Ubicaciones = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    RecibidoPor = table.Column<int>(type: "integer", nullable: false),
+                    EntregadoPor = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -455,14 +457,14 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "CortesCajaDetalle",
                 columns: table => new
                 {
-                    CorteDetalleID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CorteID = table.Column<int>(type: "int", nullable: false),
-                    MetodoPagoID = table.Column<int>(type: "int", nullable: false),
-                    NumeroTransacciones = table.Column<int>(type: "int", nullable: false),
-                    TotalEsperado = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalDeclarado = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Diferencia = table.Column<decimal>(type: "decimal(11,2)", nullable: true, computedColumnSql: "([TotalDeclarado]-[TotalEsperado])", stored: true)
+                    CorteDetalleID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CorteID = table.Column<int>(type: "integer", nullable: false),
+                    MetodoPagoID = table.Column<int>(type: "integer", nullable: false),
+                    NumeroTransacciones = table.Column<int>(type: "integer", nullable: false),
+                    TotalEsperado = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalDeclarado = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Diferencia = table.Column<decimal>(type: "numeric(11,2)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -484,11 +486,11 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "CombosDetalle",
                 columns: table => new
                 {
-                    ComboDetalleID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ComboID = table.Column<int>(type: "int", nullable: false),
-                    ServicioPrendaID = table.Column<int>(type: "int", nullable: false),
-                    CantidadMinima = table.Column<int>(type: "int", nullable: false)
+                    ComboDetalleID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ComboID = table.Column<int>(type: "integer", nullable: false),
+                    ServicioPrendaID = table.Column<int>(type: "integer", nullable: false),
+                    CantidadMinima = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -509,13 +511,13 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "HistorialEstadosOrden",
                 columns: table => new
                 {
-                    HistorialEstadoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrdenID = table.Column<int>(type: "int", nullable: false),
-                    EstadoOrdenID = table.Column<int>(type: "int", nullable: false),
-                    FechaCambio = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    CambiadoPor = table.Column<int>(type: "int", nullable: false),
-                    Comentarios = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true)
+                    HistorialEstadoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrdenID = table.Column<int>(type: "integer", nullable: false),
+                    EstadoOrdenID = table.Column<int>(type: "integer", nullable: false),
+                    FechaCambio = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    CambiadoPor = table.Column<int>(type: "integer", nullable: false),
+                    Comentarios = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -541,14 +543,14 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "OrdenesDescuentos",
                 columns: table => new
                 {
-                    OrdenDescuentoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrdenID = table.Column<int>(type: "int", nullable: false),
-                    DescuentoID = table.Column<int>(type: "int", nullable: true),
-                    ComboID = table.Column<int>(type: "int", nullable: true),
-                    MontoDescuento = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Justificacion = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
-                    AplicadoPor = table.Column<int>(type: "int", nullable: false)
+                    OrdenDescuentoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrdenID = table.Column<int>(type: "integer", nullable: false),
+                    DescuentoID = table.Column<int>(type: "integer", nullable: true),
+                    ComboID = table.Column<int>(type: "integer", nullable: true),
+                    MontoDescuento = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Justificacion = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    AplicadoPor = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -579,19 +581,19 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "OrdenesDetalle",
                 columns: table => new
                 {
-                    OrdenDetalleID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrdenID = table.Column<int>(type: "int", nullable: false),
-                    NumeroLinea = table.Column<int>(type: "int", nullable: false),
-                    ServicioID = table.Column<int>(type: "int", nullable: false),
-                    ServicioPrendaID = table.Column<int>(type: "int", nullable: true),
-                    PesoKilos = table.Column<decimal>(type: "decimal(6,2)", nullable: true),
-                    Cantidad = table.Column<int>(type: "int", nullable: true),
-                    PrecioUnitario = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Subtotal = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    DescuentoLinea = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    TotalLinea = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Observaciones = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true)
+                    OrdenDetalleID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrdenID = table.Column<int>(type: "integer", nullable: false),
+                    NumeroLinea = table.Column<int>(type: "integer", nullable: false),
+                    ServicioID = table.Column<int>(type: "integer", nullable: false),
+                    ServicioPrendaID = table.Column<int>(type: "integer", nullable: true),
+                    PesoKilos = table.Column<decimal>(type: "numeric(6,2)", nullable: true),
+                    Cantidad = table.Column<int>(type: "integer", nullable: true),
+                    PrecioUnitario = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Subtotal = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    DescuentoLinea = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    TotalLinea = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Observaciones = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -617,14 +619,16 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "Pagos",
                 columns: table => new
                 {
-                    PagoID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FolioPago = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
-                    OrdenID = table.Column<int>(type: "int", nullable: false),
-                    FechaPago = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getdate())"),
-                    MontoPago = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    RecibioPor = table.Column<int>(type: "int", nullable: false),
-                    Observaciones = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true)
+                    PagoID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FolioPago = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    OrdenID = table.Column<int>(type: "integer", nullable: false),
+                    FechaPago = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    MontoPago = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    RecibioPor = table.Column<int>(type: "integer", nullable: false),
+                    Observaciones = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    CanceladoEn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CanceladoPor = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -645,12 +649,12 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "PagosDetalle",
                 columns: table => new
                 {
-                    PagoDetalleID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PagoID = table.Column<int>(type: "int", nullable: false),
-                    MetodoPagoID = table.Column<int>(type: "int", nullable: false),
-                    MontoPagado = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Referencia = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true)
+                    PagoDetalleID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    PagoID = table.Column<int>(type: "integer", nullable: false),
+                    MetodoPagoID = table.Column<int>(type: "integer", nullable: false),
+                    MontoPagado = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
+                    Referencia = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -951,7 +955,7 @@ namespace LaundryManagement.Infrastructure.Migrations
                 name: "IX_Usuarios_CreadoPor",
                 table: "Usuarios",
                 column: "CreadoPor",
-                filter: "([CreadoPor] IS NOT NULL)");
+                filter: "\"CreadoPor\" IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "UK_Usuarios_Email",

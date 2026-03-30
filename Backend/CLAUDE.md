@@ -8,6 +8,19 @@ LaundryManagement is a **pure Domain-Driven Design (DDD)** implementation for a 
 
 ## Build & Run Commands
 
+### Base de datos (PostgreSQL via Docker)
+```bash
+# Levantar PostgreSQL (desde Backend/)
+docker compose up -d
+
+# Verificar que está listo
+docker compose ps
+
+# Aplicar seed de datos iniciales
+docker exec -i lavanderia_postgres psql -U lavanderia_user -d LavanderiaDB < seed_admin_user.sql
+# Usuarios: admin / Admin123!  |  empleado1 / Empleado123!
+```
+
 ### Build Solution
 ```bash
 dotnet build LaundryManagement.sln
@@ -233,20 +246,22 @@ var order = OrderPure.Reconstitute(
 
 ## Database Configuration
 
-**Connection String** (appsettings.json):
+**Connection String** (appsettings.Development.json):
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=LavanderiaDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=LavanderiaDB;Username=lavanderia_user;Password=lavanderia_pass_dev"
   }
 }
 ```
 
-**Database**: SQL Server (LavanderiaDB)
+**Base de datos**: PostgreSQL 16 via Docker (`docker compose up -d` desde `Backend/`)
 
-**EF Core Context**: `LaundryDbContext` in Infrastructure layer
+**EF Core Context**: `LaundryDbContext` en Infrastructure layer (proveedor Npgsql)
 
-**Stored Procedures**: Called via Dapper through service interfaces (IOrdenService, IPagoService, ICorteCajaService, IReporteService)
+**Queries de lectura**: Dapper con SQL directo — todos los identificadores PascalCase van entre comillas dobles (`"Ordenes"`, `"OrdenID"`, etc.)
+
+**Stored Procedures**: Eliminados — reemplazados por EF Core (writes) y Dapper SQL (reads) en los servicios de Infrastructure
 
 ## Project Structure
 

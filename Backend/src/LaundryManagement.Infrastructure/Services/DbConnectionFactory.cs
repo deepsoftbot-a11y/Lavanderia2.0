@@ -1,6 +1,6 @@
 using System.Data;
 using LaundryManagement.Application.Interfaces;
-using Microsoft.Data.SqlClient;
+using Npgsql;
 using Microsoft.Extensions.Configuration;
 
 namespace LaundryManagement.Infrastructure.Services;
@@ -17,6 +17,6 @@ public class DbConnectionFactory : IDbConnectionFactory
 
     public IDbConnection CreateConnection()
     {
-        return new SqlConnection(_connectionString);
+        return new NpgsqlConnection(_connectionString);
     }
 }
