@@ -6,6 +6,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [Sin publicar] — 2026-03-30 — Build de producción
+
+### Agregado
+
+- **`appsettings.Production.json`**: configuración completa para producción — BD `lavanderiadb`, JWT secret (64 chars), CORS hacia `http://163.192.142.183`, SMTP Gmail, logging nivel `Warning`.
+- **`Backend/start-production.ps1`**: script de arranque para Windows — establece `ASPNETCORE_ENVIRONMENT=Production` y `ASPNETCORE_URLS=http://*:5000`, luego lanza el DLL desde `publish/`.
+- **`Backend/env.production.example`**: plantilla documentada de variables de entorno para referencia.
+- **`Frontend/.env.production`**: apunta `VITE_API_BASE_URL` a `http://163.192.142.183/api` con `VITE_AUTH_MODE=api`.
+
+### Build
+
+- **Backend** publicado en `Backend/publish/` con `dotnet publish -c Release -r win-x64 --self-contained false`. Swagger deshabilitado, logs reducidos a `Warning` en producción.
+- **Frontend** compilado en `Frontend/dist/` con `npm run build` — bundle JS 879 kB (gzip 256 kB), apuntando a la API de producción.
+
+---
+
 ## [Sin publicar] — 2026-03-30
 
 ### Agregado
