@@ -1,0 +1,1277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LaundryManagement.Application</name>
+    </assembly>
+    <members>
+        <member name="T:LaundryManagement.Application.Behaviors.ValidationBehavior`2">
+            <summary>
+            Pipeline behavior de MediatR que ejecuta automáticamente los validadores
+            de FluentValidation antes de cada handler.
+            Si hay errores de validación, lanza ValidationException que el
+            GlobalExceptionHandlerMiddleware convierte en respuesta HTTP 400.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Auth.LoginCommand">
+            <summary>
+            Command for user authentication
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Commands.Auth.LoginCommand.#ctor(System.String,System.String)">
+            <summary>
+            Command for user authentication
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Auth.LoginCommandHandler">
+            <summary>
+            Handler for LoginCommand
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Auth.LoginCommandValidator">
+            <summary>
+            Validator for LoginCommand
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand">
+            <summary>
+            Command para crear un nuevo corte de caja
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.CajeroID">
+            <summary>
+            ID del cajero
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.FechaInicio">
+            <summary>
+            Fecha de inicio del período
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.FechaFin">
+            <summary>
+            Fecha de fin del período
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.FechaCorte">
+            <summary>
+            Fecha del corte
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TurnoDescripcion">
+            <summary>
+            Descripción del turno
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalEsperadoEfectivo">
+            <summary>
+            Total esperado en efectivo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalEsperadoTarjeta">
+            <summary>
+            Total esperado en tarjeta
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalEsperadoTransferencia">
+            <summary>
+            Total esperado en transferencia
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalEsperadoOtros">
+            <summary>
+            Total esperado en otros métodos
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalEsperado">
+            <summary>
+            Total general esperado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalDeclaradoEfectivo">
+            <summary>
+            Total declarado en efectivo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalDeclaradoTarjeta">
+            <summary>
+            Total declarado en tarjeta
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalDeclaradoTransferencia">
+            <summary>
+            Total declarado en transferencia
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalDeclaradoOtros">
+            <summary>
+            Total declarado en otros métodos
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.TotalDeclarado">
+            <summary>
+            Total general declarado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.MontoAjuste">
+            <summary>
+            Monto del ajuste
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.MotivoAjuste">
+            <summary>
+            Motivo del ajuste
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.Observaciones">
+            <summary>
+            Observaciones generales
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand.FondoInicial">
+            <summary>
+            Fondo inicial de caja
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandHandler">
+            <summary>
+            Handler para crear un nuevo corte de caja
+            Usa el agregado de dominio CashClosingPure para la lógica de negocio
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommandValidator">
+            <summary>
+            Validador para el comando de creación de corte de caja
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingResponse">
+            <summary>
+            Respuesta de la creación de un corte de caja
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.CashClosings.CreateCashClosingResponse.CorteID">
+            <summary>
+            ID del corte de caja creado
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.CreateClientCommand">
+            <summary>
+            Comando para crear un nuevo cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.Name">
+            <summary>
+            Nombre completo del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.Phone">
+            <summary>
+            Número telefónico (requerido, único)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.Email">
+            <summary>
+            Email (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.Address">
+            <summary>
+            Dirección (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.Rfc">
+            <summary>
+            RFC - Registro Federal de Contribuyentes (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientCommand.CreditLimit">
+            <summary>
+            Límite de crédito (opcional, default: 0)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.CreateClientResult">
+            <summary>
+            Resultado de la creación de un cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.Id">
+            <summary>
+            ID del cliente creado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.CustomerNumber">
+            <summary>
+            Número de cliente generado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.Name">
+            <summary>
+            Nombre del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.Phone">
+            <summary>
+            Número telefónico del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.Email">
+            <summary>
+            Email del cliente (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.CreateClientResult.RegisteredAt">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.CreateClientCommandHandler">
+            <summary>
+            Handler que implementa el patrón DDD para crear clientes.
+            Usa el agregado ClientPure y el repositorio de dominio.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.CreateClientCommandValidator">
+            <summary>
+            Validador para CreateClientCommand usando FluentValidation
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.DeactivateClientCommand">
+            <summary>
+            Comando para desactivar un cliente (soft delete)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.DeactivateClientCommand.ClientId">
+            <summary>
+            ID del cliente a desactivar
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.DeactivateClientCommandHandler">
+            <summary>
+            Handler para desactivar un cliente (soft delete)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.ToggleClientStatusCommand">
+            <summary>
+            Comando para alternar el estado activo/inactivo de un cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.ToggleClientStatusCommand.ClientId">
+            <summary>
+            ID del cliente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.ToggleClientStatusResult">
+            <summary>
+            Resultado del cambio de estado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.ToggleClientStatusResult.ClientId">
+            <summary>
+            ID del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.ToggleClientStatusResult.IsActive">
+            <summary>
+            Nuevo estado activo (true) o inactivo (false)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.ToggleClientStatusCommandHandler">
+            <summary>
+            Handler para alternar el estado activo/inactivo de un cliente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.UpdateClientCommand">
+            <summary>
+            Comando para actualizar un cliente existente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.ClientId">
+            <summary>
+            ID del cliente a actualizar
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.Name">
+            <summary>
+            Nuevo nombre (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.PhoneNumber">
+            <summary>
+            Nuevo teléfono (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.Email">
+            <summary>
+            Nuevo email (opcional, null para limpiar)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.Address">
+            <summary>
+            Nueva dirección (opcional, null para limpiar)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.Rfc">
+            <summary>
+            Nuevo RFC (opcional, null para limpiar)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientCommand.CreditLimit">
+            <summary>
+            Nuevo límite de crédito (opcional)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.UpdateClientResult">
+            <summary>
+            Resultado de la actualización de un cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientResult.ClientId">
+            <summary>
+            ID del cliente actualizado
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientResult.CustomerNumber">
+            <summary>
+            Número de cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Clients.UpdateClientResult.Name">
+            <summary>
+            Nombre del cliente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.UpdateClientCommandHandler">
+            <summary>
+            Handler para actualizar un cliente existente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Clients.UpdateClientCommandValidator">
+            <summary>
+            Validador para UpdateClientCommand usando FluentValidation
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand">
+            <summary>
+            Comando para crear un nuevo descuento en el catálogo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.Name">
+            <summary>
+            Nombre del descuento (debe ser único)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.Type">
+            <summary>
+            Tipo de descuento: "None", "Percentage", "FixedAmount"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.Value">
+            <summary>
+            Valor del descuento (0 para None, >0 para Percentage y FixedAmount)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.MinOrderAmount">
+            <summary>
+            Monto mínimo de orden (ignorado — sin columna en BD actualmente)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.StartDate">
+            <summary>
+            Fecha de inicio de validez en formato "yyyy-MM-dd" (default: hoy si no se proporciona)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand.EndDate">
+            <summary>
+            Fecha de fin de validez en formato "yyyy-MM-dd" (opcional)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommandHandler">
+            <summary>
+            Handler para crear un nuevo descuento usando el agregado DiscountPure.
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommandHandler.ParseDiscountType(System.String)">
+            <summary>
+            Traduce el tipo de descuento del frontend al value object de dominio.
+            Acepta: "None", "Percentage", "FixedAmount" (y sus equivalentes en mayúsculas)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommandHandler.MapToDto(LaundryManagement.Domain.Aggregates.Discounts.DiscountPure)">
+            <summary>
+            Mapea el agregado a DTO con los nombres que espera el frontend.
+            Type: "None" | "Percentage" | "FixedAmount"
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.CreateDiscountCommandValidator">
+            <summary>
+            Validador para CreateDiscountCommand usando FluentValidation
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.DeleteDiscountCommand">
+            <summary>
+            Comando para eliminar un descuento del catálogo (hard delete).
+            El descuento de tipo NONE no puede ser eliminado.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.DeleteDiscountCommandHandler">
+            <summary>
+            Handler para eliminar un descuento.
+            Verifica que no sea el descuento especial "Sin descuento" (tipo NONE).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.ToggleDiscountStatusCommand">
+            <summary>
+            Comando para alternar el estado activo/inactivo de un descuento.
+            El descuento de tipo NONE no puede ser desactivado (se valida en el agregado).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.ToggleDiscountStatusCommandHandler">
+            <summary>
+            Handler para alternar el estado activo/inactivo de un descuento.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand">
+            <summary>
+            Comando para actualizar un descuento existente.
+            Los campos opcionales que no se envían se mantienen con su valor actual.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.DiscountId">
+            <summary>
+            ID del descuento a actualizar (se asigna desde la URL en el controller)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.Type">
+            <summary>
+            Tipo de descuento: "None", "Percentage", "FixedAmount"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.MinOrderAmount">
+            <summary>
+            Ignorado — sin columna en BD actualmente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.StartDate">
+            <summary>
+            Fecha de inicio en formato "yyyy-MM-dd". Null = mantener actual.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.EndDate">
+            <summary>
+            Fecha de fin en formato "yyyy-MM-dd". Null = mantener actual. "" = limpiar.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.IsActive">
+            <summary>
+            Ignorado — usar PATCH /status para cambiar estado activo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand.UpdatedAt">
+            <summary>
+            Ignorado — no persistido actualmente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommandHandler">
+            <summary>
+            Handler para actualizar un descuento existente usando el agregado DiscountPure.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommandValidator">
+            <summary>
+            Validador para UpdateDiscountCommand usando FluentValidation
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto">
+            <summary>
+            DTO para el pago inicial opcional al crear una orden
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto.Amount">
+            <summary>
+            Monto del pago inicial (debe ser mayor a 0 y no exceder el total de la orden)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto.PaymentMethodId">
+            <summary>
+            ID del método de pago (FK a MetodosPago)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto.Reference">
+            <summary>
+            Referencia del pago (opcional, requerida si el método la requiere)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto.Notes">
+            <summary>
+            Observaciones del pago
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderCommand">
+            <summary>
+            Command para crear una nueva orden usando DDD
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Orders.CreateOrderCommand.InitialPayment">
+            <summary>
+            Pago inicial opcional al crear la orden
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderLineItemDto">
+            <summary>
+            DTO para los items de la orden en el comando de creación
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderResult">
+            <summary>
+            Resultado del comando
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler">
+            <summary>
+            Handler que implementa el patrón DDD para crear órdenes.
+            Usa el agregado OrderPure, el repositorio de dominio y Unit of Work para transacciones atómicas.
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Commands.Orders.CreateOrderCommandHandler.CreatePaymentMethodsJson(LaundryManagement.Application.Commands.Orders.CreateOrderInitialPaymentDto)">
+            <summary>
+            Crea el JSON de métodos de pago esperado por SP_RegistrarPago
+            Formato: [{"MetodoPagoID": 2, "Monto": 300.00, "Referencia": ""}]
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Orders.CreateOrderCommandValidator">
+            <summary>
+            Validador para el comando CreateOrder
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommand">
+            <summary>
+            Command para crear un nuevo tipo de prenda usando DDD
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommand.Name">
+            <summary>
+            Nombre del tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommand.Description">
+            <summary>
+            Descripción del tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommandHandler">
+            <summary>
+            Handler que implementa el patrón DDD para crear tipos de prenda.
+            Usa el agregado ServiceGarmentPure y el repositorio de dominio.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommandValidator">
+            <summary>
+            Validador para el comando CreateServiceGarment
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.DeleteServiceGarmentCommand">
+            <summary>
+            Command para eliminar un tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.DeleteServiceGarmentCommand.ServiceGarmentId">
+            <summary>
+            ID del tipo de prenda a eliminar
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.DeleteServiceGarmentCommandHandler">
+            <summary>
+            Handler para eliminar un tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.ToggleServiceGarmentStatusCommand">
+            <summary>
+            Command para activar o desactivar un tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.ToggleServiceGarmentStatusCommand.ServiceGarmentId">
+            <summary>
+            ID del tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.ToggleServiceGarmentStatusCommand.IsActive">
+            <summary>
+            Estado deseado (true = activo, false = inactivo)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.ToggleServiceGarmentStatusCommandHandler">
+            <summary>
+            Handler para activar/desactivar un tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommand">
+            <summary>
+            Command para actualizar un tipo de prenda existente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommand.ServiceGarmentId">
+            <summary>
+            ID del tipo de prenda a actualizar
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommand.Name">
+            <summary>
+            Nuevo nombre del tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommand.Description">
+            <summary>
+            Nueva descripción del tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommandHandler">
+            <summary>
+            Handler para actualizar un tipo de prenda existente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommandValidator">
+            <summary>
+            Validador para el comando UpdateServiceGarment
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServicePrices.CreateServicePriceCommand">
+            <summary>
+            Comando para crear un nuevo precio servicio-prenda (junction table).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServicePrices.DeleteServicePriceCommand">
+            <summary>
+            Comando para eliminar (desactivar) un precio servicio-prenda por su ID.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.ServicePrices.ToggleServicePriceStatusCommand">
+            <summary>
+            Comando para alternar el estado activo/inactivo de un precio servicio-prenda.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Services.CreateServiceCommand">
+            <summary>
+            Command para crear un nuevo servicio usando DDD
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Services.CreateServiceCommand.PricePerKg">
+            <summary>
+            Precio por unidad (para piezas) o por kilo (para servicios por peso)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Commands.Services.CreateServiceCommandHandler">
+            <summary>
+            Handler que implementa el patrón DDD para crear servicios.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Services.UpdateServicePriceCommand.ServicePriceId">
+            <summary>
+            ID del precio (se asigna desde la URL en el controller)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Commands.Services.UpdateServicePriceCommand.UnitPrice">
+            <summary>
+            Nuevo precio unitario (viene del body)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Auth.AuthenticatedUserDto">
+            <summary>
+            DTO for internal use when generating JWT tokens
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Auth.LoginResponseDto">
+            <summary>
+            DTO for login response
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Auth.UserDto">
+            <summary>
+            DTO for user information returned to the frontend
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Auth.ValidateTokenResponseDto">
+            <summary>
+            DTO for token validation response
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Clients.ClientDto">
+            <summary>
+            DTO que representa la información completa de un cliente.
+            Usado para respuestas de queries y lectura de datos.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Id">
+            <summary>
+            ID único del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.CustomerNumber">
+            <summary>
+            Número de cliente único (formato: CLT-YYYYMMDD-NNNN)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Name">
+            <summary>
+            Nombre completo del cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Phone">
+            <summary>
+            Número telefónico
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Email">
+            <summary>
+            Email (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Address">
+            <summary>
+            Dirección (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.Rfc">
+            <summary>
+            RFC - Registro Federal de Contribuyentes (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.CreditLimit">
+            <summary>
+            Límite de crédito
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.CurrentBalance">
+            <summary>
+            Saldo actual
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.IsActive">
+            <summary>
+            Indica si el cliente está activo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.CreatedAt">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.CreatedBy">
+            <summary>
+            ID del usuario que registró el cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.HasCreditAvailable">
+            <summary>
+            Indica si el cliente tiene crédito disponible (computed)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Clients.ClientDto.AvailableCredit">
+            <summary>
+            Crédito disponible = CreditLimit - CurrentBalance (computed)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Discounts.DiscountDto">
+            <summary>
+            DTO que representa un descuento del catálogo.
+            Los nombres de propiedades coinciden con el contrato del frontend.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.Type">
+            <summary>
+            Tipo: "None", "Percentage", "FixedAmount"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.MinOrderAmount">
+            <summary>
+            Monto mínimo de orden (no persistido actualmente, siempre null)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.StartDate">
+            <summary>
+            Fecha de inicio de validez en formato "yyyy-MM-dd"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.EndDate">
+            <summary>
+            Fecha de fin de validez en formato "yyyy-MM-dd" (o null)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.CreatedAt">
+            <summary>
+            Fecha de creación (derivada de StartDate como "yyyy-MM-dd'T'00:00:00")
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.DTOs.Discounts.DiscountDto.UpdatedAt">
+            <summary>
+            Fecha de última actualización (no persistida actualmente, siempre null)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Orders.OrderPaymentDto">
+            <summary>
+            DTO simplificado de pago para incluir en la respuesta de órdenes.
+            Mapeado al tipo Payment del frontend (sin relaciones anidadas).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Orders.OrderSummaryDto">
+            <summary>
+            DTO ligero para resultados de búsqueda (GET /orders/search).
+            Alineado con el tipo OrderSummary del frontend.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Payments.CreatePaymentRequest">
+            <summary>
+            DTO de entrada para crear un pago desde el frontend.
+            Mapea 1:1 con el tipo CreatePaymentInput del frontend.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServiceGarments.CreateServiceGarmentDto">
+            <summary>
+            DTO para crear un nuevo tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServiceGarments.ServiceGarmentDto">
+            <summary>
+            DTO que representa un tipo de prenda para el frontend.
+            Coincide con el tipo TypeScript ServiceGarment del plan.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServiceGarments.UpdateServiceGarmentDto">
+            <summary>
+            DTO para actualizar un tipo de prenda existente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServicePrices.CreateServicePriceDto">
+            <summary>
+            DTO para crear un nuevo precio de servicio-prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServicePrices.ServicePriceDto">
+            <summary>
+            DTO que representa un precio de servicio-prenda para el frontend.
+            Coincide con el tipo TypeScript ServiceGarment del plan.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.ServicePrices.UpdateServicePriceDto">
+            <summary>
+            DTO para actualizar un precio de servicio-prenda existente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Services.CreateServiceDto">
+            <summary>
+            DTO para crear un nuevo servicio
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Services.ServiceDto">
+            <summary>
+            DTO que representa un servicio para el frontend.
+            Coincide con el tipo TypeScript Service del plan.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Services.CategoryDto">
+            <summary>
+            DTO simplificado para la categoría dentro de ServiceDto
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.DTOs.Services.UpdateServiceDto">
+            <summary>
+            DTO para actualizar un servicio existente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.EventHandlers.CashClosings.GenerateReportOnCashClosingCreatedHandler">
+            <summary>
+            Genera reportes configurados en ConfiguracionReporte después de registrar un corte de caja.
+            Fire-and-forget: cualquier fallo se loguea y registra en HistorialReporte, nunca propaga al caller.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.EventHandlers.Orders.PrintTicketOnOrderCreatedHandler">
+            <summary>
+            Maneja el evento OrderCreated publicado post-commit.
+            Los fallos de impresión se capturan y loguean — nunca se propagan al caller.
+            Auto-descubierto por MediatR desde RegisterServicesFromAssembly en Application/DI.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Interfaces.IJwtTokenService">
+            <summary>
+            Service interface for JWT token generation and validation
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IJwtTokenService.GenerateToken(LaundryManagement.Application.DTOs.Auth.AuthenticatedUserDto)">
+            <summary>
+            Generates a JWT token for an authenticated user
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IJwtTokenService.ValidateToken(System.String)">
+            <summary>
+            Validates a JWT token and returns the user ID if valid
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IJwtTokenService.ExtractUserIdFromToken(System.String)">
+            <summary>
+            Extracts the user ID from a token without full validation (for logging)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.GetAmountPaidByOrderAsync(System.Int32)">
+            <summary>Retorna el total pagado para una orden específica (excluye cancelados).</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.GetAmountsPaidByOrdersAsync(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>Retorna el total pagado agrupado por orden (excluye cancelados). Clave = OrdenId.</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.GetPaymentsByOrdersAsync(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>Retorna la lista de pagos de cada orden (excluye cancelados). Clave = OrdenId.</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.CreatePaymentAsync(LaundryManagement.Application.DTOs.Payments.CreatePaymentRequest)">
+            <summary>Crea un pago a partir del input del frontend y retorna el pago creado.</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.GetPaymentByIdAsync(System.Int32)">
+            <summary>Retorna un pago por su ID, o null si no existe o está cancelado.</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.GetPaymentsByOrderIdAsync(System.Int32)">
+            <summary>Retorna los pagos activos de una orden.</summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPagoService.CancelPaymentAsync(System.Int32,System.Int32)">
+            <summary>Cancela (borrado lógico) un pago existente.</summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Interfaces.IPasswordHasher">
+            <summary>
+            Service interface for password hashing and verification
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPasswordHasher.HashPassword(System.String)">
+            <summary>
+            Hashes a plain text password
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.IPasswordHasher.VerifyPassword(System.String,System.String)">
+            <summary>
+            Verifies a plain text password against a hash
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Interfaces.ITicketPrinterService.PrintOrderTicketAsync(LaundryManagement.Application.Queries.Orders.OrderResponseDto,System.Threading.CancellationToken)">
+            <summary>
+            Imprime el ticket de recepción para la orden dada.
+            Las implementaciones deben capturar sus propias excepciones (best-effort).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Notifications.DomainEventNotification`1">
+            <summary>
+            Wrapper que permite publicar un DomainEvent (sin dependencia de MediatR) como INotification.
+            Se instancia en el command handler, después de que la transacción de BD confirma.
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Notifications.DomainEventNotification`1.#ctor(`0)">
+            <summary>
+            Wrapper que permite publicar un DomainEvent (sin dependencia de MediatR) como INotification.
+            Se instancia en el command handler, después de que la transacción de BD confirma.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Auth.GetUserByIdQuery">
+            <summary>
+            Query for getting a user by ID
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Queries.Auth.GetUserByIdQuery.#ctor(System.Int32)">
+            <summary>
+            Query for getting a user by ID
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Auth.GetUserByIdQueryHandler">
+            <summary>
+            Handler for GetUserByIdQuery
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Auth.ValidateTokenQuery">
+            <summary>
+            Query for validating a JWT token
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Queries.Auth.ValidateTokenQuery.#ctor(System.String)">
+            <summary>
+            Query for validating a JWT token
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Auth.ValidateTokenQueryHandler">
+            <summary>
+            Handler for ValidateTokenQuery
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.CashClosings.GetTotalesDiaQuery">
+            <summary>
+            Query para obtener los totales de pagos del día para un cajero específico
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.Application.Queries.CashClosings.GetTotalesDiaQuery.#ctor(System.DateTime,System.Int32)">
+            <summary>
+            Query para obtener los totales de pagos del día para un cajero específico
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.CashClosings.GetTotalesDiaQueryHandler">
+            <summary>
+            Handler para obtener los totales de pagos del día
+            Usa el repositorio de dominio para mantener arquitectura DDD pura
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto">
+            <summary>
+            DTO que representa los totales de pagos del día por método de pago
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto.TotalEfectivo">
+            <summary>
+            Total en efectivo
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto.TotalTarjeta">
+            <summary>
+            Total en tarjeta
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto.TotalTransferencia">
+            <summary>
+            Total en transferencia
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto.TotalOtros">
+            <summary>
+            Total en otros métodos de pago
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.CashClosings.TotalesDiaDto.TotalPagado">
+            <summary>
+            Total general pagado
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Clients.GetAllClientsQuery">
+            <summary>
+            Query para obtener todos los clientes con filtros opcionales
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Clients.GetAllClientsQuery.Search">
+            <summary>
+            Búsqueda en nombre, teléfono o número de cliente
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Clients.GetAllClientsQuery.IsActive">
+            <summary>
+            Filtro por estado activo (null = todos, true = activos, false = inactivos)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Clients.GetAllClientsQuery.SortBy">
+            <summary>
+            Campo por el cual ordenar: "name" o "createdAt"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Clients.GetAllClientsQuery.SortOrder">
+            <summary>
+            Dirección del ordenamiento: "asc" o "desc"
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Clients.GetAllClientsQueryHandler">
+            <summary>
+            Handler para obtener todos los clientes con filtros y ordenamiento
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Clients.GetClientByIdQuery">
+            <summary>
+            Query para obtener un cliente por su ID
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Clients.GetClientByIdQuery.ClientId">
+            <summary>
+            ID del cliente a buscar
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Clients.GetClientByIdQueryHandler">
+            <summary>
+            Handler para obtener un cliente por su ID
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery">
+            <summary>
+            Query para obtener todos los descuentos con filtros y ordenamiento opcionales.
+            Los nombres de propiedades coinciden con los query params que envía el frontend.
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery.Search">
+            <summary>
+            Búsqueda por nombre (case-insensitive contains)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery.Tipo">
+            <summary>
+            Filtro por tipo: NONE, PERCENTAGE, FIXED
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery.Activo">
+            <summary>
+            Filtro por estado activo (null = todos)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery.OrdenarPor">
+            <summary>
+            Campo de ordenamiento: "name" | "value"
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQuery.Orden">
+            <summary>
+            Dirección del ordenamiento: "asc" | "desc"
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Discounts.GetAllDiscountsQueryHandler">
+            <summary>
+            Handler para obtener todos los descuentos con filtros y ordenamiento.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Discounts.GetDiscountByIdQuery">
+            <summary>
+            Query para obtener un descuento por su ID
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Discounts.GetDiscountByIdQueryHandler">
+            <summary>
+            Handler para obtener un descuento por su ID.
+            Retorna null si no existe (el controller maneja el 404).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.GetOrderByIdQuery">
+            <summary>
+            Query para obtener una orden por su ID
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.GetOrderByIdQueryHandler">
+            <summary>
+            Handler para obtener una orden por ID usando el patrón DDD
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.GetOrdersByClientQuery">
+            <summary>
+            Query para obtener todas las órdenes de un cliente
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.GetOrdersByClientQueryHandler">
+            <summary>
+            Handler para obtener órdenes por cliente usando el patrón DDD
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.OrderDto">
+            <summary>
+            DTO para representar una orden en las queries
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.OrderLineItemDto">
+            <summary>
+            DTO para items de la orden
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.OrderDiscountDto">
+            <summary>
+            DTO para descuentos de la orden
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.OrderResponseDto">
+            <summary>
+            DTO de respuesta completo para el módulo /api/orders.
+            Estructura alineada con el tipo Order del frontend (incluye relaciones pobladas).
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.Orders.OrderClientDto">
+            <summary>
+            Info básica del cliente incluida en la respuesta de orden.
+            Mapeado al tipo Customer del frontend.
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentByIdQuery">
+            <summary>
+            Query para obtener un tipo de prenda por su ID
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentByIdQuery.ServiceGarmentId">
+            <summary>
+            ID del tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentByIdQueryHandler">
+            <summary>
+            Handler para obtener un tipo de prenda por ID usando el patrón DDD
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentsQuery">
+            <summary>
+            Query para obtener una lista de tipos de prenda con filtros opcionales
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentsQuery.Search">
+            <summary>
+            Filtro de búsqueda por nombre (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentsQuery.IsActive">
+            <summary>
+            Filtro por estado activo (opcional: null = todos, true = solo activos, false = solo inactivos)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServiceGarments.GetServiceGarmentsQueryHandler">
+            <summary>
+            Handler para obtener lista de tipos de prenda con filtros
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByComboQuery">
+            <summary>
+            Query para obtener un precio específico por la combinación de servicio y tipo de prenda
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByComboQuery.ServiceId">
+            <summary>
+            ID del servicio
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByComboQuery.ServiceGarmentId">
+            <summary>
+            ID del tipo de prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByComboQueryHandler">
+            <summary>
+            Handler para obtener un precio por la combinación servicio-prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByIdQuery">
+            <summary>
+            Query para obtener un precio de servicio-prenda por su ID
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByIdQuery.ServicePriceId">
+            <summary>
+            ID del precio de servicio-prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePriceByIdQueryHandler">
+            <summary>
+            Handler para obtener un precio de servicio-prenda por ID
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePricesQuery">
+            <summary>
+            Query para obtener precios de servicio-prenda con filtros opcionales
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePricesQuery.ServiceId">
+            <summary>
+            Filtro por ID de servicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePricesQuery.ServiceGarmentId">
+            <summary>
+            Filtro por ID de tipo de prenda (opcional)
+            </summary>
+        </member>
+        <member name="P:LaundryManagement.Application.Queries.ServicePrices.GetServicePricesQuery.IsActive">
+            <summary>
+            Filtro por estado activo (opcional: null = todos, true = solo activos, false = solo inactivos)
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.Application.Queries.ServicePrices.GetServicePricesQueryHandler">
+            <summary>
+            Handler para obtener precios de servicio-prenda con filtros
+            </summary>
+        </member>
+    </members>
+</doc>

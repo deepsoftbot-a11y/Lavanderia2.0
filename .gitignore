@@ -21,7 +21,6 @@ Migrations/*.Designer.cs
 
 # Node / React
 node_modules/
-dist/
 .env
 .env.local
 .env.*.local
@@ -39,9 +38,6 @@ desktop.ini
 # Logs de Serilog (archivos .txt generados en runtime)
 Backend/src/**/logs/
 
-# Build de producción
-Backend/publish/
-Frontend/dist/
 
 # Claude Code
 .claude/

@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LaundryManagement.API</name>
+    </assembly>
+    <members>
+        <member name="T:LaundryManagement.API.Controllers.AuthController">
+            <summary>
+            Controller for authentication endpoints
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.AuthController.Login(LaundryManagement.Application.Commands.Auth.LoginCommand)">
+            <summary>
+            Authenticates a user with username and password
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.AuthController.ValidateToken">
+            <summary>
+            Validates a JWT token and returns user information
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.AuthController.Logout">
+            <summary>
+            Logs out the current user (JWT is stateless, so this just confirms the action)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.GetCategories(System.Threading.CancellationToken)">
+            <summary>Obtiene todas las categorías</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.GetCategoryById(System.Int32,System.Threading.CancellationToken)">
+            <summary>Obtiene una categoría por su ID</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.CreateCategory(LaundryManagement.Application.Commands.Categories.CreateCategoryCommand,System.Threading.CancellationToken)">
+            <summary>Crea una nueva categoría</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.UpdateCategory(System.Int32,LaundryManagement.API.Controllers.UpdateCategoryBody,System.Threading.CancellationToken)">
+            <summary>Actualiza una categoría (patch semántico: solo aplica los campos recibidos)</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.DeleteCategory(System.Int32,System.Threading.CancellationToken)">
+            <summary>Elimina una categoría</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CategoriesController.ToggleCategoryStatus(System.Int32,System.Threading.CancellationToken)">
+            <summary>Alterna el estado activo/inactivo de una categoría</summary>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.ClientesController">
+            <summary>
+            Controlador para operaciones CRUD de clientes
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.GetAll(System.String,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>
+            GET /api/clientes - Lista todos los clientes con filtros opcionales
+            </summary>
+            <param name="search">Término de búsqueda (nombre, teléfono, número de cliente)</param>
+            <param name="isActive">Filtrar por estado activo (null = todos)</param>
+            <param name="sortBy">Campo de ordenamiento: name | createdAt</param>
+            <param name="sortOrder">Dirección de ordenamiento: asc | desc</param>
+            <response code="200">Lista de clientes (puede estar vacía)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.GetById(System.Int32)">
+            <summary>
+            GET /api/clientes/{id} - Obtiene un cliente por ID
+            </summary>
+            <param name="id">ID del cliente</param>
+            <response code="200">Cliente encontrado</response>
+            <response code="404">Cliente no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.Create(LaundryManagement.Application.Commands.Clients.CreateClientCommand)">
+            <summary>
+            POST /api/clientes - Crea un nuevo cliente
+            </summary>
+            <param name="command">Datos del cliente a crear</param>
+            <response code="201">Cliente creado exitosamente</response>
+            <response code="400">Datos inválidos o regla de negocio violada</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.Update(System.Int32,LaundryManagement.Application.Commands.Clients.UpdateClientCommand)">
+            <summary>
+            PUT /api/clientes/{id} - Actualiza un cliente existente
+            </summary>
+            <param name="id">ID del cliente a actualizar</param>
+            <param name="command">Datos actualizados</param>
+            <response code="200">Cliente actualizado exitosamente</response>
+            <response code="400">Datos inválidos o regla de negocio violada</response>
+            <response code="404">Cliente no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.Delete(System.Int32)">
+            <summary>
+            DELETE /api/clientes/{id} - Desactiva un cliente (soft delete)
+            </summary>
+            <param name="id">ID del cliente a desactivar</param>
+            <response code="204">Cliente desactivado exitosamente</response>
+            <response code="404">Cliente no encontrado</response>
+            <response code="409">No se puede desactivar (tiene saldo pendiente)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ClientesController.ToggleStatus(System.Int32)">
+            <summary>
+            PATCH /api/clientes/{id}/estado - Alterna el estado activo/inactivo del cliente
+            </summary>
+            <param name="id">ID del cliente</param>
+            <response code="200">Estado alternado exitosamente</response>
+            <response code="404">Cliente no encontrado</response>
+            <response code="409">No se puede desactivar (tiene saldo pendiente)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CortesCajaController.ObtenerTotalesDia(System.DateTime,System.Int32)">
+            <summary>
+            Obtiene los totales de pagos del día para un cajero específico
+            </summary>
+            <param name="fecha">Fecha del día</param>
+            <param name="cajeroId">ID del cajero</param>
+            <returns>Totales por método de pago</returns>
+            <response code="200">Totales obtenidos exitosamente</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CortesCajaController.CrearCorteDDD(LaundryManagement.Application.Commands.CashClosings.CreateCashClosingCommand)">
+            <summary>
+            Crea un nuevo corte de caja usando DDD
+            </summary>
+            <param name="command">Datos del corte de caja</param>
+            <returns>ID del corte registrado</returns>
+            <response code="200">Corte registrado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CortesCajaController.AjustarCorte(LaundryManagement.Application.DTOs.Cortes.AjustarCorteCajaRequest)">
+            <summary>
+            Ajusta el monto de un corte de caja existente
+            </summary>
+            <param name="request">Datos del ajuste</param>
+            <returns>Confirmación del ajuste</returns>
+            <response code="200">Ajuste realizado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+            <response code="404">Corte no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CortesCajaController.ConsultarHistorial(System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Consulta el historial de cortes de caja
+            </summary>
+            <param name="cajeroId">ID del cajero (opcional)</param>
+            <param name="fechaInicio">Fecha de inicio (opcional)</param>
+            <param name="fechaFin">Fecha de fin (opcional)</param>
+            <param name="soloConDiferencias">Mostrar solo cortes con diferencias</param>
+            <returns>Lista de cortes</returns>
+            <response code="200">Historial consultado exitosamente</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.CortesCajaController.VerDetalle(System.Int32)">
+            <summary>
+            Obtiene el detalle completo de un corte de caja
+            </summary>
+            <param name="corteId">ID del corte</param>
+            <returns>Detalle del corte</returns>
+            <response code="200">Detalle obtenido exitosamente</response>
+            <response code="404">Corte no encontrado</response>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.DescuentosController">
+            <summary>
+            Controlador para operaciones CRUD de descuentos del catálogo.
+            Resuelve a /api/descuentos por convención de [controller].
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.GetAll(System.String,System.String,System.Nullable{System.Boolean},System.String,System.String)">
+            <summary>
+            GET /api/descuentos - Lista todos los descuentos con filtros opcionales
+            </summary>
+            <param name="search">Término de búsqueda en nombre</param>
+            <param name="tipo">Filtrar por tipo: NONE, PERCENTAGE, FIXED</param>
+            <param name="activo">Filtrar por estado activo (null = todos)</param>
+            <param name="ordenarPor">Campo de ordenamiento: name | value</param>
+            <param name="orden">Dirección: asc | desc</param>
+            <response code="200">Lista de descuentos (puede estar vacía)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.GetById(System.Int32)">
+            <summary>
+            GET /api/descuentos/{id} - Obtiene un descuento por ID
+            </summary>
+            <param name="id">ID del descuento</param>
+            <response code="200">Descuento encontrado</response>
+            <response code="404">Descuento no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.Create(LaundryManagement.Application.Commands.Discounts.CreateDiscountCommand)">
+            <summary>
+            POST /api/descuentos - Crea un nuevo descuento
+            </summary>
+            <param name="command">Datos del descuento a crear</param>
+            <response code="201">Descuento creado exitosamente</response>
+            <response code="400">Datos inválidos</response>
+            <response code="409">Ya existe un descuento con ese nombre</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.Update(System.Int32,LaundryManagement.Application.Commands.Discounts.UpdateDiscountCommand)">
+            <summary>
+            PUT /api/descuentos/{id} - Actualiza un descuento existente
+            </summary>
+            <param name="id">ID del descuento a actualizar</param>
+            <param name="command">Datos actualizados</param>
+            <response code="200">Descuento actualizado exitosamente</response>
+            <response code="400">Datos inválidos</response>
+            <response code="404">Descuento no encontrado</response>
+            <response code="409">Ya existe un descuento con ese nombre</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.Delete(System.Int32)">
+            <summary>
+            DELETE /api/descuentos/{id} - Elimina un descuento
+            </summary>
+            <param name="id">ID del descuento a eliminar</param>
+            <response code="204">Descuento eliminado exitosamente</response>
+            <response code="404">Descuento no encontrado</response>
+            <response code="409">No se puede eliminar el descuento "Sin descuento"</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.DescuentosController.ToggleStatus(System.Int32)">
+            <summary>
+            PATCH /api/descuentos/{id}/estado - Alterna el estado activo/inactivo
+            </summary>
+            <param name="id">ID del descuento</param>
+            <response code="200">Estado alternado exitosamente</response>
+            <response code="404">Descuento no encontrado</response>
+            <response code="409">No se puede desactivar el descuento "Sin descuento"</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdenesController.GetOrderById(System.Int32)">
+            <summary>
+            Obtiene una orden por su ID usando DDD (RECOMENDADO)
+            </summary>
+            <param name="id">ID de la orden</param>
+            <returns>Detalles completos de la orden</returns>
+            <response code="200">Orden encontrada</response>
+            <response code="404">Orden no encontrada</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdenesController.GetOrdersByClient(System.Int32,System.Boolean)">
+            <summary>
+            Obtiene todas las órdenes de un cliente usando DDD (RECOMENDADO)
+            </summary>
+            <param name="clientId">ID del cliente</param>
+            <param name="includeDelivered">Incluir órdenes entregadas (default: true)</param>
+            <returns>Lista de órdenes del cliente</returns>
+            <response code="200">Lista de órdenes (puede estar vacía)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdenesController.CreateOrder(LaundryManagement.Application.Commands.Orders.CreateOrderCommand)">
+            <summary>
+            Crea una nueva orden de lavandería usando DDD (RECOMENDADO)
+            </summary>
+            <param name="command">Comando con los datos de la orden a crear</param>
+            <returns>Resultado con ID, folio y total de la orden creada</returns>
+            <response code="200">Orden creada exitosamente</response>
+            <response code="400">Datos de entrada inválidos o reglas de negocio violadas</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdenesController.CrearOrden(LaundryManagement.Application.DTOs.Ordenes.CrearOrdenRequest)">
+            <summary>
+            Crea una nueva orden de lavandería usando stored procedure (LEGACY)
+            </summary>
+            <param name="request">Datos de la orden a crear</param>
+            <returns>ID de la orden creada</returns>
+            <response code="200">Orden creada exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdenesController.CambiarEstado(LaundryManagement.Application.DTOs.Ordenes.CambiarEstadoOrdenRequest)">
+            <summary>
+            Cambia el estado de una orden existente
+            </summary>
+            <param name="request">Datos para cambiar el estado</param>
+            <returns>Confirmación del cambio de estado</returns>
+            <response code="200">Estado cambiado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+            <response code="404">Orden no encontrada</response>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.OrdersController">
+            <summary>
+            Controlador de órdenes — API unificada para el frontend.
+            Ruta base: /api/orders (inglés, consistente con el frontend).
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.GetOrders(System.String,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String)">
+            <summary>
+            Lista órdenes con filtros opcionales
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.SearchOrders(System.String)">
+            <summary>
+            Busca órdenes por texto (folio, nombre o teléfono de cliente)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.GetOrderById(System.Int32)">
+            <summary>
+            Obtiene una orden por su ID con cliente y pagos poblados
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.UpdateOrder(System.Int32,LaundryManagement.Application.Commands.Orders.UpdateOrderCommand)">
+            <summary>
+            Actualiza datos editables de una orden (fecha prometida, notas, ubicación, items)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.CancelOrder(System.Int32,System.Int32)">
+            <summary>
+            Cancela una orden (borrado lógico — cambia estado a Cancelada)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.UpdateOrderPaymentTotals(System.Int32)">
+            <summary>
+            Recalcula y retorna los totales de pago actualizados de una orden
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.GetPaymentsByOrderId(System.Int32)">
+            <summary>
+            Retorna los pagos activos de una orden
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.OrdersController.UpdateOrderStatus(System.Int32,LaundryManagement.API.Controllers.UpdateOrderStatusRequest)">
+            <summary>
+            Cambia el estado de una orden
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.UpdateOrderStatusRequest">
+            <summary>Request body para cambio de estado</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.UpdateOrderStatusRequest.#ctor(System.Int32,System.Int32)">
+            <summary>Request body para cambio de estado</summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.PagosController.RegistrarPago(LaundryManagement.Application.DTOs.Pagos.RegistrarPagoRequest)">
+            <summary>
+            Registra un nuevo pago para una orden
+            </summary>
+            <param name="request">Datos del pago a registrar</param>
+            <returns>ID del pago registrado</returns>
+            <response code="200">Pago registrado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.PagosController.ConsultarSaldoCliente(System.Int32)">
+            <summary>
+            Consulta el saldo pendiente de un cliente
+            </summary>
+            <param name="clienteId">ID del cliente</param>
+            <returns>Información del saldo del cliente</returns>
+            <response code="200">Saldo consultado exitosamente</response>
+            <response code="404">Cliente no encontrado</response>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.PaymentsController">
+            <summary>
+            Gestión de pagos — API orientada al frontend.
+            Ruta base: /api/payments (inglés, consistente con el frontend).
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.PaymentsController.CreatePayment(LaundryManagement.Application.Commands.Payments.CreatePaymentCommand)">
+            <summary>
+            Registra un nuevo pago para una orden
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.PaymentsController.GetPaymentById(System.Int32)">
+            <summary>
+            Obtiene un pago por su ID
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.PaymentsController.CancelPayment(System.Int32,System.Int32)">
+            <summary>
+            Cancela (borrado lógico) un pago existente
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ReportesController.VentasDiarias(System.DateTime)">
+            <summary>
+            Genera el reporte de ventas diarias
+            </summary>
+            <param name="fecha">Fecha del reporte (formato: yyyy-MM-dd)</param>
+            <returns>Resumen de ventas del día</returns>
+            <response code="200">Reporte generado exitosamente</response>
+            <response code="400">Fecha inválida</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.GetServices(System.String,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene todos los servicios con filtros opcionales
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.GetServiceById(System.Int32)">
+            <summary>
+            Obtiene un servicio por su ID
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.CreateService(LaundryManagement.Application.Commands.Services.CreateServiceCommand)">
+            <summary>
+            Crea un nuevo servicio
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.UpdateService(System.Int32,LaundryManagement.Application.Commands.Services.UpdateServiceCommand)">
+            <summary>
+            Actualiza un servicio existente
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.DeleteService(System.Int32)">
+            <summary>
+            Elimina un servicio
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.ToggleServiceStatus(System.Int32,System.Boolean)">
+            <summary>
+            Activa o desactiva un servicio
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosController.AddServicePrice(System.Int32,LaundryManagement.Application.Commands.Services.AddServicePriceCommand)">
+            <summary>
+            Agrega un precio específico para un tipo de prenda al servicio (legacy endpoint)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.GetServicePrices(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene todos los precios de servicios-prendas con filtros opcionales
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.GetServicePriceById(System.Int32)">
+            <summary>
+            Obtiene un precio de servicio-prenda por su ID
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.GetServicePriceByCombo(System.Int32,System.Int32)">
+            <summary>
+            Obtiene el precio para una combinación específica de servicio y tipo de prenda
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.CreateServicePrice(LaundryManagement.Application.Commands.ServicePrices.CreateServicePriceCommand)">
+            <summary>
+            Crea un nuevo precio servicio-prenda
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.UpdateServicePrice(System.Int32,LaundryManagement.API.Controllers.UpdateServicePriceBody)">
+            <summary>
+            Actualiza el precio de una combinación servicio-prenda existente
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.DeleteServicePrice(System.Int32)">
+            <summary>
+            Elimina un precio de servicio-prenda (desactivación lógica)
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.ServiciosPrendasController.ToggleServicePriceStatus(System.Int32)">
+            <summary>
+            Alterna el estado activo/inactivo de un precio servicio-prenda
+            </summary>
+        </member>
+        <member name="T:LaundryManagement.API.Controllers.UpdateServicePriceBody">
+            <summary>
+            Body para actualizar el precio de una combinación servicio-prenda
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.UpdateServicePriceBody.#ctor(System.Decimal)">
+            <summary>
+            Body para actualizar el precio de una combinación servicio-prenda
+            </summary>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.GetServiceGarments(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Obtiene todos los tipos de prenda con filtros opcionales
+            </summary>
+            <param name="search">Texto de búsqueda</param>
+            <param name="isActive">Filtrar por estado activo</param>
+            <returns>Lista de tipos de prenda</returns>
+            <response code="200">Lista de tipos de prenda (puede estar vacía)</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.GetServiceGarmentById(System.Int32)">
+            <summary>
+            Obtiene un tipo de prenda por su ID
+            </summary>
+            <param name="id">ID del tipo de prenda</param>
+            <returns>Detalles del tipo de prenda</returns>
+            <response code="200">Tipo de prenda encontrado</response>
+            <response code="404">Tipo de prenda no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.CreateServiceGarment(LaundryManagement.Application.Commands.ServiceGarments.CreateServiceGarmentCommand)">
+            <summary>
+            Crea un nuevo tipo de prenda
+            </summary>
+            <param name="command">Datos del tipo de prenda a crear</param>
+            <returns>ID del tipo de prenda creado</returns>
+            <response code="201">Tipo de prenda creado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.UpdateServiceGarment(System.Int32,LaundryManagement.Application.Commands.ServiceGarments.UpdateServiceGarmentCommand)">
+            <summary>
+            Actualiza un tipo de prenda existente
+            </summary>
+            <param name="id">ID del tipo de prenda</param>
+            <param name="command">Datos actualizados del tipo de prenda</param>
+            <returns>Confirmación de actualización</returns>
+            <response code="200">Tipo de prenda actualizado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+            <response code="404">Tipo de prenda no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.DeleteServiceGarment(System.Int32)">
+            <summary>
+            Elimina un tipo de prenda
+            </summary>
+            <param name="id">ID del tipo de prenda</param>
+            <returns>Confirmación de eliminación</returns>
+            <response code="200">Tipo de prenda eliminado exitosamente</response>
+            <response code="404">Tipo de prenda no encontrado</response>
+        </member>
+        <member name="M:LaundryManagement.API.Controllers.TiposPrendaController.ToggleServiceGarmentStatus(System.Int32,System.Boolean)">
+            <summary>
+            Activa o desactiva un tipo de prenda
+            </summary>
+            <param name="id">ID del tipo de prenda</param>
+            <param name="isActive">Nuevo estado (true = activo, false = inactivo)</param>
+            <returns>Confirmación de cambio de estado</returns>
+            <response code="200">Estado del tipo de prenda actualizado</response>
+            <response code="404">Tipo de prenda no encontrado</response>
+        </member>
+    </members>
+</doc>
