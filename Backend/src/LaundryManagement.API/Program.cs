@@ -1,10 +1,11 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Text;
+using System.Threading.RateLimiting;
 using LaundryManagement.API.Middleware;
 using LaundryManagement.Application;
 using LaundryManagement.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -42,11 +43,14 @@ builder.Services.AddControllers();
 builder.Services.AddApplication();
 
 // Add Infrastructure layer services (DbContext, Dapper)
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration, builder.Environment.IsDevelopment());
 
 // Add JWT Authentication
 var secretKey = builder.Configuration["JwtSettings:SecretKey"]
-    ?? throw new InvalidOperationException("JwtSettings:SecretKey not configured");
+    ?? throw new InvalidOperationException("JwtSettings:SecretKey no configurado. Establecer via variable de entorno JwtSettings__SecretKey.");
+
+if (secretKey.Length < 32)
+    throw new InvalidOperationException("JwtSettings:SecretKey debe tener al menos 32 caracteres.");
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -125,6 +129,9 @@ builder.Services.AddSwaggerGen(options =>
         options.IncludeXmlComments(applicationXmlPath);
     }
 
+    // Avoid schema ID conflicts for DTOs with same name in different namespaces
+    options.CustomSchemaIds(type => type.FullName);
+
     // Group endpoints by controller
     options.TagActionsBy(api =>
     {
@@ -141,15 +148,31 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-// Add CORS
+// Add CORS — orígenes permitidos desde configuración
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()
+    ?? ["http://localhost:5173"];
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
+});
+
+// Rate limiting — protege el endpoint de login contra fuerza bruta
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("login", limiterOptions =>
+    {
+        limiterOptions.PermitLimit = 5;
+        limiterOptions.Window = TimeSpan.FromMinutes(1);
+        limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        limiterOptions.QueueLimit = 0;
+    });
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 });
 
 // QuestPDF — Community license
@@ -180,6 +203,7 @@ if (app.Environment.IsDevelopment())
 
 // IMPORTANTE: UseCors DEBE estar antes de UseHttpsRedirection y UseAuthentication/UseAuthorization
 app.UseCors("AllowReactApp");
+app.UseRateLimiter();
 
 // Solo redireccionar a HTTPS en producción
 if (!app.Environment.IsDevelopment())

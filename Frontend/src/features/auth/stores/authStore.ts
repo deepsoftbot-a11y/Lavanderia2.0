@@ -29,6 +29,17 @@ const getStoredToken = (): string | null => {
   return localStorage.getItem(AUTH_CONFIG.tokenKey);
 };
 
+// Verifica localmente si el JWT ya expiró, sin hacer una llamada al API.
+// Evita requests innecesarios al arrancar la app con un token vencido.
+const isTokenExpired = (token: string): boolean => {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return typeof payload.exp === 'number' && Date.now() >= payload.exp * 1000;
+  } catch {
+    return true;
+  }
+};
+
 const getStoredUser = (): User | null => {
   const userJson = localStorage.getItem(AUTH_CONFIG.userKey);
   if (!userJson) return null;
@@ -138,6 +149,16 @@ export const useAuthStore = create<AuthStore>()(
       const storedUser = getStoredUser();
 
       if (!token || !storedUser) {
+        set((state) => {
+          state.isLoading = false;
+          state.isAuthenticated = false;
+        });
+        return;
+      }
+
+      // Verificar expiración localmente antes de hacer una llamada al API
+      if (isTokenExpired(token)) {
+        clearStoredAuth();
         set((state) => {
           state.isLoading = false;
           state.isAuthenticated = false;

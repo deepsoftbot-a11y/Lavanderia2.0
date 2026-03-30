@@ -7,6 +7,7 @@ namespace LaundryManagement.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
+[ApiExplorerSettings(IgnoreApi = true)]
 public class DiagnosticsController : ControllerBase
 {
     private readonly IDbConnectionFactory _connectionFactory;

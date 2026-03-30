@@ -13,25 +13,31 @@ namespace LaundryManagement.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration, bool isDevelopment = false)
     {
         // Register DbContext for EF Core (Writes)
         services.AddDbContext<LaundryDbContext>(options =>
+        {
             options.UseSqlServer(
                 configuration.GetConnectionString("DefaultConnection"),
                 sqlOptions =>
                 {
                     sqlOptions.EnableRetryOnFailure(
-                        maxRetryCount: 5,
-                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        maxRetryCount: 3,
+                        maxRetryDelay: TimeSpan.FromSeconds(10),
                         errorNumbersToAdd: null
                     );
-                    sqlOptions.CommandTimeout(30); // 30 segundos timeout para comandos SQL
+                    sqlOptions.CommandTimeout(30);
                 }
-            )
-            .EnableSensitiveDataLogging() // Solo para desarrollo - mostrar parámetros SQL
-            .EnableDetailedErrors() // Mostrar errores detallados
-        );
+            );
+
+            if (isDevelopment)
+            {
+                // Solo en desarrollo: muestra parámetros SQL y errores detallados
+                options.EnableSensitiveDataLogging();
+                options.EnableDetailedErrors();
+            }
+        });
 
         // Register Dapper connection factory (Reads)
         services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();

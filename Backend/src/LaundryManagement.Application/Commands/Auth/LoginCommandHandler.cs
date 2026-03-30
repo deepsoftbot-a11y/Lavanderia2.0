@@ -129,7 +129,7 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, LoginRes
                 User = userDto
             };
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // Log the exception here if you have a logger
             return new LoginResponseDto

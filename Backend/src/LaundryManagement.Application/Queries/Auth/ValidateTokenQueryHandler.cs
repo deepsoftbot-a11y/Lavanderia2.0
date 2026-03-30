@@ -91,7 +91,7 @@ public sealed class ValidateTokenQueryHandler : IRequestHandler<ValidateTokenQue
                 Token = request.Token
             };
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // Log the exception here if you have a logger
             return new ValidateTokenResponseDto
