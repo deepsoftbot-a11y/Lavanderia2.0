@@ -75,6 +75,7 @@ export function CartItem({ item, onUpdateQuantity, onRemove }: CartItemProps) {
               <NumericInput
                 value={isPieceType ? item.quantity : item.weightKilos}
                 onChange={(val) => {
+                  if (val === '') return;
                   if (isPieceType) onUpdateQuantity(item.id, val, 0);
                   else onUpdateQuantity(item.id, 0, val);
                 }}

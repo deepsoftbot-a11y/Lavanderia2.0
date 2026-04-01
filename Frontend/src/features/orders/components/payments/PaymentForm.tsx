@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shared/components/ui/form';
-import { NumericInput } from '@/shared/components/common/NumericInput';
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
 import {
   Select,
   SelectContent,
@@ -35,10 +35,12 @@ interface PaymentFormProps {
   defaultAmount?: number;
   defaultPaymentMethodId?: number;
   onSubmit: (data: PaymentFormData) => void;
+  onClear?: () => void;
   isLoading?: boolean;
   showCancelButton?: boolean;
   onCancel?: () => void;
   autoSubmit?: boolean;
+  compact?: boolean;
 }
 
 export function PaymentForm({
@@ -46,10 +48,12 @@ export function PaymentForm({
   defaultAmount,
   defaultPaymentMethodId = 1,
   onSubmit,
+  onClear,
   isLoading = false,
   showCancelButton = false,
   onCancel,
   autoSubmit = true,
+  compact = false,
 }: PaymentFormProps) {
   const { paymentMethods } = usePaymentMethodsStore();
 
@@ -108,10 +112,74 @@ export function PaymentForm({
       if (form.formState.isValid && amount > 0 && amount <= maxAmount) {
         form.clearErrors('amount');
         onSubmit(values);
+        return;
+      }
+
+      // Monto vacío o inválido — notificar al padre para limpiar el pago pre-capturado
+      if (!amount || amount <= 0) {
+        onClear?.();
       }
     });
     return () => subscription.unsubscribe();
-  }, [form, maxAmount, onSubmit, autoSubmit]);
+  }, [form, maxAmount, onSubmit, onClear, autoSubmit]);
+
+  if (compact) {
+    return (
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
+          <div className="flex gap-2 items-start">
+            <FormField
+              control={form.control}
+              name="paymentMethodId"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <Select
+                    onValueChange={(value) => field.onChange(parseInt(value))}
+                    defaultValue={field.value.toString()}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="h-9 text-sm">
+                        <SelectValue placeholder="Método" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {paymentMethods
+                        .filter((pm) => pm.isActive)
+                        .map((method) => (
+                          <SelectItem key={method.id} value={method.id.toString()}>
+                            {method.name}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="amount"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <FormControl>
+                    <CurrencyInput
+                      value={field.value ?? ''}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      ref={field.ref}
+                      max={maxAmount}
+                      className="h-9 rounded-lg"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        </form>
+      </Form>
+    );
+  }
 
   return (
     <Form {...form}>
@@ -124,16 +192,12 @@ export function PaymentForm({
             <FormItem>
               <FormLabel>Monto del pago</FormLabel>
               <FormControl>
-                <NumericInput
-                  value={field.value}
+                <CurrencyInput
+                  value={field.value ?? ''}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
                   ref={field.ref}
-                  min={0.01}
                   max={maxAmount}
-                  step={0.01}
-                  prefix="$"
-                  placeholder="0.00"
                 />
               </FormControl>
               <FormDescription>
@@ -174,7 +238,6 @@ export function PaymentForm({
             </FormItem>
           )}
         />
-
 
         {/* Botones - Solo mostrar si se requiere submit manual */}
         {showCancelButton && (

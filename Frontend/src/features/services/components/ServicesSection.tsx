@@ -6,6 +6,8 @@ import { Plus, Pencil, Trash2, Loader2, Package } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import {
@@ -64,7 +66,7 @@ function ServiceFormContent({
   const isEdit = !!service;
   const schema = isEdit ? updateServiceSchema : createServiceSchema;
 
-  const { register, handleSubmit, formState: { errors }, control, watch } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors }, control, watch } = useForm({
     resolver: zodResolver(schema),
     defaultValues: isEdit
       ? {
@@ -95,7 +97,7 @@ function ServiceFormContent({
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1">
             <Label className="text-xs text-zinc-500 font-medium">Código *</Label>
-            <Input {...register('code')} placeholder="Ej: LAV-01" />
+            <ClearableInput {...register('code')} placeholder="Ej: LAV-01" hasError={!!errors.code} onClear={() => setValue('code', '')} />
             {errors.code && (
               <p className="text-xs text-rose-500">{errors.code.message as string}</p>
             )}
@@ -103,7 +105,7 @@ function ServiceFormContent({
 
           <div className="space-y-1">
             <Label className="text-xs text-zinc-500 font-medium">Nombre *</Label>
-            <Input {...register('name')} placeholder="Ej: Lavado, Planchado..." />
+            <ClearableInput {...register('name')} placeholder="Ej: Lavado, Planchado..." hasError={!!errors.name} onClear={() => setValue('name', '')} />
             {errors.name && (
               <p className="text-xs text-rose-500">{errors.name.message as string}</p>
             )}
@@ -169,20 +171,17 @@ function ServiceFormContent({
           <div className="grid grid-cols-3 gap-3">
             <div className="space-y-1">
               <Label className="text-xs text-zinc-500 font-medium">Precio / kg *</Label>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono select-none pointer-events-none">
-                  $
-                </span>
-                <Input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  {...register('pricePerKg', {
-                    setValueAs: (v) => (v === '' ? undefined : parseFloat(v)),
-                  })}
-                  className="pl-7 font-mono tabular-nums text-right"
-                />
-              </div>
+              <Controller
+                name="pricePerKg"
+                control={control}
+                render={({ field }) => (
+                  <CurrencyInput
+                    value={field.value ?? ''}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                  />
+                )}
+              />
               {errors.pricePerKg && (
                 <p className="text-xs text-rose-500">{errors.pricePerKg.message as string}</p>
               )}
@@ -261,7 +260,6 @@ function ServiceFormContent({
         </Button>
         <Button
           type="submit"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
           disabled={isSubmitting}
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -336,7 +334,7 @@ export function ServicesSection() {
           Servicios
           <span className="ml-2 font-mono font-normal text-xs text-zinc-400">{services.length}</span>
         </h2>
-        <Button onClick={handleOpenCreate} size="sm" className="bg-zinc-900 hover:bg-zinc-800 text-white">
+        <Button onClick={handleOpenCreate} size="sm" >
           <Plus className="h-4 w-4 mr-1" />
           Nuevo Servicio
         </Button>

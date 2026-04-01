@@ -115,7 +115,7 @@ export function OrderPaymentSection({ order, onPaymentSubmit, isProcessingPaymen
           {!showPaymentForm ? (
             <Button
               size="sm"
-              className="w-full bg-zinc-900 hover:bg-zinc-800 text-white text-xs"
+              className="w-full text-xs"
               onClick={() => setShowPaymentForm(true)}
             >
               <Plus className="h-3.5 w-3.5 mr-1.5" />

@@ -17,7 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shared/components/ui/form';
-import { NumericInput } from '@/shared/components/common/NumericInput';
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Button } from '@/shared/components/ui/button';
 import { useCashClosingsStore } from '@/features/orders/stores/cashClosingsStore';
@@ -46,10 +46,10 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
   const form = useForm({
     resolver: zodResolver(createCashClosingSchema),
     defaultValues: {
-      fondoInicial: 0,
-      actualCashAmount: 0,
-      cashWithdrawal: 0,
-      adjustment: 0,
+      fondoInicial: undefined,
+      actualCashAmount: undefined,
+      cashWithdrawal: undefined,
+      adjustment: undefined,
       notes: '',
     },
   });
@@ -58,10 +58,10 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
     if (open) {
       fetchTodayTotals();
       form.reset({
-        fondoInicial: 0,
-        actualCashAmount: 0,
-        cashWithdrawal: 0,
-        adjustment: 0,
+        fondoInicial: undefined,
+        actualCashAmount: undefined,
+        cashWithdrawal: undefined,
+        adjustment: undefined,
         notes: '',
       });
     }
@@ -177,16 +177,11 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
                             Fondo Inicial
                           </FormLabel>
                           <FormControl>
-                            <NumericInput
-                              value={field.value ?? 0}
+                            <CurrencyInput
+                              value={field.value ?? ''}
                               onChange={field.onChange}
                               onBlur={field.onBlur}
                               ref={field.ref}
-                              min={0}
-                              step={0.01}
-                              prefix="$"
-                              placeholder="0.00"
-                              className="text-right"
                             />
                           </FormControl>
                           <FormMessage className="text-[10px]" />
@@ -203,16 +198,11 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
                             Efectivo Contado
                           </FormLabel>
                           <FormControl>
-                            <NumericInput
-                              value={field.value ?? 0}
+                            <CurrencyInput
+                              value={field.value ?? ''}
                               onChange={field.onChange}
                               onBlur={field.onBlur}
                               ref={field.ref}
-                              min={0}
-                              step={0.01}
-                              prefix="$"
-                              placeholder="0.00"
-                              className="text-right"
                             />
                           </FormControl>
                           <FormMessage className="text-[10px]" />
@@ -229,15 +219,11 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
                             Ajuste
                           </FormLabel>
                           <FormControl>
-                            <NumericInput
-                              value={field.value ?? 0}
+                            <CurrencyInput
+                              value={field.value ?? ''}
                               onChange={field.onChange}
                               onBlur={field.onBlur}
                               ref={field.ref}
-                              step={0.01}
-                              prefix="$"
-                              placeholder="0.00"
-                              className="text-right"
                             />
                           </FormControl>
                           <FormMessage className="text-[10px]" />
@@ -254,16 +240,11 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
                             Retiro
                           </FormLabel>
                           <FormControl>
-                            <NumericInput
-                              value={field.value ?? 0}
+                            <CurrencyInput
+                              value={field.value ?? ''}
                               onChange={field.onChange}
                               onBlur={field.onBlur}
                               ref={field.ref}
-                              min={0}
-                              step={0.01}
-                              prefix="$"
-                              placeholder="0.00"
-                              className="text-right"
                             />
                           </FormControl>
                           <FormMessage className="text-[10px]" />
@@ -355,7 +336,7 @@ export function CashClosingModal({ open, onOpenChange }: CashClosingModalProps) 
                 <Button
                   type="submit"
                   disabled={isLoading || isLoadingTotals}
-                  className="bg-zinc-900 hover:bg-zinc-800 text-white"
+                  
                 >
                   {isLoading ? 'Registrando...' : 'Registrar Corte'}
                 </Button>

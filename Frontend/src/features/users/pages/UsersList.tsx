@@ -24,16 +24,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/shared/components/ui/alert-dialog';
-import { cn } from '@/shared/utils/cn';
 
 import { useUsersStore } from '@/features/users/stores/usersStore';
 import { useRolesStore } from '@/features/users/stores/rolesStore';
 import { usePermissionsStore } from '@/features/users/stores/permissionsStore';
 import { RolesTab } from '@/features/users/components/RolesTab';
 import { PermissionsTab } from '@/features/users/components/PermissionsTab';
+import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
+import { StatusBadge } from '@/shared/components/ui/status-badge';
 import type { User } from '@/features/users/types/user';
-
-const TH = 'text-[10px] font-semibold tracking-widest uppercase text-zinc-400';
 
 export function UsersList() {
   const navigate = useNavigate();
@@ -157,7 +156,7 @@ export function UsersList() {
             <Button
               size="sm"
               onClick={() => navigate('/users/create')}
-              className="bg-zinc-900 hover:bg-zinc-800 text-white text-xs h-8 whitespace-nowrap"
+              className="text-xs h-8 whitespace-nowrap"
             >
               <Plus className="h-3.5 w-3.5 mr-1.5" />
               Nuevo usuario
@@ -207,16 +206,7 @@ export function UsersList() {
 
                     <span className="text-xs text-zinc-500">{user.role?.name ?? '—'}</span>
 
-                    <span
-                      className={cn(
-                        'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide leading-none',
-                        user.isActive
-                          ? 'bg-emerald-50 text-emerald-700'
-                          : 'bg-zinc-100 text-zinc-400'
-                      )}
-                    >
-                      {user.isActive ? 'Activo' : 'Inactivo'}
-                    </span>
+                    <StatusBadge active={user.isActive} />
 
                     <span className="text-xs text-zinc-400 capitalize">
                       {user.lastLogin
@@ -272,16 +262,7 @@ export function UsersList() {
                         <p className="text-sm font-medium text-zinc-900">{user.fullName}</p>
                         <p className="text-xs text-zinc-400 font-mono">@{user.username}</p>
                       </div>
-                      <span
-                        className={cn(
-                          'shrink-0 inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold',
-                          user.isActive
-                            ? 'bg-emerald-50 text-emerald-700'
-                            : 'bg-zinc-100 text-zinc-400'
-                        )}
-                      >
-                        {user.isActive ? 'Activo' : 'Inactivo'}
-                      </span>
+                      <StatusBadge active={user.isActive} className="shrink-0" />
                     </div>
                     <p className="text-xs text-zinc-500 mb-1">{user.email}</p>
                     <p className="text-xs text-zinc-400">{user.role?.name ?? 'Sin rol'}</p>

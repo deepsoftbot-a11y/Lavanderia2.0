@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Plus, Pencil, Trash2, Loader2, Shirt } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import {
@@ -60,6 +60,7 @@ function GarmentTypeFormContent({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     control,
   } = useForm({
@@ -81,7 +82,7 @@ function GarmentTypeFormContent({
       <div className="overflow-y-auto flex-1 px-6 py-4 space-y-4">
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Nombre *</Label>
-          <Input {...register('name')} placeholder="Ej: Camisa, Edredón, Cortina..." />
+          <ClearableInput {...register('name')} placeholder="Ej: Camisa, Edredón, Cortina..." hasError={!!errors.name} onClear={() => setValue('name', '')} />
           {errors.name && (
             <p className="text-xs text-rose-500">{errors.name.message as string}</p>
           )}
@@ -125,7 +126,6 @@ function GarmentTypeFormContent({
         </Button>
         <Button
           type="submit"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
           disabled={isSubmitting}
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -208,7 +208,6 @@ export function GarmentTypesSection() {
         <Button
           onClick={handleOpenCreate}
           size="sm"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
         >
           <Plus className="h-4 w-4 mr-1" />
           Nuevo Tipo de Prenda

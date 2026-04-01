@@ -23,7 +23,7 @@ export function MainLayout() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-50">
+    <div className="min-h-screen bg-blue-50/40">
       {/* Mobile header with hamburger */}
       <Header />
 
@@ -34,7 +34,7 @@ export function MainLayout() {
         {/* Desktop sidebar - collapsible */}
         <aside
           className={cn(
-            'hidden md:flex md:flex-col md:fixed md:inset-y-0 border-r border-zinc-100 bg-white transition-all duration-300',
+            'hidden md:flex md:flex-col md:fixed md:inset-y-0 border-r border-blue-100 bg-white transition-all duration-300',
             isSidebarCollapsed ? 'md:w-16' : 'md:w-64'
           )}
         >

@@ -10,7 +10,8 @@ import {
 } from '@/shared/components/ui/dialog';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
-import { NumericInput } from '@/shared/components/common/NumericInput';
+import { Switch } from '@/shared/components/ui/switch';
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
 import {
   Select,
   SelectContent,
@@ -54,11 +55,14 @@ export function ConfirmOrderDialog({
   const { paymentMethods } = usePaymentMethodsStore();
   const activePaymentMethods = paymentMethods.filter((pm) => pm.isActive);
 
-  const [amount, setAmount] = useState<number>(total);
+  const [registerPaymentNow, setRegisterPaymentNow] = useState(false);
+  const [amount, setAmount] = useState<number | ''>(total);
   const [paymentMethodId, setPaymentMethodId] = useState<string>('');
 
   useEffect(() => {
     if (open) {
+      const hasPaymentData = paymentData != null && paymentData.amount > 0;
+      setRegisterPaymentNow(hasPaymentData);
       setAmount(paymentData?.amount ?? total);
       setPaymentMethodId(
         paymentData?.paymentMethodId
@@ -74,25 +78,27 @@ export function ConfirmOrderDialog({
     : '—';
 
   const handleConfirm = () => {
-    if (!paymentMethodId || amount <= 0) {
+    if (!registerPaymentNow) {
       onConfirm(null);
       return;
     }
 
-    const confirmed: PaymentFormData = {
+    if (!paymentMethodId || !amount || amount <= 0) return;
+
+    onConfirm({
       amount,
       paymentMethodId: parseInt(paymentMethodId),
       paidAt: new Date().toISOString(),
       reference: paymentData?.reference ?? '',
       notes: paymentData?.notes ?? '',
-    };
-
-    onConfirm(confirmed);
+    });
   };
 
   const selectedMethod = activePaymentMethods.find(
     (pm) => pm.id.toString() === paymentMethodId
   );
+
+  const paymentFieldsValid = !registerPaymentNow || (!!paymentMethodId && !!amount && amount > 0);
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => { if (!isOpen) onCancel(); }}>
@@ -166,59 +172,78 @@ export function ConfirmOrderDialog({
             </div>
           </div>
 
-          {/* Método de pago */}
+          {/* Pago inicial */}
           <div className="px-6 py-4">
-            <p className="text-[10px] font-semibold tracking-widest uppercase text-zinc-400 mb-3">
-              Pago inicial
-            </p>
-            <div className="space-y-3">
-              <div className="space-y-1">
-                <Label className="text-xs text-zinc-500 font-medium">
-                  Método de pago
-                </Label>
-                <Select value={paymentMethodId} onValueChange={setPaymentMethodId}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccionar método" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {activePaymentMethods.map((method) => (
-                      <SelectItem key={method.id} value={method.id.toString()}>
-                        {method.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-1">
-                <Label className="text-xs text-zinc-500 font-medium">
-                  Monto a cobrar
-                </Label>
-                <NumericInput
-                  value={amount}
-                  onChange={setAmount}
-                  min={0.01}
-                  max={total}
-                  step={0.01}
-                  prefix="$"
-                  placeholder="0.00"
+            {/* Toggle */}
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-zinc-400">
+                Pago inicial
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-zinc-500">
+                  {registerPaymentNow ? 'Cobrar ahora' : 'Sin pago por ahora'}
+                </span>
+                <Switch
+                  checked={registerPaymentNow}
+                  onCheckedChange={setRegisterPaymentNow}
+                  disabled={isLoading}
                 />
-                {amount < total && amount > 0 && (
-                  <p className="text-[11px] text-amber-600 mt-1">
-                    Pago parcial — saldo pendiente: ${(total - amount).toFixed(2)}
-                  </p>
+              </div>
+            </div>
+
+            {registerPaymentNow ? (
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <Label className="text-xs text-zinc-500 font-medium">
+                    Método de pago
+                  </Label>
+                  <Select value={paymentMethodId} onValueChange={setPaymentMethodId}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Seleccionar método" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {activePaymentMethods.map((method) => (
+                        <SelectItem key={method.id} value={method.id.toString()}>
+                          {method.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-xs text-zinc-500 font-medium">
+                    Monto a cobrar
+                  </Label>
+                  <CurrencyInput
+                    value={amount}
+                    onChange={setAmount}
+                    max={total}
+                  />
+                  {!!amount && amount > 0 && amount < total && (
+                    <p className="text-[11px] text-amber-600 mt-1">
+                      Pago parcial — saldo pendiente: ${(total - amount).toFixed(2)}
+                    </p>
+                  )}
+                </div>
+
+                {selectedMethod && (
+                  <div className="flex items-center gap-1.5 py-1.5 px-3 rounded-md bg-zinc-50 border border-zinc-100">
+                    <span className="text-xs text-zinc-500">
+                      {!!amount && amount >= total ? 'Pago completo con' : 'Pago parcial con'}
+                    </span>
+                    <span className="text-xs font-semibold text-zinc-800">{selectedMethod.name}</span>
+                  </div>
                 )}
               </div>
-
-              {selectedMethod && (
-                <div className="flex items-center gap-1.5 py-1.5 px-3 rounded-md bg-zinc-50 border border-zinc-100">
-                  <span className="text-xs text-zinc-500">
-                    {amount >= total ? 'Pago completo con' : 'Pago parcial con'}
-                  </span>
-                  <span className="text-xs font-semibold text-zinc-800">{selectedMethod.name}</span>
-                </div>
-              )}
-            </div>
+            ) : (
+              <div className="flex items-center gap-2 py-2 px-3 rounded-md bg-zinc-50 border border-zinc-100">
+                <span className="text-xs text-zinc-500">
+                  La orden quedará con saldo pendiente de{' '}
+                  <span className="font-mono font-semibold text-zinc-700">${total.toFixed(2)}</span>
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -229,8 +254,7 @@ export function ConfirmOrderDialog({
           </Button>
           <Button
             onClick={handleConfirm}
-            disabled={isLoading || !paymentMethodId || amount <= 0}
-            className="bg-zinc-900 hover:bg-zinc-800 text-white"
+            disabled={isLoading || !paymentFieldsValid}
           >
             {isLoading ? (
               <span className="flex items-center gap-2">

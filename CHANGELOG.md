@@ -6,6 +6,23 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [Sin publicar] — 2026-04-01 — Rediseño de interfaz POS y sidebar
+
+### Mejoras
+
+- **POS: Header eliminado** — se ganó altura vertical para el carrito. Los botones "Buscar orden" y "Limpiar carrito" se movieron como íconos compactos dentro del encabezado del carrito; "Corte de Caja" se integró en el sidebar de navegación global.
+- **POS: Método de pago compacto** — el selector de método de pago y el monto ahora ocupan una sola fila horizontal dentro de la card del carrito, en lugar de una card independiente con título.
+- **POS: Layout adaptativo en móvil** — en pantallas pequeñas el POS ahora usa un sistema de tabs (Catálogo / Carrito) con un badge numérico que indica la cantidad de items en el carrito, evitando el scroll largo entre secciones.
+- **Sidebar: Ítems agrupados por flujo de trabajo** — la navegación ahora está dividida en dos secciones: **Operación** (Nueva Venta, Órdenes, Corte de Caja) y **Administración** (Dashboard, Servicios, Usuarios). Las etiquetas de sección son visibles en estado expandido y se ocultan al colapsar.
+- **Sidebar: Iconos más representativos** — `Settings → Shirt` (Servicios), `ShoppingCart → Receipt` (Nueva Venta), `ClipboardList → Package` (Órdenes), `DollarSign → Banknote` (Corte de Caja), `LayoutDashboard → BarChart2` (Dashboard), `Users → UserCog` (Usuarios).
+- **Sidebar: Info de usuario al fondo** — el nombre y rol del usuario se muestran ahora en la parte inferior del sidebar, junto al botón de Cerrar Sesión, liberando espacio visual en el encabezado.
+
+### Correcciones
+
+- **`PricesSection`**: corregidos errores de TypeScript en las comparaciones de precio con `CurrencyInput` — el estado `unitPrice` ahora usa el tipo correcto `number | ''` en ambos formularios (crear y editar precio).
+
+---
+
 ## [Sin publicar] — 2026-03-30 — Build de producción
 
 ### Agregado

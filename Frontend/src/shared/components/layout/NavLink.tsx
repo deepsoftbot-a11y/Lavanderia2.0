@@ -1,15 +1,26 @@
-import { LayoutDashboard, ClipboardList, ShoppingCart, Users, Settings, type LucideIcon } from 'lucide-react';
+import {
+  Receipt,
+  Package,
+  Banknote,
+  BarChart2,
+  Shirt,
+  UserCog,
+  LogOut,
+  type LucideIcon,
+} from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/utils/cn';
 import type { NavItem } from '@/shared/types/navigation';
 
 const ICONS: Record<string, LucideIcon> = {
-  LayoutDashboard,
-  ClipboardList,
-  ShoppingCart,
-  Users,
-  Settings,
+  Receipt,
+  Package,
+  Banknote,
+  BarChart2,
+  Shirt,
+  UserCog,
+  LogOut,
 };
 
 interface NavLinkProps {
@@ -29,7 +40,7 @@ export function NavLink({ item, isActive, onClick, isCollapsed = false }: NavLin
         size="icon"
         className={cn(
           'w-full h-10',
-          isActive && 'bg-zinc-100 text-zinc-900'
+          isActive && 'bg-blue-100 text-blue-700'
         )}
         onClick={onClick}
         title={item.label}
@@ -44,7 +55,7 @@ export function NavLink({ item, isActive, onClick, isCollapsed = false }: NavLin
       variant="ghost"
       className={cn(
         'w-full justify-start',
-        isActive && 'bg-zinc-100 text-zinc-900 font-medium'
+        isActive && 'bg-blue-100 text-blue-700 font-medium'
       )}
       onClick={onClick}
     >

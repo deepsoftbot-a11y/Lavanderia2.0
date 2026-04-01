@@ -7,8 +7,8 @@ import {
   DialogTitle,
 } from '@/shared/components/ui/dialog';
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
 import {
   createCustomerSchema,
   type CreateCustomerFormData,
@@ -30,6 +30,7 @@ export function QuickCustomerForm({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     reset,
   } = useForm<CreateCustomerFormData>({
@@ -71,11 +72,13 @@ export function QuickCustomerForm({
                     <Label htmlFor="name" className="text-xs text-zinc-500 font-medium">
                       Nombre completo *
                     </Label>
-                    <Input
+                    <ClearableInput
                       id="name"
                       {...register('name')}
                       placeholder="Juan Pérez García"
                       disabled={isLoading}
+                      hasError={!!errors.name}
+                      onClear={() => setValue('name', '')}
                     />
                     {errors.name && (
                       <p className="text-xs text-rose-600">{errors.name.message}</p>
@@ -86,11 +89,13 @@ export function QuickCustomerForm({
                     <Label htmlFor="phone" className="text-xs text-zinc-500 font-medium">
                       Teléfono *
                     </Label>
-                    <Input
+                    <ClearableInput
                       id="phone"
                       {...register('phone')}
                       placeholder="5551234567"
                       disabled={isLoading}
+                      hasError={!!errors.phone}
+                      onClear={() => setValue('phone', '')}
                       className="font-mono tabular-nums"
                     />
                     {errors.phone && (
@@ -110,12 +115,14 @@ export function QuickCustomerForm({
                     <Label htmlFor="email" className="text-xs text-zinc-500 font-medium">
                       Email
                     </Label>
-                    <Input
+                    <ClearableInput
                       id="email"
                       type="email"
                       {...register('email')}
                       placeholder="juan.perez@email.com"
                       disabled={isLoading}
+                      hasError={!!errors.email}
+                      onClear={() => setValue('email', '')}
                     />
                     {errors.email && (
                       <p className="text-xs text-rose-600">{errors.email.message}</p>
@@ -126,11 +133,13 @@ export function QuickCustomerForm({
                     <Label htmlFor="address" className="text-xs text-zinc-500 font-medium">
                       Dirección
                     </Label>
-                    <Input
+                    <ClearableInput
                       id="address"
                       {...register('address')}
                       placeholder="Av. Principal #123, Col. Centro"
                       disabled={isLoading}
+                      hasError={!!errors.address}
+                      onClear={() => setValue('address', '')}
                     />
                     {errors.address && (
                       <p className="text-xs text-rose-600">{errors.address.message}</p>
@@ -147,7 +156,7 @@ export function QuickCustomerForm({
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-zinc-900 hover:bg-zinc-800 text-white"
+                
               >
                 {isLoading ? 'Creando...' : 'Crear cliente'}
               </Button>

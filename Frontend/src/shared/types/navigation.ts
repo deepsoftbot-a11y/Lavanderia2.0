@@ -5,6 +5,7 @@ export interface NavItem {
   label: string;
   icon: string;
   requiredPermission: PermissionKey;
+  group?: 'operation' | 'admin';
 }
 
 export interface NavigationConfig {

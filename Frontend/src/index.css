@@ -2,49 +2,96 @@
 @plugin "tailwindcss-animate";
 
 @theme {
+  --font-sans: 'Karla', system-ui, sans-serif;
+  --font-mono: 'Inconsolata', ui-monospace, monospace;
+
   --radius-lg: 0.75rem;
   --radius-md: calc(0.75rem - 2px);
   --radius-sm: calc(0.75rem - 4px);
   --radius: 0.75rem;
 
-  /* Laundry-inspired color system */
-  /* Clean water blues and fresh whites with warm cotton accents */
-  --color-background: hsl(210 40% 98%);
-  --color-foreground: hsl(215 25% 20%);
+  /* ─────────────────────────────────────────────
+     Paleta Chatgot — centrada en hsl(228°) azul puro
+     Blue 228° · Indigo 242° · Purple 270°
+     ───────────────────────────────────────────── */
 
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(215 25% 20%);
+  /* Blue  hsl(228°) = #4664FF family */
+  --color-blue-50:  hsl(228 100% 97%);
+  --color-blue-100: hsl(228 95%  92%);
+  --color-blue-200: hsl(228 90%  84%);
+  --color-blue-300: hsl(228 85%  73%);
+  --color-blue-400: hsl(228 88%  65%);
+  --color-blue-500: hsl(228 95%  58%);
+  --color-blue-600: hsl(228 100% 50%);
+  --color-blue-700: hsl(228 85%  38%);
+  --color-blue-800: hsl(228 78%  26%);
+  --color-blue-900: hsl(228 72%  16%);
+  --color-blue-950: hsl(228 70%  9%);
 
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(215 25% 20%);
+  /* Indigo  hsl(242°) = #4646F6 family */
+  --color-indigo-50:  hsl(242 100% 97%);
+  --color-indigo-100: hsl(242 90%  92%);
+  --color-indigo-200: hsl(242 82%  84%);
+  --color-indigo-300: hsl(242 76%  70%);
+  --color-indigo-400: hsl(242 74%  60%);
+  --color-indigo-500: hsl(242 78%  50%);
+  --color-indigo-600: hsl(242 80%  41%);
+  --color-indigo-700: hsl(242 76%  32%);
+  --color-indigo-800: hsl(242 70%  23%);
+  --color-indigo-900: hsl(242 65%  15%);
+  --color-indigo-950: hsl(242 68%  9%);
 
-  /* Fresh water blue - professional and clean */
-  --color-primary: hsl(205 85% 48%);
+  /* Purple  hsl(270°) = #974AFA family */
+  --color-teal-50:  hsl(270 100% 98%);
+  --color-teal-100: hsl(270 90%  93%);
+  --color-teal-200: hsl(270 85%  85%);
+  --color-teal-300: hsl(270 80%  73%);
+  --color-teal-400: hsl(270 82%  64%);
+  --color-teal-500: hsl(270 88%  56%);
+  --color-teal-600: hsl(270 85%  46%);
+  --color-teal-700: hsl(270 80%  36%);
+  --color-teal-800: hsl(270 74%  26%);
+  --color-teal-900: hsl(270 70%  16%);
+  --color-teal-950: hsl(270 68%  9%);
+
+  /* ─────────────────────────────────────────────
+     Tokens semánticos — paleta Chatgot
+     ───────────────────────────────────────────── */
+
+  /* Fondos y superficies */
+  --color-background:        hsl(228 30% 98%);
+  --color-foreground:        hsl(228 25% 13%);
+
+  --color-card:              hsl(0 0% 100%);
+  --color-card-foreground:   hsl(228 25% 13%);
+
+  --color-popover:           hsl(0 0% 100%);
+  --color-popover-foreground: hsl(228 25% 13%);
+
+  /* Primary → #4664FF */
+  --color-primary:            hsl(228 100% 60%);
   --color-primary-foreground: hsl(0 0% 100%);
 
-  /* Soft steam gray - subtle and refined */
-  --color-secondary: hsl(210 30% 96%);
-  --color-secondary-foreground: hsl(215 25% 20%);
+  /* Secondary → Indigo claro */
+  --color-secondary:            hsl(242 80% 94%);
+  --color-secondary-foreground: hsl(242 70% 40%);
 
-  --color-muted: hsl(210 25% 95%);
-  --color-muted-foreground: hsl(215 15% 50%);
+  /* Muted → desaturado azul */
+  --color-muted:            hsl(228 30% 95%);
+  --color-muted-foreground: hsl(228 15% 50%);
 
-  /* Cotton natural - warm accent */
-  --color-accent: hsl(30 25% 92%);
-  --color-accent-foreground: hsl(215 25% 20%);
+  /* Accent → Purple claro */
+  --color-accent:            hsl(270 80% 95%);
+  --color-accent-foreground: hsl(270 70% 40%);
 
-  --color-destructive: hsl(0 72% 51%);
+  /* Destructivo — rojo semántico */
+  --color-destructive:            hsl(0 72% 51%);
   --color-destructive-foreground: hsl(0 0% 100%);
 
-  /* Whisper-quiet borders */
-  --color-border: hsl(210 20% 90%);
-  --color-input: hsl(210 20% 90%);
-  --color-ring: hsl(205 85% 48%);
-
-  /* Custom laundry tokens */
-  --color-fresh: hsl(195 65% 55%);
-  --color-steam: hsl(210 15% 85%);
-  --color-cotton: hsl(35 30% 90%);
+  /* Bordes y controles */
+  --color-border: hsl(228 40% 88%);
+  --color-input:  hsl(228 40% 88%);
+  --color-ring:   hsl(228 100% 60%);
 }
 
 @layer base {
@@ -52,9 +99,47 @@
     @apply border-border;
   }
 
+  /* Normaliza input[type="date"] para coincidir con h-11 = 44px */
+  input[type="date"] {
+    display: flex !important;
+    align-items: center;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    box-sizing: border-box !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1 !important;
+  }
+  input[type="date"]::-webkit-datetime-edit {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: auto;
+  }
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  input[type="date"]::-webkit-datetime-edit-text,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    padding: 0;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+    cursor: pointer;
+    filter: invert(48%) sepia(80%) saturate(400%) hue-rotate(185deg);
+    margin-right: 4px;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Karla', system-ui, sans-serif;
     line-height: 1.5;
     font-synthesis: none;
     text-rendering: optimizeLegibility;

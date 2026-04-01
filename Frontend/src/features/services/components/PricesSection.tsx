@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Plus, Pencil, Trash2, Loader2, Receipt } from 'lucide-react';
+import { Plus, Pencil, Trash2, Loader2, Receipt, Check, ChevronsUpDown } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import {
   Dialog,
@@ -28,6 +28,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/components/ui/select';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/shared/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui/popover';
+import { cn } from '@/shared/utils/cn';
 import {
   Table,
   TableBody,
@@ -58,8 +68,12 @@ function CreatePriceContent({ onClose }: CreatePriceContentProps) {
 
   const [selectedServiceId, setSelectedServiceId] = useState('');
   const [selectedGarmentTypeId, setSelectedGarmentTypeId] = useState('');
-  const [unitPrice, setUnitPrice] = useState('');
+  const [unitPrice, setUnitPrice] = useState<number | ''>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const [serviceSearch, setServiceSearch] = useState('');
+  const [garmentOpen, setGarmentOpen] = useState(false);
+  const [garmentSearch, setGarmentSearch] = useState('');
 
   const pieceServices = services.filter((s) => s.chargeType === CHARGE_TYPE.PorPieza && s.isActive);
 
@@ -72,8 +86,7 @@ function CreatePriceContent({ onClose }: CreatePriceContentProps) {
   );
 
   const handleSave = async () => {
-    const price = parseFloat(unitPrice);
-    if (isNaN(price) || price <= 0) {
+    if (!unitPrice || unitPrice <= 0) {
       toast({
         title: 'Precio inválido',
         description: 'Ingresa un precio mayor a 0',
@@ -86,7 +99,7 @@ function CreatePriceContent({ onClose }: CreatePriceContentProps) {
       await createServiceGarment({
         serviceId: parseInt(selectedServiceId, 10),
         garmentTypeId: parseInt(selectedGarmentTypeId, 10),
-        unitPrice: price,
+        unitPrice,
       });
       toast({ title: 'Precio establecido' });
       onClose();
@@ -98,68 +111,109 @@ function CreatePriceContent({ onClose }: CreatePriceContentProps) {
     }
   };
 
-  const canSave = !!selectedServiceId && !!selectedGarmentTypeId && !!unitPrice && !isSubmitting;
+  const canSave = !!selectedServiceId && !!selectedGarmentTypeId && !!unitPrice && unitPrice > 0 && !isSubmitting;
 
   return (
     <>
       <div className="px-6 py-4 space-y-4">
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Servicio *</Label>
-          <Select
-            value={selectedServiceId}
-            onValueChange={(v) => {
-              setSelectedServiceId(v);
-              setSelectedGarmentTypeId('');
-            }}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Seleccionar servicio" />
-            </SelectTrigger>
-            <SelectContent>
-              {pieceServices.map((s) => (
-                <SelectItem key={s.id} value={s.id.toString()}>
-                  {s.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <Popover open={serviceOpen} onOpenChange={setServiceOpen}>
+            <PopoverTrigger asChild>
+              <button className="flex h-11 w-full items-center justify-between whitespace-nowrap rounded-xl border-2 border-transparent bg-zinc-100 px-4 text-sm text-indigo-900 outline-none transition-all duration-150 hover:bg-zinc-200 focus:border-blue-600 focus:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer">
+                {selectedServiceId
+                  ? pieceServices.find((s) => s.id.toString() === selectedServiceId)?.name
+                  : <span className="text-zinc-400">Seleccionar servicio</span>}
+                <ChevronsUpDown className="h-4 w-4 shrink-0 text-zinc-400" />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0 rounded-xl border border-zinc-200 shadow-sm" align="start">
+              <Command shouldFilter={false}>
+                <CommandInput
+                  placeholder="Buscar servicio..."
+                  value={serviceSearch}
+                  onValueChange={setServiceSearch}
+                />
+                <CommandList>
+                  <CommandEmpty>Sin resultados</CommandEmpty>
+                  <CommandGroup>
+                    {pieceServices
+                      .filter((s) => s.name.toLowerCase().includes(serviceSearch.toLowerCase()))
+                      .map((s) => (
+                        <CommandItem
+                          key={s.id}
+                          value={s.id.toString()}
+                          onSelect={(v) => {
+                            setSelectedServiceId(v);
+                            setSelectedGarmentTypeId('');
+                            setServiceSearch('');
+                            setServiceOpen(false);
+                          }}
+                        >
+                          <Check className={cn('mr-2 h-4 w-4', selectedServiceId === s.id.toString() ? 'opacity-100' : 'opacity-0')} />
+                          {s.name}
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Tipo de prenda *</Label>
-          <Select
-            value={selectedGarmentTypeId}
-            onValueChange={setSelectedGarmentTypeId}
-            disabled={!selectedServiceId}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Seleccionar tipo de prenda" />
-            </SelectTrigger>
-            <SelectContent>
-              {availableGarmentTypes.map((gt) => (
-                <SelectItem key={gt.id} value={gt.id.toString()}>
-                  {gt.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <Popover open={garmentOpen} onOpenChange={setGarmentOpen}>
+            <PopoverTrigger asChild>
+              <button
+                disabled={!selectedServiceId}
+                className="flex h-11 w-full items-center justify-between whitespace-nowrap rounded-xl border-2 border-transparent bg-zinc-100 px-4 text-sm text-indigo-900 outline-none transition-all duration-150 hover:bg-zinc-200 focus:border-blue-600 focus:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
+              >
+                {selectedGarmentTypeId
+                  ? availableGarmentTypes.find((gt) => gt.id.toString() === selectedGarmentTypeId)?.name
+                  : <span className="text-zinc-400">Seleccionar tipo de prenda</span>}
+                <ChevronsUpDown className="h-4 w-4 shrink-0 text-zinc-400" />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0 rounded-xl border border-zinc-200 shadow-sm" align="start">
+              <Command shouldFilter={false}>
+                <CommandInput
+                  placeholder="Buscar tipo de prenda..."
+                  value={garmentSearch}
+                  onValueChange={setGarmentSearch}
+                />
+                <CommandList>
+                  <CommandEmpty>Sin resultados</CommandEmpty>
+                  <CommandGroup>
+                    {availableGarmentTypes
+                      .filter((gt) => gt.name.toLowerCase().includes(garmentSearch.toLowerCase()))
+                      .map((gt) => (
+                        <CommandItem
+                          key={gt.id}
+                          value={gt.id.toString()}
+                          onSelect={(v) => {
+                            setSelectedGarmentTypeId(v);
+                            setGarmentSearch('');
+                            setGarmentOpen(false);
+                          }}
+                        >
+                          <Check className={cn('mr-2 h-4 w-4', selectedGarmentTypeId === gt.id.toString() ? 'opacity-100' : 'opacity-0')} />
+                          {gt.name}
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Precio unitario *</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono select-none pointer-events-none">
-              $
-            </span>
-            <Input
-              type="number"
-              step="0.01"
-              min="0.01"
-              value={unitPrice}
-              onChange={(e) => setUnitPrice(e.target.value)}
-              className="pl-7 font-mono tabular-nums text-right"
-            />
-          </div>
+          <CurrencyInput
+            value={unitPrice}
+            onChange={setUnitPrice}
+          />
         </div>
       </div>
 
@@ -169,7 +223,6 @@ function CreatePriceContent({ onClose }: CreatePriceContentProps) {
         </Button>
         <Button
           onClick={handleSave}
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
           disabled={!canSave}
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -191,13 +244,12 @@ function EditPriceContent({ entry, onClose }: EditPriceContentProps) {
   const { updateServiceGarment } = useServiceGarmentsStore();
   const { toast } = useToast();
 
-  const [unitPrice, setUnitPrice] = useState(entry.unitPrice.toFixed(2));
+  const [unitPrice, setUnitPrice] = useState<number | ''>(entry.unitPrice);
   const [isActive, setIsActive] = useState(entry.isActive);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSave = async () => {
-    const price = parseFloat(unitPrice);
-    if (isNaN(price) || price <= 0) {
+    if (!unitPrice || unitPrice <= 0) {
       toast({
         title: 'Precio inválido',
         description: 'Ingresa un precio mayor a 0',
@@ -207,7 +259,7 @@ function EditPriceContent({ entry, onClose }: EditPriceContentProps) {
     }
     setIsSubmitting(true);
     try {
-      await updateServiceGarment(entry.id, { unitPrice: price, isActive });
+      await updateServiceGarment(entry.id, { unitPrice, isActive });
       toast({ title: 'Precio actualizado' });
       onClose();
     } catch (err) {
@@ -223,20 +275,11 @@ function EditPriceContent({ entry, onClose }: EditPriceContentProps) {
       <div className="px-6 py-4 space-y-4">
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Precio unitario *</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono select-none pointer-events-none">
-              $
-            </span>
-            <Input
-              type="number"
-              step="0.01"
-              min="0.01"
-              value={unitPrice}
-              onChange={(e) => setUnitPrice(e.target.value)}
-              className="pl-7 font-mono tabular-nums text-right"
-              autoFocus
-            />
-          </div>
+          <CurrencyInput
+            value={unitPrice}
+            onChange={setUnitPrice}
+            autoFocus
+          />
         </div>
 
         <div className="flex items-center gap-2 pt-1">
@@ -260,7 +303,6 @@ function EditPriceContent({ entry, onClose }: EditPriceContentProps) {
         </Button>
         <Button
           onClick={handleSave}
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
           disabled={isSubmitting}
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -328,7 +370,6 @@ export function PricesSection() {
         <Button
           onClick={() => setCreateDialogOpen(true)}
           size="sm"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
         >
           <Plus className="h-4 w-4 mr-1" />
           Nuevo Precio

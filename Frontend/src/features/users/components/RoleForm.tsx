@@ -2,8 +2,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/components/ui/select';
@@ -105,11 +105,13 @@ function FormContent({ role, onSubmit, onClose, permissions, isLoading }: Omit<R
                 <Label htmlFor="role-name" className="text-xs text-zinc-500 font-medium">
                   Nombre <span className="text-rose-500">*</span>
                 </Label>
-                <Input
+                <ClearableInput
                   id="role-name"
                   {...register('name')}
                   placeholder="Administrador"
                   disabled={isLoading}
+                  hasError={!!errors.name}
+                  onClear={() => setValue('name', '')}
                 />
                 {errors.name && (
                   <p className="text-xs text-rose-500">{errors.name.message}</p>
@@ -231,7 +233,7 @@ function FormContent({ role, onSubmit, onClose, permissions, isLoading }: Omit<R
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-zinc-900 hover:bg-zinc-800 text-white"
+            
           >
             {isEdit ? 'Guardar cambios' : 'Crear rol'}
           </Button>

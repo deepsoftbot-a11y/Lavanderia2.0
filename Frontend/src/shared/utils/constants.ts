@@ -1,5 +1,8 @@
 // Application-wide constants
 
+// UI — Tabla header class compartido
+export const TABLE_HEADER_CLASS = 'text-[10px] font-semibold tracking-widest uppercase text-zinc-400';
+
 // API Configuration
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
 console.log('[Constants] VITE_API_BASE_URL from env:', import.meta.env.VITE_API_BASE_URL);

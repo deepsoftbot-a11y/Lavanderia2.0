@@ -50,24 +50,23 @@ export function CustomerSelector({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
+        <button
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between"
+          className="flex h-11 w-full items-center justify-between whitespace-nowrap rounded-xl border-2 border-transparent bg-zinc-100 px-4 text-sm text-indigo-900 outline-none transition-all duration-150 hover:bg-zinc-200 focus:border-blue-600 focus:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer"
         >
           {selectedCustomer ? (
             <div className="flex flex-col items-start gap-0.5 text-left">
               <span className="font-medium">{selectedCustomer.name}</span>
-              <span className="text-xs text-muted-foreground">{selectedCustomer.phone}</span>
+              <span className="text-xs text-zinc-400">{selectedCustomer.phone}</span>
             </div>
           ) : (
-            <span className="text-muted-foreground">Seleccionar cliente...</span>
+            <span className="text-zinc-400">Seleccionar cliente...</span>
           )}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
+          <ChevronsUpDown className="h-4 w-4 shrink-0 text-zinc-400" />
+        </button>
       </PopoverTrigger>
-      <PopoverContent className="w-[400px] p-0" align="start">
+      <PopoverContent className="w-[400px] p-0 rounded-xl border border-zinc-200 shadow-sm" align="start">
         <Command shouldFilter={false}>
           <CommandInput
             placeholder="Buscar cliente por nombre, teléfono o email..."
@@ -77,14 +76,8 @@ export function CustomerSelector({
           <CommandList>
             <CommandEmpty>
               <div className="py-6 text-center">
-                <p className="text-sm text-muted-foreground mb-4">
-                  No se encontró el cliente
-                </p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleCreateNew}
-                >
+                <p className="text-sm text-zinc-400 mb-4">No se encontró el cliente</p>
+                <Button variant="outline" size="sm" onClick={handleCreateNew}>
                   <UserPlus className="h-4 w-4 mr-2" />
                   Crear nuevo cliente
                 </Button>
@@ -108,7 +101,7 @@ export function CustomerSelector({
                   />
                   <div className="flex flex-col gap-0.5">
                     <span className="font-medium">{customer.name}</span>
-                    <div className="flex gap-2 text-xs text-muted-foreground">
+                    <div className="flex gap-2 text-xs text-zinc-400">
                       <span>{customer.phone}</span>
                       {customer.email && <span>{customer.email}</span>}
                     </div>
@@ -118,7 +111,7 @@ export function CustomerSelector({
             </CommandGroup>
           </CommandList>
           {filteredCustomers.length > 0 && (
-            <div className="p-2 border-t">
+            <div className="p-2 border-t border-zinc-100">
               <Button
                 variant="ghost"
                 size="sm"

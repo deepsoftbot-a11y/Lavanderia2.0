@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/components/ui/select';
 import {
@@ -105,12 +105,14 @@ function FormContent({ permission, onSubmit, onClose, isLoading }: Omit<Permissi
             <Label htmlFor="perm-name" className="text-xs text-zinc-500 font-medium">
               Nombre del permiso <span className="text-rose-500">*</span>
             </Label>
-            <Input
+            <ClearableInput
               id="perm-name"
               {...register('name')}
               placeholder="modulo.accion"
               className="font-mono text-sm"
               disabled={isLoading}
+              hasError={!!errors.name}
+              onClear={() => setValue('name', '')}
             />
             <p className="text-[10px] text-zinc-400">Formato: modulo.accion (ej: orders.create)</p>
             {errors.name && (
@@ -142,7 +144,7 @@ function FormContent({ permission, onSubmit, onClose, isLoading }: Omit<Permissi
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-zinc-900 hover:bg-zinc-800 text-white"
+            
           >
             {isEdit ? 'Guardar cambios' : 'Crear permiso'}
           </Button>

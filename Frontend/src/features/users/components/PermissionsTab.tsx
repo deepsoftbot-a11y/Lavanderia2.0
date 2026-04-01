@@ -90,7 +90,7 @@ export function PermissionsTab() {
         <Button
           size="sm"
           onClick={openCreate}
-          className="bg-zinc-900 hover:bg-zinc-800 text-white text-xs h-8"
+          className="text-xs h-8"
         >
           <Plus className="h-3.5 w-3.5 mr-1.5" />
           Nuevo permiso

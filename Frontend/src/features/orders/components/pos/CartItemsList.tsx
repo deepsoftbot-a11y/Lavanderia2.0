@@ -1,4 +1,3 @@
-import { ScrollArea } from '@/shared/components/ui/scroll-area';
 import { CartItem } from './CartItem';
 import type { CartItem as CartItemType } from '@/features/orders/stores/cartStore';
 
@@ -23,17 +22,15 @@ export function CartItemsList({ items, onUpdateQuantity, onRemove }: CartItemsLi
   }
 
   return (
-    <ScrollArea className="h-[400px] md:h-[500px] pr-4">
-      <div className="space-y-3">
-        {items.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            onUpdateQuantity={onUpdateQuantity}
-            onRemove={onRemove}
-          />
-        ))}
-      </div>
-    </ScrollArea>
+    <div className="space-y-3 pr-1">
+      {items.map((item) => (
+        <CartItem
+          key={item.id}
+          item={item}
+          onUpdateQuantity={onUpdateQuantity}
+          onRemove={onRemove}
+        />
+      ))}
+    </div>
   );
 }

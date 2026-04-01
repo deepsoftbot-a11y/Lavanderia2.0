@@ -8,8 +8,7 @@ import { Button } from '@/shared/components/ui/button';
 import { useOrdersStore } from '@/features/orders/stores/ordersStore';
 import { CashClosingModal } from '@/features/orders/components/cashClosing/CashClosingModal';
 import { OrderSearchSheet } from '@/features/orders/components/orderSearch/OrderSearchSheet';
-
-const TH = 'text-[10px] font-semibold tracking-widest uppercase text-zinc-400';
+import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
 
 export function OrdersList() {
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ export function OrdersList() {
           <Button
             size="sm"
             onClick={() => navigate('/orders/new')}
-            className="bg-zinc-900 hover:bg-zinc-800 text-white h-8 text-xs"
+            className="h-8 text-xs"
           >
             <Plus className="h-3.5 w-3.5 mr-1.5" />
             Nueva Venta
@@ -72,7 +71,7 @@ export function OrdersList() {
           <Button
             size="sm"
             onClick={() => navigate('/orders/new')}
-            className="bg-zinc-900 hover:bg-zinc-800 text-white mt-2"
+            className="mt-2"
           >
             <Plus className="h-3.5 w-3.5 mr-1.5" />
             Nueva Venta

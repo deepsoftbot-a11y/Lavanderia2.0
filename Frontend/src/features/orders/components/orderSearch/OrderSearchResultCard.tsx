@@ -10,12 +10,12 @@ interface OrderSearchResultCardProps {
 function getPaymentStatus(status: string): { label: string; className: string } {
   switch (status) {
     case PAYMENT_STATUS.PAID:
-      return { label: 'Pagado', className: 'text-emerald-600' };
+      return { label: 'Pagado', className: 'bg-emerald-50 border border-emerald-100 text-emerald-700' };
     case PAYMENT_STATUS.PARTIAL:
-      return { label: 'Parcial', className: 'text-amber-600' };
+      return { label: 'Parcial', className: 'bg-amber-50 border border-amber-100 text-amber-700' };
     case PAYMENT_STATUS.PENDING:
     default:
-      return { label: 'Pendiente', className: 'text-rose-600' };
+      return { label: 'Pendiente', className: 'bg-rose-50 border border-rose-100 text-rose-700' };
   }
 }
 
@@ -57,9 +57,9 @@ export function OrderSearchResultCard({ order, onClick }: OrderSearchResultCardP
           <p className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
             ${order.total.toFixed(2)}
           </p>
-          <p className={`text-[10px] font-medium mt-0.5 ${payment.className}`}>
+          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold mt-0.5 ${payment.className}`}>
             {payment.label}
-          </p>
+          </span>
         </div>
       </div>
     </button>

@@ -3,8 +3,8 @@ import { Input } from '@/shared/components/ui/input';
 import { cn } from '@/shared/utils/cn';
 
 interface NumericInputProps extends Omit<React.ComponentProps<'input'>, 'onChange' | 'value' | 'type'> {
-  value: number;
-  onChange: (value: number) => void;
+  value: number | '';
+  onChange: (value: number | '') => void;
   onBlur?: () => void;
   min?: number;
   max?: number;
@@ -15,14 +15,12 @@ interface NumericInputProps extends Omit<React.ComponentProps<'input'>, 'onChang
 
 export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
   ({ value, onChange, onBlur, min, max, step, integer = false, prefix, className, ...props }, ref) => {
-    const [inputStr, setInputStr] = useState<string>(String(value));
+    const [inputStr, setInputStr] = useState<string>(value === '' ? '' : String(value));
     const isFocused = useRef(false);
 
-    // Sincroniza inputStr desde el prop value cuando el campo no está enfocado
-    // (e.g. botones +/- externos actualizan el valor)
     useEffect(() => {
       if (!isFocused.current) {
-        setInputStr(String(value));
+        setInputStr(value === '' ? '' : String(value));
       }
     }, [value]);
 
@@ -37,11 +35,16 @@ export const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
     const handleBlur = () => {
       isFocused.current = false;
 
+      if (inputStr === '' || inputStr === '-') {
+        onChange('');
+        onBlur?.();
+        return;
+      }
+
       const parsed = parseFloat(inputStr);
 
-      if (inputStr === '' || isNaN(parsed)) {
-        // Revertir al último valor válido
-        setInputStr(String(value));
+      if (isNaN(parsed)) {
+        setInputStr(value === '' ? '' : String(value));
       } else {
         let clamped = integer ? Math.floor(parsed) : parsed;
         if (min !== undefined) clamped = Math.max(min, clamped);

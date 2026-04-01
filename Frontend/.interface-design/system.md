@@ -51,7 +51,15 @@ Labels sección:    text-[10px] font-semibold tracking-widest uppercase text-zin
 Error / negativo:  text-rose-600    / bg-rose-50    / border-rose-100
 Neutral semántico: bg-zinc-100 text-zinc-400
 
-Botón primario:    bg-zinc-900 hover:bg-zinc-800 text-white
+Botón primario:    bg-primary (azul Chatgot hsl(228 100% 60%) ≈ #4664FF) — usar <Button> sin className
+
+Paleta de inputs (estilo filled):
+  Normal:          bg-zinc-100 border-2 border-transparent
+  Focus:           focus:bg-blue-50 focus:border-blue-600
+  Texto input:     text-indigo-900  → hsl(242 65% 15%)
+  Placeholder:     placeholder:text-zinc-400
+  Error:           bg-rose-50 border-rose-400 text-rose-900
+  Deshabilitado:   opacity-50 cursor-not-allowed
 ```
 
 Color con significado, nunca decorativo.
@@ -113,7 +121,7 @@ Base unit: 4px (`1` en Tailwind).
     {/* Footer fijo */}
     <div className="px-6 py-4 flex gap-3 justify-end border-t border-zinc-100 bg-zinc-50">
       <Button variant="outline">Cancelar</Button>
-      <Button className="bg-zinc-900 hover:bg-zinc-800 text-white">Confirmar</Button>
+      <Button>Confirmar</Button>
     </div>
   </div>
 </DialogContent>
@@ -121,21 +129,47 @@ Base unit: 4px (`1` en Tailwind).
 
 ---
 
-## Input Monetario (CurrencyInputField)
+## Input System — Tokens Base
 
-Prefijo `$` absoluto + input con `pl-7 font-mono tabular-nums text-right`.
+Todos los inputs del proyecto siguen el mismo token set. **Filled style**: fondo gris en reposo, sin borde visible; al activarse aparece borde azul + fondo azul muy claro.
+
+| Estado | Clases |
+|--------|--------|
+| Normal | `bg-zinc-100 border-2 border-transparent rounded-xl h-11 px-4 text-indigo-900 placeholder:text-zinc-400` |
+| Hover  | `hover:bg-zinc-200` |
+| Focus  | `focus:border-blue-600 focus:bg-blue-50` |
+| Error  | `border-rose-400 bg-rose-50 text-rose-900` |
+| Disabled | `opacity-50 cursor-not-allowed` |
+
+**Componentes del sistema:**
+- `<Input>` — input base de Shadcn, uso genérico
+- `<FieldInput>` — igual con prop `hasError`
+- `<ClearableInput>` — FieldInput + botón X para limpiar
+- `<PasswordInput>` — FieldInput + toggle de visibilidad
+- `<CurrencyInput>` — filled style + prefijo `$` + font-mono + `text-right`
+- `<SelectTrigger>` — mismo token set; abierto muestra estado focus
+- `<Textarea>` — mismo token set, sin `h-11`, con `py-3 min-h-[88px]`
+- `CommandInput` — bg-transparent dentro de Command, `placeholder:text-zinc-400`
+- `CustomerSelector` trigger — mismo token set que SelectTrigger
+
+**Dropdown containers** (SelectContent, PopoverContent con Command):
+```
+rounded-xl border border-zinc-200 bg-white shadow-sm
+```
+Sin borde azul, sin shadow dramática. Solo zinc estructural.
+
+---
+
+## Input Monetario (CurrencyInput)
+
+Usar el componente `<CurrencyInput>` — ya implementa filled style + prefijo `$` + font-mono + `text-right`.
+Acepta `value: number | ''` y `onChange: (value: number | '') => void`. Prop `hasError` disponible.
 
 ```tsx
-<div className="relative">
-  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono select-none pointer-events-none">
-    $
-  </span>
-  <Input
-    type="number"
-    step="0.01"
-    className="pl-7 font-mono tabular-nums text-right"
-  />
-</div>
+import { CurrencyInput } from '@/shared/components/ui/currency-input';
+
+<CurrencyInput value={amount} onChange={setAmount} />
+<CurrencyInput value={amount} onChange={setAmount} max={total} hasError={!!errors.amount} />
 ```
 
 ---
@@ -260,6 +294,40 @@ Labels de campo (solo lectura):
 <p className="text-[10px] text-zinc-400">Label</p>
 <p className="text-xs font-medium text-zinc-800 mt-0.5">Valor</p>
 ```
+
+## Botones — Reglas
+
+- **CTA principal:** `<Button>` sin className → usa `bg-primary` (azul agua)
+- **Secundario:** `<Button variant="outline">`
+- **Sutil:** `<Button variant="ghost">`
+- **Destructivo (confirmar eliminar):** `<Button className="bg-rose-600 hover:bg-rose-700">`
+- **NUNCA** hardcodear `bg-zinc-900 hover:bg-zinc-800 text-white`
+
+## Table Headers — Regla
+
+```tsx
+import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
+// No definir TH local en cada archivo
+```
+
+## Status Badges — Componente compartido
+
+```tsx
+import { StatusBadge } from '@/shared/components/ui/status-badge';
+<StatusBadge active={item.isActive} />
+// No usar inline span con clases de emerald/zinc cada vez
+```
+
+## Payment Status — Badge consistente
+
+Siempre usar badge con bg+border (no solo texto de color):
+```
+Pagado:    bg-emerald-50 border border-emerald-100 text-emerald-700
+Parcial:   bg-amber-50   border border-amber-100   text-amber-700
+Pendiente: bg-rose-50    border border-rose-100    text-rose-700
+```
+
+---
 
 ## Componentes implementados
 

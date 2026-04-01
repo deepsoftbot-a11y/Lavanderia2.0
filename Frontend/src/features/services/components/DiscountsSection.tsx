@@ -8,6 +8,8 @@ import { es } from 'date-fns/locale';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput } from '@/shared/components/ui/field-input';
+import { NumericInput } from '@/shared/components/common/NumericInput';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import {
   Dialog,
@@ -44,6 +46,8 @@ import {
 import { useDiscountsStore } from '@/features/services/stores/discountsStore';
 import { useToast } from '@/shared/hooks/use-toast';
 import { createDiscountSchema, updateDiscountSchema } from '@/features/services/schemas/discount.schema';
+import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
+import { StatusBadge } from '@/shared/components/ui/status-badge';
 import type { Discount } from '@/features/services/types/discount';
 
 const DEFAULT_DISCOUNT_ID = 1;
@@ -77,6 +81,7 @@ function DiscountFormContent({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     control,
     watch,
@@ -108,7 +113,7 @@ function DiscountFormContent({
       <div className="overflow-y-auto flex-1 px-6 py-4 space-y-4">
         <div className="space-y-1">
           <Label className="text-xs text-zinc-500 font-medium">Nombre *</Label>
-          <Input {...register('name')} placeholder="Ej: Cliente Frecuente, Promo Lunes..." />
+          <ClearableInput {...register('name')} placeholder="Ej: Cliente Frecuente, Promo Lunes..." hasError={!!errors.name} onClear={() => setValue('name', '')} />
           {errors.name && (
             <p className="text-xs text-rose-500">{errors.name.message as string}</p>
           )}
@@ -121,7 +126,7 @@ function DiscountFormContent({
             control={control}
             render={({ field }) => (
               <Select value={field.value ?? ''} onValueChange={field.onChange}>
-                <SelectTrigger>
+                <SelectTrigger hasError={!!errors.type}>
                   <SelectValue placeholder="Selecciona tipo de descuento" />
                 </SelectTrigger>
                 <SelectContent>
@@ -140,21 +145,22 @@ function DiscountFormContent({
           <Label className="text-xs text-zinc-500 font-medium">
             Valor {isPercentageType ? '(%)' : '($)'}
           </Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm font-mono select-none pointer-events-none">
-              {isPercentageType ? '%' : '$'}
-            </span>
-            <Input
-              type="number"
-              step={isPercentageType ? '1' : '0.01'}
-              min="0"
-              max={isPercentageType ? '100' : undefined}
-              {...register('value', {
-                setValueAs: (v) => (v === '' ? undefined : parseFloat(v)),
-              })}
-              className="pl-7 font-mono tabular-nums text-right"
-            />
-          </div>
+          <Controller
+            name="value"
+            control={control}
+            render={({ field }) => (
+              <NumericInput
+                prefix={isPercentageType ? '%' : '$'}
+                step={isPercentageType ? 1 : 0.01}
+                min={0}
+                max={isPercentageType ? 100 : undefined}
+                value={field.value ?? ''}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                className="text-right"
+              />
+            )}
+          />
           {errors.value && (
             <p className="text-xs text-rose-500">{errors.value.message as string}</p>
           )}
@@ -206,7 +212,6 @@ function DiscountFormContent({
         </Button>
         <Button
           type="submit"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
           disabled={isSubmitting}
         >
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
@@ -232,8 +237,6 @@ function getValidityDisplay(discount: Discount): string {
     : '∞';
   return `${from} — ${until}`;
 }
-
-const TH = 'text-[10px] font-semibold tracking-widest uppercase text-zinc-400';
 
 export function DiscountsSection() {
   const { discounts, isLoading, createDiscount, updateDiscount, deleteDiscount } =
@@ -306,7 +309,6 @@ export function DiscountsSection() {
         <Button
           onClick={handleOpenCreate}
           size="sm"
-          className="bg-zinc-900 hover:bg-zinc-800 text-white"
         >
           <Plus className="h-4 w-4 mr-1" />
           Nuevo Descuento
@@ -373,16 +375,7 @@ export function DiscountsSection() {
                   </TableCell>
 
                   <TableCell>
-                    <span
-                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                        discount.isActive
-                          ? 'bg-emerald-50 text-emerald-700'
-                          : 'bg-zinc-100 text-zinc-400'
-                      }`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${discount.isActive ? 'bg-emerald-500' : 'bg-zinc-400'}`} />
-                      {discount.isActive ? 'Activo' : 'Inactivo'}
-                    </span>
+                    <StatusBadge active={discount.isActive} />
                   </TableCell>
 
                   <TableCell className="text-right">

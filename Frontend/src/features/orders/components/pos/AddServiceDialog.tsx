@@ -62,8 +62,8 @@ export function AddServiceDialog({
   const [selectedGarmentId, setSelectedGarmentId] = useState<string>('');
   const [garmentPopoverOpen, setGarmentPopoverOpen] = useState(false);
   const [selectedDiscountId, setSelectedDiscountId] = useState<string>('0');
-  const [quantity, setQuantity] = useState<number>(1);
-  const [weightKilos, setWeightKilos] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | ''>('');
+  const [weightKilos, setWeightKilos] = useState<number | ''>('');
   const [notes, setNotes] = useState<string>('');
   const [availableGarments, setAvailableGarments] = useState<ServiceGarment[]>([]);
 
@@ -92,8 +92,8 @@ export function AddServiceDialog({
       setSelectedGarmentId('');
       setGarmentPopoverOpen(false);
       setSelectedDiscountId('0');
-      setQuantity(1);
-      setWeightKilos(1);
+      setQuantity('');
+      setWeightKilos('');
       setNotes('');
     }
   }, [open, service]);
@@ -115,18 +115,19 @@ export function AddServiceDialog({
         : null;
 
     if (service.chargeType === CHARGE_TYPE.PorPeso) {
-      onAdd(service, null, discount ?? null, 0, weightKilos, notes, displayPrice ?? null);
+      if (!weightKilos) return;
+      onAdd(service, null, discount ?? null, 0, weightKilos as number, notes, displayPrice ?? null);
       onClose();
       return;
     }
 
-    if (!selectedGarmentId || !selectedGarment) return;
+    if (!selectedGarmentId || !selectedGarment || !quantity) return;
 
     onAdd(
       service,
       selectedGarment,
       discount ?? null,
-      quantity,
+      quantity as number,
       0,
       notes,
       displayPrice ?? null
@@ -325,8 +326,8 @@ export function AddServiceDialog({
             </Button>
             <Button
               onClick={handleAdd}
-              disabled={isPieceType && !selectedGarmentId}
-              className="bg-zinc-900 hover:bg-zinc-800 text-white"
+              disabled={isPieceType ? (!selectedGarmentId || !quantity) : !weightKilos}
+              
             >
               Agregar al carrito
             </Button>

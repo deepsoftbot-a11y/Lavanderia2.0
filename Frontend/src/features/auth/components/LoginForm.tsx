@@ -6,15 +6,14 @@ import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/shared/components/ui/form';
+import { ClearableInput, PasswordInput } from '@/shared/components/ui/field-input';
 import { loginSchema, type LoginFormData } from '@/features/auth/schemas/auth.schema';
 import { useAuthStore } from '@/features/auth/stores/authStore';
 
@@ -25,18 +24,13 @@ export function LoginForm() {
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      username: '',
-      password: '',
-    },
+    defaultValues: { username: '', password: '' },
   });
 
   const onSubmit = async (data: LoginFormData) => {
     setIsSubmitting(true);
-
     try {
       const success = await login(data);
-
       if (success) {
         const permissions = useAuthStore.getState().permissions;
         const redirectPath = permissions.includes('dashboard:view')
@@ -44,12 +38,10 @@ export function LoginForm() {
           : permissions.includes('orders:view')
           ? '/orders'
           : '/orders/new';
-
         toast.success('Inicio de sesión exitoso');
         navigate(redirectPath, { replace: true });
       } else {
-        const error = useAuthStore.getState().error;
-        toast.error(error ?? 'Error al iniciar sesión');
+        toast.error(useAuthStore.getState().error ?? 'Error al iniciar sesión');
       }
     } catch {
       toast.error('Error al conectar con el servidor');
@@ -60,66 +52,65 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        {/* Usuario */}
         <FormField
           control={form.control}
           name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium text-foreground">
-                Usuario
-              </FormLabel>
+          render={({ field, fieldState }) => (
+            <FormItem className="space-y-1">
               <FormControl>
-                <Input
-                  placeholder="Ingrese su usuario"
+                <ClearableInput
+                  placeholder="Usuario"
                   autoComplete="username"
                   disabled={isSubmitting}
-                  className="h-11 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary"
+                  hasError={!!fieldState.error}
+                  onClear={() => form.setValue('username', '', { shouldValidate: true })}
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="text-xs" />
+              <FormMessage className="text-xs text-rose-500 px-2" />
             </FormItem>
           )}
         />
 
+        {/* Contraseña */}
         <FormField
           control={form.control}
           name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-sm font-medium text-foreground">
-                Contraseña
-              </FormLabel>
+          render={({ field, fieldState }) => (
+            <FormItem className="space-y-1">
               <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Ingrese su contraseña"
+                <PasswordInput
+                  placeholder="Contraseña"
                   autoComplete="current-password"
                   disabled={isSubmitting}
-                  className="h-11 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary"
+                  hasError={!!fieldState.error}
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="text-xs" />
+              <FormMessage className="text-xs text-rose-500 px-2" />
             </FormItem>
           )}
         />
 
-        <Button
-          type="submit"
-          className="w-full h-11 text-[15px] font-medium shadow-sm transition-all duration-200 hover:shadow-md active:scale-[0.98]"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <span className="flex items-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Iniciando sesión...</span>
-            </span>
-          ) : (
-            'Iniciar Sesión'
-          )}
-        </Button>
+        {/* Botón */}
+        <div className="pt-2">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full h-11 rounded-2xl bg-indigo-700 hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-700/25 active:scale-[0.98] active:shadow-none text-white font-semibold text-base tracking-wide border-0 transition-all duration-150"
+          >
+            {isSubmitting ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-5 h-5 animate-spin" />
+                Iniciando sesión...
+              </span>
+            ) : (
+              'Entrar al sistema'
+            )}
+          </Button>
+        </div>
       </form>
     </Form>
   );

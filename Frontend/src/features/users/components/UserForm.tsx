@@ -3,8 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import { ClearableInput, PasswordInput } from '@/shared/components/ui/field-input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/components/ui/select';
 
 import { createUserSchema, updateUserSchema } from '@/features/users/schemas/user.schema';
@@ -27,6 +27,7 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(isEdit ? updateUserSchema : createUserSchema),
@@ -65,11 +66,13 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
             <Label htmlFor="username" className="text-xs text-zinc-500 font-medium">
               Nombre de usuario <span className="text-rose-500">*</span>
             </Label>
-            <Input
+            <ClearableInput
               id="username"
               {...register('username')}
               placeholder="usuario123"
               disabled={isLoading}
+              hasError={!!('username' in errors && errors.username)}
+              onClear={() => setValue('username' as never, '' as never)}
             />
             {'username' in errors && errors.username && (
               <p className="text-xs text-rose-500">{errors.username.message as string}</p>
@@ -81,12 +84,12 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
               <Label htmlFor="password" className="text-xs text-zinc-500 font-medium">
                 Contraseña <span className="text-rose-500">*</span>
               </Label>
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 {...register('password')}
                 placeholder="••••••••"
                 disabled={isLoading}
+                hasError={!!errors.password}
               />
               {errors.password && (
                 <p className="text-xs text-rose-500">{errors.password.message as string}</p>
@@ -97,12 +100,12 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
               <Label htmlFor="confirmPassword" className="text-xs text-zinc-500 font-medium">
                 Confirmar contraseña <span className="text-rose-500">*</span>
               </Label>
-              <Input
+              <PasswordInput
                 id="confirmPassword"
-                type="password"
                 {...register('confirmPassword')}
                 placeholder="••••••••"
                 disabled={isLoading}
+                hasError={!!errors.confirmPassword}
               />
               {errors.confirmPassword && (
                 <p className="text-xs text-rose-500">{errors.confirmPassword.message as string}</p>
@@ -123,11 +126,13 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
             <Label htmlFor="fullName" className="text-xs text-zinc-500 font-medium">
               Nombre completo <span className="text-rose-500">*</span>
             </Label>
-            <Input
+            <ClearableInput
               id="fullName"
               {...register('fullName')}
               placeholder="Juan Pérez"
               disabled={isLoading}
+              hasError={!!errors.fullName}
+              onClear={() => setValue('fullName', '')}
             />
             {errors.fullName && (
               <p className="text-xs text-rose-500">{errors.fullName.message as string}</p>
@@ -138,12 +143,14 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
             <Label htmlFor="email" className="text-xs text-zinc-500 font-medium">
               Correo electrónico <span className="text-rose-500">*</span>
             </Label>
-            <Input
+            <ClearableInput
               id="email"
               type="email"
               {...register('email')}
               placeholder="juan@ejemplo.com"
               disabled={isLoading}
+              hasError={!!errors.email}
+              onClear={() => setValue('email', '')}
             />
             {errors.email && (
               <p className="text-xs text-rose-500">{errors.email.message as string}</p>
@@ -159,12 +166,12 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
                 Nueva contraseña{' '}
                 <span className="text-zinc-400 font-normal">(opcional)</span>
               </Label>
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 {...register('password')}
                 placeholder="••••••••"
                 disabled={isLoading}
+                hasError={!!errors.password}
               />
               {errors.password && (
                 <p className="text-xs text-rose-500">{errors.password.message as string}</p>
@@ -175,12 +182,12 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
               <Label htmlFor="confirmPassword" className="text-xs text-zinc-500 font-medium">
                 Confirmar contraseña
               </Label>
-              <Input
+              <PasswordInput
                 id="confirmPassword"
-                type="password"
                 {...register('confirmPassword')}
                 placeholder="••••••••"
                 disabled={isLoading}
+                hasError={!!errors.confirmPassword}
               />
               {errors.confirmPassword && (
                 <p className="text-xs text-rose-500">{errors.confirmPassword.message as string}</p>
@@ -203,7 +210,7 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
                   onValueChange={(val) => field.onChange(Number(val))}
                   disabled={isLoading}
                 >
-                  <SelectTrigger id="roleId">
+                  <SelectTrigger id="roleId" hasError={!!errors.roleId}>
                     <SelectValue placeholder="Selecciona un rol" />
                   </SelectTrigger>
                   <SelectContent>
@@ -253,7 +260,7 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
         <Button type="button" variant="outline" onClick={onCancel} disabled={isLoading}>
           Cancelar
         </Button>
-        <Button type="submit" disabled={isLoading} className="bg-zinc-900 hover:bg-zinc-800 text-white">
+        <Button type="submit" disabled={isLoading} >
           {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {isEdit ? 'Actualizar usuario' : 'Crear usuario'}
         </Button>
