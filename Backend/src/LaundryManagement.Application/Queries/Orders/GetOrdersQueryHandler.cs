@@ -86,12 +86,19 @@ public sealed class GetOrdersQueryHandler : IRequestHandler<GetOrdersQuery, Page
     {
         var orderIdList = orderIds.ToList();
         var clientIdList = clientIds.ToList();
+        var serviceIdList = serviceIds.ToList();
+        var garmentIdList = servicioPrendaIds.ToList();
 
-        var amountsTask = _pagoService.GetAmountsPaidByOrdersAsync(orderIdList);
-        var paymentsTask = _pagoService.GetPaymentsByOrdersAsync(orderIdList);
-        var clientsTask = _clientRepository.GetByIdsAsync(clientIdList, ct);
-        var servicesTask = _serviceRepository.GetByIdsAsync(serviceIds, ct);
-        var garmentTypesTask = _serviceGarmentRepository.GetGarmentTypesByServicioPrendaIdsAsync(servicioPrendaIds, ct);
+        // Ejecutar consultas en paralelo — Dapper (pagos) y EF Core (clientes, servicios, tipos de prenda)
+        var amountsTask      = _pagoService.GetAmountsPaidByOrdersAsync(orderIdList);
+        var paymentsTask     = _pagoService.GetPaymentsByOrdersAsync(orderIdList);
+        var clientsTask      = _clientRepository.GetByIdsAsync(clientIdList, ct);
+        var servicesTask     = serviceIdList.Count == 0
+            ? Task.FromResult(new Dictionary<int, ServicePure>())
+            : _serviceRepository.GetByIdsAsync(serviceIdList, ct);
+        var garmentTypesTask = garmentIdList.Count == 0
+            ? Task.FromResult(new Dictionary<int, ServiceGarmentPure>())
+            : _serviceGarmentRepository.GetGarmentTypesByServicioPrendaIdsAsync(garmentIdList, ct);
 
         await Task.WhenAll(amountsTask, paymentsTask, clientsTask, servicesTask, garmentTypesTask);
 

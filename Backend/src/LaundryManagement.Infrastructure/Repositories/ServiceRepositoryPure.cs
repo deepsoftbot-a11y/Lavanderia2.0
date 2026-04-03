@@ -84,6 +84,7 @@ public class ServiceRepositoryPure : IServiceRepository
 
         var entities = await _context.Servicios
             .Include(s => s.Categoria)
+            .Include(s => s.ServiciosPrenda)
             .Where(s => idList.Contains(s.ServicioId))
             .ToListAsync(cancellationToken);
 
