@@ -214,13 +214,17 @@ public class OrderRepositoryPure : IOrderRepository
         return await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<OrderPure>> GetAllAsync(
+    public async Task<(IEnumerable<OrderPure> Items, int TotalCount)> GetAllAsync(
         string? search = null,
         int? clientId = null,
         DateTime? startDate = null,
         DateTime? endDate = null,
+        int[]? statusIds = null,
+        string[]? paymentStatuses = null,
         string sortBy = "createdAt",
         string sortOrder = "desc",
+        int page = 1,
+        int pageSize = int.MaxValue,
         CancellationToken cancellationToken = default)
     {
         var query = _context.Ordenes
@@ -245,7 +249,24 @@ public class OrderRepositoryPure : IOrderRepository
             query = query.Where(o => o.FechaRecepcion >= startDate.Value);
 
         if (endDate.HasValue)
-            query = query.Where(o => o.FechaRecepcion <= endDate.Value);
+            query = query.Where(o => o.FechaRecepcion <= endDate.Value.AddDays(1).AddTicks(-1));
+
+        if (statusIds != null && statusIds.Length > 0)
+            query = query.Where(o => statusIds.Contains(o.EstadoOrdenId));
+
+        if (paymentStatuses != null && paymentStatuses.Length > 0)
+        {
+            var needPaid    = paymentStatuses.Contains("paid");
+            var needPartial = paymentStatuses.Contains("partial");
+            var needPending = paymentStatuses.Contains("pending");
+
+            query = query.Where(o =>
+                (needPaid && o.Pagos.Where(p => p.CanceladoEn == null).Sum(p => (decimal?)p.MontoPago) >= o.Total && o.Total > 0) ||
+                (needPartial && o.Pagos.Where(p => p.CanceladoEn == null).Sum(p => (decimal?)p.MontoPago) > 0 &&
+                                o.Pagos.Where(p => p.CanceladoEn == null).Sum(p => (decimal?)p.MontoPago) < o.Total) ||
+                (needPending && !(o.Pagos.Where(p => p.CanceladoEn == null).Sum(p => (decimal?)p.MontoPago) > 0))
+            );
+        }
 
         query = (sortBy.ToLower(), sortOrder.ToLower()) switch
         {
@@ -257,8 +278,14 @@ public class OrderRepositoryPure : IOrderRepository
             _                      => query.OrderByDescending(o => o.FechaRecepcion)
         };
 
-        var entities = await query.ToListAsync(cancellationToken);
-        return entities.Select(OrderMapper.ToDomain).ToList();
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        IQueryable<Ordene> paged = pageSize == int.MaxValue
+            ? query
+            : query.Skip((page - 1) * pageSize).Take(pageSize);
+
+        var entities = await paged.ToListAsync(cancellationToken);
+        return (entities.Select(OrderMapper.ToDomain).ToList(), totalCount);
     }
 
     public async Task<string> GenerateNextFolioAsync(CancellationToken cancellationToken)

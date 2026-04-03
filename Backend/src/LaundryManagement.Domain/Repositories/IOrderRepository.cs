@@ -34,22 +34,31 @@ public interface IOrderRepository
     Task<IEnumerable<OrderPure>> GetByClientAsync(ClientId clientId, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Obtiene todas las órdenes aplicando filtros opcionales
+    /// Obtiene todas las órdenes aplicando filtros opcionales con soporte de paginación.
     /// </summary>
     /// <param name="search">Busca en folio, nombre completo o teléfono del cliente</param>
     /// <param name="clientId">Filtro por cliente</param>
     /// <param name="startDate">Fecha de inicio (recepción)</param>
     /// <param name="endDate">Fecha de fin (recepción)</param>
+    /// <param name="statusIds">Filtro por uno o varios IDs de estado de orden</param>
+    /// <param name="paymentStatuses">Filtro por estado de pago: "paid", "partial", "pending"</param>
     /// <param name="sortBy">Campo de ordenamiento</param>
     /// <param name="sortOrder">Dirección: "asc" o "desc"</param>
+    /// <param name="page">Número de página (1-based)</param>
+    /// <param name="pageSize">Tamaño de página; int.MaxValue devuelve todo</param>
     /// <param name="cancellationToken">Token de cancelación</param>
-    Task<IEnumerable<OrderPure>> GetAllAsync(
+    /// <returns>Tupla con los ítems de la página y el total de registros sin paginar</returns>
+    Task<(IEnumerable<OrderPure> Items, int TotalCount)> GetAllAsync(
         string? search = null,
         int? clientId = null,
         DateTime? startDate = null,
         DateTime? endDate = null,
+        int[]? statusIds = null,
+        string[]? paymentStatuses = null,
         string sortBy = "createdAt",
         string sortOrder = "desc",
+        int page = 1,
+        int pageSize = int.MaxValue,
         CancellationToken cancellationToken = default);
 
     /// <summary>
