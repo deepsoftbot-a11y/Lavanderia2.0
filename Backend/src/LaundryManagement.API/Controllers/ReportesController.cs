@@ -33,4 +33,34 @@ public class ReportesController : ControllerBase
         var result = await _reporteService.ReporteVentasDiariasAsync(fecha);
         return Ok(result);
     }
+
+    /// <summary>
+    /// Exporta el historial de órdenes con filtros a Excel o PDF
+    /// </summary>
+    [HttpGet("ordenes/export")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ExportOrdenes(
+        [FromQuery] string format,
+        [FromQuery] DateTime? startDate,
+        [FromQuery] DateTime? endDate,
+        [FromQuery] int[]? statusIds,
+        [FromQuery] string[]? paymentStatuses)
+    {
+        if (format != "xlsx" && format != "pdf")
+            return BadRequest(new { message = "format debe ser 'xlsx' o 'pdf'" });
+
+        if (format == "xlsx")
+        {
+            var bytes = await _reporteService.ExportOrdenesExcelAsync(startDate, endDate, statusIds, paymentStatuses);
+            var fileName = $"ordenes-{DateTime.Today:yyyy-MM-dd}.xlsx";
+            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+        else
+        {
+            var bytes = await _reporteService.ExportOrdenesPdfAsync(startDate, endDate, statusIds, paymentStatuses);
+            var fileName = $"ordenes-{DateTime.Today:yyyy-MM-dd}.pdf";
+            return File(bytes, "application/pdf", fileName);
+        }
+    }
 }
