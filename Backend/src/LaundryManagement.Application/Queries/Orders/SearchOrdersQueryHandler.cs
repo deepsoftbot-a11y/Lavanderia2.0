@@ -24,13 +24,11 @@ public sealed class SearchOrdersQueryHandler : IRequestHandler<SearchOrdersQuery
 
     public async Task<List<OrderSummaryDto>> Handle(SearchOrdersQuery query, CancellationToken cancellationToken)
     {
-        var orders = (await _orderRepository.GetAllAsync(
+        var (ordersEnumerable, _) = await _orderRepository.GetAllAsync(
             search: query.Query,
-            clientId: null,
-            startDate: null,
-            endDate: null,
             cancellationToken: cancellationToken
-        )).ToList();
+        );
+        var orders = ordersEnumerable.ToList();
 
         if (!orders.Any())
             return new List<OrderSummaryDto>();
