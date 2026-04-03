@@ -1,3 +1,4 @@
+using LaundryManagement.Application.Common;
 using LaundryManagement.Application.DTOs.Orders;
 using LaundryManagement.Application.Interfaces;
 using LaundryManagement.Domain.Aggregates.Clients;
@@ -10,7 +11,7 @@ using MediatR;
 
 namespace LaundryManagement.Application.Queries.Orders;
 
-public sealed class GetOrdersQueryHandler : IRequestHandler<GetOrdersQuery, List<OrderResponseDto>>
+public sealed class GetOrdersQueryHandler : IRequestHandler<GetOrdersQuery, PagedResult<OrderResponseDto>>
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IPagoService _pagoService;
@@ -32,34 +33,43 @@ public sealed class GetOrdersQueryHandler : IRequestHandler<GetOrdersQuery, List
         _serviceGarmentRepository = serviceGarmentRepository;
     }
 
-    public async Task<List<OrderResponseDto>> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
+    public async Task<PagedResult<OrderResponseDto>> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
     {
-        var orders = (await _orderRepository.GetAllAsync(
+        var (orders, totalCount) = await _orderRepository.GetAllAsync(
             search: query.Search,
             clientId: query.ClientId,
             startDate: query.StartDate,
             endDate: query.EndDate,
+            statusIds: query.StatusIds,
+            paymentStatuses: query.PaymentStatuses,
             sortBy: query.SortBy,
             sortOrder: query.SortOrder,
+            page: query.Page,
+            pageSize: query.PageSize,
             cancellationToken: cancellationToken
-        )).ToList();
+        );
 
-        if (!orders.Any())
-            return new List<OrderResponseDto>();
+        var ordersList = orders.ToList();
 
-        var orderIds = orders.Select(o => o.Id.Value).ToList();
-        var allItems = orders.SelectMany(o => o.LineItems).ToList();
+        if (!ordersList.Any())
+            return new PagedResult<OrderResponseDto>(new List<OrderResponseDto>(), totalCount, query.Page, query.PageSize);
+
+        var orderIds = ordersList.Select(o => o.Id.Value).ToList();
+        var allItems = ordersList.SelectMany(o => o.LineItems).ToList();
         var serviceIds = allItems.Select(i => i.ServiceId).Distinct().ToList();
         var servicioPrendaIds = allItems.Where(i => i.ServiceGarmentId.HasValue)
             .Select(i => i.ServiceGarmentId!.Value).Distinct().ToList();
 
-        // Batch fetch de datos relacionados (5 queries en paralelo)
         var (amountsPaid, paymentsByOrder, clientsDict, servicesDict, garmentTypesDict) =
             await FetchRelatedDataAsync(
-                orderIds, orders.Select(o => o.ClientId).Distinct(),
+                orderIds, ordersList.Select(o => o.ClientId).Distinct(),
                 serviceIds, servicioPrendaIds, cancellationToken);
 
-        return orders.Select(order => BuildDto(order, amountsPaid, paymentsByOrder, clientsDict, servicesDict, garmentTypesDict)).ToList();
+        var data = ordersList
+            .Select(order => BuildDto(order, amountsPaid, paymentsByOrder, clientsDict, servicesDict, garmentTypesDict))
+            .ToList();
+
+        return new PagedResult<OrderResponseDto>(data, totalCount, query.Page, query.PageSize);
     }
 
     internal async Task<(Dictionary<int, decimal> amountsPaid,
