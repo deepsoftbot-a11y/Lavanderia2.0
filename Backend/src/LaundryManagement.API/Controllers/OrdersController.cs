@@ -1,4 +1,5 @@
 using LaundryManagement.Application.Commands.Orders;
+using LaundryManagement.Application.Common;
 using LaundryManagement.Application.DTOs.Orders;
 using LaundryManagement.Application.Queries.Orders;
 using LaundryManagement.Application.Queries.Payments;
@@ -26,19 +27,26 @@ public class OrdersController : ControllerBase
     }
 
     /// <summary>
-    /// Lista órdenes con filtros opcionales
+    /// Lista órdenes con filtros y paginación
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(List<OrderResponseDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResult<OrderResponseDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrders(
         [FromQuery] string? search,
         [FromQuery] int? clientId,
         [FromQuery] DateTime? startDate,
         [FromQuery] DateTime? endDate,
+        [FromQuery] int[]? statusIds,
+        [FromQuery] string[]? paymentStatuses,
         [FromQuery] string sortBy = "createdAt",
-        [FromQuery] string sortOrder = "desc")
+        [FromQuery] string sortOrder = "desc",
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 20)
     {
-        var query = new GetOrdersQuery(search, clientId, startDate, endDate, sortBy, sortOrder);
+        var query = new GetOrdersQuery(
+            search, clientId, startDate, endDate,
+            statusIds, paymentStatuses,
+            sortBy, sortOrder, page, pageSize);
         var result = await _mediator.Send(query);
         return Ok(result);
     }
