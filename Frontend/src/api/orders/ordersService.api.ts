@@ -1,5 +1,14 @@
 import api from '@/api/axiosConfig';
-import type { Order, OrderSummary, OrderFilters, CreateOrderInput, UpdateOrderInput, OrderSearchFilters, UpdateOrderStatusInput } from '@/features/orders/types/order';
+import type {
+  Order,
+  OrderSummary,
+  PagedResult,
+  OrderHistoryFilters,
+  CreateOrderInput,
+  UpdateOrderInput,
+  OrderSearchFilters,
+  UpdateOrderStatusInput,
+} from '@/features/orders/types/order';
 import { mockOrderStatuses } from '@/api/orderStatuses';
 
 function withOrderStatus<T extends { orderStatusId: number }>(order: T): T {
@@ -9,10 +18,18 @@ function withOrderStatus<T extends { orderStatusId: number }>(order: T): T {
   };
 }
 
-export async function getOrders(filters: OrderFilters = {}): Promise<Order[]> {
+export async function getOrders(
+  filters: OrderHistoryFilters = {},
+  page = 1,
+  pageSize = 20
+): Promise<PagedResult<Order>> {
   try {
-    const response = await api.get<Order[]>('/orders', { params: filters });
-    return response.data.map(withOrderStatus);
+    const params: Record<string, unknown> = { ...filters, page, pageSize };
+    const response = await api.get<PagedResult<Order>>('/orders', { params });
+    return {
+      ...response.data,
+      data: response.data.data.map(withOrderStatus),
+    };
   } catch (error) {
     console.error('Get orders API error:', error);
     throw new Error('Error al obtener órdenes desde el servidor');
@@ -90,5 +107,32 @@ export async function updateOrderStatus(orderId: number, input: UpdateOrderStatu
   } catch (error) {
     console.error('Update order status API error:', error);
     throw new Error('Error al actualizar el estado de la orden');
+  }
+}
+
+export async function exportOrders(
+  format: 'xlsx' | 'pdf',
+  filters: OrderHistoryFilters = {}
+): Promise<void> {
+  try {
+    const params: Record<string, unknown> = { ...filters, format };
+    const response = await api.get('/reportes/ordenes/export', {
+      params,
+      responseType: 'blob',
+    });
+    const ext = format === 'xlsx' ? 'xlsx' : 'pdf';
+    const today = new Date().toISOString().slice(0, 10);
+    const fileName = `ordenes-${today}.${ext}`;
+    const url = URL.createObjectURL(response.data as Blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Export orders API error:', error);
+    throw new Error('Error al generar el reporte');
   }
 }

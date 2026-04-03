@@ -158,3 +158,17 @@ export interface OrderSearchFilters {
 export interface UpdateOrderStatusInput {
   orderStatusId: number;
 }
+
+export interface PagedResult<T> {
+  data: T[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
+}
+
+export interface OrderHistoryFilters {
+  startDate?: string;       // "2026-01-01"
+  endDate?: string;         // "2026-12-31"
+  statusIds?: number[];
+  paymentStatuses?: PaymentStatus[];
+}
