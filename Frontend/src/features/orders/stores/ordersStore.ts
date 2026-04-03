@@ -1,7 +1,19 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
-import type { Order, OrderSummary, OrderFilters, OrderSearchFilters } from '@/features/orders/types/order';
+import type {
+  Order,
+  OrderSummary,
+  OrderHistoryFilters,
+  PagedResult,
+  OrderSearchFilters,
+} from '@/features/orders/types/order';
 import * as ordersApi from '@/api/orders';
+
+interface OrdersPagination {
+  page: number;
+  pageSize: number;
+  totalCount: number;
+}
 
 interface OrdersState {
   orders: Order[];
@@ -9,19 +21,23 @@ interface OrdersState {
   isLoading: boolean;
   error: string | null;
 
+  pagination: OrdersPagination;
+  activeFilters: OrderHistoryFilters;
+
   // Search state
   searchResults: OrderSummary[];
   isSearching: boolean;
   searchError: string | null;
 
   // Actions
-  fetchOrders: (filters?: OrderFilters) => Promise<void>;
+  fetchOrders: (filters?: OrderHistoryFilters, page?: number) => Promise<void>;
   fetchOrderById: (id: number) => Promise<void>;
   createOrder: (input: any) => Promise<Order | null>;
   updateOrder: (id: number, input: any) => Promise<Order | null>;
   deleteOrder: (id: number) => Promise<void>;
   setSelectedOrder: (order: Order | null) => void;
   clearError: () => void;
+  clearFilters: () => void;
 
   // Search actions
   searchOrders: (filters: OrderSearchFilters) => Promise<void>;
@@ -30,6 +46,8 @@ interface OrdersState {
   clearSearchResults: () => void;
 }
 
+const DEFAULT_PAGINATION: OrdersPagination = { page: 1, pageSize: 20, totalCount: 0 };
+
 export const useOrdersStore = create<OrdersState>()(
   immer((set, get) => ({
     orders: [],
@@ -37,15 +55,23 @@ export const useOrdersStore = create<OrdersState>()(
     isLoading: false,
     error: null,
 
+    pagination: DEFAULT_PAGINATION,
+    activeFilters: {},
+
     searchResults: [],
     isSearching: false,
     searchError: null,
 
-    fetchOrders: async (filters) => {
+    fetchOrders: async (filters = {}, page = 1) => {
       set({ isLoading: true, error: null });
       try {
-        const orders = await ordersApi.getOrders(filters);
-        set({ orders, isLoading: false });
+        const result: PagedResult<Order> = await ordersApi.getOrders(filters, page);
+        set({
+          orders: result.data,
+          pagination: { page: result.page, pageSize: result.pageSize, totalCount: result.totalCount },
+          activeFilters: filters,
+          isLoading: false,
+        });
       } catch (error) {
         const message = error instanceof Error ? error.message : 'Error al cargar órdenes';
         set({ error: message, isLoading: false });
@@ -69,6 +95,7 @@ export const useOrdersStore = create<OrdersState>()(
         const order = await ordersApi.createOrder(input);
         set((state) => {
           state.orders.unshift(order);
+          state.pagination.totalCount += 1;
           state.isLoading = false;
         });
         return order;
@@ -85,12 +112,8 @@ export const useOrdersStore = create<OrdersState>()(
         const order = await ordersApi.updateOrder(id, input);
         set((state) => {
           const index = state.orders.findIndex((o) => o.id === id);
-          if (index !== -1) {
-            state.orders[index] = order;
-          }
-          if (state.selectedOrder?.id === id) {
-            state.selectedOrder = order;
-          }
+          if (index !== -1) state.orders[index] = order;
+          if (state.selectedOrder?.id === id) state.selectedOrder = order;
           state.isLoading = false;
         });
         return order;
@@ -107,9 +130,8 @@ export const useOrdersStore = create<OrdersState>()(
         await ordersApi.deleteOrder(id);
         set((state) => {
           state.orders = state.orders.filter((o) => o.id !== id);
-          if (state.selectedOrder?.id === id) {
-            state.selectedOrder = null;
-          }
+          if (state.selectedOrder?.id === id) state.selectedOrder = null;
+          state.pagination.totalCount = Math.max(0, state.pagination.totalCount - 1);
           state.isLoading = false;
         });
       } catch (error) {
@@ -119,12 +141,11 @@ export const useOrdersStore = create<OrdersState>()(
       }
     },
 
-    setSelectedOrder: (order) => {
-      set({ selectedOrder: order });
-    },
-
-    clearError: () => {
-      set({ error: null });
+    setSelectedOrder: (order) => set({ selectedOrder: order }),
+    clearError: () => set({ error: null }),
+    clearFilters: () => {
+      const { fetchOrders } = get();
+      fetchOrders({}, 1);
     },
 
     searchOrders: async (filters) => {
@@ -172,8 +193,6 @@ export const useOrdersStore = create<OrdersState>()(
       }
     },
 
-    clearSearchResults: () => {
-      set({ searchResults: [], searchError: null });
-    },
+    clearSearchResults: () => set({ searchResults: [], searchError: null }),
   }))
 );
