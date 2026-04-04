@@ -10,6 +10,23 @@ const api = axios.create({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
+  // ASP.NET Core espera arrays sin corchetes: paymentStatuses=a&paymentStatuses=b
+  // Axios por defecto usa paymentStatuses[]=a, que el model binder no reconoce
+  paramsSerializer: (params) => {
+    const parts: string[] = [];
+    for (const key of Object.keys(params)) {
+      const value = params[key];
+      if (value === undefined || value === null) continue;
+      if (Array.isArray(value)) {
+        for (const item of value) {
+          parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(item)}`);
+        }
+      } else {
+        parts.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+      }
+    }
+    return parts.join('&');
+  },
 });
 
 const isDev = import.meta.env.DEV;
