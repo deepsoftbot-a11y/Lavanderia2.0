@@ -3,7 +3,13 @@ import { X } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
-import { cn } from '@/shared/utils/cn';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/components/ui/select';
 import { mockOrderStatuses } from '@/api/orderStatuses';
 import type { OrderHistoryFilters } from '@/features/orders/types/order';
 import type { PaymentStatus } from '@/features/orders/types/payment';
@@ -18,28 +24,31 @@ const PAYMENT_STATUS_OPTIONS: { value: PaymentStatus; label: string }[] = [
   { value: 'pending', label: 'Pendiente' },
 ];
 
+const SELECT_TRIGGER_CLASS =
+  'h-8 text-xs bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50 w-36';
+
 export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
-  const [startDate, setStartDate]                 = useState('');
-  const [endDate, setEndDate]                     = useState('');
-  const [selectedStatusIds, setSelectedStatusIds] = useState<number[]>([]);
-  const [selectedPayments, setSelectedPayments]   = useState<PaymentStatus[]>([]);
-  const [dateError, setDateError]                 = useState('');
+  const [startDate,      setStartDate]      = useState('');
+  const [endDate,        setEndDate]        = useState('');
+  const [selectedStatus, setSelectedStatus] = useState<string>('');
+  const [selectedPayment,setSelectedPayment]= useState<string>('');
+  const [dateError,      setDateError]      = useState('');
 
   const hasFilters =
     startDate !== '' || endDate !== '' ||
-    selectedStatusIds.length > 0 || selectedPayments.length > 0;
+    selectedStatus !== '' || selectedPayment !== '';
 
   function buildFilters(
     sd: string,
     ed: string,
-    statuses: number[],
-    payments: PaymentStatus[]
+    status: string,
+    payment: string,
   ): OrderHistoryFilters {
     return {
-      startDate:       sd || undefined,
-      endDate:         ed || undefined,
-      statusIds:       statuses.length > 0 ? statuses : undefined,
-      paymentStatuses: payments.length > 0 ? payments : undefined,
+      startDate:       sd      || undefined,
+      endDate:         ed      || undefined,
+      statusIds:       status  ? [Number(status)] : undefined,
+      paymentStatuses: payment ? [payment as PaymentStatus] : undefined,
     };
   }
 
@@ -50,7 +59,7 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
       return;
     }
     setDateError('');
-    onFiltersChange(buildFilters(value, endDate, selectedStatusIds, selectedPayments));
+    onFiltersChange(buildFilters(value, endDate, selectedStatus, selectedPayment));
   }
 
   function handleEndDate(value: string) {
@@ -60,30 +69,26 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
       return;
     }
     setDateError('');
-    onFiltersChange(buildFilters(startDate, value, selectedStatusIds, selectedPayments));
+    onFiltersChange(buildFilters(startDate, value, selectedStatus, selectedPayment));
   }
 
-  function handleStatusChange(id: number) {
-    const next = selectedStatusIds.includes(id)
-      ? selectedStatusIds.filter((s) => s !== id)
-      : [...selectedStatusIds, id];
-    setSelectedStatusIds(next);
-    onFiltersChange(buildFilters(startDate, endDate, next, selectedPayments));
+  function handleStatusChange(value: string) {
+    const next = value === 'all' ? '' : value;
+    setSelectedStatus(next);
+    onFiltersChange(buildFilters(startDate, endDate, next, selectedPayment));
   }
 
-  function handlePaymentToggle(status: PaymentStatus) {
-    const next = selectedPayments.includes(status)
-      ? selectedPayments.filter((s) => s !== status)
-      : [...selectedPayments, status];
-    setSelectedPayments(next);
-    onFiltersChange(buildFilters(startDate, endDate, selectedStatusIds, next));
+  function handlePaymentChange(value: string) {
+    const next = value === 'all' ? '' : value;
+    setSelectedPayment(next);
+    onFiltersChange(buildFilters(startDate, endDate, selectedStatus, next));
   }
 
   function handleClear() {
     setStartDate('');
     setEndDate('');
-    setSelectedStatusIds([]);
-    setSelectedPayments([]);
+    setSelectedStatus('');
+    setSelectedPayment('');
     setDateError('');
     onFiltersChange({});
   }
@@ -91,6 +96,7 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
   return (
     <div className="border-b border-zinc-100 bg-zinc-50 px-6 py-4 space-y-3">
       <div className="flex flex-wrap gap-4 items-end">
+
         {/* Rango de fechas */}
         <div className="flex gap-2 items-end">
           <div className="space-y-1">
@@ -115,46 +121,38 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
 
         {/* Estado de orden */}
         <div className="space-y-1">
-          <Label className="text-xs text-zinc-500">Estado de orden</Label>
-          <div className="flex gap-1 flex-wrap">
-            {mockOrderStatuses.map((status) => (
-              <button
-                key={status.id}
-                type="button"
-                onClick={() => handleStatusChange(status.id)}
-                className={cn(
-                  'px-2.5 py-1 rounded-full text-xs font-medium border transition-colors',
-                  selectedStatusIds.includes(status.id)
-                    ? 'bg-zinc-100 text-zinc-900 border-zinc-400 font-semibold'
-                    : 'bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700'
-                )}
-              >
-                {status.name}
-              </button>
-            ))}
-          </div>
+          <Label className="text-xs text-zinc-500">Estado</Label>
+          <Select value={selectedStatus || 'all'} onValueChange={handleStatusChange}>
+            <SelectTrigger className={SELECT_TRIGGER_CLASS}>
+              <SelectValue placeholder="Todos" />
+            </SelectTrigger>
+            <SelectContent className="rounded-xl border border-zinc-200 bg-white shadow-sm">
+              <SelectItem value="all" className="text-xs">Todos</SelectItem>
+              {mockOrderStatuses.map((s) => (
+                <SelectItem key={s.id} value={String(s.id)} className="text-xs">
+                  {s.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Estado de pago */}
         <div className="space-y-1">
-          <Label className="text-xs text-zinc-500">Estado de pago</Label>
-          <div className="flex gap-1">
-            {PAYMENT_STATUS_OPTIONS.map(({ value, label }) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => handlePaymentToggle(value)}
-                className={cn(
-                  'px-2.5 py-1 rounded-full text-xs font-medium border transition-colors',
-                  selectedPayments.includes(value)
-                    ? 'bg-zinc-100 text-zinc-900 border-zinc-400 font-semibold'
-                    : 'bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700'
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <Label className="text-xs text-zinc-500">Pago</Label>
+          <Select value={selectedPayment || 'all'} onValueChange={handlePaymentChange}>
+            <SelectTrigger className={SELECT_TRIGGER_CLASS}>
+              <SelectValue placeholder="Todos" />
+            </SelectTrigger>
+            <SelectContent className="rounded-xl border border-zinc-200 bg-white shadow-sm">
+              <SelectItem value="all" className="text-xs">Todos</SelectItem>
+              {PAYMENT_STATUS_OPTIONS.map(({ value, label }) => (
+                <SelectItem key={value} value={value} className="text-xs">
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Limpiar */}
@@ -172,7 +170,7 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
       </div>
 
       {dateError && (
-        <p className="text-xs text-red-500">{dateError}</p>
+        <p className="text-xs text-rose-500">{dateError}</p>
       )}
     </div>
   );
