@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import { Eye } from 'lucide-react';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/utils/cn';
 import type { OrderSummary } from '@/features/orders/types/order';
@@ -17,16 +19,20 @@ const PAYMENT_LABELS: Record<string, { label: string; className: string }> = {
 
 export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
   const payment = PAYMENT_LABELS[order.paymentStatus] ?? PAYMENT_LABELS.pending;
+  const registroDate = format(new Date(order.createdAt), "d MMM yyyy", { locale: es });
 
   return (
     <>
       {/* Desktop row */}
-      <div className="hidden md:grid grid-cols-[80px_2fr_1fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
-        <span className="font-mono font-bold text-sm tracking-tight text-zinc-900">
-          #{order.id}
+      <div className="hidden md:grid grid-cols-[140px_2fr_100px_1fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
+        <span className="font-mono text-xs font-semibold tracking-tight text-zinc-700 truncate">
+          {order.folioOrden}
         </span>
         <p className="text-sm font-medium text-zinc-800 truncate">
           {order.client?.name ?? '—'}
+        </p>
+        <p className="text-xs text-zinc-500 capitalize">
+          {registroDate}
         </p>
         <span
           className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit"
@@ -57,8 +63,8 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
       {/* Mobile card */}
       <div className="md:hidden px-6 py-4 border-b border-zinc-100">
         <div className="flex items-start justify-between gap-3 mb-1.5">
-          <span className="font-mono font-bold text-sm tracking-tight text-zinc-900">
-            #{order.id}
+          <span className="font-mono text-xs font-semibold tracking-tight text-zinc-700">
+            {order.folioOrden}
           </span>
           <div className="flex items-center gap-2">
             <span className={cn('text-[11px] font-medium px-2 py-0.5 rounded-full border', payment.className)}>
@@ -70,6 +76,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
           </div>
         </div>
         <p className="text-sm font-medium text-zinc-800">{order.client?.name ?? '—'}</p>
+        <p className="text-xs text-zinc-400 mt-0.5 capitalize">{registroDate}</p>
         {order.orderStatus && (
           <span
             className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit mt-1 inline-block"
