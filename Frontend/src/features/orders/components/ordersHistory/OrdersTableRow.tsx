@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Eye } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/utils/cn';
@@ -14,7 +15,7 @@ const PAYMENT_LABELS: Record<string, { label: string; className: string }> = {
   pending: { label: 'Pendiente',  className: 'text-red-700 bg-red-50 border-red-200' },
 };
 
-export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
+export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
   const payment = PAYMENT_LABELS[order.paymentStatus] ?? PAYMENT_LABELS.pending;
 
   return (
@@ -91,4 +92,4 @@ export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
       </div>
     </>
   );
-}
+});

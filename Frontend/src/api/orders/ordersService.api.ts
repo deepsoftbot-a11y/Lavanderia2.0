@@ -11,10 +11,13 @@ import type {
 } from '@/features/orders/types/order';
 import { mockOrderStatuses } from '@/api/orderStatuses';
 
+// Map construido una sola vez — O(1) por lookup en lugar de O(n) con .find()
+const orderStatusById = new Map(mockOrderStatuses.map((s) => [s.id, s]));
+
 function withOrderStatus<T extends { orderStatusId: number }>(order: T): T {
   return {
     ...order,
-    orderStatus: mockOrderStatuses.find((s) => s.id === order.orderStatusId),
+    orderStatus: orderStatusById.get(order.orderStatusId),
   };
 }
 

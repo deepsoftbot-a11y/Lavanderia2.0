@@ -1,4 +1,6 @@
 import { ChevronLeft, ChevronRight, Package } from 'lucide-react';
+
+const SKELETON_WIDTHS = [80, 160, 80, 80, 70, 28];
 import { Button } from '@/shared/components/ui/button';
 import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
 import { OrdersTableRow } from './OrdersTableRow';
@@ -21,7 +23,7 @@ interface OrdersTableProps {
 function SkeletonRow() {
   return (
     <div className="hidden md:grid grid-cols-[80px_2fr_1fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100">
-      {[80, 160, 80, 80, 70, 28].map((w, i) => (
+      {SKELETON_WIDTHS.map((w, i) => (
         <div key={i} className="h-4 bg-zinc-100 rounded animate-pulse" style={{ width: w }} />
       ))}
     </div>
