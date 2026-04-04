@@ -60,7 +60,7 @@ export function OrdersTable({
     return (
       <>
         <div className="hidden md:grid grid-cols-[140px_2fr_100px_1fr_1fr_120px_48px] gap-4 px-6 py-2 border-b border-zinc-100 bg-zinc-50">
-          {['Folio', 'Cliente', 'Registro', 'Estado', 'Total', 'Pago', ''].map((h) => (
+          {['Folio', 'Cliente', 'Estado', 'Pago', 'Total', 'Registro', ''].map((h) => (
             <p key={h} className={TH}>{h}</p>
           ))}
         </div>

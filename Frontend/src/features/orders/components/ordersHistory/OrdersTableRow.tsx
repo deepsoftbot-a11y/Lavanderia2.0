@@ -31,9 +31,6 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
         <p className="text-sm font-medium text-zinc-800 truncate">
           {order.client?.name ?? '—'}
         </p>
-        <p className="text-xs text-zinc-500 capitalize">
-          {registroDate}
-        </p>
         <span
           className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit"
           style={order.orderStatus?.color
@@ -42,12 +39,15 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
         >
           {order.orderStatus?.name ?? '—'}
         </span>
-        <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
-          ${order.total.toFixed(2)}
-        </span>
         <span className={cn('text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit', payment.className)}>
           {payment.label}
         </span>
+        <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
+          ${order.total.toFixed(2)}
+        </span>
+        <p className="text-xs text-zinc-500 capitalize">
+          {registroDate}
+        </p>
         <div className="flex justify-end">
           <Button
             variant="ghost"
