@@ -20,13 +20,21 @@ export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
   return (
     <>
       {/* Desktop row */}
-      <div className="hidden md:grid grid-cols-[80px_2fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
+      <div className="hidden md:grid grid-cols-[80px_2fr_1fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
         <span className="font-mono font-bold text-sm tracking-tight text-zinc-900">
           #{order.id}
         </span>
         <p className="text-sm font-medium text-zinc-800 truncate">
           {order.client?.name ?? '—'}
         </p>
+        <span
+          className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit"
+          style={order.orderStatus?.color
+            ? { color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}18` }
+            : undefined}
+        >
+          {order.orderStatus?.name ?? '—'}
+        </span>
         <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
           ${order.total.toFixed(2)}
         </span>
@@ -61,6 +69,14 @@ export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
           </div>
         </div>
         <p className="text-sm font-medium text-zinc-800">{order.client?.name ?? '—'}</p>
+        {order.orderStatus && (
+          <span
+            className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit mt-1 inline-block"
+            style={{ color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}18` }}
+          >
+            {order.orderStatus.name}
+          </span>
+        )}
         <div className="flex gap-2 mt-3 pt-3 border-t border-zinc-100">
           <Button
             size="sm"
