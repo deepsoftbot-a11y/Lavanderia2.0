@@ -30,7 +30,7 @@ public class OrdersController : ControllerBase
     /// Lista órdenes con filtros y paginación
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(PagedResult<OrderResponseDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResult<OrderSummaryDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOrders(
         [FromQuery] string? search,
         [FromQuery] int? clientId,

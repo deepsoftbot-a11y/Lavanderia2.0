@@ -1,4 +1,5 @@
 using LaundryManagement.Application.Common;
+using LaundryManagement.Application.DTOs.Orders;
 using MediatR;
 
 namespace LaundryManagement.Application.Queries.Orders;
@@ -14,4 +15,4 @@ public record GetOrdersQuery(
     string SortOrder = "desc",
     int Page = 1,
     int PageSize = 20
-) : IRequest<PagedResult<OrderResponseDto>>;
+) : IRequest<PagedResult<OrderSummaryDto>>;

@@ -25,6 +25,6 @@ public sealed class UpdateOrderPaymentTotalsCommandHandler
             ?? throw new NotFoundException($"Orden con ID {command.OrderId} no encontrada");
 
         var amountPaid = await _pagoService.GetAmountPaidByOrderAsync(command.OrderId);
-        return GetOrdersQueryHandler.MapToDto(order, amountPaid);
+        return OrderResponseMapper.MapToDto(order, amountPaid);
     }
 }

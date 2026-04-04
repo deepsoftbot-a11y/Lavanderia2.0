@@ -1,12 +1,10 @@
 import { Eye } from 'lucide-react';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/utils/cn';
-import type { Order } from '@/features/orders/types/order';
+import type { OrderSummary } from '@/features/orders/types/order';
 
 interface OrdersTableRowProps {
-  order: Order;
+  order: OrderSummary;
   onView: (orderId: number) => void;
 }
 
@@ -22,19 +20,13 @@ export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
   return (
     <>
       {/* Desktop row */}
-      <div className="hidden md:grid grid-cols-[80px_2fr_1fr_80px_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
+      <div className="hidden md:grid grid-cols-[80px_2fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
         <span className="font-mono font-bold text-sm tracking-tight text-zinc-900">
           #{order.id}
         </span>
         <p className="text-sm font-medium text-zinc-800 truncate">
           {order.client?.name ?? '—'}
         </p>
-        <p className="text-xs text-zinc-500 capitalize">
-          {format(new Date(order.promisedDate), "d 'de' MMM", { locale: es })}
-        </p>
-        <span className="text-xs text-zinc-500 font-mono">
-          {order.items.length}
-        </span>
         <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
           ${order.total.toFixed(2)}
         </span>
@@ -69,9 +61,6 @@ export function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
           </div>
         </div>
         <p className="text-sm font-medium text-zinc-800">{order.client?.name ?? '—'}</p>
-        <p className="text-xs text-zinc-400 capitalize mt-0.5">
-          Entrega: {format(new Date(order.promisedDate), "d 'de' MMM 'de' yyyy", { locale: es })}
-        </p>
         <div className="flex gap-2 mt-3 pt-3 border-t border-zinc-100">
           <Button
             size="sm"

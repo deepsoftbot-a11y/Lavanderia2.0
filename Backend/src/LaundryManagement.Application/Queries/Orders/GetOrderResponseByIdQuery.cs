@@ -57,6 +57,6 @@ public sealed class GetOrderResponseByIdQueryHandler
         var amountPaid = amountsPaid.TryGetValue(query.OrderId, out var paid) ? paid : 0m;
         paymentsByOrder.TryGetValue(query.OrderId, out var payments);
 
-        return GetOrdersQueryHandler.MapToDto(order, amountPaid, client, payments, servicesDict, garmentTypesDict);
+        return OrderResponseMapper.MapToDto(order, amountPaid, client, payments, servicesDict, garmentTypesDict);
     }
 }

@@ -16,7 +16,7 @@ interface OrdersPagination {
 }
 
 interface OrdersState {
-  orders: Order[];
+  orders: OrderSummary[];
   selectedOrder: Order | null;
   isLoading: boolean;
   error: string | null;
@@ -65,7 +65,7 @@ export const useOrdersStore = create<OrdersState>()(
     fetchOrders: async (filters = {}, page = 1) => {
       set({ isLoading: true, error: null });
       try {
-        const result: PagedResult<Order> = await ordersApi.getOrders(filters, page);
+        const result: PagedResult<OrderSummary> = await ordersApi.getOrders(filters, page);
         set({
           orders: result.data,
           pagination: { page: result.page, pageSize: result.pageSize, totalCount: result.totalCount },
@@ -93,10 +93,13 @@ export const useOrdersStore = create<OrdersState>()(
       set({ isLoading: true, error: null });
       try {
         const order = await ordersApi.createOrder(input);
-        set((state) => {
-          state.orders.unshift(order);
-          state.pagination.totalCount += 1;
-          state.isLoading = false;
+        // Refrescar el listado para incluir la nueva orden como summary
+        const { activeFilters } = get();
+        const result: PagedResult<OrderSummary> = await ordersApi.getOrders(activeFilters, 1);
+        set({
+          orders: result.data,
+          pagination: { page: result.page, pageSize: result.pageSize, totalCount: result.totalCount },
+          isLoading: false,
         });
         return order;
       } catch (error) {
@@ -112,7 +115,19 @@ export const useOrdersStore = create<OrdersState>()(
         const order = await ordersApi.updateOrder(id, input);
         set((state) => {
           const index = state.orders.findIndex((o) => o.id === id);
-          if (index !== -1) state.orders[index] = order;
+          if (index !== -1) {
+            state.orders[index] = {
+              id: order.id,
+              folioOrden: order.folioOrden,
+              orderStatusId: order.orderStatusId,
+              orderStatus: order.orderStatus,
+              clientId: order.clientId,
+              client: order.client ? { name: order.client.name } : undefined,
+              total: order.total,
+              paymentStatus: order.paymentStatus,
+              createdAt: order.createdAt,
+            };
+          }
           if (state.selectedOrder?.id === id) state.selectedOrder = order;
           state.isLoading = false;
         });
@@ -163,11 +178,22 @@ export const useOrdersStore = create<OrdersState>()(
       set({ isLoading: true, error: null });
       try {
         const order = await ordersApi.updateOrderStatus(orderId, { orderStatusId: statusId });
+        const summary: OrderSummary = {
+          id: order.id,
+          folioOrden: order.folioOrden,
+          orderStatusId: order.orderStatusId,
+          orderStatus: order.orderStatus,
+          clientId: order.clientId,
+          client: order.client ? { name: order.client.name } : undefined,
+          total: order.total,
+          paymentStatus: order.paymentStatus,
+          createdAt: order.createdAt,
+        };
         set((state) => {
           const index = state.orders.findIndex((o) => o.id === orderId);
-          if (index !== -1) state.orders[index] = order;
+          if (index !== -1) state.orders[index] = summary;
           const searchIndex = state.searchResults.findIndex((o) => o.id === orderId);
-          if (searchIndex !== -1) state.searchResults[searchIndex] = order;
+          if (searchIndex !== -1) state.searchResults[searchIndex] = summary;
           state.isLoading = false;
         });
         return order;

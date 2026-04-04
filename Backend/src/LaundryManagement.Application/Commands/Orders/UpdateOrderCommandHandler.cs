@@ -63,6 +63,6 @@ public sealed class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderComma
         _logger.LogInformation("Orden {OrderId} actualizada exitosamente", command.Id);
 
         var amountPaid = await _pagoService.GetAmountPaidByOrderAsync(command.Id);
-        return GetOrdersQueryHandler.MapToDto(order, amountPaid);
+        return OrderResponseMapper.MapToDto(order, amountPaid);
     }
 }

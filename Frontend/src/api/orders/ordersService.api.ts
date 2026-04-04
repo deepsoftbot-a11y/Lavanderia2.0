@@ -22,10 +22,10 @@ export async function getOrders(
   filters: OrderHistoryFilters = {},
   page = 1,
   pageSize = 20
-): Promise<PagedResult<Order>> {
+): Promise<PagedResult<OrderSummary>> {
   try {
     const params: Record<string, unknown> = { ...filters, page, pageSize };
-    const response = await api.get<PagedResult<Order>>('/orders', { params });
+    const response = await api.get<PagedResult<OrderSummary>>('/orders', { params });
     return {
       ...response.data,
       data: response.data.data.map(withOrderStatus),

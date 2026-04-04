@@ -37,6 +37,6 @@ public sealed class UpdateOrderStatusCommandHandler
         _logger.LogInformation("Estado de orden {OrderId} cambiado a {NewStatusId}", command.OrderId, command.NewStatusId);
 
         var amountPaid = await _pagoService.GetAmountPaidByOrderAsync(command.OrderId);
-        return GetOrdersQueryHandler.MapToDto(order, amountPaid);
+        return OrderResponseMapper.MapToDto(order, amountPaid);
     }
 }
