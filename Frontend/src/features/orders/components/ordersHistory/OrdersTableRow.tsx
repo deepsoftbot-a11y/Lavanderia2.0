@@ -12,9 +12,9 @@ interface OrdersTableRowProps {
 }
 
 const PAYMENT_LABELS: Record<string, { label: string; className: string }> = {
-  paid:    { label: 'Pagado',     className: 'text-green-700 bg-green-50 border-green-200' },
-  partial: { label: 'Parcial',    className: 'text-amber-700 bg-amber-50 border-amber-200' },
-  pending: { label: 'Pendiente',  className: 'text-red-700 bg-red-50 border-red-200' },
+  paid:    { label: 'Pagado',     className: 'text-emerald-700 bg-emerald-50 border-emerald-100' },
+  partial: { label: 'Parcial',    className: 'text-amber-700 bg-amber-50 border-amber-100' },
+  pending: { label: 'Pendiente',  className: 'text-rose-700 bg-rose-50 border-rose-100' },
 };
 
 export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
@@ -25,7 +25,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
     <>
       {/* Desktop row */}
       <div className="hidden md:grid grid-cols-[140px_2fr_100px_1fr_1fr_120px_48px] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
-        <span className="font-mono text-xs font-semibold tracking-tight text-zinc-700 truncate">
+        <span className="font-mono font-bold text-sm tracking-tight text-zinc-900 truncate">
           {order.folioOrden}
         </span>
         <p className="text-sm font-medium text-zinc-800 truncate">
@@ -34,7 +34,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
         <span
           className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit"
           style={order.orderStatus?.color
-            ? { color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}18` }
+            ? { color: order.orderStatus.color, borderColor: `${order.orderStatus.color}40`, backgroundColor: `${order.orderStatus.color}20` }
             : undefined}
         >
           {order.orderStatus?.name ?? '—'}
@@ -63,7 +63,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
       {/* Mobile card */}
       <div className="md:hidden px-6 py-4 border-b border-zinc-100">
         <div className="flex items-start justify-between gap-3 mb-1.5">
-          <span className="font-mono text-xs font-semibold tracking-tight text-zinc-700">
+          <span className="font-mono font-bold text-sm tracking-tight text-zinc-900">
             {order.folioOrden}
           </span>
           <div className="flex items-center gap-2">
@@ -80,7 +80,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
         {order.orderStatus && (
           <span
             className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit mt-1 inline-block"
-            style={{ color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}18` }}
+            style={{ color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}20` }}
           >
             {order.orderStatus.name}
           </span>

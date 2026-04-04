@@ -99,7 +99,7 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
               type="date"
               value={startDate}
               onChange={(e) => handleStartDate(e.target.value)}
-              className="h-8 text-xs w-36"
+              className="h-8 text-xs w-36 bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50"
             />
           </div>
           <div className="space-y-1">
@@ -108,7 +108,7 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
               type="date"
               value={endDate}
               onChange={(e) => handleEndDate(e.target.value)}
-              className="h-8 text-xs w-36"
+              className="h-8 text-xs w-36 bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50"
             />
           </div>
         </div>
@@ -125,8 +125,8 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
                 className={cn(
                   'px-2.5 py-1 rounded-full text-xs font-medium border transition-colors',
                   selectedStatusIds.includes(status.id)
-                    ? 'bg-zinc-900 text-white border-zinc-900'
-                    : 'bg-white text-zinc-600 border-zinc-200 hover:border-zinc-400'
+                    ? 'bg-zinc-100 text-zinc-900 border-zinc-400 font-semibold'
+                    : 'bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700'
                 )}
               >
                 {status.name}
@@ -147,8 +147,8 @@ export function OrdersFiltersBar({ onFiltersChange }: OrdersFiltersBarProps) {
                 className={cn(
                   'px-2.5 py-1 rounded-full text-xs font-medium border transition-colors',
                   selectedPayments.includes(value)
-                    ? 'bg-zinc-900 text-white border-zinc-900'
-                    : 'bg-white text-zinc-600 border-zinc-200 hover:border-zinc-400'
+                    ? 'bg-zinc-100 text-zinc-900 border-zinc-400 font-semibold'
+                    : 'bg-white text-zinc-500 border-zinc-200 hover:border-zinc-300 hover:text-zinc-700'
                 )}
               >
                 {label}
