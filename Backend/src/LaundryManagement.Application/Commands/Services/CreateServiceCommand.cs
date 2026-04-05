@@ -24,4 +24,11 @@ public sealed record CreateServiceCommand : IRequest<ServiceDto>
 
     public string? Icon { get; init; }
     public decimal? EstimatedTime { get; init; }
+    public List<ServiceGarmentPriceInput>? GarmentPrices { get; init; }
+}
+
+public sealed record ServiceGarmentPriceInput
+{
+    public int GarmentTypeId { get; init; }
+    public decimal UnitPrice { get; init; }
 }

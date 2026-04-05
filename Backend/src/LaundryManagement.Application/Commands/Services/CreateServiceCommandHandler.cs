@@ -79,6 +79,18 @@ public sealed class CreateServiceCommandHandler : IRequestHandler<CreateServiceC
                 throw new ArgumentException($"Tipo de cobro no válido: {command.ChargeType}. Use 'piece' o 'kg'.");
             }
 
+            // Agregar precios en batch si el servicio es por pieza y vienen precios
+            if (chargeType == "piece" && command.GarmentPrices != null && command.GarmentPrices.Count > 0)
+            {
+                foreach (var gp in command.GarmentPrices)
+                {
+                    service.AddPriceForGarment(
+                        ServiceGarmentId.From(gp.GarmentTypeId),
+                        Money.FromDecimal(gp.UnitPrice)
+                    );
+                }
+            }
+
             // Persistir el servicio
             var savedService = await _serviceRepository.AddAsync(service, cancellationToken);
 
