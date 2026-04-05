@@ -24,5 +24,17 @@ public sealed class UpdateServiceCommandValidator : AbstractValidator<UpdateServ
             RuleFor(x => x.EstimatedTime)
                 .GreaterThanOrEqualTo(0).WithMessage("Las horas estimadas no pueden ser negativas");
         });
+
+        When(x => x.GarmentPrices != null && x.GarmentPrices.Count > 0, () =>
+        {
+            RuleForEach(x => x.GarmentPrices)
+                .ChildRules(gp =>
+                {
+                    gp.RuleFor(x => x.GarmentTypeId)
+                        .GreaterThan(0).WithMessage("El ID del tipo de prenda debe ser válido");
+                    gp.RuleFor(x => x.UnitPrice)
+                        .GreaterThan(0).WithMessage("El precio unitario debe ser mayor que cero");
+                });
+        });
     }
 }

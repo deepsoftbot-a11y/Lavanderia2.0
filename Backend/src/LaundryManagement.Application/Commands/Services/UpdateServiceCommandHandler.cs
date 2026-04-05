@@ -53,6 +53,41 @@ public sealed class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceC
                 service.UpdateWeightPricing(weightPricing);
             }
 
+            // Sincronizar precios en batch (solo si se proveyó la lista y el servicio es por pieza)
+            if (command.GarmentPrices != null && service.IsPieceBased)
+            {
+                var incomingGarmentIds = command.GarmentPrices
+                    .Select(gp => gp.GarmentTypeId)
+                    .ToHashSet();
+
+                // Desactivar precios existentes que ya no están en la lista
+                foreach (var existingPrice in service.Prices.Where(p => p.IsActive).ToList())
+                {
+                    if (!incomingGarmentIds.Contains(existingPrice.ServiceGarmentId.Value))
+                    {
+                        service.DeactivatePriceById(existingPrice.Id);
+                    }
+                }
+
+                // Agregar o actualizar precios de la lista entrante
+                foreach (var gp in command.GarmentPrices)
+                {
+                    var garmentId = ServiceGarmentId.From(gp.GarmentTypeId);
+                    var price = Money.FromDecimal(gp.UnitPrice);
+                    var existingActive = service.Prices
+                        .FirstOrDefault(p => p.ServiceGarmentId.Value == gp.GarmentTypeId && p.IsActive);
+
+                    if (existingActive != null)
+                    {
+                        service.UpdatePriceForGarment(garmentId, price);
+                    }
+                    else
+                    {
+                        service.AddPriceForGarment(garmentId, price);
+                    }
+                }
+            }
+
             await _serviceRepository.UpdateAsync(service, cancellationToken);
             _logger.LogInformation("Servicio actualizado exitosamente");
 

@@ -13,4 +13,11 @@ public sealed record UpdateServiceCommand : IRequest<ServiceDto>
     public decimal? MaxWeight { get; init; }
     public string? Icon { get; init; }
     public decimal? EstimatedTime { get; init; }
+
+    /// <summary>
+    /// Lista de precios activos por prenda. Si se provee, se sincroniza como "verdad actual":
+    /// activa los incluidos, desactiva los existentes que no están en la lista.
+    /// Si es null, los precios no se modifican.
+    /// </summary>
+    public List<ServiceGarmentPriceInput>? GarmentPrices { get; init; }
 }
