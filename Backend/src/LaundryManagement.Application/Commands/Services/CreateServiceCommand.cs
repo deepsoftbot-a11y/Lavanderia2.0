@@ -8,7 +8,7 @@ namespace LaundryManagement.Application.Commands.Services;
 /// </summary>
 public sealed record CreateServiceCommand : IRequest<ServiceDto>
 {
-    public string Code { get; init; } = string.Empty;
+    public string? Code { get; init; }
     public string Name { get; init; } = string.Empty;
     public string? Description { get; init; }
     public int CategoryId { get; init; }

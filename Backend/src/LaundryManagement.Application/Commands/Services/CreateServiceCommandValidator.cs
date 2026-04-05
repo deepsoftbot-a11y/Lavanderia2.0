@@ -6,9 +6,11 @@ public sealed class CreateServiceCommandValidator : AbstractValidator<CreateServ
 {
     public CreateServiceCommandValidator()
     {
-        RuleFor(x => x.Code)
-            .NotEmpty().WithMessage("El código del servicio es requerido")
-            .MaximumLength(20).WithMessage("El código no puede exceder 20 caracteres");
+        When(x => !string.IsNullOrWhiteSpace(x.Code), () =>
+        {
+            RuleFor(x => x.Code)
+                .MaximumLength(20).WithMessage("El código no puede exceder 20 caracteres");
+        });
 
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage("El nombre del servicio es requerido")
