@@ -3,7 +3,6 @@ import { CHARGE_TYPE } from '@/features/services/types/service';
 
 export const createServiceSchema = z
   .object({
-    code: z.string().min(1, 'El código es requerido').max(20, 'El código no puede exceder 20 caracteres'),
     name: z
       .string()
       .min(2, 'El nombre debe tener al menos 2 caracteres')

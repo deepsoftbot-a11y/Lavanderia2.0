@@ -94,7 +94,6 @@ function ServiceFormContent({
           isActive: service.isActive,
         }
       : {
-          code: '',
           name: '',
           description: '',
           chargeType: CHARGE_TYPE.PorPeso,
@@ -106,14 +105,15 @@ function ServiceFormContent({
   return (
     <form onSubmit={handleSubmit((data) => onSubmit({ ...data, garmentPrices }))} className="flex flex-col max-h-[82vh]">
       <div className="overflow-y-auto flex-1 px-6 py-4 space-y-4">
-        <div className="grid grid-cols-2 gap-3">
-          <div className="space-y-1">
-            <Label className="text-xs text-zinc-500 font-medium">Código *</Label>
-            <ClearableInput {...register('code')} placeholder="Ej: LAV-01" hasError={!!errors.code} onClear={() => setValue('code', '')} />
-            {errors.code && (
-              <p className="text-xs text-rose-500">{errors.code.message as string}</p>
-            )}
-          </div>
+        <div className={isEdit ? "grid grid-cols-2 gap-3" : ""}>
+          {isEdit && (
+            <div className="space-y-1">
+              <Label className="text-xs text-zinc-500 font-medium">Código</Label>
+              <div className="flex h-11 items-center rounded-xl bg-zinc-100 px-4 text-sm font-mono text-zinc-400 tracking-wide">
+                {service?.code ?? '—'}
+              </div>
+            </div>
+          )}
 
           <div className="space-y-1">
             <Label className="text-xs text-zinc-500 font-medium">Nombre *</Label>
