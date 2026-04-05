@@ -3,6 +3,7 @@ using LaundryManagement.Domain.Repositories;
 using LaundryManagement.Domain.ValueObjects;
 using LaundryManagement.Infrastructure.Mappers;
 using LaundryManagement.Infrastructure.Persistence;
+using LaundryManagement.Infrastructure.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -26,41 +27,52 @@ public class ServiceRepositoryPure : IServiceRepository
     public async Task<ServicePure?> GetByIdAsync(ServiceId serviceId, CancellationToken cancellationToken = default)
     {
         var servicioEntity = await _context.Servicios
+            .Where(s => s.ServicioId == serviceId.Value)
             .Include(s => s.Categoria)
             .Include(s => s.ServiciosPrenda)
-            .FirstOrDefaultAsync(s => s.ServicioId == serviceId.Value, cancellationToken);
+            .FirstOrDefaultAsync(cancellationToken);
 
         if (servicioEntity == null)
             return null;
 
-        // Mapeo explícito: Infrastructure → Domain
+        if (servicioEntity.Categoria == null) servicioEntity.Categoria = null!;
+        if (servicioEntity.ServiciosPrenda == null) servicioEntity.ServiciosPrenda = new List<ServiciosPrenda>();
+
         return ServiceMapper.ToDomain(servicioEntity);
     }
 
     public async Task<ServicePure?> GetByCodeAsync(ServiceCode code, CancellationToken cancellationToken = default)
     {
         var servicioEntity = await _context.Servicios
+            .Where(s => s.CodigoServicio == code.Value)
             .Include(s => s.Categoria)
             .Include(s => s.ServiciosPrenda)
-            .FirstOrDefaultAsync(s => s.CodigoServicio == code.Value, cancellationToken);
+            .FirstOrDefaultAsync(cancellationToken);
 
         if (servicioEntity == null)
             return null;
 
-        // Mapeo explícito: Infrastructure → Domain
+        if (servicioEntity.Categoria == null) servicioEntity.Categoria = null!;
+        if (servicioEntity.ServiciosPrenda == null) servicioEntity.ServiciosPrenda = new List<ServiciosPrenda>();
+
         return ServiceMapper.ToDomain(servicioEntity);
     }
 
     public async Task<IEnumerable<ServicePure>> GetAllActiveAsync(CancellationToken cancellationToken = default)
     {
         var servicioEntities = await _context.Servicios
+            .Where(s => s.Activo)
             .Include(s => s.Categoria)
             .Include(s => s.ServiciosPrenda)
-            .Where(s => s.Activo)
             .OrderBy(s => s.NombreServicio)
             .ToListAsync(cancellationToken);
 
-        // Mapeo explícito: Infrastructure → Domain
+        foreach (var entity in servicioEntities)
+        {
+            if (entity.Categoria == null) entity.Categoria = null!;
+            if (entity.ServiciosPrenda == null) entity.ServiciosPrenda = new List<ServiciosPrenda>();
+        }
+
         return servicioEntities.Select(ServiceMapper.ToDomain).ToList();
     }
 
@@ -72,7 +84,12 @@ public class ServiceRepositoryPure : IServiceRepository
             .OrderBy(s => s.NombreServicio)
             .ToListAsync(cancellationToken);
 
-        // Mapeo explícito: Infrastructure → Domain
+        foreach (var entity in servicioEntities)
+        {
+            if (entity.Categoria == null) entity.Categoria = null!;
+            if (entity.ServiciosPrenda == null) entity.ServiciosPrenda = new List<ServiciosPrenda>();
+        }
+
         return servicioEntities.Select(ServiceMapper.ToDomain).ToList();
     }
 
@@ -83,10 +100,23 @@ public class ServiceRepositoryPure : IServiceRepository
             return new Dictionary<int, ServicePure>();
 
         var entities = await _context.Servicios
+            .Where(s => idList.Contains(s.ServicioId))
             .Include(s => s.Categoria)
             .Include(s => s.ServiciosPrenda)
-            .Where(s => idList.Contains(s.ServicioId))
             .ToListAsync(cancellationToken);
+
+        // Proteger contra navegación null en mapeo: si Categoria falta, crear referencia vacía
+        foreach (var entity in entities)
+        {
+            if (entity.Categoria == null)
+            {
+                entity.Categoria = null!;
+            }
+            if (entity.ServiciosPrenda == null)
+            {
+                entity.ServiciosPrenda = new List<ServiciosPrenda>();
+            }
+        }
 
         return entities.ToDictionary(e => e.ServicioId, ServiceMapper.ToDomain);
     }
@@ -185,21 +215,29 @@ public class ServiceRepositoryPure : IServiceRepository
             // Agregar o actualizar precios
             foreach (var updatedPrice in updatedEntity.ServiciosPrenda)
             {
-                var existingPrice = existingEntity.ServiciosPrenda
-                    .FirstOrDefault(p => p.ServicioPrendaId == updatedPrice.ServicioPrendaId);
-
-                if (existingPrice != null)
+                if (updatedPrice.ServicioPrendaId == 0)
                 {
-                    // Actualizar precio existente
-                    existingPrice.PrecioUnitario = updatedPrice.PrecioUnitario;
-                    existingPrice.Activo = updatedPrice.Activo;
-                    existingPrice.FechaActualizacion = DateTime.UtcNow;
+                    // Precio nuevo (sin ID asignado aún) — siempre agregar
+                    updatedPrice.ServicioId = existingEntity.ServicioId;
+                    existingEntity.ServiciosPrenda.Add(updatedPrice);
                 }
                 else
                 {
-                    // Agregar nuevo precio
-                    updatedPrice.ServicioId = existingEntity.ServicioId;
-                    existingEntity.ServiciosPrenda.Add(updatedPrice);
+                    var existingPrice = existingEntity.ServiciosPrenda
+                        .FirstOrDefault(p => p.ServicioPrendaId == updatedPrice.ServicioPrendaId);
+
+                    if (existingPrice != null)
+                    {
+                        // Actualizar precio existente
+                        existingPrice.PrecioUnitario = updatedPrice.PrecioUnitario;
+                        existingPrice.Activo = updatedPrice.Activo;
+                        existingPrice.FechaActualizacion = DateTime.UtcNow;
+                    }
+                    else
+                    {
+                        updatedPrice.ServicioId = existingEntity.ServicioId;
+                        existingEntity.ServiciosPrenda.Add(updatedPrice);
+                    }
                 }
             }
 
