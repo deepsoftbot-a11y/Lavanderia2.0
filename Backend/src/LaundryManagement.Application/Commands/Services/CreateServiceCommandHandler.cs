@@ -84,22 +84,23 @@ public sealed class CreateServiceCommandHandler : IRequestHandler<CreateServiceC
                 throw new ArgumentException($"Tipo de cobro no válido: {command.ChargeType}. Use 'piece' o 'kg'.");
             }
 
-            // Agregar precios en batch si el servicio es por pieza y vienen precios
+            // Persistir el servicio (necesitamos el ID antes de agregar precios)
+            var savedService = await _serviceRepository.AddAsync(service, cancellationToken);
+
+            _logger.LogInformation("Servicio creado exitosamente: {ServiceId}", savedService.Id.Value);
+
+            // Agregar precios en batch DESPUÉS de persistir (el ID ya está asignado)
             if (chargeType == "piece" && command.GarmentPrices != null && command.GarmentPrices.Count > 0)
             {
                 foreach (var gp in command.GarmentPrices)
                 {
-                    service.AddPriceForGarment(
+                    savedService.AddPriceForGarment(
                         ServiceGarmentId.From(gp.GarmentTypeId),
                         Money.FromDecimal(gp.UnitPrice)
                     );
                 }
+                await _serviceRepository.UpdateAsync(savedService, cancellationToken);
             }
-
-            // Persistir el servicio
-            var savedService = await _serviceRepository.AddAsync(service, cancellationToken);
-
-            _logger.LogInformation("Servicio creado exitosamente: {ServiceId}", savedService.Id.Value);
 
             return MapToDto(savedService);
         }
