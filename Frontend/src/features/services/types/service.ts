@@ -22,6 +22,11 @@ export interface Service {
   isActive: boolean;
 }
 
+export interface GarmentPriceInput {
+  garmentTypeId: number;
+  unitPrice: number;
+}
+
 export interface CreateServiceInput {
   categoryId: number;
   code: string;
@@ -32,8 +37,10 @@ export interface CreateServiceInput {
   maxWeight?: number;
   description?: string;
   estimatedTime?: number;
+  garmentPrices?: GarmentPriceInput[];
 }
 
 export interface UpdateServiceInput extends Partial<CreateServiceInput> {
   isActive?: boolean;
+  garmentPrices?: GarmentPriceInput[];
 }
