@@ -48,12 +48,18 @@ import { useToast } from '@/shared/hooks/use-toast';
 import { createServiceSchema, updateServiceSchema } from '@/features/services/schemas/service.schema';
 import { CHARGE_TYPE } from '@/features/services/types/service';
 import type { Service } from '@/features/services/types/service';
+import { GarmentPricesSubsection } from './GarmentPricesSubsection';
+import { NewGarmentDialog } from './NewGarmentDialog';
+import { useGarmentTypesStore } from '@/features/services/stores/garmentTypesStore';
+import { useServiceGarmentsStore } from '@/features/services/stores/serviceGarmentsStore';
+import type { GarmentPriceInput } from '@/features/services/types/service';
 
 interface ServiceFormContentProps {
   service?: Service;
   onSubmit: (data: Record<string, unknown>) => Promise<void>;
   onCancel: () => void;
   isSubmitting: boolean;
+  initialGarmentPrices?: GarmentPriceInput[];
 }
 
 function ServiceFormContent({
@@ -61,8 +67,14 @@ function ServiceFormContent({
   onSubmit,
   onCancel,
   isSubmitting,
+  initialGarmentPrices,
 }: ServiceFormContentProps) {
   const { categories } = useCategoriesStore();
+  const { garmentTypes } = useGarmentTypesStore();
+  const [garmentPrices, setGarmentPrices] = useState<GarmentPriceInput[]>(
+    initialGarmentPrices ?? []
+  );
+  const [newGarmentOpen, setNewGarmentOpen] = useState(false);
   const isEdit = !!service;
   const schema = isEdit ? updateServiceSchema : createServiceSchema;
 
@@ -92,7 +104,7 @@ function ServiceFormContent({
   const chargeType = watch('chargeType');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col max-h-[82vh]">
+    <form onSubmit={handleSubmit((data) => onSubmit({ ...data, garmentPrices }))} className="flex flex-col max-h-[82vh]">
       <div className="overflow-y-auto flex-1 px-6 py-4 space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1">
@@ -234,6 +246,32 @@ function ServiceFormContent({
           />
         </div>
 
+        {chargeType === CHARGE_TYPE.PorPieza && (
+          <div className="space-y-2 pt-3 border-t border-zinc-100">
+            <div className="flex items-center justify-between">
+              <Label className="text-xs text-zinc-500 font-medium">Prendas y Precios</Label>
+              <button
+                type="button"
+                onClick={() => setNewGarmentOpen(true)}
+                className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 font-medium"
+              >
+                <Plus className="h-3 w-3" />
+                Nueva prenda
+              </button>
+            </div>
+            <GarmentPricesSubsection
+              garmentTypes={garmentTypes}
+              value={garmentPrices}
+              onChange={setGarmentPrices}
+            />
+            <NewGarmentDialog
+              open={newGarmentOpen}
+              onClose={() => setNewGarmentOpen(false)}
+              onCreated={(entry) => setGarmentPrices((prev) => [...prev, entry])}
+            />
+          </div>
+        )}
+
         {isEdit && (
           <div className="flex items-center gap-2 pt-1">
             <Controller
@@ -279,33 +317,42 @@ const TH = 'text-[10px] font-semibold tracking-widest uppercase text-zinc-400';
 
 export function ServicesSection() {
   const { services, isLoading, createService, updateService, deleteService } = useServicesStore();
+  const { serviceGarments, fetchServiceGarments } = useServiceGarmentsStore();
   const { toast } = useToast();
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [initialGarmentPrices, setInitialGarmentPrices] = useState<GarmentPriceInput[]>([]);
 
   const handleOpenCreate = () => {
     setSelectedService(null);
+    setInitialGarmentPrices([]);
     setDialogOpen(true);
   };
 
   const handleOpenEdit = (service: Service) => {
     setSelectedService(service);
+    const prices = serviceGarments
+      .filter((sg) => sg.serviceId === service.id && sg.isActive)
+      .map((sg) => ({ garmentTypeId: sg.garmentTypeId, unitPrice: sg.unitPrice }));
+    setInitialGarmentPrices(prices);
     setDialogOpen(true);
   };
 
   const handleSubmit = async (data: Record<string, unknown>) => {
     setIsSubmitting(true);
     try {
+      const { garmentPrices, ...serviceData } = data as Record<string, unknown> & { garmentPrices?: GarmentPriceInput[] };
       if (selectedService) {
-        await updateService(selectedService.id, data as any);
+        await updateService(selectedService.id, { ...serviceData, garmentPrices } as any);
         toast({ title: 'Servicio actualizado correctamente' });
       } else {
-        await createService(data as any);
+        await createService({ ...serviceData, garmentPrices } as any);
         toast({ title: 'Servicio creado correctamente' });
       }
+      await fetchServiceGarments();
       setDialogOpen(false);
     } catch (err) {
       const message = err instanceof Error ? err.message : 'No se pudo guardar el servicio';
@@ -421,7 +468,7 @@ export function ServicesSection() {
       )}
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-lg p-0 gap-0 overflow-hidden">
+        <DialogContent className="max-w-2xl p-0 gap-0 overflow-hidden">
           <DialogHeader className="px-6 pt-5 pb-4 border-b border-zinc-100">
             <DialogTitle className="text-sm font-semibold text-zinc-900 tracking-tight">
               {selectedService ? 'Editar Servicio' : 'Nuevo Servicio'}
@@ -432,6 +479,7 @@ export function ServicesSection() {
             onSubmit={handleSubmit}
             onCancel={() => setDialogOpen(false)}
             isSubmitting={isSubmitting}
+            initialGarmentPrices={initialGarmentPrices}
           />
         </DialogContent>
       </Dialog>
