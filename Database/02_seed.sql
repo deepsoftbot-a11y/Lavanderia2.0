@@ -75,67 +75,94 @@ INSERT INTO public."Roles" ("RolID", "NombreRol", "Descripcion", "Activo") OVERR
 ON CONFLICT ("RolID") DO NOTHING;
 SELECT pg_catalog.setval('public."Roles_RolID_seq"', 2, true);
 
-INSERT INTO public."Permisos" ("PermisoID", "NombrePermiso", "Modulo", "Descripcion") OVERRIDING SYSTEM VALUE VALUES
-    -- Usuarios
-    (1,  'Crear_Usuario',        'Usuarios',       'Crear nuevos usuarios del sistema'),
-    (2,  'Modificar_Usuario',    'Usuarios',       'Modificar información de usuarios'),
-    (3,  'Eliminar_Usuario',     'Usuarios',       'Desactivar usuarios'),
-    (4,  'Ver_Usuarios',         'Usuarios',       'Consultar lista de usuarios'),
-    (5,  'Asignar_Roles',        'Usuarios',       'Asignar roles a usuarios'),
-    -- Clientes
-    (6,  'Crear_Cliente',        'Clientes',       'Registrar nuevos clientes'),
-    (7,  'Modificar_Cliente',    'Clientes',       'Modificar información de clientes'),
-    (8,  'Ver_Clientes',         'Clientes',       'Consultar clientes'),
-    (9,  'Gestionar_Credito',    'Clientes',       'Configurar límites de crédito'),
-    -- Órdenes
-    (10, 'Crear_Orden',          'Ordenes',        'Crear nuevas órdenes de servicio'),
-    (11, 'Modificar_Orden',      'Ordenes',        'Modificar órdenes'),
-    (12, 'Cancelar_Orden',       'Ordenes',        'Cancelar órdenes'),
-    (13, 'Ver_Ordenes',          'Ordenes',        'Consultar órdenes'),
-    (14, 'Cambiar_Estado_Orden', 'Ordenes',        'Cambiar estado de órdenes'),
-    (15, 'Entregar_Orden',       'Ordenes',        'Marcar orden como entregada'),
-    -- Pagos
-    (16, 'Registrar_Pago',       'Pagos',          'Registrar pagos de clientes'),
-    (17, 'Cancelar_Pago',        'Pagos',          'Cancelar pagos'),
-    (18, 'Ver_Pagos',            'Pagos',          'Consultar pagos'),
-    (19, 'Ver_Saldo_Cliente',    'Pagos',          'Ver saldo de cliente'),
-    -- Servicios
-    (20, 'Crear_Servicio',       'Servicios',      'Crear nuevos servicios'),
-    (21, 'Modificar_Servicio',   'Servicios',      'Modificar servicios'),
-    (22, 'Modificar_Precios',    'Servicios',      'Modificar precios de servicios'),
-    (23, 'Ver_Servicios',        'Servicios',      'Consultar servicios'),
-    -- Descuentos
-    (24, 'Aplicar_Descuento',    'Descuentos',     'Aplicar descuentos a órdenes'),
-    (25, 'Crear_Combo',          'Descuentos',     'Crear combos promocionales'),
-    (26, 'Modificar_Combo',      'Descuentos',     'Modificar combos'),
-    -- Reportes
-    (27, 'Generar_Reporte',      'Reportes',       'Generar reportes del sistema'),
-    (28, 'Configurar_Reporte',   'Reportes',       'Configurar reportes automáticos'),
-    (29, 'Ver_Dashboard',        'Reportes',       'Ver tablero de control'),
-    -- Configuración
-    (30, 'Configurar_Sistema',   'Configuracion',  'Configurar parámetros del sistema'),
-    (31, 'Ver_Auditoria',        'Configuracion',  'Ver log de auditoría'),
-    (32, 'Gestionar_Ubicaciones','Configuracion',  'Gestionar ubicaciones de almacén')
-ON CONFLICT ("PermisoID") DO NOTHING;
-SELECT pg_catalog.setval('public."Permisos_PermisoID_seq"', 32, true);
+INSERT INTO public."Permisos" ("PermisoID", "NombrePermiso", "Modulo", "Seccion", "Etiqueta", "Descripcion") OVERRIDING SYSTEM VALUE VALUES
+    -- Dashboard (1)
+    (1,  'dashboard.general:view',      'dashboard', 'general',    'Ver dashboard',                    'Acceso a la pantalla principal del dashboard'),
 
--- Admin: todos los permisos (1-32)
+    -- Orders — lista (2)
+    (2,  'orders.lista:view',           'orders',    'lista',      'Ver listado de órdenes',           'Ver la tabla de órdenes con filtros'),
+    (3,  'orders.lista:export',         'orders',    'lista',      'Exportar órdenes',                 'Exportar el listado de órdenes a archivo'),
+
+    -- Orders — nueva (1)
+    (4,  'orders.nueva:create',         'orders',    'nueva',      'Crear nueva orden',                'Acceso a la pantalla de nueva venta y crear órdenes'),
+
+    -- Orders — detalle (3)
+    (5,  'orders.detalle:view',         'orders',    'detalle',    'Ver detalle de orden',             'Ver el detalle completo de una orden'),
+    (6,  'orders.detalle:edit',         'orders',    'detalle',    'Cambiar estado de orden',          'Modificar el estado de una orden existente'),
+    (7,  'orders.detalle:pay',          'orders',    'detalle',    'Agregar pago a orden',             'Registrar pagos sobre una orden'),
+
+    -- Orders — corte (1)
+    (8,  'orders.corte:manage',         'orders',    'corte',      'Realizar corte de caja',           'Acceso al modal de corte de caja'),
+
+    -- Services — servicios (4)
+    (9,  'services.servicios:view',     'services',  'servicios',  'Ver servicios',                    'Ver el catálogo de servicios'),
+    (10, 'services.servicios:create',   'services',  'servicios',  'Crear servicio',                   'Agregar nuevos servicios al catálogo'),
+    (11, 'services.servicios:edit',     'services',  'servicios',  'Editar servicio',                  'Modificar servicios existentes'),
+    (12, 'services.servicios:delete',   'services',  'servicios',  'Eliminar servicio',                'Eliminar servicios del catálogo'),
+
+    -- Services — categorias (4)
+    (13, 'services.categorias:view',    'services',  'categorias', 'Ver categorías',                   'Ver las categorías de servicios'),
+    (14, 'services.categorias:create',  'services',  'categorias', 'Crear categoría',                  'Agregar nuevas categorías'),
+    (15, 'services.categorias:edit',    'services',  'categorias', 'Editar categoría',                 'Modificar categorías existentes'),
+    (16, 'services.categorias:delete',  'services',  'categorias', 'Eliminar categoría',               'Eliminar categorías'),
+
+    -- Services — prendas (4)
+    (17, 'services.prendas:view',       'services',  'prendas',    'Ver tipos de prendas',             'Ver el catálogo de tipos de prendas'),
+    (18, 'services.prendas:create',     'services',  'prendas',    'Crear tipo de prenda',             'Agregar nuevos tipos de prendas'),
+    (19, 'services.prendas:edit',       'services',  'prendas',    'Editar tipo de prenda',            'Modificar tipos de prendas existentes'),
+    (20, 'services.prendas:delete',     'services',  'prendas',    'Eliminar tipo de prenda',          'Eliminar tipos de prendas'),
+
+    -- Services — precios (4)
+    (21, 'services.precios:view',       'services',  'precios',    'Ver precios por prenda',           'Ver la tabla de precios por prenda y servicio'),
+    (22, 'services.precios:create',     'services',  'precios',    'Crear precio',                     'Agregar nuevos precios'),
+    (23, 'services.precios:edit',       'services',  'precios',    'Editar precio',                    'Modificar precios existentes'),
+    (24, 'services.precios:delete',     'services',  'precios',    'Eliminar precio',                  'Eliminar precios'),
+
+    -- Services — descuentos (4)
+    (25, 'services.descuentos:view',    'services',  'descuentos', 'Ver descuentos',                   'Ver el catálogo de descuentos'),
+    (26, 'services.descuentos:create',  'services',  'descuentos', 'Crear descuento',                  'Agregar nuevos descuentos'),
+    (27, 'services.descuentos:edit',    'services',  'descuentos', 'Editar descuento',                 'Modificar descuentos existentes'),
+    (28, 'services.descuentos:delete',  'services',  'descuentos', 'Eliminar descuento',               'Eliminar descuentos'),
+
+    -- Users — usuarios (5)
+    (29, 'users.usuarios:view',         'users',     'usuarios',   'Ver listado de usuarios',          'Ver la tabla de usuarios del sistema'),
+    (30, 'users.usuarios:create',       'users',     'usuarios',   'Crear usuario',                    'Crear nuevos usuarios'),
+    (31, 'users.usuarios:edit',         'users',     'usuarios',   'Editar usuario',                   'Modificar información de usuarios'),
+    (32, 'users.usuarios:delete',       'users',     'usuarios',   'Eliminar usuario',                 'Eliminar usuarios del sistema'),
+    (33, 'users.usuarios:toggle',       'users',     'usuarios',   'Activar/desactivar usuario',       'Cambiar estado activo/inactivo de un usuario'),
+
+    -- Users — roles (4)
+    (34, 'users.roles:view',            'users',     'roles',      'Ver roles',                        'Ver la lista de roles del sistema'),
+    (35, 'users.roles:create',          'users',     'roles',      'Crear rol',                        'Crear nuevos roles'),
+    (36, 'users.roles:edit',            'users',     'roles',      'Editar rol',                       'Modificar roles y sus permisos asignados'),
+    (37, 'users.roles:delete',          'users',     'roles',      'Eliminar rol',                     'Eliminar roles del sistema')
+ON CONFLICT ("PermisoID") DO UPDATE SET
+    "NombrePermiso" = EXCLUDED."NombrePermiso",
+    "Modulo"        = EXCLUDED."Modulo",
+    "Seccion"       = EXCLUDED."Seccion",
+    "Etiqueta"      = EXCLUDED."Etiqueta",
+    "Descripcion"   = EXCLUDED."Descripcion";
+SELECT pg_catalog.setval('public."Permisos_PermisoID_seq"', 37, true);
+
+-- Admin: todos los permisos (1-37)
 INSERT INTO public."RolesPermisos" ("RolID", "PermisoID") OVERRIDING SYSTEM VALUE
-SELECT 1, generate_series(1, 32)
+SELECT 1, generate_series(1, 37)
 ON CONFLICT DO NOTHING;
 
 -- Empleado: permisos operativos básicos
 INSERT INTO public."RolesPermisos" ("RolID", "PermisoID") OVERRIDING SYSTEM VALUE VALUES
-    (2, 8),   -- Ver_Clientes
-    (2, 10),  -- Crear_Orden
-    (2, 13),  -- Ver_Ordenes
-    (2, 14),  -- Cambiar_Estado_Orden
-    (2, 15),  -- Entregar_Orden
-    (2, 16),  -- Registrar_Pago
-    (2, 18),  -- Ver_Pagos
-    (2, 19),  -- Ver_Saldo_Cliente
-    (2, 23),  -- Ver_Servicios
-    (2, 29)   -- Ver_Dashboard
+    (2, 2),   -- orders.lista:view
+    (2, 3),   -- orders.lista:export
+    (2, 4),   -- orders.nueva:create
+    (2, 5),   -- orders.detalle:view
+    (2, 6),   -- orders.detalle:edit
+    (2, 7),   -- orders.detalle:pay
+    (2, 8),   -- orders.corte:manage
+    (2, 9),   -- services.servicios:view
+    (2, 13),  -- services.categorias:view
+    (2, 17),  -- services.prendas:view
+    (2, 21),  -- services.precios:view
+    (2, 25)   -- services.descuentos:view
 ON CONFLICT DO NOTHING;
 
 SELECT pg_catalog.setval('public."RolesPermisos_RolPermisoID_seq"', 42, true);
