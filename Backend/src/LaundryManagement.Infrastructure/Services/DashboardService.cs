@@ -70,9 +70,9 @@ public sealed class DashboardService : IDashboardService
     {
         var sql = @"SELECT m.""NombreMetodo"" AS Metodo, COALESCE(SUM(pd.""MontoPagado""), 0) AS Total
                     FROM ""Pagos"" p
-                    JOIN ""PagosDetalle"" pd ON p.""PagoId"" = pd.""PagoId""
-                    JOIN ""MetodosPago"" m ON pd.""MetodoPagoId"" = m.""MetodoPagoId""
-                    JOIN ""Ordenes"" o ON p.""OrdenId"" = o.""OrdenId""
+                    JOIN ""PagosDetalle"" pd ON p.""PagoID"" = pd.""PagoID""
+                    JOIN ""MetodosPago"" m ON pd.""MetodoPagoID"" = m.""MetodoPagoID""
+                    JOIN ""Ordenes"" o ON p.""OrdenID"" = o.""OrdenID""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY m.""NombreMetodo""";
         var result = await conn.QueryAsync<IngresoPorMetodoDto>(sql, new { Fi = fi, Ff = ff });
@@ -83,7 +83,7 @@ public sealed class DashboardService : IDashboardService
     {
         var sql = @"SELECT COUNT(*) FROM ""Ordenes"" o
                     WHERE o.""FechaPrometida"" < CURRENT_DATE
-                    AND o.""EstadoOrdenId"" NOT IN (4, 5)
+                    AND o.""EstadoOrdenID"" NOT IN (4, 5)
                     AND o.""FechaEntrega"" IS NULL";
         return await conn.ExecuteScalarAsync<int>(sql);
     }
@@ -95,7 +95,7 @@ public sealed class DashboardService : IDashboardService
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     AND o.""Total"" > COALESCE((
                         SELECT SUM(p.""MontoPago"") FROM ""Pagos"" p
-                        WHERE p.""OrdenId"" = o.""OrdenId"" AND p.""CanceladoEn"" IS NULL
+                        WHERE p.""OrdenID"" = o.""OrdenID"" AND p.""CanceladoEn"" IS NULL
                     ), 0)";
         var row = await conn.QuerySingleAsync<(int Cantidad, decimal Total)>(sql, new { Fi = fi, Ff = ff });
         return new OrdenesPendientesPagarDto { Cantidad = row.Cantidad, Total = row.Total };
@@ -112,9 +112,9 @@ public sealed class DashboardService : IDashboardService
     {
         var sql = @"SELECT c.""NombreCompleto"" AS Nombre, COUNT(*) AS Ordenes
                     FROM ""Ordenes"" o
-                    JOIN ""Clientes"" c ON o.""ClienteId"" = c.""ClienteId""
+                    JOIN ""Clientes"" c ON o.""ClienteID"" = c.""ClienteID""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
-                    GROUP BY c.""ClienteId"", c.""NombreCompleto""
+                    GROUP BY c.""ClienteID"", c.""NombreCompleto""
                     ORDER BY COUNT(*) DESC
                     LIMIT 1";
         return await conn.QueryFirstOrDefaultAsync<ClienteTopDto>(sql, new { Fi = fi, Ff = ff });
@@ -159,7 +159,7 @@ public sealed class DashboardService : IDashboardService
     {
         var sql = @"SELECT e.""NombreEstado"" AS Estado, COUNT(*) AS Cantidad
                     FROM ""Ordenes"" o
-                    JOIN ""EstadosOrden"" e ON o.""EstadoOrdenId"" = e.""EstadoOrdenId""
+                    JOIN ""EstadosOrden"" e ON o.""EstadoOrdenID"" = e.""EstadoOrdenID""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY e.""NombreEstado"", e.""OrdenProceso""
                     ORDER BY e.""OrdenProceso""";
@@ -172,8 +172,8 @@ public sealed class DashboardService : IDashboardService
         var sql = @"SELECT s.""NombreServicio"" AS Servicio,
                            COALESCE(SUM(od.""Subtotal""), 0) AS Total
                     FROM ""OrdenesDetalle"" od
-                    JOIN ""Ordenes"" o ON od.""OrdenId"" = o.""OrdenId""
-                    JOIN ""Servicios"" s ON od.""ServicioId"" = s.""ServicioId""
+                    JOIN ""Ordenes"" o ON od.""OrdenID"" = o.""OrdenID""
+                    JOIN ""Servicios"" s ON od.""ServicioID"" = s.""ServicioID""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY s.""NombreServicio""
                     ORDER BY Total DESC";
@@ -186,9 +186,9 @@ public sealed class DashboardService : IDashboardService
         var sql = @"SELECT c.""NombreCategoria"" AS Categoria,
                            COALESCE(SUM(od.""Subtotal""), 0) AS Total
                     FROM ""OrdenesDetalle"" od
-                    JOIN ""Ordenes"" o ON od.""OrdenId"" = o.""OrdenId""
-                    JOIN ""Servicios"" s ON od.""ServicioId"" = s.""ServicioId""
-                    JOIN ""Categorias"" c ON s.""CategoriaId"" = c.""CategoriaId""
+                    JOIN ""Ordenes"" o ON od.""OrdenID"" = o.""OrdenID""
+                    JOIN ""Servicios"" s ON od.""ServicioID"" = s.""ServicioID""
+                    JOIN ""Categorias"" c ON s.""CategoriaID"" = c.""CategoriaID""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY c.""NombreCategoria""
                     ORDER BY Total DESC";
