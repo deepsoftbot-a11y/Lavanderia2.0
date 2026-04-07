@@ -153,7 +153,7 @@ Los archivos de configuración en `Backend/publish/` son los que se usan en prod
     "ExpirationMinutes": 60
   },
   "AllowedOrigins": [
-    "http://163.192.142.183"
+    "http://163.192.142.183/lavanderia2.0"
   ],
   "Logging": {
     "LogLevel": {
@@ -257,7 +257,7 @@ curl http://localhost:5000/api/health  # o endpoint de verificación
 
 ```
 VITE_AUTH_MODE=api
-VITE_API_BASE_URL=http://163.192.142.183/api
+VITE_API_BASE_URL=http://163.192.142.183/lavanderia2.0/api
 ```
 
 ### 6.2 Compilar
@@ -270,14 +270,6 @@ npm run build
 ```
 
 El build se genera en `Frontend/dist/`. Copiar todo el contenido al servidor en `/var/www/lavanderia/`.
-
-### 6.3 Archivos estáticos en servidor
-
-```bash
-sudo mkdir -p /var/www/lavanderia
-sudo cp -r /path/a/dist/* /var/www/lavanderia/
-sudo chown -R www-data:www-data /var/www/lavanderia
-```
 
 ---
 
@@ -303,20 +295,22 @@ server {
     root /var/www/lavanderia;
     index index.html;
 
-    # Frontend estático
-    location / {
-        try_files $uri $uri/ /index.html;
+    # Frontend estático — subdirectorio /lavanderia2.0/
+    location /lavanderia2.0/ {
+        alias /var/www/lavanderia/;
+        try_files $uri $uri/ /lavanderia2.0/index.html;
     }
 
     # Assets del build
-    location /assets/ {
+    location /lavanderia2.0/assets/ {
+        alias /var/www/lavanderia/assets/;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
 
     # API reverse proxy
-    location /api/ {
-        proxy_pass http://127.0.0.1:5000;
+    location /lavanderia2.0/api/ {
+        proxy_pass http://127.0.0.1:5000/;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -336,7 +330,7 @@ sudo systemctl reload nginx
 
 ```bash
 sudo apt install certbot python3-certbot-nginx -y
-sudo certbot --nginx -d 163.192.142.183
+sudo certbot --nginx -d 163.192.142.183 --deploy-hook "systemctl reload nginx"
 ```
 
 ---
