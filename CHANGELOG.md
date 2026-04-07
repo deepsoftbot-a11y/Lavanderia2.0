@@ -6,6 +6,29 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [Sin publicar] — 2026-04-07 — Dashboard completo + rediseño UI
+
+### Agregado
+
+- **Dashboard KPIs**: panel de indicadores clave con ingresos totales, ticket promedio, órdenes atrasadas, pendientes por pagar, transacciones, corte de caja, descuentos y clientes nuevos.
+- **Gráficos de ingresos**: timeline de ingresos diarios (Recharts LineChart) y distribución por método de pago (barras horizontales custom HTML/CSS).
+- **Gráficos de operación**: órdenes por estado (barras horizontales custom), ingresos por servicio (horizontal bar Recharts), ingresos por categoría (barras verticales Recharts).
+- **Comparativa semanal**: panel semántico hero con diferencia de ingresos vs. semana anterior.
+- **Filtro de fechas**: selector de rango con calendario native en español (`DateRangePicker` shadcn con `react-day-picker`).
+
+### Cambios
+
+- **Dashboard UI**: rediseño completo siguiendo el design system del proyecto — tarjetas KPI compactas (grid 5 columnas), `ChartPanel` compartido con tokens `CHART_*` exportados, gráfica de timeline simplificada a línea única.
+- **DateRangePicker**: trigger estilo filled (`bg-zinc-100`) integrado con el sistema de inputs del proyecto; calendario en español con meses `Enero/Dom`, weekdays `Ene Feb Mar...`.
+- **Paleta zinc/indigo**: todas las superficies del dashboard usan la escala zinc del sistema; color solo para semántica (emerald/rose en indicadores positivos/negativos).
+
+### Correcciones
+
+- **Columnas ID en queries Dapper**: corregidos todos los nombres `Id` → `ID` en `DashboardService.cs` para coincidir con el esquema de PostgreSQL (`OrdenID`, `ClienteID`, `ServicioID`, `CategoriaID`, etc.).
+- **Calendario**: fechas futuras deshabilitadas, weekday labels en español, diseño mobile-first (1 mes, celdas 36px).
+
+---
+
 ## [Sin publicar] — 2026-04-01 — Rediseño de interfaz POS y sidebar
 
 ### Mejoras
