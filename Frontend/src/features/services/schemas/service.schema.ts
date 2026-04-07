@@ -51,7 +51,7 @@ export const createServiceSchema = z
 export const updateServiceSchema = z
   .object({
     code: z.string().min(1).max(20).optional(),
-    name: z.string().min(2).max(100).optional(),
+    name: z.string().min(2).max(100),
     categoryId: z.number().int().positive().optional(),
     chargeType: z.enum([CHARGE_TYPE.PorPeso, CHARGE_TYPE.PorPieza]).optional(),
     pricePerKg: z.number().positive().optional(),

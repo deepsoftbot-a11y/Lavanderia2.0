@@ -86,7 +86,9 @@ api.interceptors.response.use(
       if (isDev) console.error('[API] Error:', error.message);
     }
 
-    return Promise.reject(error);
+    // Extraer el mensaje del backend si existe, si no usar el mensaje de Axios
+    const backendMessage = error.response?.data?.message ?? error.message;
+    return Promise.reject(new Error(backendMessage));
   }
 );
 

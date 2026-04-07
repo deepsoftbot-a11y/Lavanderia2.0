@@ -1,3 +1,4 @@
+import { useMemo, useCallback } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -28,18 +29,22 @@ interface RoleFormProps {
   isLoading?: boolean;
 }
 
-// Group permissions by module
-function groupByModule(permissions: Permission[]): Record<string, Permission[]> {
-  return permissions.reduce<Record<string, Permission[]>>((acc, p) => {
-    if (!acc[p.module]) acc[p.module] = [];
-    acc[p.module].push(p);
+// Group permissions by module → section
+function groupByModuleAndSection(
+  permissions: Permission[],
+): Record<string, Record<string, Permission[]>> {
+  return permissions.reduce<Record<string, Record<string, Permission[]>>>((acc, p) => {
+    if (!acc[p.module]) acc[p.module] = {};
+    const section = p.section || 'general';
+    if (!acc[p.module][section]) acc[p.module][section] = [];
+    acc[p.module][section].push(p);
     return acc;
   }, {});
 }
 
 function FormContent({ role, onSubmit, onClose, permissions, isLoading }: Omit<RoleFormProps, 'open'>) {
   const isEdit = !!role;
-  const grouped = groupByModule(permissions);
+  const grouped = useMemo(() => groupByModuleAndSection(permissions), [permissions]);
   const modules = Object.keys(grouped).sort();
 
   const existingPermissionIds = role?.permissions?.map((p) => p.id) ?? [];
@@ -63,23 +68,33 @@ function FormContent({ role, onSubmit, onClose, permissions, isLoading }: Omit<R
 
   const watchedPermissionIds = watch('permissionIds');
 
-  const togglePermission = (id: number) => {
+  const togglePermission = useCallback((id: number) => {
     const current = watchedPermissionIds ?? [];
     const updated = current.includes(id)
       ? current.filter((pid) => pid !== id)
       : [...current, id];
-    setValue('permissionIds', updated, { shouldValidate: true });
-  };
+    setValue('permissionIds', updated, {});
+  }, [watchedPermissionIds, setValue]);
 
-  const toggleModule = (modulePerms: Permission[]) => {
+  const toggleModule = useCallback((modulePerms: Permission[]) => {
     const current = watchedPermissionIds ?? [];
     const moduleIds = modulePerms.map((p) => p.id);
     const allSelected = moduleIds.every((id) => current.includes(id));
     const updated = allSelected
       ? current.filter((id) => !moduleIds.includes(id))
       : [...new Set([...current, ...moduleIds])];
-    setValue('permissionIds', updated, { shouldValidate: true });
-  };
+    setValue('permissionIds', updated, {});
+  }, [watchedPermissionIds, setValue]);
+
+  const toggleSection = useCallback((sectionPerms: Permission[]) => {
+    const current = watchedPermissionIds ?? [];
+    const sectionIds = sectionPerms.map((p) => p.id);
+    const allSelected = sectionIds.every((id) => current.includes(id));
+    const updated = allSelected
+      ? current.filter((id) => !sectionIds.includes(id))
+      : [...new Set([...current, ...sectionIds])];
+    setValue('permissionIds', updated, {});
+  }, [watchedPermissionIds, setValue]);
 
   const handleFormSubmit = async (data: RoleFormData) => {
     const payload: CreateRoleInput | UpdateRoleInput = {
@@ -172,53 +187,91 @@ function FormContent({ role, onSubmit, onClose, permissions, isLoading }: Omit<R
               <p className="px-6 py-4 text-xs text-zinc-400">No hay permisos disponibles</p>
             ) : (
               modules.map((module) => {
-                const modulePerms = grouped[module];
-                const moduleIds = modulePerms.map((p) => p.id);
-                const allSelected = moduleIds.every((id) => (watchedPermissionIds ?? []).includes(id));
-                const someSelected = moduleIds.some((id) => (watchedPermissionIds ?? []).includes(id));
+                const sectionsMap = grouped[module];
+                const allModulePerms = Object.values(sectionsMap).flat();
+                const moduleIds = allModulePerms.map((p) => p.id);
+                const allModuleSelected = moduleIds.every((id) => (watchedPermissionIds ?? []).includes(id));
+                const someModuleSelected = moduleIds.some((id) => (watchedPermissionIds ?? []).includes(id));
+                const sections = Object.keys(sectionsMap).sort();
 
                 return (
                   <div key={module}>
-                    {/* Module header row */}
-                    <button
-                      type="button"
-                      onClick={() => toggleModule(modulePerms)}
-                      className="w-full flex items-center gap-3 px-6 py-2 bg-zinc-50 border-b border-zinc-100 hover:bg-zinc-100 transition-colors text-left"
+                    {/* Module header */}
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => toggleModule(allModulePerms)}
+                      onKeyDown={(e) => e.key === 'Enter' && toggleModule(allModulePerms)}
+                      className="w-full flex items-center gap-3 px-6 py-2 bg-zinc-100 border-b border-zinc-200 hover:bg-zinc-200 transition-colors cursor-pointer select-none"
                     >
-                      <Checkbox
-                        checked={allSelected}
-                        className={cn(someSelected && !allSelected && 'opacity-50')}
-                        onCheckedChange={() => toggleModule(modulePerms)}
-                        onClick={(e) => e.stopPropagation()}
-                      />
-                      <span className="text-[10px] font-semibold tracking-widest uppercase text-zinc-500">
+                      <span onClick={(e) => e.stopPropagation()}>
+                        <Checkbox
+                          checked={allModuleSelected}
+                          className={cn(someModuleSelected && !allModuleSelected && 'opacity-50')}
+                          onCheckedChange={() => toggleModule(allModulePerms)}
+                        />
+                      </span>
+                      <span className="text-[10px] font-bold tracking-widest uppercase text-zinc-600">
                         {module}
                       </span>
-                    </button>
+                    </div>
 
-                    {/* Permission rows */}
-                    {modulePerms.map((perm) => (
-                      <div
-                        key={perm.id}
-                        className="flex items-center gap-3 px-6 py-2.5 border-b border-zinc-100 hover:bg-zinc-50"
-                      >
-                        <Checkbox
-                          id={`perm-${perm.id}`}
-                          checked={(watchedPermissionIds ?? []).includes(perm.id)}
-                          onCheckedChange={() => togglePermission(perm.id)}
-                          disabled={isLoading}
-                        />
-                        <label
-                          htmlFor={`perm-${perm.id}`}
-                          className="flex-1 flex items-center gap-3 cursor-pointer"
-                        >
-                          <span className="font-mono text-xs text-zinc-700">{perm.name}</span>
-                          {perm.description && (
-                            <span className="text-xs text-zinc-400">{perm.description}</span>
-                          )}
-                        </label>
-                      </div>
-                    ))}
+                    {sections.map((section) => {
+                      const sectionPerms = sectionsMap[section];
+                      const sectionIds = sectionPerms.map((p) => p.id);
+                      const allSectionSelected = sectionIds.every((id) => (watchedPermissionIds ?? []).includes(id));
+                      const someSectionSelected = sectionIds.some((id) => (watchedPermissionIds ?? []).includes(id));
+
+                      return (
+                        <div key={section}>
+                          {/* Section header */}
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => toggleSection(sectionPerms)}
+                            onKeyDown={(e) => e.key === 'Enter' && toggleSection(sectionPerms)}
+                            className="w-full flex items-center gap-3 pl-10 pr-6 py-1.5 bg-zinc-50 border-b border-zinc-100 hover:bg-zinc-100 transition-colors cursor-pointer select-none"
+                          >
+                            <span onClick={(e) => e.stopPropagation()}>
+                              <Checkbox
+                                checked={allSectionSelected}
+                                className={cn(someSectionSelected && !allSectionSelected && 'opacity-50')}
+                                onCheckedChange={() => toggleSection(sectionPerms)}
+                              />
+                            </span>
+                            <span className="text-[10px] font-semibold tracking-widest uppercase text-zinc-400">
+                              {section}
+                            </span>
+                          </div>
+
+                          {/* Permission rows */}
+                          {sectionPerms.map((perm) => (
+                            <div
+                              key={perm.id}
+                              className="flex items-center gap-3 pl-16 pr-6 py-2.5 border-b border-zinc-100 hover:bg-zinc-50"
+                            >
+                              <Checkbox
+                                id={`perm-${perm.id}`}
+                                checked={(watchedPermissionIds ?? []).includes(perm.id)}
+                                onCheckedChange={() => togglePermission(perm.id)}
+                                disabled={isLoading}
+                              />
+                              <label
+                                htmlFor={`perm-${perm.id}`}
+                                className="flex-1 flex items-baseline gap-2 cursor-pointer"
+                              >
+                                <span className="text-xs text-zinc-700">
+                                  {perm.label || perm.name}
+                                </span>
+                                <span className="font-mono text-[10px] text-zinc-400">
+                                  {perm.name}
+                                </span>
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })}
                   </div>
                 );
               })

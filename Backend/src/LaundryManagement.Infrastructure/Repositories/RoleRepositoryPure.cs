@@ -112,7 +112,7 @@ public sealed class RoleRepositoryPure : IRoleRepository
             .ThenBy(p => p.NombrePermiso)
             .ToListAsync(cancellationToken);
 
-        return permisos.Select(p => new PermissionInfo(p.PermisoId, p.NombrePermiso, p.Modulo, p.Descripcion));
+        return permisos.Select(p => new PermissionInfo(p.PermisoId, p.NombrePermiso, p.Modulo, p.Seccion, p.Etiqueta, p.Descripcion));
     }
 
     public async Task<IEnumerable<PermissionInfo>> GetPermissionsByRoleIdAsync(int roleId, CancellationToken cancellationToken = default)
@@ -125,6 +125,6 @@ public sealed class RoleRepositoryPure : IRoleRepository
             .ThenBy(p => p.NombrePermiso)
             .ToListAsync(cancellationToken);
 
-        return permisos.Select(p => new PermissionInfo(p.PermisoId, p.NombrePermiso, p.Modulo, p.Descripcion));
+        return permisos.Select(p => new PermissionInfo(p.PermisoId, p.NombrePermiso, p.Modulo, p.Seccion, p.Etiqueta, p.Descripcion));
     }
 }

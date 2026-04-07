@@ -26,7 +26,7 @@ export const mockPaymentMethods: PaymentMethod[] = [
     id: 4,
     name: 'Cheque',
     description: 'Pago con cheque',
-    isActive: true,
+    isActive: false,
     createdAt: '2024-01-01T00:00:00Z',
   },
 ];

@@ -37,11 +37,16 @@ public sealed class PermissionRepositoryPure : IPermissionRepository
     }
 
     public async Task<PermissionInfo> AddAsync(string name, string module, string? description, CancellationToken cancellationToken = default)
+        => await AddAsync(name, module, string.Empty, string.Empty, description, cancellationToken);
+
+    public async Task<PermissionInfo> AddAsync(string name, string module, string section, string label, string? description, CancellationToken cancellationToken = default)
     {
         var entity = new Permiso
         {
             NombrePermiso = name.Trim(),
             Modulo = module.Trim(),
+            Seccion = section.Trim(),
+            Etiqueta = label.Trim(),
             Descripcion = string.IsNullOrWhiteSpace(description) ? null : description.Trim()
         };
 
@@ -52,6 +57,9 @@ public sealed class PermissionRepositoryPure : IPermissionRepository
     }
 
     public async Task<PermissionInfo> UpdateAsync(int id, string? name, string? module, string? description, CancellationToken cancellationToken = default)
+        => await UpdateAsync(id, name, module, null, null, description, cancellationToken);
+
+    public async Task<PermissionInfo> UpdateAsync(int id, string? name, string? module, string? section, string? label, string? description, CancellationToken cancellationToken = default)
     {
         var entity = await _context.Permisos.FindAsync(new object[] { id }, cancellationToken)
             ?? throw new NotFoundException($"Permiso con ID {id} no encontrado");
@@ -61,6 +69,12 @@ public sealed class PermissionRepositoryPure : IPermissionRepository
 
         if (module != null)
             entity.Modulo = module.Trim();
+
+        if (section != null)
+            entity.Seccion = section.Trim();
+
+        if (label != null)
+            entity.Etiqueta = label.Trim();
 
         if (description != null)
             entity.Descripcion = string.IsNullOrWhiteSpace(description) ? null : description.Trim();
@@ -81,5 +95,5 @@ public sealed class PermissionRepositoryPure : IPermissionRepository
     }
 
     private static PermissionInfo ToPermissionInfo(Permiso entity) =>
-        new(entity.PermisoId, entity.NombrePermiso, entity.Modulo, entity.Descripcion);
+        new(entity.PermisoId, entity.NombrePermiso, entity.Modulo, entity.Seccion, entity.Etiqueta, entity.Descripcion);
 }

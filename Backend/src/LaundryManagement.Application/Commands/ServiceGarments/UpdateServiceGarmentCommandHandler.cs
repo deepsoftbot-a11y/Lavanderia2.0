@@ -49,6 +49,13 @@ public sealed class UpdateServiceGarmentCommandHandler : IRequestHandler<UpdateS
             description: command.Description
         );
 
+        // Actualizar estado activo/inactivo si se especificó
+        if (command.IsActive.HasValue)
+        {
+            if (command.IsActive.Value) garment.Activate();
+            else garment.Deactivate();
+        }
+
         // Persistir cambios
         await _repository.UpdateAsync(garment, cancellationToken);
 

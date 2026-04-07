@@ -6,7 +6,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
-## [Sin publicar] — 2026-04-07 — Dashboard completo + rediseño UI
+## [Sin publicar] — 2026-04-07 — Dashboard completo + rediseño UI + permisos dinámicos
 
 ### Agregado
 
@@ -15,17 +15,34 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 - **Gráficos de operación**: órdenes por estado (barras horizontales custom), ingresos por servicio (horizontal bar Recharts), ingresos por categoría (barras verticales Recharts).
 - **Comparativa semanal**: panel semántico hero con diferencia de ingresos vs. semana anterior.
 - **Filtro de fechas**: selector de rango con calendario native en español (`DateRangePicker` shadcn con `react-day-picker`).
+- **Permisos dinámicos (backend)**: CRUD completo de permisos via API (`CreatePermissionCommand`, `UpdatePermissionCommand`, `GetPermissionsQuery`) con validaciones FluentValidation.
+- **Nuevo componente `Checkbox`**: implementación custom basada en `<button role="checkbox">` sin dependencia de Radix UI.
 
 ### Cambios
 
 - **Dashboard UI**: rediseño completo siguiendo el design system del proyecto — tarjetas KPI compactas (grid 5 columnas), `ChartPanel` compartido con tokens `CHART_*` exportados, gráfica de timeline simplificada a línea única.
 - **DateRangePicker**: trigger estilo filled (`bg-zinc-100`) integrado con el sistema de inputs del proyecto; calendario en español con meses `Enero/Dom`, weekdays `Ene Feb Mar...`.
 - **Paleta zinc/indigo**: todas las superficies del dashboard usan la escala zinc del sistema; color solo para semántica (emerald/rose en indicadores positivos/negativos).
+- **Permisos dinámicos (frontend)**: `permissions.config.ts` marcado como DEPRECADO; permisos ahora se cargan desde la API (`usePermissions()`). Router migrado al formato granular (`dashboard.general:view`, `orders.lista:view`, `users.usuarios:view`, etc.).
+- **Usuarios inline editing**: páginas `CreateUser` y `EditUser` eliminadas; funcionalidad cubierta por `UserFormDialog` en `UsersList`. Componentes `PermissionForm` y `PermissionsTab` eliminados (funcionalidad absorbida por `RolesTab`).
+- **ServiceGarment / Services / Discounts**: handlers de `Create`, `Update` y `Toggle` ahora siguen el aggregate pattern del dominio (`Activate`/`Deactivate`/`UpdateInfo`).
+
+### Cambios en la API (breaking)
+
+- **Contrato de respuesta modificado**: los endpoints `PUT` y `PATCH` de `Servicios`, `ServiciosPrendas` y `TiposPrenda` ahora retornan el DTO completo (`ServiceDto`, `ServicePriceDto`, `ServiceGarmentDto`) en lugar de `{ message: "..." }`. Clientes que consuman estos endpoints deben adaptarse al nuevo schema de respuesta.
+  - `PATCH /api/servicios/{id}/status` → retorna `ServiceDto`
+  - `PUT /api/servicios-prendas/{id}` → retorna `ServicePriceDto`
+  - `PATCH /api/servicios-prendas/{id}/status` → retorna `ServicePriceDto`
+  - `POST /api/tipos-prenda` → retorna `ServiceGarmentDto` (201 Created con DTO)
+  - `PUT /api/tipos-prenda/{id}` → retorna `ServiceGarmentDto`
+  - `PATCH /api/tipos-prenda/{id}/status` → retorna `ServiceGarmentDto`
 
 ### Correcciones
 
 - **Columnas ID en queries Dapper**: corregidos todos los nombres `Id` → `ID` en `DashboardService.cs` para coincidir con el esquema de PostgreSQL (`OrdenID`, `ClienteID`, `ServicioID`, `CategoriaID`, etc.).
 - **Calendario**: fechas futuras deshabilitadas, weekday labels en español, diseño mobile-first (1 mes, celdas 36px).
+- **Full table scan en toggle de precios**: `ToggleServicePriceStatusCommandHandler` ahora usa query directa a `ServiciosPrendas` (1 registro, 2 columnas) en lugar de cargar todos los servicios con sus precios.
+- **`DateOnly.Parse` sin validación**: `UpdateDiscountCommandHandler` ahora captura `FormatException` y lanza `ValidationException` (HTTP 400) cuando las fechas tienen formato inválido.
 
 ---
 

@@ -93,6 +93,19 @@ public class ServiceRepositoryPure : IServiceRepository
         return servicioEntities.Select(ServiceMapper.ToDomain).ToList();
     }
 
+        public async Task<(int ServicioId, bool IsActive)?> GetServicePriceByIdAsync(int servicePriceId, CancellationToken cancellationToken = default)
+    {
+        var servicioPrenda = await _context.ServiciosPrendas
+            .Where(sp => sp.ServicioPrendaId == servicePriceId)
+            .Select(sp => new { sp.ServicioId, sp.Activo })
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (servicioPrenda == null)
+            return null;
+
+        return (servicioPrenda.ServicioId, servicioPrenda.Activo);
+    }
+
     public async Task<Dictionary<int, ServicePure>> GetByIdsAsync(IEnumerable<int> serviceIds, CancellationToken cancellationToken = default)
     {
         var idList = serviceIds.Distinct().ToList();

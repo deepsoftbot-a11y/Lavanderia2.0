@@ -12,8 +12,9 @@
 
 ## Contexto clave
 
-- Entidades disponibles: `Ordene` (órdenes), `Pago`, `PagosDetalle`, `Cliente`, `CortesCaja`, `OrdenesDetalle`, `Servicio`, `Categoria`, `MetodosPago`, `EstadosOrden`.
+- Tablas disponibles: `Ordenes`, `Pagos`, `PagosDetalle`, `Clientes`, `CortesCaja`, `OrdenesDetalle`, `Servicios`, `Categorias`, `MetodosPago`, `EstadosOrden`.
 - Queries Dapper van en `Infrastructure/Services/DashboardService.cs`. SQL usa comillas dobles para identificadores PascalCase.
+- `IDbConnectionFactory.CreateConnection()` devuelve `IDbConnection` (no `DbConnection`). Usar `System.Data.IDbConnection` como tipo en los métodos privados — Dapper funciona sobre esa interfaz.
 - Frontend: `Dashboard.tsx` ya existe con estructura básica — se modifica, no se reemplaza.
 - Fechas por defecto: `fechaInicio` = primer día del mes actual, `fechaFin` = hoy.
 
@@ -171,6 +172,7 @@ git commit -m "feat(backend): agregar IDashboardService interface"
 ### Paso 1: Crear el servicio con todas las queries
 
 ```csharp
+using System.Data;
 using Dapper;
 using LaundryManagement.Application.DTOs;
 using LaundryManagement.Application.Interfaces;
@@ -217,28 +219,28 @@ public sealed class DashboardService : IDashboardService
         return new DashboardDto { Kpis = kpis, Charts = charts };
     }
 
-    private async Task<decimal> GetIngresosTotales(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<decimal> GetIngresosTotales(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COALESCE(SUM(""Total""), 0) FROM ""Ordenes""
                     WHERE ""FechaRecepcion"" >= @Fi AND ""FechaRecepcion"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<decimal>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<decimal> GetTicketPromedio(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<decimal> GetTicketPromedio(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COALESCE(AVG(""Total""), 0) FROM ""Ordenes""
                     WHERE ""FechaRecepcion"" >= @Fi AND ""FechaRecepcion"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<decimal>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<decimal> GetTotalDescuentos(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<decimal> GetTotalDescuentos(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COALESCE(SUM(""Descuento""), 0) FROM ""Ordenes""
                     WHERE ""FechaRecepcion"" >= @Fi AND ""FechaRecepcion"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<decimal>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<List<IngresoPorMetodoDto>> GetIngresosPorMetodo(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<List<IngresoPorMetodoDto>> GetIngresosPorMetodo(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT m.""NombreMetodo"" AS Metodo, COALESCE(SUM(pd.""MontoPagado""), 0) AS Total
                     FROM ""Pagos"" p
@@ -251,7 +253,7 @@ public sealed class DashboardService : IDashboardService
         return result.ToList();
     }
 
-    private async Task<int> GetOrdenesAtrasadas(System.Data.Common.DbConnection conn)
+    private async Task<int> GetOrdenesAtrasadas(IDbConnection conn)
     {
         var sql = @"SELECT COUNT(*) FROM ""Ordenes"" o
                     WHERE o.""FechaPrometida"" < CURRENT_DATE
@@ -260,7 +262,7 @@ public sealed class DashboardService : IDashboardService
         return await conn.ExecuteScalarAsync<int>(sql);
     }
 
-    private async Task<OrdenesPendientesPagarDto> GetOrdenesPendientesPagar(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<OrdenesPendientesPagarDto> GetOrdenesPendientesPagar(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COUNT(*) FROM ""Ordenes"" o
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
@@ -281,14 +283,14 @@ public sealed class DashboardService : IDashboardService
         return new OrdenesPendientesPagarDto { Cantidad = cantidad, Total = total };
     }
 
-    private async Task<int> GetClientesNuevos(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<int> GetClientesNuevos(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COUNT(*) FROM ""Clientes""
                     WHERE ""FechaRegistro"" >= @Fi AND ""FechaRegistro"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<int>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<ClienteTopDto?> GetClienteTop(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<ClienteTopDto?> GetClienteTop(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT c.""NombreCompleto"" AS Nombre, COUNT(*) AS Ordenes
                     FROM ""Ordenes"" o
@@ -300,14 +302,14 @@ public sealed class DashboardService : IDashboardService
         return await conn.QueryFirstOrDefaultAsync<ClienteTopDto>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<decimal> GetTotalCorteCaja(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<decimal> GetTotalCorteCaja(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COALESCE(SUM(""TotalDeclarado""), 0) FROM ""CortesCaja""
                     WHERE ""FechaCorte"" >= @Fi AND ""FechaCorte"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<decimal>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<int> GetDiferencias(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<int> GetDiferencias(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COUNT(*) FROM ""CortesCaja""
                     WHERE ""FechaCorte"" >= @Fi AND ""FechaCorte"" < @Ff + INTERVAL '1 day'
@@ -315,14 +317,14 @@ public sealed class DashboardService : IDashboardService
         return await conn.ExecuteScalarAsync<int>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<int> GetTransacciones(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<int> GetTransacciones(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT COALESCE(SUM(""NumeroTransacciones""), 0) FROM ""CortesCaja""
                     WHERE ""FechaCorte"" >= @Fi AND ""FechaCorte"" < @Ff + INTERVAL '1 day'";
         return await conn.ExecuteScalarAsync<int>(sql, new { Fi = fi, Ff = ff });
     }
 
-    private async Task<List<IngresoPorDiaDto>> GetIngresosPorDia(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<List<IngresoPorDiaDto>> GetIngresosPorDia(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT DATE(""FechaRecepcion"") AS Fecha,
                            COALESCE(SUM(""Total""), 0) AS Ingresos,
@@ -335,7 +337,7 @@ public sealed class DashboardService : IDashboardService
         return result.ToList();
     }
 
-    private async Task<List<OrdenesPorEstadoDto>> GetOrdenesPorEstado(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<List<OrdenesPorEstadoDto>> GetOrdenesPorEstado(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT e.""NombreEstado"" AS Estado, COUNT(*) AS Cantidad
                     FROM ""Ordenes"" o
@@ -347,13 +349,13 @@ public sealed class DashboardService : IDashboardService
         return result.ToList();
     }
 
-    private async Task<List<IngresoPorServicioDto>> GetIngresosPorServicio(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<List<IngresoPorServicioDto>> GetIngresosPorServicio(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT s.""NombreServicio"" AS Servicio,
                            COALESCE(SUM(od.""Subtotal""), 0) AS Total
                     FROM ""OrdenesDetalle"" od
                     JOIN ""Ordenes"" o ON od.""OrdenId"" = o.""OrdenId""
-                    JOIN ""Servicio"" s ON od.""ServicioId"" = s.""ServicioId""
+                    JOIN ""Servicios"" s ON od.""ServicioId"" = s.""ServicioId""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY s.""NombreServicio""
                     ORDER BY Total DESC";
@@ -361,14 +363,14 @@ public sealed class DashboardService : IDashboardService
         return result.ToList();
     }
 
-    private async Task<List<IngresoPorCategoriaDto>> GetIngresosPorCategoria(System.Data.Common.DbConnection conn, DateTime fi, DateTime ff)
+    private async Task<List<IngresoPorCategoriaDto>> GetIngresosPorCategoria(IDbConnection conn, DateTime fi, DateTime ff)
     {
         var sql = @"SELECT c.""NombreCategoria"" AS Categoria,
                            COALESCE(SUM(od.""Subtotal""), 0) AS Total
                     FROM ""OrdenesDetalle"" od
                     JOIN ""Ordenes"" o ON od.""OrdenId"" = o.""OrdenId""
-                    JOIN ""Servicio"" s ON od.""ServicioId"" = s.""ServicioId""
-                    JOIN ""Categoria"" c ON s.""CategoriaId"" = c.""CategoriaId""
+                    JOIN ""Servicios"" s ON od.""ServicioId"" = s.""ServicioId""
+                    JOIN ""Categorias"" c ON s.""CategoriaId"" = c.""CategoriaId""
                     WHERE o.""FechaRecepcion"" >= @Fi AND o.""FechaRecepcion"" < @Ff + INTERVAL '1 day'
                     GROUP BY c.""NombreCategoria""
                     ORDER BY Total DESC";
@@ -376,7 +378,7 @@ public sealed class DashboardService : IDashboardService
         return result.ToList();
     }
 
-    private async Task<ComparativaSemanalDto> GetComparativaSemanal(System.Data.Common.DbConnection conn)
+    private async Task<ComparativaSemanalDto> GetComparativaSemanal(IDbConnection conn)
     {
         var hoy = DateTime.Today;
         var inicioSemanaActual = hoy.AddDays(-(int)hoy.DayOfWeek);
@@ -408,7 +410,7 @@ Esperado: sin errores de compilación.
 
 ### Paso 3: Registrar en DI
 
-Verificar que `IDashboardService` se registra en `Infrastructure/DependencyInjection.cs`. Buscar el archivo y agregar si no existe:
+Registrar el servicio en `Infrastructure/DependencyInjection.cs` (es nuevo, hay que agregarlo):
 
 ```csharp
 services.AddScoped<IDashboardService, DashboardService>();
@@ -498,7 +500,7 @@ npm install recharts
 
 ```bash
 cd Frontend
-npx shadcn@latest add card badge separator
+npx shadcn@latest add card badge separator skeleton
 ```
 
 ### Paso 3: Verificar installation
@@ -601,11 +603,11 @@ export interface DashboardDto {
 ### Paso 2: Crear API layer
 
 ```typescript
-import axios from 'axios';
+import api from '@/api/axiosConfig';
 import type { DashboardDto } from '@/features/dashboard/types/dashboard';
 
 export const getDashboard = async (fechaInicio: string, fechaFin: string): Promise<DashboardDto> => {
-  const response = await axios.get('/api/dashboard', {
+  const response = await api.get<DashboardDto>('/dashboard', {
     params: { fechaInicio, fechaFin },
   });
   return response.data;
@@ -1185,7 +1187,6 @@ import { RevenueByMethodChart } from '../components/RevenueByMethodChart';
 import { RevenueByServiceChart } from '../components/RevenueByServiceChart';
 import { RevenueByCategoryChart } from '../components/RevenueByCategoryChart';
 import { WeeklyComparisonChart } from '../components/WeeklyComparisonChart';
-import { DateRangePicker } from '@/shared/components/ui/date-range-picker';
 import { Card, CardContent } from '@/shared/components/ui/card';
 import { Separator } from '@/shared/components/ui/separator';
 import { AlertCircle } from 'lucide-react';
@@ -1215,11 +1216,21 @@ export function Dashboard() {
       {/* Header con filtro de fechas */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-        <DateRangePicker
-          fechaInicio={fechaInicio}
-          fechaFin={fechaFin}
-          onRangeChange={setFechaRange}
-        />
+        <div className="flex items-center gap-2">
+          <input
+            type="date"
+            value={fechaInicio.toISOString().split('T')[0]}
+            onChange={(e) => setFechaRange(new Date(e.target.value), fechaFin)}
+            className="border rounded px-3 py-1.5 text-sm"
+          />
+          <span className="text-zinc-400">—</span>
+          <input
+            type="date"
+            value={fechaFin.toISOString().split('T')[0]}
+            onChange={(e) => setFechaRange(fechaInicio, new Date(e.target.value))}
+            className="border rounded px-3 py-1.5 text-sm"
+          />
+        </div>
       </div>
 
       {/* KPI Cards */}
@@ -1249,34 +1260,9 @@ export function Dashboard() {
 }
 ```
 
-### Nota sobre DateRangePicker
+### Nota sobre filtro de fechas
 
-Si `DateRangePicker` no existe en shadcn, instalarlo:
-
-```bash
-npx shadcn@latest add calendar
-```
-
-O usar un componente más simple de date-fns si no se tiene. Alternativa simple:
-
-```tsx
-// Reemplazar DateRangePicker por dos inputs date
-<div className="flex items-center gap-2">
-  <input
-    type="date"
-    value={fechaInicio.toISOString().split('T')[0]}
-    onChange={(e) => setFechaRange(new Date(e.target.value), fechaFin)}
-    className="border rounded px-3 py-1.5 text-sm"
-  />
-  <span className="text-zinc-400">—</span>
-  <input
-    type="date"
-    value={fechaFin.toISOString().split('T')[0]}
-    onChange={(e) => setFechaRange(fechaInicio, new Date(e.target.value))}
-    className="border rounded px-3 py-1.5 text-sm"
-  />
-</div>
-```
+Se usan dos `<input type="date">` nativos para evitar dependencias adicionales. Si más adelante se quiere un `DateRangePicker` con popover/calendario, se puede agregar como mejora con `npx shadcn@latest add calendar popover` y construir un componente en `shared/components/ui/date-range-picker.tsx`.
 
 ### Paso 2: Build
 

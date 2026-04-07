@@ -27,5 +27,7 @@ export function usePermissions() {
     hasAllPermissions: (required: string[]) => hasAllPermissions(permissions, required),
     canAccessModule: (module: string) => canAccessModule(permissions, module),
     getModulePermissions: (module: string) => getModulePermissions(permissions, module),
+    canAccessSection: (module: string, section: string) =>
+      permissions.some((p) => p.startsWith(`${module}.${section}:`)),
   };
 }

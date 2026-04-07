@@ -77,15 +77,15 @@ public class TiposPrendaController : ControllerBase
     /// <response code="201">Tipo de prenda creado exitosamente</response>
     /// <response code="400">Datos de entrada inválidos</response>
     [HttpPost]
-    [ProducesResponseType(typeof(int), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ServiceGarmentDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CreateServiceGarment([FromBody] CreateServiceGarmentCommand command)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var garmentId = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetServiceGarmentById), new { id = garmentId }, new { id = garmentId });
+        var garmentDto = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetServiceGarmentById), new { id = garmentDto.Id }, garmentDto);
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public class TiposPrendaController : ControllerBase
     /// <response code="400">Datos de entrada inválidos</response>
     /// <response code="404">Tipo de prenda no encontrado</response>
     [HttpPut("{id:int}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServiceGarmentDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateServiceGarment(int id, [FromBody] UpdateServiceGarmentCommand command)
@@ -108,7 +108,9 @@ public class TiposPrendaController : ControllerBase
 
         var updatedCommand = command with { ServiceGarmentId = id };
         await _mediator.Send(updatedCommand);
-        return Ok(new { message = "Tipo de prenda actualizado exitosamente" });
+
+        var updated = await _mediator.Send(new GetServiceGarmentByIdQuery(id));
+        return Ok(updated);
     }
 
     /// <summary>
@@ -137,13 +139,15 @@ public class TiposPrendaController : ControllerBase
     /// <response code="200">Estado del tipo de prenda actualizado</response>
     /// <response code="404">Tipo de prenda no encontrado</response>
     [HttpPatch("{id:int}/status")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServiceGarmentDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ToggleServiceGarmentStatus(int id, [FromQuery] bool isActive)
     {
         var command = new ToggleServiceGarmentStatusCommand { ServiceGarmentId = id, IsActive = isActive };
         await _mediator.Send(command);
-        return Ok(new { message = $"Tipo de prenda {(isActive ? "activado" : "desactivado")} exitosamente" });
+
+        var updated = await _mediator.Send(new GetServiceGarmentByIdQuery(id));
+        return Ok(updated);
     }
 
     #endregion

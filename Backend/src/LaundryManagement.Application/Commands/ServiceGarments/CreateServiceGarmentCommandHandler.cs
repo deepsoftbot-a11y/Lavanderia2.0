@@ -1,3 +1,4 @@
+using LaundryManagement.Application.DTOs.ServiceGarments;
 using LaundryManagement.Domain.Aggregates.ServiceGarments;
 using LaundryManagement.Domain.Repositories;
 using MediatR;
@@ -9,7 +10,7 @@ namespace LaundryManagement.Application.Commands.ServiceGarments;
 /// Handler que implementa el patrón DDD para crear tipos de prenda.
 /// Usa el agregado ServiceGarmentPure y el repositorio de dominio.
 /// </summary>
-public sealed class CreateServiceGarmentCommandHandler : IRequestHandler<CreateServiceGarmentCommand, int>
+public sealed class CreateServiceGarmentCommandHandler : IRequestHandler<CreateServiceGarmentCommand, ServiceGarmentDto>
 {
     private readonly IServiceGarmentRepository _repository;
     private readonly ILogger<CreateServiceGarmentCommandHandler> _logger;
@@ -22,7 +23,7 @@ public sealed class CreateServiceGarmentCommandHandler : IRequestHandler<CreateS
         _logger = logger;
     }
 
-    public async Task<int> Handle(CreateServiceGarmentCommand command, CancellationToken cancellationToken)
+    public async Task<ServiceGarmentDto> Handle(CreateServiceGarmentCommand command, CancellationToken cancellationToken)
     {
         _logger.LogInformation(
             "Creating new service garment: Name={Name}",
@@ -44,6 +45,14 @@ public sealed class CreateServiceGarmentCommandHandler : IRequestHandler<CreateS
             savedGarment.Name
         );
 
-        return savedGarment.Id.Value;
+        return new ServiceGarmentDto
+        {
+            Id = savedGarment.Id.Value,
+            Name = savedGarment.Name,
+            Description = savedGarment.Description,
+            IsActive = savedGarment.IsActive,
+            CreatedAt = savedGarment.CreatedAt.ToString("o"),
+            UpdatedAt = savedGarment.UpdatedAt?.ToString("o")
+        };
     }
 }

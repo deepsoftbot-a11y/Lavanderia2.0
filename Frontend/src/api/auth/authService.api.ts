@@ -4,46 +4,10 @@ import type { User } from '@/features/users/types/user';
 import type { Role } from '@/features/users/types/role';
 import type { PermissionKey } from '@/shared/types/permission';
 
-// Maps DB NombrePermiso (Spanish) → frontend PermissionKey (module:action)
-const PERMISSION_MAP: Record<string, PermissionKey> = {
-  Ver_Dashboard:       'dashboard:view',
-  Crear_Usuario:       'users:create',
-  Modificar_Usuario:   'users:edit',
-  Eliminar_Usuario:    'users:delete',
-  Ver_Usuarios:        'users:view',
-  Asignar_Roles:       'users:manage',
-  Crear_Cliente:       'customers:create',
-  Modificar_Cliente:   'customers:edit',
-  Ver_Clientes:        'customers:view',
-  Gestionar_Credito:   'customers:manage',
-  Ver_Saldo_Cliente:   'customers:view',
-  Crear_Orden:         'orders:create',
-  Modificar_Orden:     'orders:edit',
-  Cancelar_Orden:      'orders:delete',
-  Ver_Ordenes:         'orders:view',
-  Cambiar_Estado_Orden:'orders:manage',
-  Entregar_Orden:      'orders:manage',
-  Crear_Servicio:      'services:manage',
-  Modificar_Servicio:  'services:manage',
-  Modificar_Precios:   'services:manage',
-  Ver_Servicios:       'services:view',
-  Aplicar_Descuento:   'services:manage',
-  Crear_Combo:         'services:manage',
-  Modificar_Combo:     'services:manage',
-  Generar_Reporte:     'reports:view',
-  Configurar_Reporte:  'reports:export',
-  Configurar_Sistema:  'settings:manage',
-  Ver_Auditoria:       'settings:view',
-  Gestionar_Ubicaciones:'settings:manage',
-};
-
+// Permissions are returned directly from the backend as "module.section:action" keys
+// e.g. "orders.lista:view", "users.roles:manage"
 function mapPermissions(raw: string[]): PermissionKey[] {
-  const seen = new Set<PermissionKey>();
-  for (const p of raw) {
-    const key = PERMISSION_MAP[p];
-    if (key) seen.add(key);
-  }
-  return [...seen];
+  return raw.filter((p): p is PermissionKey => /^[a-z]+\.[a-z]+:[a-z]+$/.test(p));
 }
 
 interface ApiUser {

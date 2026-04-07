@@ -35,8 +35,15 @@ public sealed class UpdateServiceCommandHandler : IRequestHandler<UpdateServiceC
                 name: command.Name,
                 description: command.Description,
                 icon: command.Icon,
-                estimatedHours: command.EstimatedTime
+                estimatedHours: command.EstimatedTime ?? service.EstimatedHours
             );
+
+            // Actualizar estado activo/inactivo si se especificó
+            if (command.IsActive.HasValue)
+            {
+                if (command.IsActive.Value) service.Activate();
+                else service.Deactivate();
+            }
 
             // Actualizar precios según el tipo de servicio
             if (service.IsPieceBased && command.PricePerKg.HasValue)

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pencil, Trash2, Plus } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
@@ -22,10 +22,14 @@ import { useToast } from '@/shared/hooks/use-toast';
 
 export function RolesTab() {
   const { roles, isLoading, createRole, updateRole, deleteRole } = useRolesStore();
-  const { permissions } = usePermissionsStore();
+  const { permissions, fetchPermissions } = usePermissionsStore();
   const { toast } = useToast();
 
   const [formOpen, setFormOpen] = useState(false);
+
+  useEffect(() => {
+    fetchPermissions();
+  }, [fetchPermissions]);
   const [editingRole, setEditingRole] = useState<Role | undefined>();
   const [deleteTarget, setDeleteTarget] = useState<Role | null>(null);
 
@@ -117,8 +121,8 @@ export function RolesTab() {
               className={cn(
                 'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide leading-none',
                 role.isActive
-                  ? 'bg-emerald-50 text-emerald-700'
-                  : 'bg-zinc-100 text-zinc-400'
+                  ? 'bg-emerald-50 border border-emerald-100 text-emerald-700'
+                  : 'bg-zinc-100 border border-zinc-200 text-zinc-400'
               )}
             >
               {role.isActive ? 'Activo' : 'Inactivo'}

@@ -109,7 +109,7 @@ export function PaymentForm({
         return;
       }
 
-      if (form.formState.isValid && amount > 0 && amount <= maxAmount) {
+      if (amount > 0 && amount <= maxAmount) {
         form.clearErrors('amount');
         onSubmit(values);
         return;

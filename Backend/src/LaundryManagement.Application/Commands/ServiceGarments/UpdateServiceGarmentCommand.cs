@@ -21,4 +21,9 @@ public sealed record UpdateServiceGarmentCommand : IRequest<Unit>
     /// Nueva descripción del tipo de prenda
     /// </summary>
     public string? Description { get; init; }
+
+    /// <summary>
+    /// Estado activo/inactivo del tipo de prenda
+    /// </summary>
+    public bool? IsActive { get; init; }
 }

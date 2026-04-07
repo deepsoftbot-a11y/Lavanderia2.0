@@ -1,4 +1,4 @@
-# CurrencyInput — Diseño
+quitalo del git# CurrencyInput — Diseño
 
 **Fecha:** 2026-03-31
 **Estado:** Aprobado

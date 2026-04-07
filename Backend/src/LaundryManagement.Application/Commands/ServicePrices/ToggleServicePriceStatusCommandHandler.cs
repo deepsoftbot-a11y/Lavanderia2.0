@@ -23,13 +23,15 @@ public sealed class ToggleServicePriceStatusCommandHandler : IRequestHandler<Tog
     {
         _logger.LogInformation("Toggling service price status: ID={ServicePriceId}", command.ServicePriceId);
 
-        var services = await _serviceRepository.GetAllAsync(cancellationToken);
-
-        var targetService = services.FirstOrDefault(
-            s => s.Prices.Any(p => p.Id.Value == command.ServicePriceId));
-
-        if (targetService == null)
+        // Obtener el ServicioId directamente sin hacer full table scan
+        var priceInfo = await _serviceRepository.GetServicePriceByIdAsync(command.ServicePriceId, cancellationToken);
+        if (priceInfo == null)
             throw new NotFoundException($"Precio con ID {command.ServicePriceId} no encontrado");
+
+        // Cargar SOLO el servicio padre, no todos los servicios
+        var targetService = await _serviceRepository.GetByIdAsync(ServiceId.From(priceInfo.Value.ServicioId), cancellationToken);
+        if (targetService == null)
+            throw new NotFoundException($"Servicio con ID {priceInfo.Value.ServicioId} no encontrado");
 
         targetService.TogglePriceStatusById(ServicePriceId.From(command.ServicePriceId));
         await _serviceRepository.UpdateAsync(targetService, cancellationToken);

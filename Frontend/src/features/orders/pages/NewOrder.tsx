@@ -12,7 +12,6 @@ import { CustomerSelector } from '@/features/orders/components/pos/CustomerSelec
 import { AddServiceDialog } from '@/features/orders/components/pos/AddServiceDialog';
 import { ConfirmOrderDialog } from '@/features/orders/components/pos/ConfirmOrderDialog';
 import { QuickCustomerForm } from '@/features/orders/components/pos/QuickCustomerForm';
-import { CashClosingModal } from '@/features/orders/components/cashClosing/CashClosingModal';
 import { OrderSearchSheet } from '@/features/orders/components/orderSearch/OrderSearchSheet';
 import { PaymentForm, type PaymentFormData } from '@/features/orders/components/payments/PaymentForm';
 import { useCartStore } from '@/features/orders/stores/cartStore';
@@ -22,7 +21,6 @@ import { useCustomersStore } from '@/features/customers/stores/customersStore';
 import { useOrdersStore } from '@/features/orders/stores/ordersStore';
 import { usePaymentMethodsStore } from '@/features/orders/stores/paymentMethodsStore';
 import { useAuthStore } from '@/features/auth/stores/authStore';
-import { useUIStore } from '@/shared/stores/uiStore';
 import { useToast } from '@/shared/hooks/use-toast';
 import type { Service } from '@/features/services/types/service';
 
@@ -30,10 +28,7 @@ export function NewOrder() {
   const { toast } = useToast();
   const { user } = useAuthStore();
 
-  const cashClosingOpen = useUIStore((state) => state.cashClosingOpen);
-  const closeCashClosing = useUIStore((state) => state.closeCashClosing);
-
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
+const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [showAddServiceDialog, setShowAddServiceDialog] = useState(false);
   const [showQuickCustomerForm, setShowQuickCustomerForm] = useState(false);
   const [orderSearchOpen, setOrderSearchOpen] = useState(false);
@@ -514,7 +509,6 @@ export function NewOrder() {
         onSubmit={handleCreateCustomer}
       />
 
-      <CashClosingModal open={cashClosingOpen} onOpenChange={(open) => !open && closeCashClosing()} />
 
       <OrderSearchSheet
         open={orderSearchOpen}

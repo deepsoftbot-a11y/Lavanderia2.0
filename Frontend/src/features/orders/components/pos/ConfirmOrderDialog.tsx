@@ -61,8 +61,7 @@ export function ConfirmOrderDialog({
 
   useEffect(() => {
     if (open) {
-      const hasPaymentData = paymentData != null && paymentData.amount > 0;
-      setRegisterPaymentNow(hasPaymentData);
+      setRegisterPaymentNow(total > 0);
       setAmount(paymentData?.amount ?? total);
       setPaymentMethodId(
         paymentData?.paymentMethodId

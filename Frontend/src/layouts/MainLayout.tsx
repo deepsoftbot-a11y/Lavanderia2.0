@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { CashClosingModal } from '@/features/orders/components/cashClosing/CashClosingModal';
 import { Header } from '@/shared/components/layout/Header';
 import { MobileSidebar } from '@/shared/components/layout/MobileSidebar';
 import { Sidebar } from '@/shared/components/layout/Sidebar';
@@ -9,6 +10,8 @@ import { cn } from '@/shared/utils/cn';
 
 export function MainLayout() {
   const isSidebarCollapsed = useUIStore((state) => state.isSidebarCollapsed);
+  const cashClosingOpen = useUIStore((state) => state.cashClosingOpen);
+  const closeCashClosing = useUIStore((state) => state.closeCashClosing);
 
   useEffect(() => {
     const handleKeyboard = (e: KeyboardEvent) => {
@@ -53,6 +56,8 @@ export function MainLayout() {
           </div>
         </main>
       </div>
+
+      <CashClosingModal open={cashClosingOpen} onOpenChange={(open) => !open && closeCashClosing()} />
     </div>
   );
 }

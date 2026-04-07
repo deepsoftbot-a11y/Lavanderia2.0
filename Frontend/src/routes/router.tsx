@@ -8,8 +8,6 @@ import { Dashboard } from '@/features/dashboard/pages/Dashboard';
 import { OrdersList } from '@/features/orders/pages/OrdersList';
 import { NewOrder } from '@/features/orders/pages/NewOrder';
 import { UsersList } from '@/features/users/pages/UsersList';
-import { CreateUser } from '@/features/users/pages/CreateUser';
-import { EditUser } from '@/features/users/pages/EditUser';
 import { ServicesList } from '@/features/services/pages/ServicesList';
 
 function UnauthorizedPage() {
@@ -47,27 +45,34 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        element: <ProtectedRoute requiredPermission="dashboard:view" />,
+        element: <ProtectedRoute requiredPermission="dashboard.general:view" />,
         children: [{ path: '/dashboard', element: <Dashboard /> }],
       },
       {
-        element: <ProtectedRoute requiredPermission="orders:view" />,
+        element: <ProtectedRoute requiredPermission="orders.lista:view" />,
         children: [{ path: '/orders', element: <OrdersList /> }],
       },
       {
-        element: <ProtectedRoute requiredPermission="orders:create" />,
+        element: <ProtectedRoute requiredPermission="orders.nueva:create" />,
         children: [{ path: '/orders/new', element: <NewOrder /> }],
       },
       {
-        element: <ProtectedRoute requiredPermission="services:view" />,
+        element: <ProtectedRoute requiredPermissions={[
+          'services.servicios:view',
+          'services.categorias:view',
+          'services.prendas:view',
+          'services.precios:view',
+          'services.descuentos:view',
+        ]} />,
         children: [{ path: '/services', element: <ServicesList /> }],
       },
       {
-        element: <ProtectedRoute requiredPermission="users:view" />,
+        element: <ProtectedRoute requiredPermissions={[
+          'users.usuarios:view',
+          'users.roles:view',
+        ]} />,
         children: [
           { path: '/users', element: <UsersList /> },
-          { path: '/users/create', element: <CreateUser /> },
-          { path: '/users/edit/:id', element: <EditUser /> },
         ],
       },
     ],

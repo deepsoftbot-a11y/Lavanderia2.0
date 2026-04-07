@@ -101,7 +101,7 @@ public class ServiciosPrendasController : ControllerBase
     /// Actualiza el precio de una combinación servicio-prenda existente
     /// </summary>
     [HttpPut("{id:int}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServicePriceDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateServicePrice(int id, [FromBody] UpdateServicePriceBody body)
@@ -116,7 +116,9 @@ public class ServiciosPrendasController : ControllerBase
         };
 
         await _mediator.Send(command);
-        return Ok(new { message = "Precio actualizado exitosamente" });
+
+        var updated = await _mediator.Send(new GetServicePriceByIdQuery(id));
+        return Ok(updated);
     }
 
     /// <summary>
@@ -136,13 +138,15 @@ public class ServiciosPrendasController : ControllerBase
     /// Alterna el estado activo/inactivo de un precio servicio-prenda
     /// </summary>
     [HttpPatch("{id:int}/status")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServicePriceDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ToggleServicePriceStatus(int id)
     {
         var command = new ToggleServicePriceStatusCommand { ServicePriceId = id };
         await _mediator.Send(command);
-        return Ok(new { message = "Estado del precio actualizado exitosamente" });
+
+        var updated = await _mediator.Send(new GetServicePriceByIdQuery(id));
+        return Ok(updated);
     }
 
     #endregion

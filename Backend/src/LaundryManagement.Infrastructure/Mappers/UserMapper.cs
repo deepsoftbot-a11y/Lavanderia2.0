@@ -34,7 +34,9 @@ public static class UserMapper
                 id: p.PermisoId,
                 permissionId: p.PermisoId,
                 permissionName: p.NombrePermiso,
-                module: p.Modulo
+                module: p.Modulo,
+                section: p.Seccion,
+                label: p.Etiqueta
             ))
             .ToList();
 

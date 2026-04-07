@@ -43,17 +43,39 @@ public sealed class UpdateDiscountCommandHandler : IRequestHandler<UpdateDiscoun
         var type  = cmd.Type  != null ? CreateDiscountCommandHandler.ParseDiscountType(cmd.Type) : discount.Type;
         var value = cmd.Value.HasValue ? Money.FromDecimal(cmd.Value.Value) : discount.Value;
 
-        var validFrom = !string.IsNullOrWhiteSpace(cmd.StartDate)
-            ? DateOnly.Parse(cmd.StartDate)
-            : discount.ValidFrom;
+        DateOnly validFrom;
+        try
+        {
+            validFrom = !string.IsNullOrWhiteSpace(cmd.StartDate)
+                ? DateOnly.Parse(cmd.StartDate)
+                : discount.ValidFrom;
+        }
+        catch (FormatException)
+        {
+            throw new ValidationException("Fecha con formato inválido, use yyyy-MM-dd");
+        }
 
-        // EndDate: null = mantener actual; "" = limpiar; fecha válida = actualizar
-        DateOnly? validUntil = cmd.EndDate == null
-            ? discount.ValidUntil
-            : (string.IsNullOrWhiteSpace(cmd.EndDate) ? null : DateOnly.Parse(cmd.EndDate));
+        DateOnly? validUntil;
+        try
+        {
+            validUntil = cmd.EndDate == null
+                ? discount.ValidUntil
+                : (string.IsNullOrWhiteSpace(cmd.EndDate) ? null : DateOnly.Parse(cmd.EndDate));
+        }
+        catch (FormatException)
+        {
+            throw new ValidationException("Fecha con formato inválido, use yyyy-MM-dd");
+        }
 
         // Actualizar via método de dominio (valida consistencia tipo/valor y fechas)
         discount.UpdateInfo(name, type, value, validFrom, validUntil);
+
+        // Actualizar estado activo/inactivo si se especificó
+        if (cmd.IsActive.HasValue)
+        {
+            if (cmd.IsActive.Value) discount.Activate();
+            else discount.Deactivate();
+        }
 
         // Persistir
         await _discountRepository.UpdateAsync(discount, ct);

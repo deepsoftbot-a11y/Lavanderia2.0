@@ -1,8 +1,6 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2 } from 'lucide-react';
 
-import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
 import { ClearableInput, PasswordInput } from '@/shared/components/ui/field-input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/components/ui/select';
@@ -14,11 +12,10 @@ import { useRolesStore } from '@/features/users/stores/rolesStore';
 interface UserFormProps {
   user?: User;
   onSubmit: (data: CreateUserInput | UpdateUserInput) => Promise<void>;
-  onCancel: () => void;
   isLoading?: boolean;
 }
 
-export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFormProps) {
+export function UserForm({ user, onSubmit, isLoading = false }: UserFormProps) {
   const isEdit = !!user;
   const { roles } = useRolesStore();
   const activeRoles = roles.filter((r) => r.isActive);
@@ -54,7 +51,7 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
   };
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit as Parameters<typeof handleSubmit>[0])} className="space-y-6">
+    <form id="user-form" onSubmit={handleSubmit(onFormSubmit as Parameters<typeof handleSubmit>[0])} className="space-y-6">
       {/* Credentials section — create only */}
       {!isEdit && (
         <div className="space-y-3 pb-5 border-b border-zinc-100">
@@ -253,17 +250,6 @@ export function UserForm({ user, onSubmit, onCancel, isLoading = false }: UserFo
             />
           </div>
         </div>
-      </div>
-
-      {/* Actions */}
-      <div className="flex justify-end gap-3 pt-2">
-        <Button type="button" variant="outline" onClick={onCancel} disabled={isLoading}>
-          Cancelar
-        </Button>
-        <Button type="submit" disabled={isLoading} >
-          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {isEdit ? 'Actualizar usuario' : 'Crear usuario'}
-        </Button>
       </div>
     </form>
   );

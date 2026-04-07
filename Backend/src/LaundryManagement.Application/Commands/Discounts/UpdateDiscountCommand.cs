@@ -38,9 +38,6 @@ public sealed record UpdateDiscountCommand : IRequest<DiscountDto>
     /// </summary>
     public string? EndDate { get; init; }
 
-    /// <summary>
-    /// Ignorado — usar PATCH /status para cambiar estado activo
-    /// </summary>
     public bool? IsActive { get; init; }
 
     /// <summary>

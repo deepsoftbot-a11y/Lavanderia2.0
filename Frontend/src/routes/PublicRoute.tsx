@@ -7,9 +7,9 @@ export function PublicRoute() {
   const permissions = useAuthStore((state) => state.permissions);
 
   if (isAuthenticated) {
-    const redirectPath = permissions.includes('dashboard:view')
+    const redirectPath = permissions.includes('dashboard.general:view')
       ? '/dashboard'
-      : permissions.includes('orders:view')
+      : permissions.includes('orders.lista:view')
       ? '/orders'
       : '/orders/new';
     return <Navigate to={redirectPath} replace />;

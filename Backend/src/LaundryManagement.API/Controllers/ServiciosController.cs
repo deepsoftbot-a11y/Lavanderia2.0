@@ -114,13 +114,15 @@ public class ServiciosController : ControllerBase
     /// Activa o desactiva un servicio
     /// </summary>
     [HttpPatch("{id:int}/status")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ServiceDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ToggleServiceStatus(int id, [FromQuery] bool isActive)
     {
         var command = new ToggleServiceStatusCommand { ServiceId = id, IsActive = isActive };
         await _mediator.Send(command);
-        return Ok(new { message = $"Servicio {(isActive ? "activado" : "desactivado")} exitosamente" });
+
+        var updated = await _mediator.Send(new GetServiceByIdQuery { ServiceId = id });
+        return Ok(updated);
     }
 
     /// <summary>

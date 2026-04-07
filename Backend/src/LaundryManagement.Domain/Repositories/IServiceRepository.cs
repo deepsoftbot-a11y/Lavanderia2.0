@@ -37,6 +37,12 @@ public interface IServiceRepository
     /// </summary>
     Task<Dictionary<int, ServicePure>> GetByIdsAsync(IEnumerable<int> serviceIds, CancellationToken cancellationToken = default);
 
+    /// <summary>
+    /// Obtiene el ServicioId y IsActive de un precio de servicio-prenda por su ID directamente (sin cargar servicios padre).
+    /// Util para operaciones que solo necesitan modificar el precio sin hacer full table scan.
+    /// </summary>
+    Task<(int ServicioId, bool IsActive)?> GetServicePriceByIdAsync(int servicePriceId, CancellationToken cancellationToken = default);
+
     #endregion
 
     #region Commands

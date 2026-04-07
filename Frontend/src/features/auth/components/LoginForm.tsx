@@ -33,11 +33,17 @@ export function LoginForm() {
       const success = await login(data);
       if (success) {
         const permissions = useAuthStore.getState().permissions;
-        const redirectPath = permissions.includes('dashboard:view')
+        const redirectPath = permissions.includes('dashboard.general:view')
           ? '/dashboard'
-          : permissions.includes('orders:view')
+          : permissions.includes('orders.lista:view')
           ? '/orders'
-          : '/orders/new';
+          : permissions.includes('orders.nueva:create') || permissions.includes('orders.corte:manage')
+          ? '/orders/new'
+          : permissions.some((p) => p.startsWith('services.'))
+          ? '/services'
+          : permissions.some((p) => p.startsWith('users.'))
+          ? '/users'
+          : '/unauthorized';
         toast.success('Inicio de sesión exitoso');
         navigate(redirectPath, { replace: true });
       } else {

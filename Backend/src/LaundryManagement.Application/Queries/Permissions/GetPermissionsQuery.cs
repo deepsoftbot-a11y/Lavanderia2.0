@@ -24,6 +24,8 @@ public sealed class GetPermissionsQueryHandler : IRequestHandler<GetPermissionsQ
             Id = p.Id,
             Name = p.Name,
             Module = p.Module,
+            Section = p.Section,
+            Label = p.Label,
             Description = p.Description
         }).ToList();
     }

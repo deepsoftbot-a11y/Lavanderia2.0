@@ -7,5 +7,7 @@ public record UpdatePermissionCommand(
     int Id,
     string? Name,
     string? Module,
+    string? Section,
+    string? Label,
     string? Description
 ) : IRequest<PermissionDto>;

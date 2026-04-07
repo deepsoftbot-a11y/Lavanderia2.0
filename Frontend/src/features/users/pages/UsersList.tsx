@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Plus, Search, Pencil, Trash2, Power } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -27,30 +26,28 @@ import {
 
 import { useUsersStore } from '@/features/users/stores/usersStore';
 import { useRolesStore } from '@/features/users/stores/rolesStore';
-import { usePermissionsStore } from '@/features/users/stores/permissionsStore';
 import { RolesTab } from '@/features/users/components/RolesTab';
-import { PermissionsTab } from '@/features/users/components/PermissionsTab';
+import { UserFormDialog } from '@/features/users/components/UserFormDialog';
 import { TABLE_HEADER_CLASS as TH } from '@/shared/utils/constants';
 import { StatusBadge } from '@/shared/components/ui/status-badge';
 import type { User } from '@/features/users/types/user';
 
 export function UsersList() {
-  const navigate = useNavigate();
   const { users, isLoading, error, filters, setFilters, fetchUsers, deleteUser, toggleUserStatus } =
     useUsersStore();
   const { roles, fetchRoles } = useRolesStore();
-  const { fetchPermissions } = usePermissionsStore();
 
   const [searchTerm, setSearchTerm] = useState(filters.search ?? '');
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [toggleStatusDialogOpen, setToggleStatusDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [userFormOpen, setUserFormOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState<User | null>(null);
 
   useEffect(() => {
     fetchUsers();
     fetchRoles();
-    fetchPermissions();
-  }, [fetchUsers, fetchRoles, fetchPermissions]);
+  }, [fetchUsers, fetchRoles]);
 
   // Debounce search
   useEffect(() => {
@@ -96,12 +93,6 @@ export function UsersList() {
           >
             Roles
           </TabsTrigger>
-          <TabsTrigger
-            value="permissions"
-            className="rounded-none border-b-2 border-transparent data-[state=active]:border-zinc-900 data-[state=active]:text-zinc-900 text-zinc-500 text-xs font-medium px-4 py-2.5 bg-transparent hover:text-zinc-700 transition-colors"
-          >
-            Permisos
-          </TabsTrigger>
         </TabsList>
 
         {/* ── USERS TAB ── */}
@@ -114,7 +105,7 @@ export function UsersList() {
                 placeholder="Buscar por nombre, usuario o email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-9 text-sm h-8"
+                className="pl-9 text-xs h-8 bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50"
               />
             </div>
 
@@ -124,13 +115,13 @@ export function UsersList() {
                 setFilters({ roleId: val === 'all' ? undefined : Number(val) })
               }
             >
-              <SelectTrigger className="w-full sm:w-40 h-8 text-xs">
+              <SelectTrigger className="w-full sm:w-40 h-8 text-xs bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50">
                 <SelectValue placeholder="Todos los roles" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos los roles</SelectItem>
+              <SelectContent className="rounded-xl border border-zinc-200 bg-white shadow-sm">
+                <SelectItem value="all" className="text-xs">Todos los roles</SelectItem>
                 {roles.map((r) => (
-                  <SelectItem key={r.id} value={String(r.id)}>
+                  <SelectItem key={r.id} value={String(r.id)} className="text-xs">
                     {r.name}
                   </SelectItem>
                 ))}
@@ -143,19 +134,19 @@ export function UsersList() {
                 setFilters({ isActive: val === 'all' ? undefined : val === 'true' })
               }
             >
-              <SelectTrigger className="w-full sm:w-32 h-8 text-xs">
+              <SelectTrigger className="w-full sm:w-32 h-8 text-xs bg-zinc-100 border-2 border-transparent rounded-lg focus:border-blue-600 focus:bg-blue-50">
                 <SelectValue placeholder="Estado" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos</SelectItem>
-                <SelectItem value="true">Activos</SelectItem>
-                <SelectItem value="false">Inactivos</SelectItem>
+              <SelectContent className="rounded-xl border border-zinc-200 bg-white shadow-sm">
+                <SelectItem value="all" className="text-xs">Todos</SelectItem>
+                <SelectItem value="true" className="text-xs">Activos</SelectItem>
+                <SelectItem value="false" className="text-xs">Inactivos</SelectItem>
               </SelectContent>
             </Select>
 
             <Button
               size="sm"
-              onClick={() => navigate('/users/create')}
+              onClick={() => { setEditingUser(null); setUserFormOpen(true); }}
               className="text-xs h-8 whitespace-nowrap"
             >
               <Plus className="h-3.5 w-3.5 mr-1.5" />
@@ -164,7 +155,7 @@ export function UsersList() {
           </div>
 
           {/* Table header */}
-          <div className="hidden md:grid grid-cols-[2fr_3fr_2fr_auto_auto_auto] gap-4 px-6 py-2 border-b border-zinc-100 bg-zinc-50">
+          <div className="hidden md:grid grid-cols-[2fr_3fr_2fr_5rem_9rem_5.5rem] gap-4 px-6 py-2 border-b border-zinc-100 bg-zinc-50">
             <p className={TH}>Usuario</p>
             <p className={TH}>Nombre / Email</p>
             <p className={TH}>Rol</p>
@@ -193,7 +184,7 @@ export function UsersList() {
                 {users.map((user) => (
                   <div
                     key={user.id}
-                    className="grid grid-cols-[2fr_3fr_2fr_auto_auto_auto] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors"
+                    className="grid grid-cols-[2fr_3fr_2fr_5rem_9rem_5.5rem] gap-4 items-center px-6 py-3 border-b border-zinc-100 hover:bg-zinc-50 transition-colors"
                   >
                     <span className="font-mono text-sm font-medium text-zinc-900">
                       {user.username}
@@ -219,7 +210,7 @@ export function UsersList() {
                         variant="ghost"
                         size="sm"
                         className="h-7 w-7 p-0"
-                        onClick={() => navigate(`/users/edit/${user.id}`)}
+                        onClick={() => { setEditingUser(user); setUserFormOpen(true); }}
                       >
                         <Pencil className="h-3.5 w-3.5 text-zinc-400" />
                       </Button>
@@ -270,7 +261,7 @@ export function UsersList() {
                       <Button
                         size="sm"
                         className="flex-1 text-xs h-7"
-                        onClick={() => navigate(`/users/edit/${user.id}`)}
+                        onClick={() => { setEditingUser(user); setUserFormOpen(true); }}
                       >
                         <Pencil className="h-3 w-3 mr-1" />
                         Editar
@@ -317,11 +308,14 @@ export function UsersList() {
           <RolesTab />
         </TabsContent>
 
-        {/* ── PERMISSIONS TAB ── */}
-        <TabsContent value="permissions" className="mt-0">
-          <PermissionsTab />
-        </TabsContent>
       </Tabs>
+
+      {/* User form dialog */}
+      <UserFormDialog
+        open={userFormOpen}
+        onClose={() => setUserFormOpen(false)}
+        user={editingUser}
+      />
 
       {/* Delete dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>

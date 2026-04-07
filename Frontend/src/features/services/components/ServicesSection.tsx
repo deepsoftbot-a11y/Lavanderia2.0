@@ -87,10 +87,10 @@ function ServiceFormContent({
           description: service.description ?? '',
           categoryId: service.categoryId,
           chargeType: service.chargeType,
-          pricePerKg: service.pricePerKg,
-          minWeight: service.minWeight,
-          maxWeight: service.maxWeight,
-          estimatedTime: service.estimatedTime,
+          pricePerKg: service.pricePerKg || undefined,
+          minWeight: service.minWeight ?? undefined,
+          maxWeight: service.maxWeight ?? undefined,
+          estimatedTime: service.estimatedTime ?? undefined,
           isActive: service.isActive,
         }
       : {
@@ -143,7 +143,7 @@ function ServiceFormContent({
                   <SelectValue placeholder="Selecciona una categoría" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories.map((cat) => (
+                  {categories.filter((cat) => cat.isActive).map((cat) => (
                     <SelectItem key={cat.id} value={cat.id.toString()}>
                       {cat.name}
                     </SelectItem>

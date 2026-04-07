@@ -12,9 +12,9 @@ interface OrdersTableRowProps {
 }
 
 const PAYMENT_LABELS: Record<string, { label: string; className: string }> = {
-  paid:    { label: 'Pagado',     className: 'text-emerald-700 bg-emerald-50 border-emerald-100' },
-  partial: { label: 'Parcial',    className: 'text-amber-700 bg-amber-50 border-amber-100' },
-  pending: { label: 'Pendiente',  className: 'text-rose-700 bg-rose-50 border-rose-100' },
+  paid:    { label: 'Pagado',     className: 'text-emerald-700 bg-emerald-50 border border-emerald-100' },
+  partial: { label: 'Parcial',    className: 'text-amber-700 bg-amber-50 border border-amber-100' },
+  pending: { label: 'Pendiente',  className: 'text-rose-700 bg-rose-50 border border-rose-100' },
 };
 
 export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: OrdersTableRowProps) {
@@ -32,14 +32,14 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
           {order.client?.name ?? '—'}
         </p>
         <span
-          className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit"
+          className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide leading-none w-fit"
           style={order.orderStatus?.color
-            ? { color: order.orderStatus.color, borderColor: `${order.orderStatus.color}40`, backgroundColor: `${order.orderStatus.color}20` }
+            ? { color: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}20` }
             : undefined}
         >
           {order.orderStatus?.name ?? '—'}
         </span>
-        <span className={cn('text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit', payment.className)}>
+        <span className={cn('text-[10px] font-semibold px-2 py-0.5 rounded-full w-fit', payment.className)}>
           {payment.label}
         </span>
         <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
@@ -67,7 +67,7 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
             {order.folioOrden}
           </span>
           <div className="flex items-center gap-2">
-            <span className={cn('text-[11px] font-medium px-2 py-0.5 rounded-full border', payment.className)}>
+            <span className={cn('text-[10px] font-semibold px-2 py-0.5 rounded-full', payment.className)}>
               {payment.label}
             </span>
             <span className="font-mono font-semibold tabular-nums text-sm text-zinc-900">
@@ -79,8 +79,8 @@ export const OrdersTableRow = memo(function OrdersTableRow({ order, onView }: Or
         <p className="text-xs text-zinc-400 mt-0.5 capitalize">{registroDate}</p>
         {order.orderStatus && (
           <span
-            className="text-[11px] font-medium px-2 py-0.5 rounded-full border w-fit mt-1 inline-block"
-            style={{ color: order.orderStatus.color, borderColor: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}20` }}
+            className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide leading-none w-fit mt-1"
+            style={{ color: order.orderStatus.color, backgroundColor: `${order.orderStatus.color}20` }}
           >
             {order.orderStatus.name}
           </span>

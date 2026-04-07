@@ -550,6 +550,12 @@ public partial class LaundryDbContext : DbContext
                 .HasMaxLength(255);
             entity.Property(e => e.Modulo)
                 .HasMaxLength(50);
+            entity.Property(e => e.Seccion)
+                .HasMaxLength(50)
+                .HasDefaultValue(string.Empty);
+            entity.Property(e => e.Etiqueta)
+                .HasMaxLength(150)
+                .HasDefaultValue(string.Empty);
             entity.Property(e => e.NombrePermiso)
                 .HasMaxLength(100);
         });

@@ -20,13 +20,15 @@ public sealed class CreatePermissionCommandHandler : IRequestHandler<CreatePermi
             throw new BusinessRuleException($"Ya existe un permiso con el nombre '{request.Name}'");
 
         var permission = await _permissionRepository.AddAsync(
-            request.Name, request.Module, request.Description, cancellationToken);
+            request.Name, request.Module, request.Section, request.Label, request.Description, cancellationToken);
 
         return new PermissionDto
         {
             Id = permission.Id,
             Name = permission.Name,
             Module = permission.Module,
+            Section = permission.Section,
+            Label = permission.Label,
             Description = permission.Description
         };
     }

@@ -318,13 +318,31 @@ import { StatusBadge } from '@/shared/components/ui/status-badge';
 // No usar inline span con clases de emerald/zinc cada vez
 ```
 
+Colores del StatusBadge:
+```
+Activo:   bg-emerald-50 border border-emerald-100 text-emerald-700  dot: bg-emerald-500
+Inactivo: bg-zinc-100   border border-zinc-200    text-zinc-400     dot: bg-zinc-400
+```
+
 ## Payment Status — Badge consistente
 
-Siempre usar badge con bg+border (no solo texto de color):
+Siempre usar badge con bg+border (no solo texto de color). `text-[10px] font-semibold`:
 ```
 Pagado:    bg-emerald-50 border border-emerald-100 text-emerald-700
 Parcial:   bg-amber-50   border border-amber-100   text-amber-700
 Pendiente: bg-rose-50    border border-rose-100    text-rose-700
+```
+
+## Order Status — Badge dinámico (color del backend)
+
+Sin border. `text-[10px] font-semibold tracking-wide`:
+```tsx
+<span
+  className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide leading-none shrink-0"
+  style={{ color: status.color, backgroundColor: `${status.color}20` }}
+>
+  {status.name}
+</span>
 ```
 
 ---
@@ -337,3 +355,13 @@ Pendiente: bg-rose-50    border border-rose-100    text-rose-700
 - `OrderDetailView` — detalle con secciones zinc sin Separator
 - `OrderPaymentSection` — resumen financiero zinc-50 + historial collapsible
 - `OrderItemsTable` — tabla con headers uppercase y montos mono
+- `UserFormDialog` — modal con header + contenido scrollable + footer fijo en bg-zinc-50. Formulario con `id="user-form"` + botón submit con `form="user-form" type="submit"`. Sin botones dentro del form.
+- `UsersList` — filtros con filled style (`bg-zinc-100 border-2 border-transparent`) y SelectContent con `rounded-xl border border-zinc-200 bg-white shadow-sm`
+
+## Users Module — Estado de rol inline
+
+Badge inline para roles (cuando no se usa StatusBadge genérico):
+```
+Activo:   bg-emerald-50 border border-emerald-100 text-emerald-700
+Inactivo: bg-zinc-100   border border-zinc-200    text-zinc-400
+```

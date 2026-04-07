@@ -16,12 +16,12 @@ interface OrderPaymentSectionProps {
 function getPaymentStatus(status: string): { label: string; className: string } {
   switch (status) {
     case PAYMENT_STATUS.PAID:
-      return { label: 'Pagado', className: 'text-emerald-600' };
+      return { label: 'Pagado',    className: 'bg-emerald-50 border border-emerald-100 text-emerald-700' };
     case PAYMENT_STATUS.PARTIAL:
-      return { label: 'Parcial', className: 'text-amber-600' };
+      return { label: 'Parcial',   className: 'bg-amber-50 border border-amber-100 text-amber-700' };
     case PAYMENT_STATUS.PENDING:
     default:
-      return { label: 'Pendiente', className: 'text-rose-600' };
+      return { label: 'Pendiente', className: 'bg-rose-50 border border-rose-100 text-rose-700' };
   }
 }
 
@@ -65,9 +65,9 @@ export function OrderPaymentSection({ order, onPaymentSubmit, isProcessingPaymen
       </div>
 
       {/* Estado de pago */}
-      <p className={cn('text-[10px] font-semibold', statusInfo.className)}>
+      <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold', statusInfo.className)}>
         {statusInfo.label}
-      </p>
+      </span>
 
       {/* Historial de pagos */}
       {hasPayments && (

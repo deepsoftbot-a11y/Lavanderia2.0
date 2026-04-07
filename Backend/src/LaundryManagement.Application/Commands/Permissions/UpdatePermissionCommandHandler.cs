@@ -26,13 +26,15 @@ public sealed class UpdatePermissionCommandHandler : IRequestHandler<UpdatePermi
         }
 
         var updated = await _permissionRepository.UpdateAsync(
-            request.Id, request.Name, request.Module, request.Description, cancellationToken);
+            request.Id, request.Name, request.Module, request.Section, request.Label, request.Description, cancellationToken);
 
         return new PermissionDto
         {
             Id = updated.Id,
             Name = updated.Name,
             Module = updated.Module,
+            Section = updated.Section,
+            Label = updated.Label,
             Description = updated.Description
         };
     }
