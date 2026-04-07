@@ -1,41 +1,61 @@
 import { type LucideIcon } from 'lucide-react';
-import { Card, CardContent } from '@/shared/components/ui/card';
-import { TrendingDown, TrendingUp, Minus } from 'lucide-react';
+import { cn } from '@/shared/utils/cn';
 
 interface DashboardKPICardProps {
-  title: string;
+  label: string;
   value: string;
-  subtitle?: string;
+  hint?: string;
   icon: LucideIcon;
-  trend?: 'up' | 'down' | 'neutral';
+  tone?: 'neutral' | 'positive' | 'negative' | 'warning';
 }
 
-export function DashboardKPICard({ title, value, subtitle, icon: Icon, trend }: DashboardKPICardProps) {
-  const TrendIcon = trend === 'up' ? TrendingUp : trend === 'down' ? TrendingDown : Minus;
-  const trendColor =
-    trend === 'up' ? 'text-emerald-600' : trend === 'down' ? 'text-rose-600' : 'text-zinc-400';
+const toneClasses: Record<NonNullable<DashboardKPICardProps['tone']>, string> = {
+  neutral: 'text-zinc-900',
+  positive: 'text-emerald-600',
+  negative: 'text-rose-600',
+  warning: 'text-amber-600',
+};
 
+const hintToneClasses: Record<NonNullable<DashboardKPICardProps['tone']>, string> = {
+  neutral: 'text-zinc-400',
+  positive: 'text-emerald-600',
+  negative: 'text-rose-600',
+  warning: 'text-amber-600',
+};
+
+export function DashboardKPICard({
+  label,
+  value,
+  hint,
+  icon: Icon,
+  tone = 'neutral',
+}: DashboardKPICardProps) {
   return (
-    <Card className="hover:shadow-md transition-shadow">
-      <CardContent className="p-4">
-        <div className="flex items-start justify-between">
-          <div className="space-y-1">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
-              {title}
-            </p>
-            <p className="text-2xl font-bold text-zinc-900">{value}</p>
-            {subtitle && (
-              <p className={`text-xs flex items-center gap-1 ${trendColor}`}>
-                <TrendIcon className="h-3 w-3" />
-                {subtitle}
-              </p>
-            )}
-          </div>
-          <div className="p-2 bg-primary/10 rounded-lg">
-            <Icon className="h-5 w-5 text-primary" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="bg-white border border-zinc-200 rounded-lg px-3 py-2.5 transition-colors hover:border-zinc-300">
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-[9px] font-semibold tracking-widest uppercase text-zinc-400 truncate">
+          {label}
+        </p>
+        <Icon className="h-3 w-3 text-zinc-300 shrink-0" strokeWidth={2.25} />
+      </div>
+      <p
+        className={cn(
+          'mt-1.5 font-mono font-bold tabular-nums text-base tracking-tight leading-none truncate',
+          toneClasses[tone],
+        )}
+      >
+        {value}
+      </p>
+      {hint && (
+        <p
+          className={cn(
+            'mt-1 text-[10px] font-medium tabular-nums truncate',
+            hintToneClasses[tone],
+          )}
+        >
+          {hint}
+        </p>
+      )}
+    </div>
   );
 }

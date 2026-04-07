@@ -1,54 +1,56 @@
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from 'recharts';
 import { useDashboardStore } from '../stores/dashboardStore';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
-import { Skeleton } from '@/shared/components/ui/skeleton';
+import { ChartPanel } from './ChartPanel';
 
 const STATUS_COLORS: Record<string, string> = {
-  Recibida: '#3b82f6',
+  Recibida: '#4664FF',
   'En Proceso': '#f59e0b',
   'Lista para Entregar': '#8b5cf6',
   Entregada: '#10b981',
-  Cancelada: '#ef4444',
+  Cancelada: '#f43f5e',
 };
 
 export function OrdersByStatusChart() {
   const { charts, isLoading } = useDashboardStore();
 
-  if (isLoading || !charts) return <Skeleton className="h-72 w-full" />;
+  if (isLoading || !charts) {
+    return (
+      <ChartPanel label="Órdenes por Estado">
+        <div className="h-[260px] bg-zinc-50 rounded animate-pulse" />
+      </ChartPanel>
+    );
+  }
+
+  const total = charts.ordenesPorEstado.reduce((acc, e) => acc + e.cantidad, 0);
+  const max = Math.max(...charts.ordenesPorEstado.map((e) => e.cantidad), 1);
 
   return (
-    <Card>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-medium">Órdenes por Estado</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={260}>
-          <BarChart
-            data={charts.ordenesPorEstado}
-            layout="vertical"
-            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" className="stroke-zinc-200" />
-            <XAxis type="number" tick={{ fontSize: 11 }} />
-            <YAxis dataKey="estado" type="category" tick={{ fontSize: 11 }} width={120} />
-            <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
-            <Bar dataKey="cantidad" radius={[0, 4, 4, 0]}>
-              {charts.ordenesPorEstado.map((entry) => (
-                <Cell key={entry.estado} fill={STATUS_COLORS[entry.estado] ?? '#6366f1'} />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
+    <ChartPanel label="Órdenes por Estado" hint={`${total} en total`}>
+      <div className="px-2 py-2 space-y-3">
+        {charts.ordenesPorEstado.length === 0 ? (
+          <p className="text-xs text-zinc-400 py-12 text-center">Sin datos</p>
+        ) : (
+          charts.ordenesPorEstado.map((entry) => {
+            const pct = (entry.cantidad / max) * 100;
+            const color = STATUS_COLORS[entry.estado] ?? '#71717a';
+            return (
+              <div key={entry.estado} className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-xs font-medium text-zinc-700">{entry.estado}</span>
+                  <span className="font-mono tabular-nums text-xs font-semibold text-zinc-900">
+                    {entry.cantidad}
+                  </span>
+                </div>
+                <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-300"
+                    style={{ width: `${pct}%`, backgroundColor: color }}
+                  />
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </ChartPanel>
   );
 }

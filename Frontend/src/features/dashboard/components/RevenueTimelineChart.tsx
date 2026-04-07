@@ -6,69 +6,82 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from 'recharts';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useDashboardStore } from '../stores/dashboardStore';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
-import { Skeleton } from '@/shared/components/ui/skeleton';
+import {
+  ChartPanel,
+  CHART_TOOLTIP_STYLE,
+  CHART_AXIS_TICK,
+  CHART_GRID_STROKE,
+  CHART_COLORS,
+} from './ChartPanel';
 
-const formatMoney = (v: number) => `${(v / 1000).toFixed(0)}k`;
+const formatK = (v: number) => `$${(v / 1000).toFixed(0)}k`;
 
 export function RevenueTimelineChart() {
   const { charts, isLoading } = useDashboardStore();
 
-  if (isLoading || !charts) return <Skeleton className="h-72 w-full" />;
+  if (isLoading || !charts) {
+    return (
+      <ChartPanel label="Ingresos por Día">
+        <div className="h-[260px] bg-zinc-50 rounded animate-pulse" />
+      </ChartPanel>
+    );
+  }
 
   const data = charts.ingresosPorDia.map((d) => ({
     ...d,
-    fecha: format(parseISO(d.fecha), 'dd MMM', { locale: es }),
+    fechaLabel: format(parseISO(d.fecha), 'dd MMM', { locale: es }),
   }));
 
+  const totalIngresos = data.reduce((acc, d) => acc + d.ingresos, 0);
+
   return (
-    <Card>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-medium">Ingresos y Órdenes por Día</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={260}>
-          <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" className="stroke-zinc-200" />
-            <XAxis dataKey="fecha" tick={{ fontSize: 11 }} />
-            <YAxis yAxisId="left" tickFormatter={formatMoney} tick={{ fontSize: 11 }} />
-            <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 11 }} />
-            <Tooltip
-              formatter={(value: unknown, name: unknown) => [
-                name === 'ingresos'
-                  ? `$${(value as number).toLocaleString('es-MX')}`
-                  : String(value),
-                name === 'ingresos' ? 'Ingresos' : 'Órdenes',
-              ]}
-              contentStyle={{ fontSize: 12, borderRadius: 8 }}
-            />
-            <Legend wrapperStyle={{ fontSize: 12 }} />
-            <Line
-              yAxisId="left"
-              type="monotone"
-              dataKey="ingresos"
-              stroke="#6366f1"
-              strokeWidth={2}
-              dot={false}
-              name="Ingresos"
-            />
-            <Line
-              yAxisId="right"
-              type="monotone"
-              dataKey="ordenes"
-              stroke="#f59e0b"
-              strokeWidth={2}
-              dot={false}
-              name="Órdenes"
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
+    <ChartPanel
+      label="Ingresos por Día"
+      hint={`$${totalIngresos.toLocaleString('es-MX', { maximumFractionDigits: 0 })}`}
+    >
+      <ResponsiveContainer width="100%" height={260}>
+        <LineChart data={data} margin={{ top: 10, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID_STROKE} vertical={false} />
+          <XAxis
+            dataKey="fechaLabel"
+            tick={CHART_AXIS_TICK}
+            axisLine={false}
+            tickLine={false}
+            tickMargin={8}
+          />
+          <YAxis
+            tick={CHART_AXIS_TICK}
+            tickFormatter={formatK}
+            axisLine={false}
+            tickLine={false}
+            tickMargin={8}
+            width={48}
+          />
+          <Tooltip
+            cursor={{ stroke: '#e4e4e7', strokeWidth: 1 }}
+            contentStyle={CHART_TOOLTIP_STYLE}
+            labelStyle={{ color: '#71717a', fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}
+            formatter={(value: unknown, name: unknown) => [
+              name === 'ingresos'
+                ? `$${(value as number).toLocaleString('es-MX')}`
+                : String(value),
+              name === 'ingresos' ? 'Ingresos' : 'Órdenes',
+            ]}
+          />
+          <Line
+            type="monotone"
+            dataKey="ingresos"
+            stroke={CHART_COLORS.primary}
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 4, strokeWidth: 0, fill: CHART_COLORS.primary }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </ChartPanel>
   );
 }

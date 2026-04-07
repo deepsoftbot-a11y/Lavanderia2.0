@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
+import { AlertCircle } from 'lucide-react';
+import type { DateRange } from 'react-day-picker';
+
 import { useDashboardStore } from '../stores/dashboardStore';
+import { DateRangePicker } from '@/shared/components/ui/date-range-picker';
 import { DashboardCardsGrid } from '../components/DashboardCardsGrid';
 import { RevenueTimelineChart } from '../components/RevenueTimelineChart';
 import { OrdersByStatusChart } from '../components/OrdersByStatusChart';
@@ -7,9 +11,6 @@ import { RevenueByMethodChart } from '../components/RevenueByMethodChart';
 import { RevenueByServiceChart } from '../components/RevenueByServiceChart';
 import { RevenueByCategoryChart } from '../components/RevenueByCategoryChart';
 import { WeeklyComparisonChart } from '../components/WeeklyComparisonChart';
-import { Card, CardContent } from '@/shared/components/ui/card';
-import { Separator } from '@/shared/components/ui/separator';
-import { AlertCircle } from 'lucide-react';
 
 export function Dashboard() {
   const { fetchDashboard, error, fechaInicio, fechaFin, setFechaRange } = useDashboardStore();
@@ -21,57 +22,57 @@ export function Dashboard() {
   if (error) {
     return (
       <div className="mx-auto max-w-4xl mt-8">
-        <Card className="border-rose-200 bg-rose-50">
-          <CardContent className="flex items-center gap-3 p-4">
-            <AlertCircle className="h-5 w-5 text-rose-600" />
-            <p className="text-sm text-rose-700">{error}</p>
-          </CardContent>
-        </Card>
+        <div className="bg-rose-50 border border-rose-200 rounded-xl px-4 py-3 flex items-center gap-3">
+          <AlertCircle className="h-4 w-4 text-rose-600 shrink-0" />
+          <p className="text-xs font-medium text-rose-700">{error}</p>
+        </div>
       </div>
     );
   }
 
+  const dateRange: DateRange = {
+    from: fechaInicio,
+    to: fechaFin,
+  };
+
+  const handleDateChange = (range: DateRange) => {
+    if (range?.from && range?.to) {
+      setFechaRange(range.from, range.to);
+    }
+  };
+
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
-      {/* Header con filtro de fechas */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-zinc-900">Dashboard</h1>
-        <div className="flex items-center gap-2">
-          <input
-            type="date"
-            value={fechaInicio.toISOString().split('T')[0]}
-            onChange={(e) => setFechaRange(new Date(e.target.value), fechaFin)}
-            className="border rounded px-3 py-1.5 text-sm"
-          />
-          <span className="text-zinc-400">—</span>
-          <input
-            type="date"
-            value={fechaFin.toISOString().split('T')[0]}
-            onChange={(e) => setFechaRange(fechaInicio, new Date(e.target.value))}
-            className="border rounded px-3 py-1.5 text-sm"
-          />
+    <div className="mx-auto max-w-7xl space-y-8">
+      {/* Header */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-[10px] font-semibold tracking-widest uppercase text-zinc-400 mb-1.5">
+            Panorama
+          </p>
+          <h1 className="font-mono font-bold tabular-nums text-2xl tracking-tight leading-none text-zinc-900">
+            Dashboard
+          </h1>
         </div>
+        <DateRangePicker date={dateRange} onDateChange={handleDateChange} />
       </div>
 
       {/* KPI Cards */}
       <DashboardCardsGrid />
 
-      <Separator />
-
       {/* Ingresos por día + Órdenes por estado */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <RevenueTimelineChart />
         <OrdersByStatusChart />
       </div>
 
       {/* Método de pago + Comparativa semanal */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <RevenueByMethodChart />
         <WeeklyComparisonChart />
       </div>
 
       {/* Por servicio + Por categoría */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <RevenueByServiceChart />
         <RevenueByCategoryChart />
       </div>
