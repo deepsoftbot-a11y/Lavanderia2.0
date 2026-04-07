@@ -61,6 +61,9 @@ public static class DependencyInjection
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IJwtTokenService, JwtTokenService>();
 
+        // Register Dashboard Service
+        services.AddScoped<IDashboardService, DashboardService>();
+
         // Register Stored Procedure Services
         services.AddScoped<IOrdenService, OrdenService>();
         services.AddScoped<IPagoService, PagoService>();
